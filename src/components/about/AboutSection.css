@@ -1,0 +1,72 @@
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-para {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-compliance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.compliance-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--brand-cyan);
+  border: 1px solid rgba(6,182,212,0.25);
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.value-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent, var(--brand-cyan)) 30%, transparent);
+}
+
+.value-icon {
+  font-size: 1.6rem;
+  color: var(--accent, var(--brand-cyan));
+  filter: drop-shadow(0 0 6px var(--accent, var(--brand-cyan)));
+  margin-bottom: 12px;
+}
+
+.value-title {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.value-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 1024px) { .about-layout { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 640px)  { .about-values { grid-template-columns: 1fr; } }

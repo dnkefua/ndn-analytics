@@ -1,0 +1,25 @@
+:root {
+  --brand-cyan: #06B6D4;
+  --brand-cyan-light: #67E8F9;
+  --brand-blue: #4F46E5;
+  --brand-blue-light: #818CF8;
+  --brand-purple: #7C3AED;
+  --brand-gold: #F59E0B;
+  --dark-void: #010309;
+  --dark-surface: #0a1628;
+  --dark-card: #111d33;
+  --text-primary: #E8EDF5;
+  --text-secondary: rgba(232,237,245,0.45);
+  --text-tertiary: rgba(232,237,245,0.25);
+  --glow-cyan: 0 0 20px rgba(6,182,212,0.5), 0 0 60px rgba(6,182,212,0.15);
+  --glow-blue: 0 0 20px rgba(79,70,229,0.5), 0 0 60px rgba(79,70,229,0.15);
+  --border-subtle: rgba(6,182,212,0.08);
+  --border-hover: rgba(6,182,212,0.25);
+  --nav-height: 72px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}

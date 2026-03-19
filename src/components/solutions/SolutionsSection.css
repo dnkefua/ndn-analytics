@@ -1,0 +1,79 @@
+.solutions-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.solution-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent, var(--brand-cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent, var(--brand-cyan)) 30%, transparent);
+}
+
+.solution-card:hover::before { opacity: 1; }
+
+.solution-icon {
+  font-size: 2rem;
+  color: var(--accent, var(--brand-cyan));
+  filter: drop-shadow(0 0 8px var(--accent, var(--brand-cyan)));
+  margin-bottom: 16px;
+}
+
+.solution-industry {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.solution-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.solution-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.solution-product-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent, var(--brand-cyan));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--brand-cyan)) 30%, transparent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 1024px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .solutions-grid { grid-template-columns: 1fr; } }
