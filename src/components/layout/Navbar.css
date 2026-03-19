@@ -7,54 +7,74 @@
 }
 
 .navbar.scrolled {
-  background: rgba(1, 3, 9, 0.85);
-  backdrop-filter: blur(20px);
+  background: rgba(1, 3, 9, 0.88);
+  backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .nav-inner {
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
 }
 
+/* ── Logo area ── */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
-.nav-logo-text {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--brand-cyan);
-  letter-spacing: 0.25em;
-  opacity: 0.7;
+/* Wordmark beside the 3-D crystal */
+.nav-logo-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
 }
 
+.nav-logo-ndn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--brand-cyan);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 14px rgba(6,182,212,0.55);
+}
+
+.nav-logo-analytics {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: rgba(6,182,212,0.6);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+/* ── Links ── */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .nav-link {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.0rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-decoration: none;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   transition: color var(--transition-fast);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -78,11 +98,12 @@
 }
 
 .nav-cta {
-  font-size: 0.72rem;
-  padding: 9px 20px;
-  margin-left: 8px;
+  font-size: 0.78rem;
+  padding: 10px 22px;
+  margin-left: 4px;
 }
 
+/* ── Burger ── */
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -95,7 +116,7 @@
 
 .nav-burger span {
   display: block;
-  width: 24px;
+  width: 26px;
   height: 2px;
   background: var(--brand-cyan);
   border-radius: 2px;
@@ -106,7 +127,8 @@
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-@media (max-width: 900px) {
+/* ── Mobile ── */
+@media (max-width: 960px) {
   .nav-burger { display: flex; }
 
   .nav-links {
@@ -115,10 +137,10 @@
     left: 0; right: 0;
     flex-direction: column;
     background: rgba(1, 3, 9, 0.97);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 32px 24px;
-    gap: 24px;
+    padding: 36px 28px;
+    gap: 28px;
     transform: translateY(-110%);
     transition: transform var(--transition-base);
     align-items: flex-start;
@@ -126,4 +148,5 @@
 
   .nav-links.open { transform: translateY(0); }
   .nav-cta { margin-left: 0; }
+  .nav-link { font-size: 1.15rem; }
 }

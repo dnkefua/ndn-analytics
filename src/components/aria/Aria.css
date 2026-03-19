@@ -29,8 +29,8 @@
   bottom: 96px;
   right: 28px;
   z-index: 199;
-  width: 380px;
-  max-height: 540px;
+  width: 420px;
+  max-height: 580px;
   background: rgba(10, 22, 40, 0.97);
   backdrop-filter: blur(24px);
   border: 1px solid rgba(6,182,212,0.2);
@@ -132,7 +132,7 @@
   max-width: 75%;
   padding: 10px 14px;
   border-radius: 12px;
-  font-size: 0.85rem;
+  font-size: 0.97rem;
   line-height: 1.6;
 }
 
@@ -178,7 +178,7 @@
 
 .aria-chip {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   color: var(--brand-cyan);
   background: rgba(6,182,212,0.06);
   border: 1px solid rgba(6,182,212,0.2);

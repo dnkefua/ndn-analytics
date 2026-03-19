@@ -4,15 +4,15 @@ import Logo3D from '../three/Logo3D';
 import './Navbar.css';
 
 const NAV_LINKS = [
-  { label: 'Products', href: '/products' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Technology', href: '/tech' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Products',   href: '/products'  },
+  { label: 'Solutions',  href: '/solutions' },
+  { label: 'Technology', href: '/tech'      },
+  { label: 'About',      href: '/about'     },
+  { label: 'Contact',    href: '/contact'   },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -27,11 +27,17 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="nav-inner">
+
+        {/* ── Logo ── */}
         <Link to="/" className="nav-logo">
           <Logo3D />
-          <span className="nav-logo-text">ANALYTICS</span>
+          <div className="nav-logo-wordmark">
+            <span className="nav-logo-ndn">NDN</span>
+            <span className="nav-logo-analytics">ANALYTICS</span>
+          </div>
         </Link>
 
+        {/* ── Links ── */}
         <div className={`nav-links${menuOpen ? ' open' : ''}`}>
           {NAV_LINKS.map((link) => (
             <Link
@@ -45,6 +51,7 @@ export default function Navbar() {
           <Link to="/contact" className="btn btn-primary nav-cta">Book Demo</Link>
         </div>
 
+        {/* ── Mobile burger ── */}
         <button
           className={`nav-burger${menuOpen ? ' open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -52,6 +59,7 @@ export default function Navbar() {
         >
           <span /><span /><span />
         </button>
+
       </div>
     </nav>
   );
