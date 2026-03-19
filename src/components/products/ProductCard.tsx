@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Product } from '../../types';
 import './ProductCard.css';
 
@@ -33,9 +34,9 @@ export default function ProductCard({ product }: Props) {
         ))}
       </ul>
       <div className="product-card-footer">
-        <button className="btn btn-ghost" style={{ fontSize: '0.7rem', padding: '7px 16px' }}>
+        <Link to={`/products/${product.id}`} className="btn btn-ghost" style={{ fontSize: '0.7rem', padding: '7px 16px' }}>
           Learn More →
-        </button>
+        </Link>
       </div>
     </div>
   );

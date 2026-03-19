@@ -10,6 +10,7 @@ import AriaFAB from './components/aria/AriaFAB';
 
 const Hero = lazy(() => import('./components/hero/Hero'));
 const ProductsSection = lazy(() => import('./components/products/ProductsSection'));
+const ProductDetail = lazy(() => import('./components/products/ProductDetail'));
 const SolutionsSection = lazy(() => import('./components/solutions/SolutionsSection'));
 const TechSection = lazy(() => import('./components/tech/TechSection'));
 const AboutSection = lazy(() => import('./components/about/AboutSection'));
@@ -45,6 +46,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/products" element={<ProductsSection />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/solutions" element={<SolutionsSection />} />
             <Route path="/tech" element={<TechSection />} />
             <Route path="/about" element={<AboutSection />} />

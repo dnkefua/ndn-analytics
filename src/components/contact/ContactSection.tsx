@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { PRODUCTS } from '../products/productData';
 import './ContactSection.css';
 
+// ── EmailJS config (set these env vars in .env) ──────────────────────────────
+const EJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || '';
+const EJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+const EJS_PUBLIC   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || '';
+
+type Status = 'idle' | 'sending' | 'success' | 'error';
+
 export default function ContactSection() {
   const ref = useRef<HTMLElement>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<Status>('idle');
   const [form, setForm] = useState({ name: '', email: '', product: '', message: '' });
 
   useEffect(() => {
@@ -16,9 +25,18 @@ export default function ContactSection() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formRef.current) return;
+    setStatus('sending');
+
+    try {
+      await emailjs.sendForm(EJS_SERVICE, EJS_TEMPLATE, formRef.current, { publicKey: EJS_PUBLIC });
+      setStatus('success');
+      setForm({ name: '', email: '', product: '', message: '' });
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -36,6 +54,10 @@ export default function ContactSection() {
             </p>
             <div className="contact-details reveal stagger-3">
               <div className="contact-detail">
+                <span className="contact-detail-label">Email</span>
+                <span className="contact-detail-value">nkefua@ndnanalytics.com</span>
+              </div>
+              <div className="contact-detail">
                 <span className="contact-detail-label">Response Time</span>
                 <span className="contact-detail-value">Within 24 hours</span>
               </div>
@@ -51,18 +73,26 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-form-wrap reveal stagger-2">
-            {submitted ? (
+            {status === 'success' ? (
               <div className="contact-success">
-                <div style={{ fontSize: '2rem', marginBottom: 16, color: 'var(--brand-cyan)' }}>✓</div>
+                <div style={{ fontSize: '2.5rem', marginBottom: 16, color: 'var(--brand-cyan)' }}>✓</div>
                 <h3>Message Received</h3>
-                <p>Our team will respond within 24 hours.</p>
+                <p>Our team at nkefua@ndnanalytics.com will respond within 24 hours.</p>
+                <button
+                  className="btn btn-ghost"
+                  style={{ marginTop: '1.5rem' }}
+                  onClick={() => setStatus('idle')}
+                >
+                  Send Another
+                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label className="form-label">Full Name</label>
                   <input
                     type="text"
+                    name="from_name"
                     required
                     className="form-input"
                     placeholder="Jane Smith"
@@ -74,6 +104,7 @@ export default function ContactSection() {
                   <label className="form-label">Email Address</label>
                   <input
                     type="email"
+                    name="from_email"
                     required
                     className="form-input"
                     placeholder="jane@enterprise.com"
@@ -84,20 +115,22 @@ export default function ContactSection() {
                 <div className="form-group">
                   <label className="form-label">Product Interest</label>
                   <select
+                    name="product_interest"
                     className="form-input form-select"
                     value={form.product}
                     onChange={e => setForm({ ...form, product: e.target.value })}
                   >
                     <option value="">Select a product...</option>
                     {PRODUCTS.map(p => (
-                      <option key={p.id} value={p.id}>{p.name}</option>
+                      <option key={p.id} value={p.name}>{p.name}</option>
                     ))}
-                    <option value="general">General Inquiry</option>
+                    <option value="General Inquiry">General Inquiry</option>
                   </select>
                 </div>
                 <div className="form-group">
                   <label className="form-label">Message</label>
                   <textarea
+                    name="message"
                     required
                     className="form-input form-textarea"
                     placeholder="Tell us about your use case and scale..."
@@ -106,8 +139,21 @@ export default function ContactSection() {
                     onChange={e => setForm({ ...form, message: e.target.value })}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  Send Message →
+
+                {/* Hidden field — EmailJS routes to this address */}
+                <input type="hidden" name="to_email" value="nkefua@ndnanalytics.com" />
+
+                {status === 'error' && (
+                  <p className="form-error">Something went wrong. Please email us directly at nkefua@ndnanalytics.com</p>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center' }}
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             )}

@@ -1,0 +1,446 @@
+/* ─── WRAPPER ─────────────────────────────────────── */
+.pd-wrapper {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+.pd-notfound {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* ─── HERO ─────────────────────────────────────────── */
+.pd-hero {
+  position: relative;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+
+.pd-hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--accent-rgb, 6,182,212), 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.pd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color var(--transition-fast);
+}
+.pd-back-link:hover { color: var(--accent, var(--brand-cyan)); }
+
+.pd-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.pd-stack-label {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--accent, var(--brand-cyan));
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.pd-number {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.pd-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.pd-tagline {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent, var(--brand-cyan));
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+.pd-description {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 0 2.5rem;
+}
+
+.pd-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ─── HERO ICON ─────────────────────────────────────── */
+.pd-hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pd-icon-display {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-big-icon {
+  font-size: 6rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 30px var(--accent, #06B6D4));
+  animation: pd-icon-float 4s ease-in-out infinite;
+}
+
+@keyframes pd-icon-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.pd-icon-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--accent, #06B6D4);
+  animation: pd-ring-pulse 3s ease-in-out infinite;
+}
+.pd-ring-1 { width: 140px; height: 140px; opacity: 0.4; animation-delay: 0s; }
+.pd-ring-2 { width: 190px; height: 190px; opacity: 0.2; animation-delay: 0.6s; }
+.pd-ring-3 { width: 240px; height: 240px; opacity: 0.1; animation-delay: 1.2s; }
+
+@keyframes pd-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: var(--base-opacity, 0.3); }
+  50% { transform: scale(1.06); opacity: calc(var(--base-opacity, 0.3) * 1.5); }
+}
+
+/* ─── METRICS STRIP ──────────────────────────────────── */
+.pd-metrics-strip {
+  background: rgba(6, 182, 212, 0.04);
+  border-top: 1px solid rgba(6,182,212,0.1);
+  border-bottom: 1px solid rgba(6,182,212,0.1);
+  padding: 1.5rem 0;
+}
+
+.pd-metrics-grid {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.pd-metric {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.5rem 2rem 0.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.pd-metric-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent, var(--brand-cyan));
+  box-shadow: 0 0 8px var(--accent, var(--brand-cyan));
+  flex-shrink: 0;
+}
+
+/* ─── BODY ────────────────────────────────────────────── */
+.pd-body {
+  padding: 5rem 0;
+}
+
+.pd-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.pd-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent, var(--brand-cyan));
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
+.pd-section-title--center {
+  text-align: center;
+}
+
+.pd-sub-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 2.5rem 0 1rem;
+}
+
+/* ─── FEATURES LIST ──────────────────────────────────── */
+.pd-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pd-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.pd-feature-item:first-child { border-top: 1px solid var(--border-subtle); }
+
+.pd-feature-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent, var(--brand-cyan));
+  opacity: 0.6;
+  min-width: 24px;
+}
+
+.pd-feature-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+/* ─── HOW IT WORKS ────────────────────────────────────── */
+.pd-how-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent, var(--brand-cyan));
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+}
+
+.pd-how-card p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ─── INDUSTRIES ──────────────────────────────────────── */
+.pd-industries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pd-industry-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--accent, var(--brand-cyan));
+  background: rgba(6,182,212,0.07);
+  border: 1px solid rgba(6,182,212,0.2);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+
+/* ─── USE CASES ───────────────────────────────────────── */
+.pd-usecases {
+  padding: 5rem 0;
+  background: rgba(6,182,212,0.02);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pd-usecases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.pd-usecase-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2rem 2rem 2rem 1.5rem;
+  backdrop-filter: blur(12px);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.pd-usecase-card:hover {
+  border-color: var(--accent, var(--brand-cyan));
+  transform: translateY(-4px);
+}
+
+.pd-usecase-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent, var(--brand-cyan));
+  opacity: 0.35;
+  line-height: 1;
+  min-width: 32px;
+  padding-top: 2px;
+}
+
+.pd-usecase-card p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ─── CTA BANNER ─────────────────────────────────────── */
+.pd-cta-banner {
+  padding: 5rem 0;
+}
+
+.pd-cta-inner {
+  background: linear-gradient(135deg, rgba(6,182,212,0.08), rgba(79,70,229,0.08));
+  border: 1px solid rgba(6,182,212,0.18);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  backdrop-filter: blur(16px);
+  flex-wrap: wrap;
+}
+
+.pd-cta-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.6rem;
+}
+
+.pd-cta-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.pd-cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ─── PREV / NEXT NAV ────────────────────────────────── */
+.pd-sibling-nav {
+  padding: 3rem 0 5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pd-siblings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pd-sibling {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: opacity var(--transition-fast);
+}
+.pd-sibling:hover { opacity: 0.75; }
+
+.pd-sibling--next { text-align: right; align-items: flex-end; }
+
+.pd-sibling-dir {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.pd-sibling-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pd-sibling-all {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--brand-cyan);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+.pd-sibling-all:hover { opacity: 1; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pd-hero-content { grid-template-columns: 1fr; }
+  .pd-hero-right { display: none; }
+  .pd-body-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .pd-usecases-grid { grid-template-columns: 1fr; }
+  .pd-cta-inner { flex-direction: column; align-items: flex-start; }
+  .pd-metrics-grid { gap: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .pd-hero { padding: 3rem 0 2.5rem; }
+  .pd-title { font-size: 2rem; }
+  .pd-cta-inner { padding: 2rem 1.5rem; }
+}

@@ -3,10 +3,15 @@ export interface Product {
   number: string;
   name: string;
   description: string;
+  tagline?: string;
   features: string[];
   badge: string;
   stack: 'gcloud' | 'ethereum' | 'new';
-  icon: string; // emoji or SVG string
+  icon: string;
+  industries?: string[];
+  useCases?: string[];
+  howItWorks?: string;
+  metrics?: string[];
 }
 
 export interface Solution {
