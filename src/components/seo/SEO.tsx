@@ -15,7 +15,7 @@ interface SEOProps {
 }
 
 const BASE_URL = 'https://www.ndnanalytics.com';
-const DEFAULT_IMAGE = '/logo.jpg';
+const DEFAULT_IMAGE = '/favicons.png';
 
 export default function SEO({
   title,

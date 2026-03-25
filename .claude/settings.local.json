@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(xxd \"C:\\\\Users\\\\A2Z\\\\OneDrive\\\\Documents\\\\NDN Analytics\\\\NDN Analytic website\\\\ndn-analytics\\\\src\\\\assets\\\\ndnanalytics logo\")"
+      "Bash(xxd \"C:\\\\Users\\\\A2Z\\\\OneDrive\\\\Documents\\\\NDN Analytics\\\\NDN Analytic website\\\\ndn-analytics\\\\src\\\\assets\\\\ndnanalytics logo\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration -of csv=p=0 \"C:\\\\Users\\\\A2Z\\\\OneDrive\\\\Documents\\\\NDN Analytics\\\\NDN Analytic website\\\\ndn-analytics\\\\src\\\\assets\\\\ndnanalytics3D logo.mp4\")"
     ]
   }
 }

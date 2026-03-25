@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo3D from '../three/Logo3D';
+import VideoLogo from './VideoLogo';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -30,7 +30,7 @@ export default function Navbar() {
 
         {/* ── Logo ── */}
         <Link to="/" className="nav-logo">
-          <Logo3D />
+          <VideoLogo size={44} />
           <div className="nav-logo-wordmark">
             <span className="nav-logo-ndn">NDN</span>
             <span className="nav-logo-analytics">ANALYTICS</span>
