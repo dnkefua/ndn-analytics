@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import SEO from '../seo/SEO';
 import './SolutionsSection.css';
 
 const SOLUTIONS = [
@@ -59,7 +60,14 @@ export default function SolutionsSection() {
   }, []);
 
   return (
-    <section className="section solutions-section" ref={ref}>
+    <>
+      <SEO
+        title="Industry Solutions"
+        description="NDN Analytics delivers tailored AI and blockchain solutions for healthcare, retail, logistics, real estate, luxury goods, and community finance sectors."
+        keywords="healthcare AI, retail analytics, logistics optimization, real estate blockchain, supply chain traceability, community finance"
+        canonicalPath="/solutions"
+      />
+      <section className="section solutions-section" ref={ref}>
       <div className="container">
         <div className="section-tag reveal">Solutions</div>
         <h2 className="section-title reveal stagger-1">
@@ -87,5 +95,6 @@ export default function SolutionsSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

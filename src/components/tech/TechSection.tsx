@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import SEO from '../seo/SEO';
 import './TechSection.css';
 
 const GCLOUD_STACK = [
@@ -36,7 +37,14 @@ export default function TechSection() {
   }, []);
 
   return (
-    <section className="section tech-section" ref={ref}>
+    <>
+      <SEO
+        title="Technology Stack"
+        description="NDN Analytics powers enterprise solutions with Google Cloud AI (Vertex AI, BigQuery ML, Cloud Run) and Ethereum blockchain (Solidity, IPFS, Chainlink) infrastructure."
+        keywords="Google Cloud AI, Vertex AI, BigQuery ML, Ethereum, Solidity, blockchain infrastructure, enterprise technology stack"
+        canonicalPath="/tech"
+      />
+      <section className="section tech-section" ref={ref}>
       <div className="container">
         <div className="section-tag reveal">Technology</div>
         <h2 className="section-title reveal stagger-1">
@@ -84,5 +92,6 @@ export default function TechSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

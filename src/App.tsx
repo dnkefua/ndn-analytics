@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Suspense, lazy } from 'react';
 import CustomCursor from './components/layout/CustomCursor';
 import SpaceEngine from './components/three/SpaceEngine';
@@ -35,27 +36,29 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <HashRouter>
-      <CustomCursor />
-      <SpaceEngine />
-      <GridOverlay />
-      <SpeedHUD />
-      <Navbar />
-      <main style={{ position: 'relative', zIndex: 10 }}>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/products" element={<ProductsSection />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/solutions" element={<SolutionsSection />} />
-            <Route path="/tech" element={<TechSection />} />
-            <Route path="/about" element={<AboutSection />} />
-            <Route path="/contact" element={<ContactSection />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-      <AriaFAB />
-    </HashRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <CustomCursor />
+        <SpaceEngine />
+        <GridOverlay />
+        <SpeedHUD />
+        <Navbar />
+        <main style={{ position: 'relative', zIndex: 10 }}>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              <Route path="/products" element={<ProductsSection />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/solutions" element={<SolutionsSection />} />
+              <Route path="/tech" element={<TechSection />} />
+              <Route path="/about" element={<AboutSection />} />
+              <Route path="/contact" element={<ContactSection />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+        <AriaFAB />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

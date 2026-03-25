@@ -1,0 +1,11 @@
+# Robots.txt for NDN Analytics
+# https://www.ndnanalytics.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.ndnanalytics.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

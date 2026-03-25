@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { PRODUCTS } from './productData';
+import SEO from '../seo/SEO';
 import './ProductDetail.css';
 
 const STACK_COLORS: Record<string, string> = {
@@ -27,20 +28,41 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="pd-notfound">
-        <p>Product not found.</p>
-        <Link to="/products" className="btn btn-primary">← Back to Products</Link>
-      </div>
+      <>
+        <SEO
+          title="Product Not Found"
+          description="The product you're looking for doesn't exist."
+          canonicalPath="/products"
+        />
+        <div className="pd-notfound">
+          <p>Product not found.</p>
+          <Link to="/products" className="btn btn-primary">← Back to Products</Link>
+        </div>
+      </>
     );
   }
 
+  const keywords = `${product.name}, ${product.stack === 'gcloud' ? 'Google Cloud AI' : 'Ethereum blockchain'}, ${product.industries?.join(', ')}, enterprise software`;
   const color = STACK_COLORS[product.stack];
   const currentIndex = PRODUCTS.findIndex(p => p.id === id);
   const prevProduct = PRODUCTS[currentIndex - 1];
   const nextProduct = PRODUCTS[currentIndex + 1];
 
   return (
-    <div className="pd-wrapper" style={{ '--accent': color } as React.CSSProperties}>
+    <>
+      <SEO
+        title={product.name}
+        description={product.description}
+        keywords={keywords}
+        canonicalPath={`/products/${product.id}`}
+        type="product"
+        product={{
+          name: product.name,
+          description: product.description,
+          stack: product.stack,
+        }}
+      />
+      <div className="pd-wrapper" style={{ '--accent': color } as React.CSSProperties}>
 
       {/* ── HERO ── */}
       <section className="pd-hero" ref={heroRef}>
@@ -191,5 +213,6 @@ export default function ProductDetail() {
       </section>
 
     </div>
+    </>
   );
 }

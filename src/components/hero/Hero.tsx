@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../seo/SEO';
+import OrganizationSchema from '../seo/OrganizationSchema';
 import './Hero.css';
 
 const STATS = [
@@ -51,7 +53,15 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero-section" ref={heroRef}>
+    <>
+      <SEO
+        title="NDN Analytics"
+        description="NDN Analytics delivers enterprise AI and blockchain intelligence platforms. Google Cloud AI meets Ethereum for demand forecasting, healthcare AI, supply chain traceability, and smart contract solutions."
+        keywords="enterprise AI, blockchain intelligence, demand forecasting, healthcare AI, supply chain traceability, Ethereum, Google Cloud AI"
+        canonicalPath="/"
+      />
+      <OrganizationSchema />
+      <section className="hero-section" ref={heroRef}>
       <div className="container hero-inner">
         <div className="hero-eyebrow reveal">
           <span className="hero-eyebrow-dot" />
@@ -91,5 +101,6 @@ export default function Hero() {
         <span>SCROLL</span>
       </div>
     </section>
+    </>
   );
 }

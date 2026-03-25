@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import SEO from '../seo/SEO';
 import './AboutSection.css';
 
 const VALUES = [
@@ -41,7 +42,14 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section className="section about-section" ref={ref}>
+    <>
+      <SEO
+        title="About NDN Analytics"
+        description="NDN Analytics is an enterprise AI and blockchain intelligence company. We unite Google Cloud AI with Ethereum to build platforms that predict, automate, and verify at scale."
+        keywords="NDN Analytics, enterprise AI company, blockchain intelligence, Google Cloud partner, Ethereum solutions"
+        canonicalPath="/about"
+      />
+      <section className="section about-section" ref={ref}>
       <div className="container">
         <div className="about-layout">
           <div className="about-text">
@@ -76,5 +84,6 @@ export default function AboutSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

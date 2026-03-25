@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import ProductCard from './ProductCard';
 import { GCLOUD_PRODUCTS, ETH_PRODUCTS, NEW_PRODUCTS } from './productData';
+import SEO from '../seo/SEO';
 import './ProductsSection.css';
 
 function StackGroup({ label, icon, products, color }: { label: string; icon: string; products: typeof GCLOUD_PRODUCTS; color: string }) {
@@ -31,7 +32,14 @@ export default function ProductsSection() {
   }, []);
 
   return (
-    <section className="section products-section" ref={sectionRef}>
+    <>
+      <SEO
+        title="Enterprise AI & Blockchain Products"
+        description="Explore 10 enterprise products from NDN Analytics — demand forecasting, healthcare AI, supply chain traceability, blockchain payments, credential verification, and more."
+        keywords="enterprise AI products, demand forecasting, healthcare AI, supply chain blockchain, Ethereum smart contracts, credential verification, real estate tokenization"
+        canonicalPath="/products"
+      />
+      <section className="section products-section" ref={sectionRef}>
       <div className="container">
         <div className="section-tag reveal">Products</div>
         <h2 className="section-title reveal stagger-1">
@@ -47,5 +55,6 @@ export default function ProductsSection() {
         <StackGroup label="Latest Projects" icon="★" products={NEW_PRODUCTS} color="var(--brand-gold)" />
       </div>
     </section>
+    </>
   );
 }
