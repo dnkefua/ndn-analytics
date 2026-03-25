@@ -13,7 +13,7 @@ export default function Logo3D() {
     const container = mountRef.current;
     if (!container) return;
 
-    const W = 72, H = 72;
+    const W = 100, H = 100;
 
     // ── Renderer ──────────────────────────────────────────────────────────────
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -256,7 +256,7 @@ export default function Logo3D() {
   return (
     <div
       ref={mountRef}
-      style={{ width: 72, height: 72, display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
+      style={{ width: 100, height: 100, display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
     />
   );
 }
