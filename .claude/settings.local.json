@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xxd \"C:\\\\Users\\\\A2Z\\\\OneDrive\\\\Documents\\\\NDN Analytics\\\\NDN Analytic website\\\\ndn-analytics\\\\src\\\\assets\\\\ndnanalytics logo\")"
+    ]
+  }
+}

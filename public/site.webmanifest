@@ -1,0 +1,21 @@
+{
+  "name": "NDN Analytics",
+  "short_name": "NDN",
+  "description": "Enterprise AI & Blockchain Intelligence Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#010309",
+  "theme_color": "#06B6D4",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
