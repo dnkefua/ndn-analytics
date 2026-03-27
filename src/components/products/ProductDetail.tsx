@@ -82,7 +82,13 @@ export default function ProductDetail() {
 
               <div className="pd-hero-actions">
                 <Link to="/contact" className="btn btn-primary">Book a Demo</Link>
-                <Link to="/contact" className="btn btn-ghost">Talk to Sales →</Link>
+                {product.website ? (
+                  <a href={product.website} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                    Visit Website →
+                  </a>
+                ) : (
+                  <Link to="/contact" className="btn btn-ghost">Talk to Sales →</Link>
+                )}
               </div>
             </div>
 

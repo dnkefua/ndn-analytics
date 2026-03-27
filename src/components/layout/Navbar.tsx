@@ -31,10 +31,6 @@ export default function Navbar() {
         {/* ── Logo ── */}
         <Link to="/" className="nav-logo">
           <Logo3D />
-          <div className="nav-logo-wordmark">
-            <span className="nav-logo-ndn">NDN</span>
-            <span className="nav-logo-analytics">ANALYTICS</span>
-          </div>
         </Link>
 
         {/* ── Links ── */}

@@ -180,6 +180,7 @@ export const PRODUCTS: Product[] = [
     ],
     howItWorks: 'Njangi smart contracts manage circle membership, contribution schedules, and payout rotations. Members deposit funds each cycle; the contract releases the pooled amount to the designated recipient according to the agreed rotation. Trust scores accumulate on-chain and are portable across DeFi protocols.',
     metrics: ['Multi-chain deployment (EVM)', 'Mobile-first wallet interface', 'On-chain trust score system', 'Supports stablecoin contributions'],
+    website: 'https://www.njangi.xyz',
   },
   {
     id: 'ndn-010',

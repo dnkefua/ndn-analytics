@@ -67,7 +67,7 @@
 }
 
 .solution-product-tag {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   color: var(--accent, var(--brand-cyan));
   border: 1px solid color-mix(in srgb, var(--accent, var(--brand-cyan)) 30%, transparent);

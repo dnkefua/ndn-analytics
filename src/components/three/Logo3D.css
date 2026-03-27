@@ -1,0 +1,41 @@
+/* ── Logo 3D container ─────────────────────────────────────────────────────── */
+.logo3d-wrap {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+}
+
+/* ── Logo image — crisp, unmodified, CSS 3D tilt ─────────────────────────── */
+.logo3d-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  /* Subtle cyan depth glow — doesn't affect logo colours */
+  filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.35));
+  animation: logo3d-breathe 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes logo3d-breathe {
+  0%   { transform: perspective(600px) rotateY(-9deg)  rotateX( 3deg) translateY( 0px); }
+  20%  { transform: perspective(600px) rotateY( 4deg)  rotateX(-2deg) translateY(-2px); }
+  50%  { transform: perspective(600px) rotateY( 9deg)  rotateX( 4deg) translateY(-1px); }
+  75%  { transform: perspective(600px) rotateY(-2deg)  rotateX(-3deg) translateY( 1px); }
+  100% { transform: perspective(600px) rotateY(-9deg)  rotateX( 3deg) translateY( 0px); }
+}
+
+/* Hover — sharper tilt towards viewer */
+.logo3d-wrap:hover .logo3d-img {
+  animation-play-state: paused;
+  transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1.06);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.65));
+}

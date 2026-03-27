@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+/* Fonts loaded locally via fontsource — no CDN, no network errors */
 
 * {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter Variable', 'Inter', sans-serif;
   font-weight: 400;
   color: var(--text-primary);
   background: var(--dark-void);
@@ -21,14 +21,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne Variable', 'Syne', sans-serif;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 .font-mono {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 }
 
 .text-gradient {

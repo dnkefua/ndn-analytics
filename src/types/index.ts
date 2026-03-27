@@ -12,6 +12,7 @@ export interface Product {
   useCases?: string[];
   howItWorks?: string;
   metrics?: string[];
+  website?: string;
 }
 
 export interface Solution {

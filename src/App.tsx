@@ -25,7 +25,7 @@ function PageLoader() {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'var(--brand-cyan)',
-      fontFamily: "'Share Tech Mono', monospace",
+      fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
       fontSize: '0.75rem',
       letterSpacing: '0.2em',
     }}>

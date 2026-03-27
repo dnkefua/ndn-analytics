@@ -20,7 +20,7 @@ export default function SpeedHUD() {
       bottom: 24,
       left: 24,
       zIndex: 10,
-      fontFamily: "'Share Tech Mono', monospace",
+      fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
       fontSize: '0.65rem',
       color: 'rgba(6,182,212,0.6)',
       letterSpacing: '0.12em',
