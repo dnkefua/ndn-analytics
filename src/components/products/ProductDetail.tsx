@@ -61,6 +61,11 @@ export default function ProductDetail() {
           description: product.description,
           stack: product.stack,
         }}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Products', path: '/products' },
+          { name: product.name, path: `/products/${product.id}` },
+        ]}
       />
       <div className="pd-wrapper" style={{ '--accent': color } as React.CSSProperties}>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import SEO from '../seo/SEO';
+import FAQSchema from '../seo/FAQSchema';
 import './AboutSection.css';
 
 const VALUES = [
@@ -48,7 +49,25 @@ export default function AboutSection() {
         description="NDN Analytics is an enterprise AI and blockchain intelligence company. We unite Google Cloud AI with Ethereum to build platforms that predict, automate, and verify at scale."
         keywords="NDN Analytics, enterprise AI company, blockchain intelligence, Google Cloud partner, Ethereum solutions"
         canonicalPath="/about"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ]}
       />
+      <FAQSchema faqs={[
+        {
+          question: 'What is NDN Analytics?',
+          answer: 'NDN Analytics is an enterprise AI and blockchain intelligence platform that converges Google Cloud AI with Ethereum blockchain technology to deliver predictive, automated, and verifiable intelligence solutions at scale.',
+        },
+        {
+          question: 'What products does NDN Analytics offer?',
+          answer: 'NDN Analytics offers 10 enterprise products spanning demand forecasting, healthcare AI, route optimization, churn prevention, supply chain traceability, smart contract payments, credential verification, real estate tokenization, community finance, and cognitive intelligence.',
+        },
+        {
+          question: 'How does NDN Analytics integrate with existing systems?',
+          answer: 'Our products integrate natively with enterprise systems including SAP, Salesforce, Snowflake, Epic, Cerner, Oracle Health, and major CRM/CSM platforms through REST APIs and HL7/FHIR standards.',
+        },
+      ]} />
       <section className="section about-section" ref={ref}>
       <div className="container">
         <div className="about-layout">

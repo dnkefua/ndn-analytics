@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { PRODUCTS } from '../products/productData';
 import SEO from '../seo/SEO';
+import ContactPageSchema from '../seo/ContactPageSchema';
 import './ContactSection.css';
 
 // ── EmailJS config (set these env vars in .env) ──────────────────────────────
@@ -47,7 +48,12 @@ export default function ContactSection() {
         description="Get in touch with NDN Analytics. Book a demo or discuss your enterprise AI and blockchain intelligence needs with our team."
         keywords="contact NDN Analytics, enterprise AI demo, blockchain consultation, book demo"
         canonicalPath="/contact"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ]}
       />
+      <ContactPageSchema />
       <section className="section contact-section" ref={ref}>
       <div className="container">
         <div className="contact-layout">

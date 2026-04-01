@@ -12,10 +12,14 @@ interface SEOProps {
     description: string;
     stack: string;
   };
+  breadcrumbs?: Array<{
+    name: string;
+    path: string;
+  }>;
 }
 
 const BASE_URL = 'https://www.ndnanalytics.com';
-const DEFAULT_IMAGE = '/favicons.png';
+const DEFAULT_IMAGE = '/og-image.svg';
 
 export default function SEO({
   title,
@@ -25,6 +29,7 @@ export default function SEO({
   type = 'website',
   image = DEFAULT_IMAGE,
   product,
+  breadcrumbs,
 }: SEOProps) {
   const fullTitle = title === 'NDN Analytics' ? title : `${title} | NDN Analytics`;
   const canonicalUrl = canonicalPath ? `${BASE_URL}${canonicalPath}` : BASE_URL;
@@ -44,6 +49,8 @@ export default function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="NDN Analytics" />
       <meta property="og:locale" content="en_US" />
 
@@ -65,20 +72,24 @@ export default function SEO({
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
+            '@id': canonicalUrl,
             name: product.name,
             description: product.description,
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Web',
             offers: {
-              '@type': 'Offer',
-              price: '0',
+              '@type': 'AggregateOffer',
               priceCurrency: 'USD',
+              availability: 'https://schema.org/Inquire',
             },
             provider: {
               '@type': 'Organization',
+              '@id': BASE_URL,
               name: 'NDN Analytics',
               url: BASE_URL,
             },
+            image: imageUrl,
+            url: canonicalUrl,
           })}
         </script>
       ) : (
@@ -86,14 +97,37 @@ export default function SEO({
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
+            '@id': BASE_URL,
             name: 'NDN Analytics',
             url: BASE_URL,
             description,
+            image: imageUrl,
             potentialAction: {
               '@type': 'SearchAction',
               target: `${BASE_URL}/products?search={search_term_string}`,
               'query-input': 'required name=search_term_string',
             },
+            publisher: {
+              '@type': 'Organization',
+              '@id': BASE_URL,
+              name: 'NDN Analytics',
+            },
+          })}
+        </script>
+      )}
+
+      {/* BreadcrumbList Schema */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: breadcrumbs.map((crumb, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: crumb.name,
+              item: `${BASE_URL}${crumb.path}`,
+            })),
           })}
         </script>
       )}
