@@ -1,4 +1,7 @@
 /* Fonts loaded locally via fontsource — no CDN, no network errors */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/syne';
+@import '@fontsource-variable/jetbrains-mono';
 
 * {
   box-sizing: border-box;
