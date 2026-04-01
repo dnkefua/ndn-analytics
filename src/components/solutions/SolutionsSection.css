@@ -78,3 +78,143 @@
 
 @media (max-width: 1024px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px)  { .solutions-grid { grid-template-columns: 1fr; } }
+
+/* ── Mobile optimizations ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .solutions-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+  }
+
+  .solutions-grid {
+    gap: 18px;
+  }
+
+  .solution-card {
+    padding: 28px 24px;
+  }
+
+  .solution-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .solution-industry {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .solution-desc {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  .solution-product-tag {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .solutions-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .solution-card {
+    padding: 22px 20px;
+    border-radius: 10px;
+  }
+
+  .solution-icon {
+    font-size: 1.8rem;
+  }
+
+  .solution-industry {
+    font-size: 1.1rem;
+  }
+
+  .solution-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .solution-products {
+    gap: 6px;
+  }
+
+  .solution-product-tag {
+    font-size: 0.65rem;
+    padding: 3px 7px;
+  }
+}
+
+/* ── Mobile optimizations ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .solutions-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+  }
+
+  .solutions-grid {
+    gap: 18px;
+  }
+
+  .solution-card {
+    padding: 28px 24px;
+  }
+
+  .solution-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .solution-industry {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .solution-desc {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  .solution-product-tag {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .solutions-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .solution-card {
+    padding: 22px 20px;
+    border-radius: 10px;
+  }
+
+  .solution-icon {
+    font-size: 1.8rem;
+  }
+
+  .solution-industry {
+    font-size: 1.1rem;
+  }
+
+  .solution-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .solution-products {
+    gap: 6px;
+  }
+
+  .solution-product-tag {
+    font-size: 0.65rem;
+    padding: 3px 7px;
+  }
+}

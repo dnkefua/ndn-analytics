@@ -226,6 +226,334 @@
 .aria-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 @media (max-width: 480px) {
-  .aria-panel { width: calc(100vw - 32px); right: 16px; bottom: 88px; }
-  .aria-fab { right: 16px; bottom: 16px; }
+  .aria-panel { width: calc(100vw - 24px); right: 12px; bottom: 80px; max-height: 70vh; }
+  .aria-fab { right: 12px; bottom: 12px; width: 52px; height: 52px; }
+}
+
+/* ── Mobile optimizations ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .aria-fab {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .aria-panel {
+    width: calc(100vw - 28px);
+    right: 14px;
+    bottom: 84px;
+    max-height: 65vh;
+    border-radius: 16px;
+  }
+
+  .aria-panel-header {
+    padding: 14px 16px;
+  }
+
+  .aria-avatar-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .aria-avatar-core {
+    font-size: 0.8rem;
+  }
+
+  .aria-messages {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .aria-msg-bubble {
+    max-width: 85%;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .aria-suggestions {
+    padding: 6px 12px;
+    gap: 5px;
+  }
+
+  .aria-chip {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .aria-input-row {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .aria-input {
+    padding: 8px 12px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .aria-send-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aria-fab {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 1rem;
+  }
+
+  .aria-panel {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 76px;
+    max-height: 70vh;
+    border-radius: 14px;
+  }
+
+  .aria-panel-header {
+    padding: 12px 14px;
+  }
+
+  .aria-avatar-ring {
+    width: 32px;
+    height: 32px;
+  }
+
+  .aria-avatar-core {
+    font-size: 0.75rem;
+  }
+
+  .aria-panel-title {
+    font-size: 0.75rem;
+  }
+
+  .aria-panel-status {
+    font-size: 0.68rem;
+  }
+
+  .aria-messages {
+    padding: 10px;
+  }
+
+  .aria-msg-bubble {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+
+  .aria-msg-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6rem;
+  }
+
+  .aria-suggestions {
+    padding: 5px 10px;
+  }
+
+  .aria-chip {
+    font-size: 0.65rem;
+    padding: 3px 7px;
+  }
+
+  .aria-input-row {
+    padding: 8px 10px;
+  }
+
+  .aria-input {
+    padding: 7px 10px;
+    font-size: 16px;
+  }
+
+  .aria-send-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Touch devices ───────────────────────────────────────────────────────────── */
+@media (hover: none) {
+  .aria-chip:hover {
+    background: rgba(6,182,212,0.06);
+    border-color: rgba(6,182,212,0.2);
+  }
+
+  .aria-chip:active {
+    background: rgba(6,182,212,0.12);
+    border-color: rgba(6,182,212,0.4);
+  }
+}
+
+/* ── Mobile optimizations ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .aria-fab {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .aria-panel {
+    width: calc(100vw - 28px);
+    right: 14px;
+    bottom: 84px;
+    max-height: 65vh;
+    border-radius: 16px;
+  }
+
+  .aria-panel-header {
+    padding: 14px 16px;
+  }
+
+  .aria-avatar-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .aria-avatar-core {
+    font-size: 0.8rem;
+  }
+
+  .aria-messages {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .aria-msg-bubble {
+    max-width: 85%;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .aria-suggestions {
+    padding: 6px 12px;
+    gap: 5px;
+  }
+
+  .aria-chip {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .aria-input-row {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .aria-input {
+    padding: 8px 12px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .aria-send-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aria-fab {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 1rem;
+  }
+
+  .aria-panel {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 76px;
+    max-height: 70vh;
+    border-radius: 14px;
+  }
+
+  .aria-panel-header {
+    padding: 12px 14px;
+  }
+
+  .aria-avatar-ring {
+    width: 32px;
+    height: 32px;
+  }
+
+  .aria-avatar-core {
+    font-size: 0.75rem;
+  }
+
+  .aria-panel-title {
+    font-size: 0.75rem;
+  }
+
+  .aria-panel-status {
+    font-size: 0.68rem;
+  }
+
+  .aria-messages {
+    padding: 10px;
+  }
+
+  .aria-msg-bubble {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+
+  .aria-msg-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6rem;
+  }
+
+  .aria-suggestions {
+    padding: 5px 10px;
+  }
+
+  .aria-chip {
+    font-size: 0.65rem;
+    padding: 3px 7px;
+  }
+
+  .aria-input-row {
+    padding: 8px 10px;
+  }
+
+  .aria-input {
+    padding: 7px 10px;
+    font-size: 16px;
+  }
+
+  .aria-send-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Touch devices ───────────────────────────────────────────────────────────── */
+@media (hover: none) {
+  .aria-chip:hover {
+    background: rgba(6,182,212,0.06);
+    border-color: rgba(6,182,212,0.2);
+  }
+
+  .aria-chip:active {
+    background: rgba(6,182,212,0.12);
+    border-color: rgba(6,182,212,0.4);
+  }
 }

@@ -18,6 +18,8 @@ const AboutSection = lazy(() => import('./components/about/AboutSection'));
 const ContactSection = lazy(() => import('./components/contact/ContactSection'));
 const BlogSection = lazy(() => import('./components/blog/BlogSection'));
 const BlogPost = lazy(() => import('./components/blog/BlogPost'));
+const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
+const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
 
 function PageTracker() {
   const location = useLocation();
@@ -69,6 +71,8 @@ export default function App() {
               <Route path="/contact" element={<ContactSection />} />
               <Route path="/blog" element={<BlogSection />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/pricing" element={<PricingSection />} />
+              <Route path="/pricing" element={<PricingSection />} />
             </Routes>
           </Suspense>
         </main>

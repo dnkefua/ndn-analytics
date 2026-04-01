@@ -3,9 +3,9 @@ import emailjs from '@emailjs/browser';
 import { PRODUCTS } from '../products/productData';
 import SEO from '../seo/SEO';
 import ContactPageSchema from '../seo/ContactPageSchema';
+import { trackFormSubmit, trackDemoBooking } from '../../lib/analytics';
 import './ContactSection.css';
 
-// ── EmailJS config (set these env vars in .env) ──────────────────────────────
 const EJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || '';
 const EJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
 const EJS_PUBLIC   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || '';
@@ -31,6 +31,7 @@ export default function ContactSection() {
     e.preventDefault();
     if (!formRef.current) return;
     setStatus('sending');
+    trackFormSubmit('contact');
 
     try {
       await emailjs.sendForm(EJS_SERVICE, EJS_TEMPLATE, formRef.current, { publicKey: EJS_PUBLIC });
@@ -38,6 +39,13 @@ export default function ContactSection() {
       setForm({ name: '', email: '', product: '', message: '' });
     } catch {
       setStatus('error');
+    }
+  };
+
+  const handleCalendly = () => {
+    trackDemoBooking('contact_page');
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
     }
   };
 
@@ -87,27 +95,10 @@ export default function ContactSection() {
             <div className="reveal stagger-4" style={{ marginTop: 24 }}>
               <button
                 className="btn btn-primary"
-                onClick={() => {
-                  if (typeof Calendly !== 'undefined') {
-                    Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
-                  }
-                }}
+                onClick={handleCalendly}
                 style={{ width: '100%', justifyContent: 'center' }}
               >
-                📅 Schedule a Demo
-              </button>
-            </div>
-            <div className="reveal stagger-4" style={{ marginTop: 24 }}>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  if (typeof Calendly !== 'undefined') {
-                    Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
-                  }
-                }}
-                style={{ width: '100%', justifyContent: 'center' }}
-              >
-                📅 Schedule a Demo
+                &#128197; Schedule a Demo
               </button>
             </div>
           </div>
@@ -115,7 +106,7 @@ export default function ContactSection() {
           <div className="contact-form-wrap reveal stagger-2">
             {status === 'success' ? (
               <div className="contact-success">
-                <div style={{ fontSize: '2.5rem', marginBottom: 16, color: 'var(--brand-cyan)' }}>✓</div>
+                <div style={{ fontSize: '2.5rem', marginBottom: 16, color: 'var(--brand-cyan)' }}>&#10003;</div>
                 <h3>Message Received</h3>
                 <p>Our team at nkefua@ndnanalytics.com will respond within 24 hours.</p>
                 <button
@@ -180,7 +171,6 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Hidden field — EmailJS routes to this address */}
                 <input type="hidden" name="to_email" value="nkefua@ndnanalytics.com" />
 
                 {status === 'error' && (
@@ -193,7 +183,7 @@ export default function ContactSection() {
                   style={{ width: '100%', justifyContent: 'center' }}
                   disabled={status === 'sending'}
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Message →'}
+                  {status === 'sending' ? 'Sending...' : 'Send Message \u2192'}
                 </button>
               </form>
             )}

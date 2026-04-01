@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo3D from '../three/Logo3D';
 import './Navbar.css';
@@ -6,7 +6,8 @@ import './Navbar.css';
 const NAV_LINKS = [
   { label: 'Products',   href: '/products'  },
   { label: 'Solutions',  href: '/solutions' },
-  { label: 'Technology', href: '/tech'      },
+  { label: 'Pricing',    href: '/pricing'   },
+  { label: 'Blog',       href: '/blog'      },
   { label: 'About',      href: '/about'     },
   { label: 'Contact',    href: '/contact'   },
 ];
@@ -15,6 +16,9 @@ export default function Navbar() {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
@@ -23,6 +27,31 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => { setMenuOpen(false); }, [location]);
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!menuOpen) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+    if (Math.abs(dy) > Math.abs(dx) && dy > 50) {
+      setMenuOpen(false);
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const menu = menuRef.current;
+    if (!menu) return;
+    menu.addEventListener('touchstart', handleTouchStart, { passive: true });
+    menu.addEventListener('touchmove', handleTouchMove, { passive: true });
+    return () => {
+      menu.removeEventListener('touchstart', handleTouchStart);
+      menu.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [handleTouchStart, handleTouchMove]);
 
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
@@ -34,7 +63,10 @@ export default function Navbar() {
         </Link>
 
         {/* ── Links ── */}
-        <div className={`nav-links${menuOpen ? ' open' : ''}`}>
+        <div
+          ref={menuRef}
+          className={`nav-links${menuOpen ? ' open' : ''}`}
+        >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

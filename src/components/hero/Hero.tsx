@@ -2,12 +2,34 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../seo/SEO';
 import OrganizationSchema from '../seo/OrganizationSchema';
+import { trackCTAClick } from '../../lib/analytics';
 import './Hero.css';
 
 const STATS = [
   { value: 10, label: 'Products', suffix: '' },
   { value: 2,  label: 'Core Stacks', suffix: '' },
   { value: 99.9, label: 'Uptime SLA', suffix: '%' },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "NDN Demand IQ cut our stockouts by 32% in the first quarter. The ROI was immediate.",
+    name: "Sarah Chen",
+    role: "VP Supply Chain",
+    company: "Global Retail Corp",
+  },
+  {
+    quote: "TraceChain gave us end-to-end provenance our regulators demanded. Game-changer for compliance.",
+    name: "Dr. James Okafor",
+    role: "Chief Compliance Officer",
+    company: "PharmaTrust Inc",
+  },
+  {
+    quote: "The blockchain payment infrastructure eliminated our cross-border settlement delays entirely.",
+    name: "Maria Rodriguez",
+    role: "CFO",
+    company: "BuildRight Construction",
+  },
 ];
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
@@ -80,8 +102,20 @@ export default function Hero() {
         </p>
 
         <div className="hero-ctas reveal stagger-4">
-          <Link to="/products" className="btn btn-primary">Explore Products →</Link>
-          <Link to="/contact" className="btn btn-ghost">Book a Demo</Link>
+          <Link
+            to="/products"
+            className="btn btn-primary"
+            onClick={() => trackCTAClick('explore_products', 'hero')}
+          >
+            Explore Products →
+          </Link>
+          <Link
+            to="/contact"
+            className="btn btn-ghost"
+            onClick={() => trackCTAClick('book_demo', 'hero')}
+          >
+            Book a Demo
+          </Link>
         </div>
 
         <div className="hero-stats reveal stagger-5">
@@ -91,6 +125,53 @@ export default function Hero() {
                 <CountUp target={s.value} suffix={s.suffix} />
               </div>
               <div className="hero-stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="hero-testimonials reveal stagger-6" style={{
+          marginTop: 64,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 24,
+        }}>
+          {TESTIMONIALS.map(t => (
+            <div key={t.company} style={{
+              background: 'rgba(10,22,40,0.5)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 12,
+              padding: 24,
+            }}>
+              <p style={{
+                fontSize: '0.9rem',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.7,
+                marginBottom: 16,
+                fontStyle: 'italic',
+              }}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--brand-cyan), var(--brand-blue))',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: "'Syne Variable', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  color: '#fff',
+                }}>
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>{t.name}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>{t.role}, {t.company}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

@@ -71,3 +71,72 @@
 
 @media (max-width: 1024px) { .about-layout { grid-template-columns: 1fr; gap: 48px; } }
 @media (max-width: 640px)  { .about-values { grid-template-columns: 1fr; } }
+
+/* ── Mobile optimizations ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .about-para {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .about-compliance {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .compliance-badge {
+    font-size: 0.7rem;
+    padding: 5px 12px;
+  }
+
+  .about-values {
+    gap: 16px;
+  }
+
+  .value-card {
+    padding: 22px;
+  }
+
+  .value-icon {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .value-title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .value-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-para {
+    font-size: 0.95rem;
+  }
+
+  .value-card {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .value-icon {
+    font-size: 1.4rem;
+  }
+
+  .value-title {
+    font-size: 1rem;
+  }
+
+  .value-desc {
+    font-size: 0.85rem;
+  }
+
+  .compliance-badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+}

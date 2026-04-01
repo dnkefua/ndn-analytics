@@ -114,4 +114,80 @@
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .section { padding: 110px 0 70px; }
   .container { padding: 0 20px; }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 100px 0 60px; }
+  .container { padding: 0 16px; }
+
+  .btn {
+    padding: 14px 20px;
+    font-size: 0.82rem;
+    min-height: 48px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .section { padding: 110px 0 70px; }
+  .container { padding: 0 20px; }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 100px 0 60px; }
+  .container { padding: 0 16px; }
+
+  .btn {
+    padding: 14px 20px;
+    font-size: 0.82rem;
+    min-height: 48px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 10px;
+  }
 }
