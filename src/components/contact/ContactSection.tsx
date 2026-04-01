@@ -84,6 +84,32 @@ export default function ContactSection() {
                 <span className="contact-detail-value">SAP · Salesforce · Snowflake · AWS</span>
               </div>
             </div>
+            <div className="reveal stagger-4" style={{ marginTop: 24 }}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  if (typeof Calendly !== 'undefined') {
+                    Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
+                  }
+                }}
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                📅 Schedule a Demo
+              </button>
+            </div>
+            <div className="reveal stagger-4" style={{ marginTop: 24 }}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  if (typeof Calendly !== 'undefined') {
+                    Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
+                  }
+                }}
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                📅 Schedule a Demo
+              </button>
+            </div>
           </div>
 
           <div className="contact-form-wrap reveal stagger-2">

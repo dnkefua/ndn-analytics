@@ -662,6 +662,7 @@ export default function SpaceEngine() {
         pointerEvents: 'none',
         overflow: 'hidden',
       }}
+      aria-hidden="true"
     />
   );
 }

@@ -26,7 +26,9 @@ export default function SpeedHUD() {
       letterSpacing: '0.12em',
       lineHeight: 1.8,
       pointerEvents: 'none',
-    }}>
+    }}
+      aria-hidden="true"
+    >
       <div>VEL: {speed.toFixed(2)} kpc/s</div>
       <div>SEC: {sector}</div>
       <div style={{ width: 80, height: 2, background: 'rgba(6,182,212,0.15)', marginTop: 4, borderRadius: 2, overflow: 'hidden' }}>

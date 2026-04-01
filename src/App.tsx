@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import CustomCursor from './components/layout/CustomCursor';
 import SpaceEngine from './components/three/SpaceEngine';
 import GridOverlay from './components/layout/GridOverlay';
@@ -16,6 +16,19 @@ const SolutionsSection = lazy(() => import('./components/solutions/SolutionsSect
 const TechSection = lazy(() => import('./components/tech/TechSection'));
 const AboutSection = lazy(() => import('./components/about/AboutSection'));
 const ContactSection = lazy(() => import('./components/contact/ContactSection'));
+const BlogSection = lazy(() => import('./components/blog/BlogSection'));
+const BlogPost = lazy(() => import('./components/blog/BlogPost'));
+
+function PageTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    if (typeof gtag === 'function') {
+      gtag('config', 'G-XXXXXXXXXX', { page_path: location.pathname + location.search });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location]);
+  return null;
+}
 
 function PageLoader() {
   return (
@@ -38,12 +51,13 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <PageTracker />
         <CustomCursor />
         <SpaceEngine />
         <GridOverlay />
         <SpeedHUD />
         <Navbar />
-        <main style={{ position: 'relative', zIndex: 10 }}>
+        <main id="main-content" style={{ position: 'relative', zIndex: 10 }}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Hero />} />
@@ -53,6 +67,8 @@ export default function App() {
               <Route path="/tech" element={<TechSection />} />
               <Route path="/about" element={<AboutSection />} />
               <Route path="/contact" element={<ContactSection />} />
+              <Route path="/blog" element={<BlogSection />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>
           </Suspense>
         </main>
