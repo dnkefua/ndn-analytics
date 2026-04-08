@@ -38,6 +38,33 @@
   gap: 24px;
 }
 
+@media (max-width: 768px) {
+  .products-subtitle {
+    font-size: 1rem;
+    margin-bottom: 48px;
+  }
+
+  .stack-group { margin-bottom: 48px; }
+  .stack-label { margin-bottom: 22px; }
+  .products-grid { gap: 18px; }
+}
+
 @media (max-width: 640px) {
   .products-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .products-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+  }
+
+  .stack-group { margin-bottom: 40px; }
+  .stack-label {
+    font-size: 0.72rem;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .products-grid { gap: 14px; }
 }
