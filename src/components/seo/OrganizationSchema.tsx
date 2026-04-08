@@ -18,7 +18,7 @@ export default function OrganizationSchema() {
     },
     sameAs: [
       'https://twitter.com/NDNAnalytics',
-      'https://www.linkedin.com/company/ndnanalytics',
+      'https://www.linkedin.com/company/ndn-analytics-inc/',
     ],
     knowsAbout: [
       'Artificial Intelligence',
