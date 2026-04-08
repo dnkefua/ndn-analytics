@@ -6,6 +6,10 @@ export default defineConfig({
   build: {
     target: 'es2020',
     rollupOptions: {
+      input: {
+        main: './index.html',
+        server: './src/entry-server.tsx',
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/three')) return 'three';
@@ -14,4 +18,7 @@ export default defineConfig({
       },
     },
   },
+  ssr: {
+    noExternal: ['react-helmet-async']
+  }
 })

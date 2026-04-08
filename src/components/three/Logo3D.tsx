@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState, useCallback, useLayoutEffect } from 'react';
 import * as THREE from 'three';
 import logoSrc from '../../assets/ndnanalytics logo.jpg';
 
@@ -15,8 +15,9 @@ function useIsMobile() {
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setReduced(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
     mq.addEventListener('change', handler);

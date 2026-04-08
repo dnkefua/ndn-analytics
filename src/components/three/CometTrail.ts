@@ -41,7 +41,7 @@ export function createCometSystem(scene: THREE.Scene) {
     comets.push({ line, velocity, age: 0, maxAge: 300 });
   }
 
-  function update(_cameraZ: number) {
+  function update() {
     frameCount++;
     if (frameCount % SPAWN_INTERVAL === 0 && comets.length < MAX_COMETS) {
       spawnComet();

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo3D from '../three/Logo3D';
 import './Navbar.css';
@@ -26,7 +26,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  useEffect(() => { setMenuOpen(false); }, [location]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useLayoutEffect(() => { setMenuOpen(false); }, [location]);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

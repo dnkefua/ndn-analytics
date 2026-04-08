@@ -19,7 +19,6 @@ const ContactSection = lazy(() => import('./components/contact/ContactSection'))
 const BlogSection = lazy(() => import('./components/blog/BlogSection'));
 const BlogPost = lazy(() => import('./components/blog/BlogPost'));
 const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
-const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
 
 function PageTracker() {
   const location = useLocation();

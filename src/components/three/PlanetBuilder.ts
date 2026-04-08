@@ -2,6 +2,11 @@ import * as THREE from 'three';
 
 type TextureType = 'earth' | 'gas' | 'ice' | 'lava' | 'ringed' | 'purple';
 
+interface MoonPivot extends THREE.Object3D {
+  _moonSpeed: number;
+  _moonAngle: number;
+}
+
 const PALETTES: Record<TextureType, number[][]> = {
   earth:  [[20,60,120],[30,90,50],[40,120,60],[180,170,140],[220,220,240]],
   gas:    [[180,120,50],[200,140,60],[160,100,40],[220,170,80],[140,80,30]],
@@ -156,8 +161,8 @@ export function createPlanets(scene: THREE.Scene): THREE.Group[] {
       const moon = new THREE.Mesh(moonGeo, moonMat);
       moon.position.x = dist;
       pivot.add(moon);
-      (pivot as any)._moonSpeed = 0.002 + Math.random() * 0.003;
-      (pivot as any)._moonAngle = Math.random() * Math.PI * 2;
+      (pivot as MoonPivot)._moonSpeed = 0.002 + Math.random() * 0.003;
+      (pivot as MoonPivot)._moonAngle = Math.random() * Math.PI * 2;
       group.add(pivot);
     }
 
@@ -172,12 +177,13 @@ export function createPlanets(scene: THREE.Scene): THREE.Group[] {
   });
 }
 
-export function updatePlanets(planets: THREE.Group[], _elapsed: number): void {
+export function updatePlanets(planets: THREE.Group[]): void {
   planets.forEach((group) => {
     group.children.forEach((child) => {
-      if ((child as any)._moonSpeed !== undefined) {
-        (child as any)._moonAngle += (child as any)._moonSpeed;
-        child.rotation.y = (child as any)._moonAngle;
+      const moonChild = child as MoonPivot;
+      if (moonChild._moonSpeed !== undefined) {
+        moonChild._moonAngle += moonChild._moonSpeed;
+        child.rotation.y = moonChild._moonAngle;
       }
     });
     // Slow self rotation

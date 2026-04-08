@@ -23,6 +23,7 @@ export default function AriaPanel({ onClose }: Props) {
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const messageIdCounter = useRef(1);
 
   // Claude API message history (excludes the welcome message)
   const apiHistory = useRef<ChatMessage[]>([]);
@@ -34,8 +35,9 @@ export default function AriaPanel({ onClose }: Props) {
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
 
+    messageIdCounter.current += 1;
     const userMsg: AriaMessage = {
-      id: Date.now().toString(),
+      id: messageIdCounter.current.toString(),
       role: 'user',
       content: text,
       timestamp: new Date(),

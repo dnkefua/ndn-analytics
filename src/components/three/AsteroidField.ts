@@ -36,7 +36,7 @@ export function createAsteroidFields(scene: THREE.Scene): THREE.Points[] {
   });
 }
 
-export function updateAsteroidFields(fields: THREE.Points[], _elapsed: number): void {
+export function updateAsteroidFields(fields: THREE.Points[]): void {
   fields.forEach((field, i) => {
     field.rotation.y += 0.0002 * (i % 2 === 0 ? 1 : -1);
   });
