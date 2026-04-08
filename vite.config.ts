@@ -3,8 +3,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   build: {
     target: 'es2020',
+    outDir: 'dist',
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -14,4 +16,7 @@ export default defineConfig({
       },
     },
   },
+  ssr: {
+    noExternal: ['react-helmet-async']
+  }
 })

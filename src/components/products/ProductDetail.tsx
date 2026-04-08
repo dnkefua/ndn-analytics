@@ -13,7 +13,7 @@ const STACK_COLORS: Record<string, string> = {
 const STACK_LABELS: Record<string, string> = {
   gcloud: '☁ Google Cloud AI',
   ethereum: '⬡ Ethereum',
-  new: '★ Latest Platform',
+  new: '★ New Launch',
 };
 
 export default function ProductDetail() {
@@ -42,7 +42,8 @@ export default function ProductDetail() {
     );
   }
 
-  const keywords = `${product.name}, ${product.stack === 'gcloud' ? 'Google Cloud AI' : 'Ethereum blockchain'}, ${product.industries?.join(', ')}, enterprise software`;
+  const stackKeyword = product.stack === 'gcloud' ? 'Google Cloud AI' : product.stack === 'ethereum' ? 'Ethereum blockchain' : 'AI, Web3';
+  const keywords = `${product.name}, ${stackKeyword}, ${product.industries?.join(', ')}, enterprise software`;
   const color = STACK_COLORS[product.stack];
   const currentIndex = PRODUCTS.findIndex(p => p.id === id);
   const prevProduct = PRODUCTS[currentIndex - 1];
