@@ -120,4 +120,32 @@ Njangi smart contracts enforce contribution schedules and payout rotations autom
     category: 'Blockchain',
     readTime: '5 min read',
   },
+  {
+    slug: 'ndn-interpreter-real-time-sign-language',
+    title: 'Breaking Barriers: Introducing NDN Interpreter for Real-Time Sign Language Translation',
+    excerpt: 'How our latest computer vision integration is bridging the communication gap using low-latency neural machine translation.',
+    content: `Communication is a fundamental human right, yet the deaf and hard-of-hearing community often faces significant accessibility challenges in healthcare, education, and everyday services.
+
+## The Accessibility Gap
+
+Traditional translation services require scheduling human interpreters, which can be costly, slow, and sometimes inaccessible during emergencies or spontaneous interactions. 
+
+## Enter NDN Interpreter
+
+We are thrilled to introduce [NDN Interpreter](https://interpreter-app-909081961263.us-central1.run.app/), an AI-powered platform designed for real-time sign language translation.
+
+By leveraging state-of-the-art computer vision and neural machine translation, NDN Interpreter converts sign language to text and speech instantly. The application uses a standard camera to track gestures with high accuracy, ensuring seamless, natural conversations.
+
+## Key Capabilities
+
+- **Real-time translation:** Sub-200ms latency ensures conversations flow naturally.
+- **Edge AI integration:** Keep data processing fast, secure, and privacy-compliant.
+- **Accessibility features:** Instantly translates spoken language back to text for responsive two-way communication.
+
+[Try the new application today](https://interpreter-app-909081961263.us-central1.run.app/) and experience the future of inclusive communication.`,
+    date: '2026-04-09',
+    author: 'NDN Analytics Team',
+    category: 'Product',
+    readTime: '3 min read',
+  },
 ];

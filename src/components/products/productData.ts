@@ -202,6 +202,27 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'NeuroQuest administers a validated psychometric assessment battery, then runs results through a neural network trained on cognitive science research. The platform generates a multi-dimensional cognitive profile covering decision style, risk tolerance, creativity index, and interpersonal patterns — delivered via dashboard and API.',
     metrics: ['Validated psychometric battery', 'Multi-dimensional cognitive profiling', 'Team composition analytics', 'API-first for HR platform integration'],
   },
+  {
+    id: 'ndn-011',
+    number: 'NDN—011',
+    name: 'NDN Interpreter',
+    description: 'AI-powered real-time sign language translation platform breaking down communication barriers with advanced computer vision and neural machine translation.',
+    tagline: 'Seamless communication. Without barriers.',
+    features: ['Real-time gesture recognition', 'Multi-modal translation (Sign-to-Text, Voice-to-Sign)', 'Offline-capable edge AI', 'Accessibility API integration'],
+    badge: 'Vision AI',
+    stack: 'new',
+    icon: '⚲',
+    industries: ['Healthcare', 'Education', 'Public Sector', 'Customer Service'],
+    useCases: [
+      'Enable seamless telemedicine and in-person consultations for deaf and hard-of-hearing patients',
+      'Provide instant, accessible communication in classrooms and online learning environments',
+      'Ensure accessibility compliance in public service and government communications',
+      'Equip customer service representatives with real-time translation tools',
+    ],
+    howItWorks: 'NDN Interpreter utilizes advanced computer vision via a standard webcam or mobile camera to capture sign language gestures. The stream is processed by a highly optimized, low-latency neural machine translation model that instantly converts movements into text or synthesized speech. Conversely, spoken language is converted into text or animated sign language avatars.',
+    metrics: ['Sub-200ms translation latency', '95%+ gesture recognition accuracy', 'Supports multiple sign languages', 'Web and mobile native deployment'],
+    website: 'https://interpreter-app-909081961263.us-central1.run.app/',
+  },
 ];
 
 export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');

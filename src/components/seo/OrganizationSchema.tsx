@@ -17,7 +17,6 @@ export default function OrganizationSchema() {
       availableLanguage: ['English'],
     },
     sameAs: [
-      'https://twitter.com/NDNAnalytics',
       'https://www.linkedin.com/company/ndn-analytics-inc/',
     ],
     knowsAbout: [

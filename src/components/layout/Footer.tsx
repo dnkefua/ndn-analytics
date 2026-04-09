@@ -32,14 +32,6 @@ export default function Footer() {
               Enterprise AI & Blockchain intelligence for the next era of business.
             </p>
             <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
-              <a href="https://twitter.com/NDNAnalytics" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
-                onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
-                onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.845L1.255 2.25H8.08l4.266 5.64L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-                </svg>
-              </a>
               <a href="https://www.linkedin.com/company/ndn-analytics-inc/" target="_blank" rel="noopener noreferrer" aria-label="NDN Analytics on LinkedIn"
                 style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
                 onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
