@@ -3,6 +3,7 @@ import * as THREE from 'three';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
+const IS_MOBILE = window.innerWidth < 768 || navigator.maxTouchPoints > 1;
 
 function starColor(): THREE.Color {
   const t = Math.random();
@@ -15,7 +16,7 @@ function starColor(): THREE.Color {
 
 // ─── Star dome — 18 000 twinkling background stars ────────────────────────────
 function buildStarDome(scene: THREE.Scene): THREE.Points {
-  const N = 18_000;
+  const N = IS_MOBILE ? 5_000 : 18_000;
   const pos = new Float32Array(N * 3);
   const col = new Float32Array(N * 3);
   const siz = new Float32Array(N);
@@ -76,7 +77,7 @@ function buildStarDome(scene: THREE.Scene): THREE.Points {
 }
 
 // ─── Foreground travel stars — recycled as camera moves ───────────────────────
-const TRAVEL_COUNT  = 7_000;
+const TRAVEL_COUNT  = IS_MOBILE ? 2_500 : 7_000;
 const SPAWN_RADIUS  = 550;
 const SPAWN_DEPTH   = 3000;
 
@@ -450,7 +451,7 @@ export default function SpaceEngine() {
 
       // ── Renderer ──
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(IS_MOBILE ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.toneMapping      = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.1;
