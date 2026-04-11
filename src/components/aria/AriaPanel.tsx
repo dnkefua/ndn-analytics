@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { AriaMessage } from '../../types';
 import AriaMessageComp from './AriaMessage';
 import { getAriaResponse, SUGGESTIONS } from './ariaKnowledge';
-import { askAria, pingOllama, type ChatMessage } from './ariaApi';
+import { askAria, HAS_ANTHROPIC_KEY, type ChatMessage } from './ariaApi';
 import './Aria.css';
 
 interface Props {
@@ -20,17 +20,11 @@ export default function AriaPanel({ onClose }: Props) {
   const [messages, setMessages] = useState<AriaMessage[]>([WELCOME]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
-  const [ollamaOnline, setOllamaOnline] = useState<boolean | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const messageIdCounter = useRef(1);
 
-  // Ollama message history (excludes the welcome message)
+  // Claude API message history (excludes the welcome message)
   const apiHistory = useRef<ChatMessage[]>([]);
-
-  // Ping Ollama once on mount
-  useEffect(() => {
-    pingOllama().then(setOllamaOnline);
-  }, []);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -52,19 +46,18 @@ export default function AriaPanel({ onClose }: Props) {
 
     let response: string;
 
-    if (ollamaOnline) {
-      // ── Ollama path ──────────────────────────────────────────────────────
+    if (HAS_ANTHROPIC_KEY) {
+      // ── Claude API path ──────────────────────────────────────────────────
       apiHistory.current = [...apiHistory.current, { role: 'user', content: text }];
       try {
         response = await askAria(apiHistory.current);
         apiHistory.current = [...apiHistory.current, { role: 'assistant', content: response }];
       } catch {
-        // Fallback to regex if Ollama call fails
+        // Fallback to regex if API call fails
         response = getAriaResponse(text);
-        setOllamaOnline(false);
       }
     } else {
-      // ── Regex fallback (Ollama not reachable) ────────────────────────────
+      // ── Regex fallback (no API key) ──────────────────────────────────────
       await new Promise(r => setTimeout(r, 700 + Math.random() * 400));
       response = getAriaResponse(text);
     }
@@ -78,10 +71,7 @@ export default function AriaPanel({ onClose }: Props) {
     }]);
   };
 
-  const statusLabel =
-    ollamaOnline === null ? 'Connecting...' :
-    ollamaOnline         ? 'Ollama · Online' :
-                           'Online';
+  const statusLabel = HAS_ANTHROPIC_KEY ? 'Claude AI · Online' : 'Online';
 
   return (
     <div className="aria-panel">

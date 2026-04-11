@@ -19,17 +19,28 @@ export default function BlogPost() {
     );
   }
 
+  const renderInline = (text: string) => {
+    const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+    return parts.map((part, j) => {
+      const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (match) {
+        return <a key={j} href={match[2]} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand-cyan)', textDecoration: 'underline' }}>{match[1]}</a>;
+      }
+      return part;
+    });
+  };
+
   const renderContent = (content: string) => {
     return content.split('\n').map((line, i) => {
       if (line.startsWith('## ')) return <h2 key={i} style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: '1.5rem', fontWeight: 700, marginTop: 40, marginBottom: 16, color: 'var(--text-primary)' }}>{line.replace('## ', '')}</h2>;
       if (line.startsWith('- **')) {
         const parts = line.replace('- **', '').split('**: ');
-        return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7 }}><strong style={{ color: 'var(--text-primary)' }}>{parts[0]}</strong>{parts[1] ? `: ${parts[1]}` : ''}</li>;
+        return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7 }}><strong style={{ color: 'var(--text-primary)' }}>{parts[0]}</strong>{parts[1] ? `: ${renderInline(parts[1])}` : ''}</li>;
       }
-      if (line.startsWith('- ')) return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7 }}>{line.replace('- ', '')}</li>;
-      if (/^\d+\.\s/.test(line)) return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7, listStyle: 'decimal', marginLeft: 20 }}>{line.replace(/^\d+\.\s/, '')}</li>;
+      if (line.startsWith('- ')) return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7 }}>{renderInline(line.replace('- ', ''))}</li>;
+      if (/^\d+\.\s/.test(line)) return <li key={i} style={{ color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.7, listStyle: 'decimal', marginLeft: 20 }}>{renderInline(line.replace(/^\d+\.\s/, ''))}</li>;
       if (line.trim() === '') return <br key={i} />;
-      return <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 12 }}>{line}</p>;
+      return <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 12 }}>{renderInline(line)}</p>;
     });
   };
 
