@@ -4,6 +4,10 @@ import { join, dirname } from 'node:path';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// SSR Function (existing)
+// ─────────────────────────────────────────────────────────────────────────────
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -52,3 +56,13 @@ app.get('*', async (req, res) => {
 });
 
 export const ssr = onRequest(app);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AI News & Product Aggregation Functions
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Daily content generator - runs at 6 AM UTC
+export { dailyContentGenerator } from './src/scheduled/dailyContentGenerator.js';
+
+// Affiliate redirect handler - /go/:productId
+export { affiliateRedirect } from './src/affiliate/redirectHandler.js';

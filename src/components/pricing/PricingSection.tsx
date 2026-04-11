@@ -4,23 +4,41 @@ import { trackCTAClick, trackDemoBooking } from '../../lib/analytics';
 
 const TIERS = [
   {
-    name: 'Starter',
-    price: 'Custom',
-    description: 'For teams exploring AI or blockchain for the first time.',
+    name: 'AI Readiness Assessment',
+    price: '$499',
+    period: 'one-time',
+    description: 'Perfect starting point to evaluate AI/blockchain opportunities for your business.',
     features: [
-      '1 product license',
-      'Up to 10,000 API calls/month',
-      'Email support',
-      'Standard SLA (99.5%)',
-      'Basic analytics dashboard',
-      'Single-region deployment',
+      '2-hour discovery workshop',
+      'Current state analysis',
+      'AI/Blockchain opportunity mapping',
+      'Implementation roadmap',
+      'ROI projection report',
+      '30-day email support',
     ],
     cta: 'Get Started',
     highlight: false,
   },
   {
+    name: 'Starter',
+    price: '$2,500',
+    period: '/month',
+    description: 'For teams deploying their first AI or blockchain solution.',
+    features: [
+      '1 product license',
+      'Up to 50,000 API calls/month',
+      'Email + chat support',
+      'Standard SLA (99.5%)',
+      'Analytics dashboard',
+      'Single-region deployment',
+    ],
+    cta: 'Start Free Trial',
+    highlight: false,
+  },
+  {
     name: 'Enterprise',
     price: 'Custom',
+    period: '',
     description: 'For organizations deploying intelligence at scale.',
     features: [
       'Unlimited product licenses',
@@ -37,7 +55,8 @@ const TIERS = [
   },
   {
     name: 'Platform Partner',
-    price: 'Custom',
+    price: 'Revenue Share',
+    period: '',
     description: 'For ISVs and system integrators building on NDN.',
     features: [
       'White-label product access',
@@ -85,15 +104,16 @@ export default function PricingSection() {
             {TIERS.map(tier => (
               <div key={tier.name} style={{
                 background: tier.highlight
-                  ? 'linear-gradient(135deg, rgba(6,182,212,0.08), rgba(79,70,229,0.08))'
-                  : 'rgba(10,22,40,0.5)',
+                  ? 'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.08))'
+                  : '#FFFFFF',
                 border: tier.highlight
-                  ? '2px solid var(--brand-cyan)'
-                  : '1px solid var(--border-subtle)',
+                  ? '2px solid #7C3AED'
+                  : '1px solid #E2E8F0',
                 borderRadius: 16,
                 padding: 36,
                 position: 'relative',
-                transition: 'transform 0.3s, border-color 0.3s',
+                transition: 'transform 0.3s, box-shadow 0.3s',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
               }}
                 onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseOut={e => { e.currentTarget.style.transform = 'none'; }}>
@@ -103,8 +123,8 @@ export default function PricingSection() {
                     top: -14,
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    background: 'var(--brand-cyan)',
-                    color: '#010309',
+                    background: '#7C3AED',
+                    color: '#FFFFFF',
                     padding: '4px 16px',
                     borderRadius: 20,
                     fontSize: '0.7rem',
@@ -121,17 +141,16 @@ export default function PricingSection() {
                   fontSize: '1.4rem',
                   fontWeight: 700,
                   marginBottom: 8,
-                  color: 'var(--text-primary)',
+                  color: '#0F172A',
                 }}>
                   {tier.name}
                 </h3>
                 <div style={{
-                  fontSize: '0.9rem',
-                  color: 'var(--text-tertiary)',
                   marginBottom: 8,
                   fontFamily: "'JetBrains Mono Variable', monospace",
                 }}>
-                  {tier.price}
+                  <span style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>{tier.price}</span>
+                  {tier.period && <span style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>{tier.period}</span>}
                 </div>
                 <p style={{
                   fontSize: '0.85rem',
@@ -145,13 +164,13 @@ export default function PricingSection() {
                   {tier.features.map(f => (
                     <li key={f} style={{
                       fontSize: '0.85rem',
-                      color: 'var(--text-secondary)',
+                      color: '#475569',
                       marginBottom: 12,
                       display: 'flex',
                       alignItems: 'flex-start',
                       gap: 10,
                     }}>
-                      <span style={{ color: 'var(--brand-cyan)', flexShrink: 0, marginTop: 2 }}>&#10003;</span>
+                      <span style={{ color: '#7C3AED', flexShrink: 0, marginTop: 2 }}>&#10003;</span>
                       {f}
                     </li>
                   ))}
@@ -174,15 +193,15 @@ export default function PricingSection() {
           <div style={{
             marginTop: 80,
             padding: 48,
-            background: 'rgba(10,22,40,0.5)',
-            border: '1px solid var(--border-subtle)',
+            background: '#F8FAFC',
+            border: '1px solid #E2E8F0',
             borderRadius: 16,
             textAlign: 'center',
           }}>
-            <h3 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
+            <h3 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: '#0F172A' }}>
               Need a custom solution?
             </h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 28, maxWidth: 500, margin: '0 auto 28px', lineHeight: 1.7 }}>
+            <p style={{ color: '#64748B', marginBottom: 28, maxWidth: 500, margin: '0 auto 28px', lineHeight: 1.7 }}>
               Every enterprise has unique requirements. Let's discuss your stack, scale, and compliance needs.
             </p>
             <Link

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Supply Chain ROI Guide | NDN Analytics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1E293B;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      background: #FFFFFF;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #3B82F6;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: #3B82F6;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #64748B;
+    }
+
+    .intro {
+      background: #F0F9FF;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      border-left: 4px solid #3B82F6;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 32px 0 16px 0;
+    }
+
+    .calculator {
+      background: #F8FAFC;
+      padding: 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .calc-row:last-child {
+      border-bottom: none;
+    }
+
+    .calc-label {
+      flex: 1;
+    }
+
+    .calc-label strong {
+      display: block;
+      color: #0F172A;
+    }
+
+    .calc-label span {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .calc-input {
+      width: 150px;
+      padding: 10px 14px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      text-align: right;
+      font-size: 16px;
+    }
+
+    .benefit-card {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+      padding: 24px;
+      border-radius: 12px;
+      margin: 16px 0;
+    }
+
+    .benefit-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card .value {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .benefit-card .desc {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .stats-grid .stat {
+      background: #F8FAFC;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+    }
+
+    .stats-grid .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3B82F6;
+    }
+
+    .stats-grid .stat-label {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    th {
+      background: #F8FAFC;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 32px;
+      background: #F0F9FF;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    .cta h3 {
+      font-size: 20px;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #3B82F6;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #E2E8F0;
+      color: #94A3B8;
+      font-size: 13px;
+    }
+
+    @media print {
+      body { padding: 24px; }
+      .cta a, .benefit-card { -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">NDN ANALYTICS</div>
+    <h1>Blockchain Supply Chain ROI Guide</h1>
+    <p class="subtitle">Calculate the business value of implementing supply chain traceability</p>
+  </div>
+
+  <div class="intro">
+    <p>Blockchain-based supply chain traceability delivers measurable ROI across multiple dimensions. Use this guide to estimate the value for your organization.</p>
+  </div>
+
+  <h2>Industry Benchmarks</h2>
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-value">65%</div>
+      <div class="stat-label">Reduction in recall costs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">50%</div>
+      <div class="stat-label">Faster dispute resolution</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">30%</div>
+      <div class="stat-label">Reduction in compliance costs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">15%</div>
+      <div class="stat-label">Consumer premium for verified products</div>
+    </div>
+  </div>
+
+  <h2>ROI Calculator Worksheet</h2>
+
+  <div class="calculator">
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>Annual Revenue</strong>
+        <span>Your total product revenue</span>
+      </div>
+      <input type="text" class="calc-input" placeholder="$10,000,000">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>Annual Recall Costs</strong>
+        <span>Average cost per recall × frequency</span>
+      </div>
+      <input type="text" class="calc-input" placeholder="$500,000">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>Compliance/Audit Costs</strong>
+        <span>Annual compliance staff + audit fees</span>
+      </div>
+      <input type="text" class="calc-input" placeholder="$200,000">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>Dispute Resolution Costs</strong>
+        <span>Legal + investigation + settlements</span>
+      </div>
+      <input type="text" class="calc-input" placeholder="$150,000">
+    </div>
+  </div>
+
+  <div class="benefit-card">
+    <h3>Estimated Annual Savings</h3>
+    <div class="value">$475,000 - $680,000</div>
+    <div class="desc">Based on industry benchmark reductions applied to your inputs</div>
+  </div>
+
+  <h2>Cost vs. Benefit Analysis</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cost Category</th>
+        <th>Year 1</th>
+        <th>Year 2+</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Implementation (one-time)</td>
+        <td>$50,000 - $150,000</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Annual License/Subscription</td>
+        <td>$24,000 - $60,000</td>
+        <td>$24,000 - $60,000</td>
+      </tr>
+      <tr>
+        <td>Training & Change Management</td>
+        <td>$10,000 - $25,000</td>
+        <td>$5,000</td>
+      </tr>
+      <tr style="background: #F0F9FF;">
+        <td><strong>Typical ROI Timeline</strong></td>
+        <td colspan="2"><strong>6-12 months to break even</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Use Cases by Industry</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Industry</th>
+        <th>Primary Value Driver</th>
+        <th>Secondary Benefits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Food & Beverage</td>
+        <td>Recall precision (65% cost reduction)</td>
+        <td>Consumer trust, export compliance</td>
+      </tr>
+      <tr>
+        <td>Pharmaceuticals</td>
+        <td>Regulatory compliance</td>
+        <td>Anti-counterfeiting, liability reduction</td>
+      </tr>
+      <tr>
+        <td>Luxury Goods</td>
+        <td>Authenticity verification</td>
+        <td>Price premium, resale value</td>
+      </tr>
+      <tr>
+        <td>Manufacturing</td>
+        <td>Supplier accountability</td>
+        <td>Quality control, ESG reporting</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cta">
+    <h3>Ready to Calculate Your Exact ROI?</h3>
+    <p>NDN TraceChain delivers enterprise-grade supply chain traceability on Ethereum.</p>
+    <a href="https://ndn-analytics.web.app/contact?utm_source=pdf&utm_medium=lead_magnet&utm_campaign=blockchain_roi">Get Custom ROI Analysis →</a>
+  </div>
+
+  <div class="footer">
+    © 2026 NDN Analytics | ndn-analytics.web.app | AI & Blockchain Solutions
+  </div>
+</body>
+</html>

@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { trackFormSubmit } from '../../lib/analytics';
+import { createLead, attributeAnonymousEngagements } from '../../lib/leads';
 
-export default function NewsletterSignup() {
+interface Props {
+  source?: 'footer' | 'blog';
+}
+
+export default function NewsletterSignup({ source = 'footer' }: Props) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'subscribed' | 'error'>('idle');
 
@@ -13,29 +18,41 @@ export default function NewsletterSignup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // If EmailJS is configured, send; otherwise just mark subscribed locally.
-    if (serviceId && templateId) {
-      try {
-        setStatus('sending');
-        await emailjs.send(serviceId, templateId, { user_email: email }, publicKey);
-        setStatus('subscribed');
-        setEmail('');
-        trackFormSubmit('newsletter');
-      } catch (err) {
-        console.error('EmailJS send failed', err);
-        setStatus('error');
+
+    setStatus('sending');
+
+    try {
+      // Save lead to Firestore
+      const leadSource = source === 'blog' ? 'newsletter_blog' : 'newsletter_footer';
+      const lead = await createLead({
+        email,
+        source: leadSource,
+        tags: ['newsletter', source],
+      });
+
+      // Attribute anonymous engagements
+      if (lead?.id) {
+        await attributeAnonymousEngagements(lead.id);
       }
-    } else {
+
+      // Send notification via EmailJS if configured
+      if (serviceId && templateId) {
+        await emailjs.send(serviceId, templateId, { user_email: email }, publicKey);
+      }
+
       setStatus('subscribed');
       setEmail('');
       trackFormSubmit('newsletter');
+    } catch (err) {
+      console.error('Newsletter signup failed', err);
+      setStatus('error');
     }
   };
 
   if (status === 'subscribed') {
     return (
       <div style={{ padding: 24, background: 'rgba(6,182,212,0.08)', borderRadius: 12, border: '1px solid rgba(6,182,212,0.2)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--brand-cyan)', fontFamily: "'JetBrains Mono Variable', monospace", fontSize: '0.85rem' }}>✓ You're subscribed! Check your inbox for confirmation.</p>
+        <p style={{ color: 'var(--brand-cyan)', fontFamily: "'JetBrains Mono Variable', monospace", fontSize: '0.85rem' }}>You're subscribed! Check your inbox for confirmation.</p>
       </div>
     );
   }
@@ -51,7 +68,7 @@ export default function NewsletterSignup() {
         style={{ flex: 1, minWidth: 200, padding: '10px 16px', background: 'rgba(10,22,40,0.8)', border: '1px solid var(--border-subtle)', borderRadius: 8, color: 'var(--text-primary)', fontFamily: "'JetBrains Mono Variable', monospace", fontSize: '0.85rem', outline: 'none' }}
       />
       <button type="submit" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }} disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending…' : 'Subscribe'}
+        {status === 'sending' ? 'Sending...' : 'Subscribe'}
       </button>
       {status === 'error' && (
         <div style={{ color: 'var(--danger)', width: '100%', marginTop: 6, fontSize: '0.85rem' }}>Something went wrong — please try again later.</div>

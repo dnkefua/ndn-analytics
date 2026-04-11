@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../products/productData';
+import NewsletterSignup from '../newsletter/NewsletterSignup';
 
 const FOOTER_PRODUCTS = PRODUCTS.filter(p =>
   ['ndn-001', 'ndn-002', 'ndn-005', 'ndn-009', 'ndn-010'].includes(p.id)
@@ -71,6 +72,23 @@ export default function Footer() {
             {['SOC 2 Type II', 'ISO 27001', 'HIPAA', 'GDPR'].map(c => (
               <div key={c} style={{ marginBottom: 8, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{c}</div>
             ))}
+          </div>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div style={{ marginBottom: 48, padding: 32, background: 'rgba(6,182,212,0.04)', border: '1px solid rgba(6,182,212,0.15)', borderRadius: 12 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24, justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontFamily: "'Syne Variable', 'Syne', sans-serif", fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
+                Stay ahead with NDN Intelligence
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Enterprise AI & blockchain insights delivered monthly.
+              </div>
+            </div>
+            <div style={{ flex: 1, minWidth: 300, maxWidth: 420 }}>
+              <NewsletterSignup source="footer" />
+            </div>
           </div>
         </div>
         <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>

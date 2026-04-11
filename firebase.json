@@ -8,6 +8,11 @@
     ],
     "rewrites": [
       {
+        "source": "/go/**",
+        "function": "affiliateRedirect",
+        "region": "us-central1"
+      },
+      {
         "source": "**",
         "function": "ssr",
         "region": "us-central1"

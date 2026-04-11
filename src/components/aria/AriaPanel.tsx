@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import type { AriaMessage } from '../../types';
 import AriaMessageComp from './AriaMessage';
 import { getAriaResponse, SUGGESTIONS } from './ariaKnowledge';
-import { askAria, HAS_ANTHROPIC_KEY, type ChatMessage } from './ariaApi';
+import { askAria, HAS_ANTHROPIC_KEY, isHighIntent, extractProductInterests, type ChatMessage } from './ariaApi';
+import { createLead, addEngagement, attributeAnonymousEngagements, getSessionId } from '../../lib/leads';
 import './Aria.css';
 
 interface Props {
@@ -20,15 +21,21 @@ export default function AriaPanel({ onClose }: Props) {
   const [messages, setMessages] = useState<AriaMessage[]>([WELCOME]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
+  const [showEmailCapture, setShowEmailCapture] = useState(false);
+  const [emailInput, setEmailInput] = useState('');
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [leadId, setLeadId] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const messageIdCounter = useRef(1);
+  const sessionId = useRef(getSessionId());
 
   // Claude API message history (excludes the welcome message)
   const apiHistory = useRef<ChatMessage[]>([]);
+  const emailCaptureShown = useRef(false);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, typing]);
+  }, [messages, typing, showEmailCapture]);
 
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
@@ -69,6 +76,80 @@ export default function AriaPanel({ onClose }: Props) {
       content: response,
       timestamp: new Date(),
     }]);
+
+    // Check for high intent and show email capture (only once per session)
+    if (!emailCaptureShown.current && !emailSubmitted && isHighIntent(apiHistory.current)) {
+      emailCaptureShown.current = true;
+      setTimeout(() => {
+        setShowEmailCapture(true);
+        // Add system message prompting email
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 2).toString(),
+          role: 'aria',
+          content: "I can have our solutions team prepare a personalized analysis for your use case. What's the best email to reach you?",
+          timestamp: new Date(),
+        }]);
+      }, 1500);
+    }
+
+    // Track engagement if we have a lead
+    if (leadId) {
+      await addEngagement(leadId, 'aria_conversation', {
+        messageCount: apiHistory.current.length,
+        sessionId: sessionId.current,
+      });
+    }
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!emailInput.trim()) return;
+
+    const productInterests = extractProductInterests(apiHistory.current);
+
+    try {
+      const lead = await createLead({
+        email: emailInput,
+        source: 'aria_chat',
+        productInterests,
+        tags: ['aria_qualified', 'high_intent'],
+      });
+
+      if (lead?.id) {
+        setLeadId(lead.id);
+        await attributeAnonymousEngagements(lead.id);
+        await addEngagement(lead.id, 'aria_conversation', {
+          messageCount: apiHistory.current.length,
+          sessionId: sessionId.current,
+          conversationSummary: apiHistory.current.slice(-4).map(m => `${m.role}: ${m.content.slice(0, 100)}`).join(' | '),
+        });
+      }
+
+      setEmailSubmitted(true);
+      setShowEmailCapture(false);
+
+      // Confirmation message
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 3).toString(),
+        role: 'aria',
+        content: `Perfect! Our team will reach out to ${emailInput} within 24 hours with a tailored analysis. In the meantime, feel free to ask me anything else about NDN Analytics.`,
+        timestamp: new Date(),
+      }]);
+    } catch (err) {
+      console.error('Failed to capture lead:', err);
+    }
+
+    setEmailInput('');
+  };
+
+  const dismissEmailCapture = () => {
+    setShowEmailCapture(false);
+    setMessages(prev => [...prev, {
+      id: (Date.now() + 4).toString(),
+      role: 'aria',
+      content: "No problem! Feel free to continue exploring, and let me know if you'd like to connect with our team later.",
+      timestamp: new Date(),
+    }]);
   };
 
   const statusLabel = HAS_ANTHROPIC_KEY ? 'Claude AI · Online' : 'Online';
@@ -97,6 +178,55 @@ export default function AriaPanel({ onClose }: Props) {
             <div className="aria-typing"><span /><span /><span /></div>
           </div>
         )}
+
+        {/* Email capture inline card */}
+        {showEmailCapture && (
+          <div className="aria-email-capture">
+            <form onSubmit={handleEmailSubmit} style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <input
+                type="email"
+                required
+                placeholder="you@company.com"
+                value={emailInput}
+                onChange={e => setEmailInput(e.target.value)}
+                style={{
+                  flex: 1,
+                  minWidth: 180,
+                  padding: '10px 14px',
+                  background: 'rgba(6,182,212,0.08)',
+                  border: '1px solid rgba(6,182,212,0.3)',
+                  borderRadius: 8,
+                  color: 'var(--text-primary)',
+                  fontSize: '0.85rem',
+                  outline: 'none',
+                }}
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{ padding: '10px 16px', fontSize: '0.85rem' }}
+              >
+                Send
+              </button>
+              <button
+                type="button"
+                onClick={dismissEmailCapture}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--text-tertiary)',
+                  fontSize: '0.75rem',
+                  cursor: 'pointer',
+                  padding: '4px 8px',
+                }}
+              >
+                Not now
+              </button>
+            </form>
+          </div>
+        )}
+
         <div ref={bottomRef} />
       </div>
 

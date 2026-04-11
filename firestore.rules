@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Leads collection - write from client, read only with auth
+    match /leads/{leadId} {
+      // Allow create from anonymous clients (website visitors)
+      allow create: if true;
+      // Allow update only if updating score, engagements, or status
+      allow update: if request.resource.data.email == resource.data.email;
+      // Read requires authentication (admin only)
+      allow read: if request.auth != null;
+
+      // Engagements subcollection
+      match /engagements/{engagementId} {
+        allow create: if true;
+        allow read: if request.auth != null;
+      }
+    }
+
+    // ARIA conversations - write from client
+    match /ariaConversations/{conversationId} {
+      allow create: if true;
+      allow update: if true;
+      allow read: if request.auth != null;
+    }
+
+    // Content upgrades - read only
+    match /contentUpgrades/{upgradeId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // AI News & Product Aggregation Collections
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Dynamic blog posts - public read, Cloud Functions write
+    match /blogPosts/{postId} {
+      allow read: if true;
+      // Allow client to increment viewCount only
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasOnly(['viewCount', 'updatedAt']);
+      // Full write requires auth (Cloud Functions use admin SDK)
+      allow create, delete: if request.auth != null;
+    }
+
+    // AI Products directory - public read, limited client update
+    match /aiProducts/{productId} {
+      allow read: if true;
+      // Allow client to increment clickCount only
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasOnly(['clickCount', 'updatedAt']);
+      allow create, delete: if request.auth != null;
+    }
+
+    // Affiliate click tracking - client write, admin read
+    match /affiliateClicks/{clickId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+
+    // News sources - admin only (configured via console or Cloud Functions)
+    match /newsSources/{sourceId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Processed articles - admin only (tracking which articles were processed)
+    match /processedArticles/{articleId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

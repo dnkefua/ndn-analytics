@@ -4,6 +4,7 @@ import { PRODUCTS } from '../products/productData';
 import SEO from '../seo/SEO';
 import ContactPageSchema from '../seo/ContactPageSchema';
 import { trackFormSubmit, trackDemoBooking } from '../../lib/analytics';
+import { createLead, addEngagement, attributeAnonymousEngagements } from '../../lib/leads';
 import './ContactSection.css';
 
 const EJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || '';
@@ -34,6 +35,26 @@ export default function ContactSection() {
     trackFormSubmit('contact');
 
     try {
+      // Save lead to Firestore first (before EmailJS)
+      const productId = PRODUCTS.find(p => p.name === form.product)?.id;
+      const lead = await createLead({
+        email: form.email,
+        name: form.name,
+        source: 'contact_form',
+        productInterests: productId ? [productId] : [],
+        tags: ['contact_form'],
+      });
+
+      // Attribute any anonymous engagements (page views, etc.)
+      if (lead?.id) {
+        await attributeAnonymousEngagements(lead.id);
+        await addEngagement(lead.id, 'form_submit', {
+          product: form.product,
+          hasMessage: Boolean(form.message),
+        });
+      }
+
+      // Send email via EmailJS
       await emailjs.sendForm(EJS_SERVICE, EJS_TEMPLATE, formRef.current, { publicKey: EJS_PUBLIC });
       setStatus('success');
       setForm({ name: '', email: '', product: '', message: '' });

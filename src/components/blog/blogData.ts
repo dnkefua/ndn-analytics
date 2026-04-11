@@ -8,6 +8,12 @@ export interface BlogPost {
   category: 'AI' | 'Blockchain' | 'Industry' | 'Product';
   readTime: string;
   image?: string;
+  relatedProducts?: string[];
+  contentUpgrade?: {
+    title: string;
+    description: string;
+    downloadId: string;
+  };
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -44,6 +50,12 @@ The key is starting with your highest-value SKUs and expanding. NDN Demand IQ ma
     author: 'NDN Analytics Team',
     category: 'AI',
     readTime: '5 min read',
+    relatedProducts: ['ndn-001', 'ndn-003'],
+    contentUpgrade: {
+      title: 'AI Demand Forecasting ROI Calculator',
+      description: 'Calculate your potential savings with AI-powered inventory optimization.',
+      downloadId: 'demand-iq-roi-calculator',
+    },
   },
   {
     slug: 'blockchain-supply-chain-traceability',
@@ -69,6 +81,12 @@ The key decision is public vs. private chain. Ethereum mainnet offers maximum tr
     author: 'NDN Analytics Team',
     category: 'Blockchain',
     readTime: '6 min read',
+    relatedProducts: ['ndn-005', 'ndn-007'],
+    contentUpgrade: {
+      title: 'Supply Chain Traceability Checklist',
+      description: 'Evaluate your supply chain readiness for blockchain-based provenance tracking.',
+      downloadId: 'tracechain-checklist',
+    },
   },
   {
     slug: 'healthcare-ai-readmission-prevention',
@@ -94,6 +112,12 @@ Hospitals using predictive readmission models report significant reductions in 3
     author: 'NDN Analytics Team',
     category: 'AI',
     readTime: '4 min read',
+    relatedProducts: ['ndn-002'],
+    contentUpgrade: {
+      title: 'Readmission Prevention Implementation Guide',
+      description: 'Step-by-step guide to deploying predictive readmission risk scoring.',
+      downloadId: 'care-predict-guide',
+    },
   },
   {
     slug: 'decentralized-finance-african-savings',
@@ -119,6 +143,7 @@ Njangi smart contracts enforce contribution schedules and payout rotations autom
     author: 'NDN Analytics Team',
     category: 'Blockchain',
     readTime: '5 min read',
+    relatedProducts: ['ndn-009', 'ndn-006'],
   },
   {
     slug: 'ndn-interpreter-real-time-sign-language',
@@ -147,5 +172,6 @@ By leveraging state-of-the-art computer vision and neural machine translation, N
     author: 'NDN Analytics Team',
     category: 'Product',
     readTime: '3 min read',
+    relatedProducts: ['ndn-011', 'ndn-002'],
   },
 ];
