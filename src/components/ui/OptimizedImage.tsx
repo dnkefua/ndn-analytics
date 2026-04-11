@@ -16,7 +16,7 @@ function buildOptimizedPath(src: string) {
     const filename = parts[parts.length - 1];
     const name = filename.replace(/\.[^.]+$/, '');
     return `/optimized/${encodeURIComponent(name)}.webp`;
-  } catch (e) {
+  } catch {
     return null;
   }
 }

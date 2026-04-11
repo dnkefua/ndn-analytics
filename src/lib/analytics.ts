@@ -10,7 +10,7 @@ export function initAnalytics() {
   s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
   document.head.appendChild(s);
   window.dataLayer = window.dataLayer || [];
-  function gtag(...args: any[]) { (window.dataLayer as any).push(args); }
+  function gtag(...args: unknown[]) { (window.dataLayer as unknown[]).push(args); }
   window.gtag = gtag;
   gtag('js', new Date());
   gtag('config', id, { send_page_view: false });

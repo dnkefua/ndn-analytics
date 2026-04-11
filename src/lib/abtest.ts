@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function assignVariant(key: string, variants: string[]) {
   if (typeof window === 'undefined') return variants[0];
@@ -8,15 +8,11 @@ export function assignVariant(key: string, variants: string[]) {
     const pick = variants[Math.floor(Math.random() * variants.length)];
     localStorage.setItem(key, pick);
     return pick;
-  } catch (err) {
+  } catch {
     return variants[0];
   }
 }
 
 export default function useABTest(key: string, variants: string[] = ['A', 'B']) {
-  const [variant, setVariant] = useState<string>(() => assignVariant(key, variants));
-  useEffect(() => {
-    setVariant(assignVariant(key, variants));
-  }, [key]);
-  return variant;
+  return useState<string>(() => assignVariant(key, variants))[0];
 }
