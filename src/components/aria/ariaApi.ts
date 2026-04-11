@@ -1,4 +1,16 @@
-import Anthropic from '@anthropic-ai/sdk';
+// ── Ollama API integration ────────────────────────────────────────────────────
+// Default: http://localhost:11434  (local Ollama install)
+// Override: set VITE_OLLAMA_HOST in .env to point at a public Ollama server
+// Override model: set VITE_OLLAMA_MODEL (default: llama3.2)
+
+const OLLAMA_HOST  = import.meta.env.VITE_OLLAMA_HOST  || 'http://localhost:11434';
+const OLLAMA_MODEL = import.meta.env.VITE_OLLAMA_MODEL || 'llama3.2';
+const OLLAMA_KEY   = import.meta.env.VITE_OLLAMA_API_KEY || '';
+
+const authHeaders: Record<string, string> = {
+  'Content-Type': 'application/json',
+  ...(OLLAMA_KEY ? { Authorization: `Bearer ${OLLAMA_KEY}` } : {}),
+};
 
 // ── System prompt: full NDN context ─────────────────────────────────────────
 const SYSTEM_PROMPT = `You are ARIA — the AI intelligence agent for NDN Analytics, an enterprise AI and blockchain intelligence platform. You are embedded in the NDN Analytics website.
@@ -39,25 +51,37 @@ SOC 2 Type II, ISO 27001, HIPAA (healthcare products), GDPR. All data encrypted 
 - If asked something outside NDN Analytics scope, gently redirect: "I'm specialized in NDN Analytics intelligence. Here's what I can help with..."
 - Response time: within 24 hours. Email: nkefua@ndnanalytics.com`;
 
-const client = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || '',
-  dangerouslyAllowBrowser: true,
-});
-
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
 }
 
 export async function askAria(history: ChatMessage[]): Promise<string> {
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 512,
-    system: SYSTEM_PROMPT,
-    messages: history,
+  const res = await fetch(`${OLLAMA_HOST}/api/chat`, {
+    method: 'POST',
+    headers: authHeaders,
+    body: JSON.stringify({
+      model: OLLAMA_MODEL,
+      stream: false,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...history,
+      ],
+    }),
   });
 
-  const block = response.content[0];
-  if (block.type === 'text') return block.text;
-  return 'I encountered an issue. Please try again.';
+  if (!res.ok) throw new Error(`Ollama error: ${res.status}`);
+
+  const data = await res.json();
+  return data?.message?.content ?? 'I encountered an issue. Please try again.';
+}
+
+/** Quick health-check — resolves true if Ollama is reachable */
+export async function pingOllama(): Promise<boolean> {
+  try {
+    const res = await fetch(`${OLLAMA_HOST}/api/tags`, { method: 'GET', headers: authHeaders });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }

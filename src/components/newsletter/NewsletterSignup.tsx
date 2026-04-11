@@ -1,13 +1,35 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { trackFormSubmit } from '../../lib/analytics';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'subscribed'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'subscribed' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('subscribed');
-    setEmail('');
+    if (!email) return;
+    // If EmailJS is configured, send; otherwise just mark subscribed locally.
+    if (serviceId && templateId) {
+      try {
+        setStatus('sending');
+        await emailjs.send(serviceId, templateId, { user_email: email }, publicKey);
+        setStatus('subscribed');
+        setEmail('');
+        trackFormSubmit('newsletter');
+      } catch (err) {
+        console.error('EmailJS send failed', err);
+        setStatus('error');
+      }
+    } else {
+      setStatus('subscribed');
+      setEmail('');
+      trackFormSubmit('newsletter');
+    }
   };
 
   if (status === 'subscribed') {
@@ -28,7 +50,12 @@ export default function NewsletterSignup() {
         onChange={e => setEmail(e.target.value)}
         style={{ flex: 1, minWidth: 200, padding: '10px 16px', background: 'rgba(10,22,40,0.8)', border: '1px solid var(--border-subtle)', borderRadius: 8, color: 'var(--text-primary)', fontFamily: "'JetBrains Mono Variable', monospace", fontSize: '0.85rem', outline: 'none' }}
       />
-      <button type="submit" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>Subscribe</button>
+      <button type="submit" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }} disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Subscribe'}
+      </button>
+      {status === 'error' && (
+        <div style={{ color: 'var(--danger)', width: '100%', marginTop: 6, fontSize: '0.85rem' }}>Something went wrong — please try again later.</div>
+      )}
     </form>
   );
 }

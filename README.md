@@ -71,3 +71,49 @@ export default defineConfig([
   },
 ])
 ```
+
+## Local development & preview
+
+Set environment variables in a local `.env` file (copy from `.env.example`) to enable analytics and other public runtime config:
+
+```
+VITE_GA_ID=G-XXXXXXXXXX
+```
+
+Start the dev server:
+
+```powershell
+cd "c:\Users\A2Z\OneDrive\Documents\NDN Analytics\NDN Analytic website\ndn-analytics"
+npm install
+npm run dev
+```
+
+If `5173` is in use, Vite will choose another port (e.g. `5174`). Open the `Local` URL printed by Vite.
+
+## Caching & Hosting recommendations
+
+- Serve static assets (JS/CSS/images/fonts) with far-future `Cache-Control` when files are fingerprinted.
+- Use `Cache-Control: public, max-age=31536000, immutable` for production fingerprinted assets.
+- Use short caching or `no-cache` for HTML responses so clients pick up new content quickly.
+
+Example Express middleware (already added to `server.js`) that sets appropriate headers:
+
+```js
+app.use((req, res, next) => {
+  const url = req.url.split('?')[0];
+  if (/\.(js|css|png|jpg|jpeg|svg|webp|avif|woff2|woff)$/.test(url)) {
+    if (process.env.NODE_ENV === 'production') {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
+  }
+  next();
+});
+```
+
+Hosting notes:
+- Vercel/Netlify: they automatically set appropriate caching; configure `_headers` or server settings for custom rules.
+- Firebase Hosting: add `headers` in `firebase.json` to set `Cache-Control` for assets.
+- Cloudflare: enable caching and Brotli/HTTP/2 for best performance.
+

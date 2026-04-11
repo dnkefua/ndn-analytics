@@ -62,8 +62,33 @@ export default function Logo3D() {
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.z = camZ;
 
-    const texture = new THREE.TextureLoader().load(logoSrc);
-    texture.colorSpace = THREE.SRGBColorSpace;
+    const textureLoader = new THREE.TextureLoader();
+    const tryOptimized = () => {
+      try {
+        const parts = (logoSrc as string).split('/');
+        const filename = parts[parts.length - 1];
+        const name = filename.replace(/\.[^.]+$/, '');
+        return `/optimized/${encodeURIComponent(name)}.webp`;
+      } catch (e) {
+        return null;
+      }
+    };
+
+    const optimized = tryOptimized();
+    let texture: THREE.Texture | null = null;
+    if (optimized) {
+      textureLoader.load(optimized,
+        t => { texture = t; texture.colorSpace = THREE.SRGBColorSpace; },
+        undefined,
+        () => {
+          // fallback to original if optimized not found
+          textureLoader.load(logoSrc, t => { texture = t; texture.colorSpace = THREE.SRGBColorSpace; });
+        }
+      );
+    } else {
+      texture = textureLoader.load(logoSrc);
+      texture.colorSpace = THREE.SRGBColorSpace;
+    }
 
     const mat = new THREE.ShaderMaterial({
       uniforms: { map: { value: texture } },

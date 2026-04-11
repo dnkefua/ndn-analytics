@@ -437,13 +437,19 @@ function buildCameraPath(): THREE.CatmullRomCurve3 {
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function SpaceEngine() {
   const mountRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
 
-    // ── Renderer ──
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    let initialized = false;
+    let cleanupFn: (() => void) | null = null;
+
+    const init = () => {
+      if (initialized) return;
+      initialized = true;
+
+      // ── Renderer ──
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.toneMapping      = THREE.ACESFilmicToneMapping;
@@ -637,18 +643,41 @@ export default function SpaceEngine() {
       renderer.render(scene, camera);
     };
 
-    animate();
+      animate();
 
-    // ── Cleanup ──
+      cleanupFn = () => {
+        cancelAnimationFrame(animId);
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('scroll',    onScroll);
+        window.removeEventListener('touchmove', onTouch);
+        window.removeEventListener('resize',    onResize);
+        renderer.dispose();
+        if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
+        if (container.contains(fadeDiv)) container.removeChild(fadeDiv);
+      };
+    };
+
+    // Defer heavy initialization until first user interaction or short timeout
+    const onFirstInteraction = () => { init(); removeTriggers(); };
+    const removeTriggers = () => {
+      window.removeEventListener('pointerdown', onFirstInteraction);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('scroll', onFirstInteraction);
+    };
+
+    window.addEventListener('pointerdown', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('scroll', onFirstInteraction, { once: true, passive: true });
+
+    // fallback: init after small delay so non-interactive users still see it
+    const t = setTimeout(() => { init(); removeTriggers(); }, 1500);
+
     return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('scroll',    onScroll);
-      window.removeEventListener('touchmove', onTouch);
-      window.removeEventListener('resize',    onResize);
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
-      if (container.contains(fadeDiv)) container.removeChild(fadeDiv);
+      clearTimeout(t);
+      if (cleanupFn) cleanupFn();
+      window.removeEventListener('pointerdown', onFirstInteraction);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('scroll', onFirstInteraction);
     };
   }, []);
 

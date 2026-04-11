@@ -1,6 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo3D from '../three/Logo3D';
+import useABTest from '../../lib/abtest';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -19,6 +20,8 @@ export default function Navbar() {
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
   const menuRef = useRef<HTMLDivElement>(null);
+  const variant = useABTest('nav_cta');
+  const ctaText = variant === 'A' ? 'Book Demo' : 'Try Alpha';
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
@@ -77,7 +80,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/contact" className="btn btn-primary nav-cta">Book Demo</Link>
+          <Link to="/contact" className={`btn btn-primary nav-cta ${variant === 'B' ? 'nav-cta-variant-b' : ''}`}>{ctaText}</Link>
         </div>
 
         {/* ── Mobile burger ── */}

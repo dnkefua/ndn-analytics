@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { AriaMessage } from '../../types';
 import AriaMessageComp from './AriaMessage';
 import { getAriaResponse, SUGGESTIONS } from './ariaKnowledge';
-import { askAria, type ChatMessage } from './ariaApi';
+import { askAria, pingOllama, type ChatMessage } from './ariaApi';
 import './Aria.css';
 
 interface Props {
@@ -12,21 +12,25 @@ interface Props {
 const WELCOME: AriaMessage = {
   id: '0',
   role: 'aria',
-  content: "Hello! I'm ARIA, NDN Analytics' AI intelligence agent — powered by Claude. Ask me anything about our 10 products, technology stack, or how to get started.",
+  content: "Hello! I'm ARIA, NDN Analytics' AI intelligence agent. Ask me anything about our 10 products, technology stack, or how to get started.",
   timestamp: new Date(),
 };
-
-const HAS_API_KEY = Boolean(import.meta.env.VITE_ANTHROPIC_API_KEY);
 
 export default function AriaPanel({ onClose }: Props) {
   const [messages, setMessages] = useState<AriaMessage[]>([WELCOME]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
+  const [ollamaOnline, setOllamaOnline] = useState<boolean | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const messageIdCounter = useRef(1);
 
-  // Claude API message history (excludes the welcome message)
+  // Ollama message history (excludes the welcome message)
   const apiHistory = useRef<ChatMessage[]>([]);
+
+  // Ping Ollama once on mount
+  useEffect(() => {
+    pingOllama().then(setOllamaOnline);
+  }, []);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -48,18 +52,19 @@ export default function AriaPanel({ onClose }: Props) {
 
     let response: string;
 
-    if (HAS_API_KEY) {
-      // ── Claude API path ──────────────────────────────────────────────────
+    if (ollamaOnline) {
+      // ── Ollama path ──────────────────────────────────────────────────────
       apiHistory.current = [...apiHistory.current, { role: 'user', content: text }];
       try {
         response = await askAria(apiHistory.current);
         apiHistory.current = [...apiHistory.current, { role: 'assistant', content: response }];
       } catch {
-        // Fallback to regex if API call fails
+        // Fallback to regex if Ollama call fails
         response = getAriaResponse(text);
+        setOllamaOnline(false);
       }
     } else {
-      // ── Regex fallback (no API key) ──────────────────────────────────────
+      // ── Regex fallback (Ollama not reachable) ────────────────────────────
       await new Promise(r => setTimeout(r, 700 + Math.random() * 400));
       response = getAriaResponse(text);
     }
@@ -73,6 +78,11 @@ export default function AriaPanel({ onClose }: Props) {
     }]);
   };
 
+  const statusLabel =
+    ollamaOnline === null ? 'Connecting...' :
+    ollamaOnline         ? 'Ollama · Online' :
+                           'Online';
+
   return (
     <div className="aria-panel">
       <div className="aria-panel-header">
@@ -83,7 +93,7 @@ export default function AriaPanel({ onClose }: Props) {
           <div className="aria-panel-title">ARIA</div>
           <div className="aria-panel-status">
             <span className="aria-status-dot" />
-            {HAS_API_KEY ? 'Claude AI · Online' : 'Online'}
+            {statusLabel}
           </div>
         </div>
         <button className="aria-close-btn" onClick={onClose} aria-label="Close ARIA">✕</button>

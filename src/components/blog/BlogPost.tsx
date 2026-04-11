@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { BLOG_POSTS } from './blogData';
 import SEO from '../seo/SEO';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -39,6 +40,9 @@ export default function BlogPost() {
         description={post.excerpt}
         keywords={`${post.category.toLowerCase()}, ${post.title.toLowerCase()}`}
         canonicalPath={`/blog/${post.slug}`}
+        type="article"
+        author={post.author}
+        datePublished={post.date}
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Blog', path: '/blog' },
@@ -53,6 +57,11 @@ export default function BlogPost() {
             <span style={{ fontSize: '0.7rem', fontFamily: "'JetBrains Mono Variable', monospace", color: 'var(--text-tertiary)', padding: '4px 10px' }}>{post.readTime}</span>
           </div>
           <h1 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: 24, color: 'var(--text-primary)' }}>{post.title}</h1>
+          {post.image && (
+            <div style={{ marginBottom: 28 }}>
+              <OptimizedImage src={post.image} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" />
+            </div>
+          )}
           <div style={{ display: 'flex', gap: 24, marginBottom: 40, fontSize: '0.85rem', color: 'var(--text-tertiary)', fontFamily: "'JetBrains Mono Variable', monospace" }}>
             <span>{post.author}</span>
             <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>

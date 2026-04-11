@@ -47,6 +47,12 @@
   100% { transform: scale(1) translate(var(--tx), var(--ty)); opacity: 0; }
 }
 
+@keyframes gradientShift {
+  0% { transform: translate3d(-25%, -25%, 0) rotate(0deg); }
+  50% { transform: translate3d(25%, 25%, 0) rotate(180deg); }
+  100% { transform: translate3d(-25%, -25%, 0) rotate(360deg); }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -71,15 +77,29 @@
   position: absolute;
   inset: 0;
   background:
+    radial-gradient(60% 60% at 10% 10%, rgba(0,255,245,0.06), transparent 8%),
+    radial-gradient(40% 40% at 90% 80%, rgba(168,85,247,0.05), transparent 12%),
     repeating-linear-gradient(
       0deg,
       rgba(0,0,0,0) 0px,
       rgba(0,0,0,0) 3px,
-      rgba(0,0,0,0.04) 3px,
-      rgba(0,0,0,0.04) 4px
+      rgba(0,0,0,0.03) 3px,
+      rgba(0,0,0,0.03) 4px
     );
   pointer-events: none;
   z-index: 0;
+}
+
+/* animated gradient layer for large hero/backdrop elements */
+.animated-gradient {
+  position: absolute;
+  inset: -20%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(0,255,245,0.06), rgba(168,85,247,0.06), rgba(155,233,255,0.06), rgba(0,255,245,0.06));
+  filter: blur(40px) saturate(120%);
+  transform-origin: center;
+  animation: gradientShift 22s linear infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .section > .container { position: relative; z-index: 1; }

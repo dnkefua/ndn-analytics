@@ -84,6 +84,7 @@ export default function Hero() {
       />
       <OrganizationSchema />
       <section className="hero-section" ref={heroRef}>
+      <div className="animated-gradient" aria-hidden="true" />
       <div className="container hero-inner">
         <div className="hero-eyebrow reveal">
           <span className="hero-eyebrow-dot" />

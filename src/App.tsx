@@ -20,12 +20,12 @@ const BlogSection = lazy(() => import('./components/blog/BlogSection'));
 const BlogPost = lazy(() => import('./components/blog/BlogPost'));
 const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
 
+import { trackPageView } from './lib/analytics';
+
 function PageTracker() {
   const location = useLocation();
   useEffect(() => {
-    if (typeof gtag === 'function') {
-      gtag('config', 'G-XXXXXXXXXX', { page_path: location.pathname + location.search });
-    }
+    trackPageView(location.pathname + location.search);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
   return null;

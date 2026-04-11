@@ -12,6 +12,8 @@ interface SEOProps {
     description: string;
     stack: string;
   };
+  author?: string;
+  datePublished?: string;
   breadcrumbs?: Array<{
     name: string;
     path: string;
@@ -29,6 +31,8 @@ export default function SEO({
   type = 'website',
   image = DEFAULT_IMAGE,
   product,
+  author,
+  datePublished,
   breadcrumbs,
 }: SEOProps) {
   const fullTitle = title === 'NDN Analytics' ? title : `${title} | NDN Analytics`;
@@ -67,7 +71,26 @@ export default function SEO({
       <meta name="googlebot" content="index, follow" />
 
       {/* JSON-LD Structured Data */}
-      {product ? (
+      {type === 'article' ? (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            '@id': canonicalUrl,
+            headline: fullTitle,
+            description,
+            image: imageUrl,
+            datePublished: (datePublished || new Date().toISOString()),
+            author: author ? { '@type': 'Person', name: author } : { '@type': 'Organization', name: 'NDN Analytics' },
+            publisher: {
+              '@type': 'Organization',
+              name: 'NDN Analytics',
+              logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.svg` },
+            },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+          })}
+        </script>
+      ) : product ? (
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',

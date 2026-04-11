@@ -20,6 +20,25 @@ async function createServer() {
   app.use(vite.ssrFixStacktrace)
   app.use(vite.middlewares)
 
+  // Simple caching headers for static assets — friendly defaults for prod vs dev
+  app.use((req, res, next) => {
+    try {
+      const url = req.url.split('?')[0];
+      if (/\.(js|css|png|jpg|jpeg|svg|webp|avif|woff2|woff)$/.test(url)) {
+        if (process.env.NODE_ENV === 'production') {
+          // long-lived immutable cache for fingerprinted assets
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else {
+          // avoid aggressive caching in dev
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        }
+      }
+    } catch (e) {
+      // ignore header errors
+    }
+    next();
+  })
+
   app.use('*', async (req, res, next) => {
     const url = req.originalUrl
 
