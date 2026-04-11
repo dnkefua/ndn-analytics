@@ -1,6 +1,5 @@
 .product-card {
-  background: var(--dark-card);
-  backdrop-filter: blur(12px);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 32px;
@@ -14,9 +13,9 @@
 
 .product-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent, var(--brand-cyan));
-  box-shadow: 0 0 30px color-mix(in srgb, var(--accent, var(--brand-cyan)) 20%, transparent),
-              0 20px 40px rgba(0,0,0,0.4);
+  border-color: var(--accent, var(--primary-purple));
+  box-shadow: 0 0 0 transparent,
+              0 20px 40px rgba(124, 58, 237, 0.12);
 }
 
 .product-card:active {
@@ -27,7 +26,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent, var(--brand-cyan)), transparent);
+  background: linear-gradient(90deg, var(--accent, var(--primary-purple)), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -38,7 +37,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--accent, var(--brand-cyan)) 6%, transparent), transparent 60%);
+  background: radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--accent, var(--primary-purple)) 6%, transparent), transparent 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -62,8 +61,8 @@
 .product-badge {
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.72rem;
-  color: var(--accent, var(--brand-cyan));
-  border: 1px solid color-mix(in srgb, var(--accent, var(--brand-cyan)) 30%, transparent);
+  color: var(--accent, var(--primary-purple));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--primary-purple)) 30%, transparent);
   padding: 4px 10px;
   border-radius: 4px;
   letter-spacing: 0.06em;
@@ -71,8 +70,7 @@
 
 .product-icon {
   font-size: 2.2rem;
-  color: var(--accent, var(--brand-cyan));
-  filter: drop-shadow(0 0 8px var(--accent, var(--brand-cyan)));
+  color: var(--accent, var(--primary-purple));
 }
 
 .product-name {
@@ -110,10 +108,9 @@
 
 .feature-dot {
   width: 6px; height: 6px;
-  background: var(--accent, var(--brand-cyan));
+  background: var(--accent, var(--primary-purple));
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 6px var(--accent, var(--brand-cyan));
 }
 
 .product-card-footer { margin-top: 6px; }

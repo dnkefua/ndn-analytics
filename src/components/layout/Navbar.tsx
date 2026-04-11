@@ -1,16 +1,16 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo3D from '../three/Logo3D';
+import LogoFlat from './LogoFlat';
 import useABTest from '../../lib/abtest';
 import './Navbar.css';
 
 const NAV_LINKS = [
+  { label: 'About',      href: '/about'     },
   { label: 'Products',   href: '/products'  },
   { label: 'Solutions',  href: '/solutions' },
+  { label: 'AI Tools',   href: '/ai-tools'  },
   { label: 'Pricing',    href: '/pricing'   },
   { label: 'Blog',       href: '/blog'      },
-  { label: 'About',      href: '/about'     },
-  { label: 'Contact',    href: '/contact'   },
 ];
 
 export default function Navbar() {
@@ -63,7 +63,7 @@ export default function Navbar() {
 
         {/* ── Logo ── */}
         <Link to="/" className="nav-logo">
-          <Logo3D />
+          <LogoFlat />
         </Link>
 
         {/* ── Links ── */}

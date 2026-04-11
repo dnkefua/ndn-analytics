@@ -6,29 +6,29 @@ import { trackCTAClick } from '../../lib/analytics';
 import './Hero.css';
 
 const STATS = [
-  { value: 10, label: 'Products', suffix: '' },
-  { value: 2,  label: 'Core Stacks', suffix: '' },
   { value: 99.9, label: 'Uptime SLA', suffix: '%' },
+  { value: 2,  label: 'Blockchain Networks', suffix: '' },
+  { value: 24, label: 'Hour Support', suffix: '/7' },
 ];
 
 const TESTIMONIALS = [
   {
-    quote: "NDN Demand IQ cut our stockouts by 32% in the first quarter. The ROI was immediate.",
+    quote: "NDN's AI forecasting cut our operational costs by 40%. The GCP integration was seamless and the results were immediate.",
     name: "Sarah Chen",
-    role: "VP Supply Chain",
-    company: "Global Retail Corp",
+    role: "VP Operations",
+    company: "TechScale Inc",
   },
   {
-    quote: "TraceChain gave us end-to-end provenance our regulators demanded. Game-changer for compliance.",
+    quote: "Their Solana-based payment solution gave us sub-second settlements. Game-changer for our global marketplace.",
     name: "Dr. James Okafor",
-    role: "Chief Compliance Officer",
-    company: "PharmaTrust Inc",
+    role: "CTO",
+    company: "PayFlow Global",
   },
   {
-    quote: "The blockchain payment infrastructure eliminated our cross-border settlement delays entirely.",
+    quote: "The Ethereum smart contracts NDN built automate 80% of our compliance workflows. Outstanding engineering team.",
     name: "Maria Rodriguez",
     role: "CFO",
-    company: "BuildRight Construction",
+    company: "FinSecure Corp",
   },
 ];
 
@@ -78,8 +78,8 @@ export default function Hero() {
     <>
       <SEO
         title="NDN Analytics"
-        description="NDN Analytics delivers enterprise AI and blockchain intelligence platforms. Google Cloud AI meets Ethereum for demand forecasting, healthcare AI, supply chain traceability, and smart contract solutions."
-        keywords="enterprise AI, blockchain intelligence, demand forecasting, healthcare AI, supply chain traceability, Ethereum, Google Cloud AI"
+        description="NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum and Solana bring transparency, security, and speed to your operations."
+        keywords="AI products, AI services, Google Cloud Platform, GCP, Ethereum, Solana, blockchain, enterprise AI, machine learning"
         canonicalPath="/"
       />
       <OrganizationSchema />
@@ -88,18 +88,18 @@ export default function Hero() {
       <div className="container hero-inner">
         <div className="hero-eyebrow reveal">
           <span className="hero-eyebrow-dot" />
-          Enterprise AI & Blockchain Intelligence
+          AI Products & Blockchain Solutions
         </div>
 
         <h1 className="hero-title">
-          <span className="hero-title-line1 reveal stagger-1">Intelligence</span>
+          <span className="hero-title-line1 reveal stagger-1">Build Smarter.</span>
           <br />
-          <span className="hero-title-line2 reveal stagger-2 text-gradient">Redefined</span>
+          <span className="hero-title-line2 reveal stagger-2 text-gradient">Scale Faster.</span>
         </h1>
 
         <p className="hero-subtitle reveal stagger-3">
-          NDN Analytics converges the power of Google Cloud AI with the immutable trust of Ethereum —
-          delivering enterprise intelligence platforms that predict, automate, and verify at scale.
+          We build cutting-edge <strong>AI products</strong> and deliver <strong>enterprise AI services</strong> powered by Google Cloud Platform.
+          Our blockchain solutions on <strong>Ethereum</strong> and <strong>Solana</strong> bring transparency, security, and speed to your operations.
         </p>
 
         <div className="hero-ctas reveal stagger-4">
@@ -108,14 +108,14 @@ export default function Hero() {
             className="btn btn-primary"
             onClick={() => trackCTAClick('explore_products', 'hero')}
           >
-            Explore Products →
+            Explore Our Products →
           </Link>
           <Link
             to="/contact"
             className="btn btn-ghost"
             onClick={() => trackCTAClick('book_demo', 'hero')}
           >
-            Book a Demo
+            Get Started
           </Link>
         </div>
 
@@ -138,10 +138,12 @@ export default function Hero() {
         }}>
           {TESTIMONIALS.map(t => (
             <div key={t.company} style={{
-              background: 'rgba(10,22,40,0.5)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: 12,
+              background: '#FFFFFF',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
+              borderRadius: 16,
               padding: 24,
+              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.06)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
             }}>
               <p style={{
                 fontSize: '0.9rem',
@@ -157,7 +159,7 @@ export default function Hero() {
                   width: 36,
                   height: 36,
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--brand-cyan), var(--brand-blue))',
+                  background: 'linear-gradient(135deg, #EC4899, #7C3AED, #3B82F6)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

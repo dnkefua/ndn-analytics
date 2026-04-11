@@ -1,0 +1,232 @@
+/* Floating Particles Background - Google Antigravity Inspired */
+
+.floating-particles-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+
+.particles-gradient {
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.04) 0%,
+    rgba(124, 58, 237, 0.04) 50%,
+    rgba(59, 130, 246, 0.04) 100%
+  );
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: subtle-gradient-shift 22s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes subtle-gradient-shift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -10px); }
+}
+
+/* Base particle styles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Individual particle animations and sizes */
+
+/* Particle 1 - Pink circle */
+.particle-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 5%;
+  background: #EC4899;
+  animation: float-particle-1 25s infinite ease-in-out;
+}
+
+@keyframes float-particle-1 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.15; }
+  50% { transform: translateY(-60px) translateX(40px); opacity: 0.25; }
+}
+
+/* Particle 2 - Purple circle */
+.particle-2 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 15%;
+  background: #7C3AED;
+  animation: float-particle-2 27s infinite ease-in-out;
+  animation-delay: 2s;
+}
+
+@keyframes float-particle-2 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.12; }
+  50% { transform: translateY(-50px) translateX(-30px); opacity: 0.2; }
+}
+
+/* Particle 3 - Blue circle */
+.particle-3 {
+  width: 100px;
+  height: 100px;
+  top: 5%;
+  right: 10%;
+  background: #3B82F6;
+  animation: float-particle-3 24s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+@keyframes float-particle-3 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.1; }
+  50% { transform: translateY(-70px) translateX(50px); opacity: 0.22; }
+}
+
+/* Particle 4 - Pink circle */
+.particle-4 {
+  width: 90px;
+  height: 90px;
+  top: 30%;
+  right: 5%;
+  background: #EC4899;
+  animation: float-particle-4 26s infinite ease-in-out;
+  animation-delay: 3s;
+}
+
+@keyframes float-particle-4 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.14; }
+  50% { transform: translateY(-40px) translateX(-60px); opacity: 0.23; }
+}
+
+/* Particle 5 - Purple circle */
+.particle-5 {
+  width: 110px;
+  height: 110px;
+  bottom: 15%;
+  left: 10%;
+  background: #7C3AED;
+  animation: float-particle-5 28s infinite ease-in-out;
+  animation-delay: 4s;
+}
+
+@keyframes float-particle-5 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.13; }
+  50% { transform: translateY(60px) translateX(40px); opacity: 0.24; }
+}
+
+/* Particle 6 - Blue circle */
+.particle-6 {
+  width: 75px;
+  height: 75px;
+  bottom: 10%;
+  right: 8%;
+  background: #3B82F6;
+  animation: float-particle-6 25s infinite ease-in-out;
+  animation-delay: 2.5s;
+}
+
+@keyframes float-particle-6 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.11; }
+  50% { transform: translateY(50px) translateX(-50px); opacity: 0.21; }
+}
+
+/* Particle 7 - Pink circle */
+.particle-7 {
+  width: 95px;
+  height: 95px;
+  top: 50%;
+  left: 2%;
+  background: #EC4899;
+  animation: float-particle-7 26s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+@keyframes float-particle-7 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.12; }
+  50% { transform: translateY(35px) translateX(45px); opacity: 0.22; }
+}
+
+/* Particle 8 - Purple circle */
+.particle-8 {
+  width: 85px;
+  height: 85px;
+  top: 45%;
+  right: 12%;
+  background: #7C3AED;
+  animation: float-particle-8 27s infinite ease-in-out;
+  animation-delay: 3.5s;
+}
+
+@keyframes float-particle-8 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.13; }
+  50% { transform: translateY(-45px) translateX(55px); opacity: 0.23; }
+}
+
+/* Particle 9 - Blue circle */
+.particle-9 {
+  width: 105px;
+  height: 105px;
+  bottom: 25%;
+  left: 20%;
+  background: #3B82F6;
+  animation: float-particle-9 25s infinite ease-in-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes float-particle-9 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.11; }
+  50% { transform: translateY(40px) translateX(-35px); opacity: 0.2; }
+}
+
+/* Particle 10 - Pink circle */
+.particle-10 {
+  width: 70px;
+  height: 70px;
+  top: 75%;
+  right: 15%;
+  background: #EC4899;
+  animation: float-particle-10 26s infinite ease-in-out;
+  animation-delay: 2.8s;
+}
+
+@keyframes float-particle-10 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.14; }
+  50% { transform: translateY(-55px) translateX(-45px); opacity: 0.24; }
+}
+
+/* Particle 11 - Purple circle */
+.particle-11 {
+  width: 115px;
+  height: 115px;
+  top: 65%;
+  left: 80%;
+  background: #7C3AED;
+  animation: float-particle-11 27s infinite ease-in-out;
+  animation-delay: 0.8s;
+}
+
+@keyframes float-particle-11 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.12; }
+  50% { transform: translateY(50px) translateX(60px); opacity: 0.22; }
+}
+
+/* Particle 12 - Blue circle */
+.particle-12 {
+  width: 88px;
+  height: 88px;
+  bottom: 5%;
+  left: 60%;
+  background: #3B82F6;
+  animation: float-particle-12 24s infinite ease-in-out;
+  animation-delay: 1.2s;
+}
+
+@keyframes float-particle-12 {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.13; }
+  50% { transform: translateY(-30px) translateX(-55px); opacity: 0.23; }
+}

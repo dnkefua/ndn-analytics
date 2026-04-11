@@ -42,7 +42,7 @@
   margin-bottom: 2.5rem;
   transition: color var(--transition-fast);
 }
-.pd-back-link:hover { color: var(--accent, var(--brand-cyan)); }
+.pd-back-link:hover { color: var(--accent, var(--primary-purple)); }
 
 .pd-hero-content {
   display: grid;
@@ -56,7 +56,7 @@
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.18em;
-  color: var(--accent, var(--brand-cyan));
+  color: var(--accent, var(--primary-purple));
   text-transform: uppercase;
   margin-bottom: 0.75rem;
   opacity: 0.85;
@@ -83,7 +83,7 @@
   font-family: 'Inter Variable', 'Inter', sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
-  color: var(--accent, var(--brand-cyan));
+  color: var(--accent, var(--primary-purple));
   margin: 0 0 1.25rem;
   letter-spacing: 0.03em;
 }
@@ -150,8 +150,8 @@
 /* ─── METRICS STRIP ──────────────────────────────────── */
 .pd-metrics-strip {
   background: rgba(6, 182, 212, 0.04);
-  border-top: 1px solid rgba(6,182,212,0.1);
-  border-bottom: 1px solid rgba(6,182,212,0.1);
+  border-top: 1px solid rgba(124,58,237,0.1);
+  border-bottom: 1px solid rgba(124,58,237,0.1);
   padding: 1.5rem 0;
 }
 
@@ -179,8 +179,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent, var(--brand-cyan));
-  box-shadow: 0 0 8px var(--accent, var(--brand-cyan));
+  background: var(--accent, var(--primary-purple));
   flex-shrink: 0;
 }
 
@@ -199,7 +198,7 @@
   font-family: 'Syne Variable', 'Syne', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--accent, var(--brand-cyan));
+  color: var(--accent, var(--primary-purple));
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin: 0 0 2rem;
@@ -238,7 +237,7 @@
 .pd-feature-num {
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.72rem;
-  color: var(--accent, var(--brand-cyan));
+  color: var(--accent, var(--primary-purple));
   opacity: 0.6;
   min-width: 24px;
 }
@@ -253,9 +252,9 @@
 
 /* ─── HOW IT WORKS ────────────────────────────────────── */
 .pd-how-card {
-  background: var(--dark-card);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-left: 3px solid var(--accent, var(--brand-cyan));
+  border-left: 3px solid var(--accent, var(--primary-purple));
   border-radius: var(--radius-md);
   padding: 2rem;
   backdrop-filter: blur(12px);
@@ -280,9 +279,9 @@
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.1em;
-  color: var(--accent, var(--brand-cyan));
-  background: rgba(6,182,212,0.07);
-  border: 1px solid rgba(6,182,212,0.2);
+  color: var(--accent, var(--primary-purple));
+  background: rgba(124,58,237,0.07);
+  border: 1px solid rgba(124,58,237,0.2);
   border-radius: 999px;
   padding: 0.3rem 0.9rem;
 }
@@ -290,7 +289,7 @@
 /* ─── USE CASES ───────────────────────────────────────── */
 .pd-usecases {
   padding: 5rem 0;
-  background: rgba(6,182,212,0.02);
+  background: rgba(124,58,237,0.02);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -303,7 +302,7 @@
 }
 
 .pd-usecase-card {
-  background: var(--dark-card);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 2rem 2rem 2rem 1.5rem;
@@ -315,7 +314,7 @@
 }
 
 .pd-usecase-card:hover {
-  border-color: var(--accent, var(--brand-cyan));
+  border-color: var(--accent, var(--primary-purple));
   transform: translateY(-4px);
 }
 
@@ -323,7 +322,7 @@
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 1.4rem;
   font-weight: 400;
-  color: var(--accent, var(--brand-cyan));
+  color: var(--accent, var(--primary-purple));
   opacity: 0.35;
   line-height: 1;
   min-width: 32px;
@@ -344,8 +343,8 @@
 }
 
 .pd-cta-inner {
-  background: linear-gradient(135deg, rgba(6,182,212,0.08), rgba(79,70,229,0.08));
-  border: 1px solid rgba(6,182,212,0.18);
+  background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.08));
+  border: 1px solid rgba(124,58,237,0.18);
   border-radius: var(--radius-lg);
   padding: 3.5rem 4rem;
   display: flex;
@@ -421,7 +420,7 @@
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.15em;
-  color: var(--brand-cyan);
+  color: var(--primary-purple);
   text-decoration: none;
   text-transform: uppercase;
   opacity: 0.7;

@@ -13,6 +13,11 @@
   50%       { box-shadow: 0 0 40px rgba(6,182,212,0.8), 0 0 80px rgba(6,182,212,0.3); }
 }
 
+@keyframes softPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
 @keyframes borderSpin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
@@ -71,21 +76,14 @@
 .stagger-5 { transition-delay: 0.5s; }
 .stagger-6 { transition-delay: 0.6s; }
 
-/* ── Space vibe: subtle scanline & vignette on all sections ── */
+/* ── Light theme: subtle gradient overlay on sections ── */
 .section::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60% 60% at 10% 10%, rgba(0,255,245,0.06), transparent 8%),
-    radial-gradient(40% 40% at 90% 80%, rgba(168,85,247,0.05), transparent 12%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0) 0px,
-      rgba(0,0,0,0) 3px,
-      rgba(0,0,0,0.03) 3px,
-      rgba(0,0,0,0.03) 4px
-    );
+    radial-gradient(60% 60% at 10% 10%, rgba(124,58,237,0.03), transparent 8%),
+    radial-gradient(40% 40% at 90% 80%, rgba(236,72,153,0.02), transparent 12%);
   pointer-events: none;
   z-index: 0;
 }
@@ -94,7 +92,7 @@
 .animated-gradient {
   position: absolute;
   inset: -20%;
-  background: conic-gradient(from 0deg at 50% 50%, rgba(0,255,245,0.06), rgba(168,85,247,0.06), rgba(155,233,255,0.06), rgba(0,255,245,0.06));
+  background: conic-gradient(from 0deg at 50% 50%, rgba(236,72,153,0.04), rgba(124,58,237,0.04), rgba(59,130,246,0.04), rgba(236,72,853,0.04));
   filter: blur(40px) saturate(120%);
   transform-origin: center;
   animation: gradientShift 22s linear infinite;
@@ -110,8 +108,8 @@
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--brand-cyan);
-  color: #010309;
+  background: var(--primary-purple);
+  color: #FFFFFF;
   padding: 12px 24px;
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.85rem;

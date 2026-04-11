@@ -3,13 +3,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import { Suspense, lazy, useEffect } from 'react';
 import CustomCursor from './components/layout/CustomCursor';
-import SpaceEngine from './components/three/SpaceEngine';
+import FloatingParticlesBackground from './components/background/FloatingParticlesBackground';
 import GridOverlay from './components/layout/GridOverlay';
 import SpeedHUD from './components/layout/SpeedHUD';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import AriaFAB from './components/aria/AriaFAB';
 import { trackPageView } from './lib/analytics';
+import { usePageTracking } from './lib/engagementTracker';
 
 const Hero           = lazy(() => import('./components/hero/Hero'));
 const ProductsSection = lazy(() => import('./components/products/ProductsSection'));
@@ -21,13 +22,20 @@ const ContactSection = lazy(() => import('./components/contact/ContactSection'))
 const BlogSection    = lazy(() => import('./components/blog/BlogSection'));
 const BlogPost       = lazy(() => import('./components/blog/BlogPost'));
 const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
+const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'));
 
 function PageTracker() {
   const location = useLocation();
+
+  // Track for Google Analytics
   useEffect(() => {
     trackPageView(location.pathname + location.search);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
+
+  // Track for lead engagement scoring
+  usePageTracking();
+
   return null;
 }
 
@@ -68,6 +76,7 @@ function AnimatedRoutes() {
             <Route path="/blog"        element={<BlogSection />} />
             <Route path="/blog/:slug"  element={<BlogPost />} />
             <Route path="/pricing"     element={<PricingSection />} />
+            <Route path="/ai-tools"    element={<AIToolsSection />} />
           </Routes>
         </Suspense>
       </motion.div>
@@ -81,7 +90,7 @@ export default function App() {
       <BrowserRouter>
         <PageTracker />
         <CustomCursor />
-        <SpaceEngine />
+        <FloatingParticlesBackground />
         <GridOverlay />
         <SpeedHUD />
         <Navbar />
