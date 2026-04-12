@@ -1,4 +1,4 @@
-/* Floating Particles Background - Google Antigravity Inspired */
+/* Floating Particles Background — NDN Enterprise Dark / Antigravity */
 
 .floating-particles-container {
   position: fixed;
@@ -6,20 +6,20 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  background: linear-gradient(160deg, #020B18 0%, #030F20 60%, #040A1A 100%);
 }
 
 .particles-gradient {
   position: absolute;
   inset: -20%;
-  background: linear-gradient(
-    135deg,
-    rgba(236, 72, 153, 0.04) 0%,
-    rgba(124, 58, 237, 0.04) 50%,
-    rgba(59, 130, 246, 0.04) 100%
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 30%,
+    rgba(6, 182, 212, 0.07) 0%,
+    rgba(59, 130, 246, 0.05) 50%,
+    rgba(139, 92, 246, 0.04) 100%
   );
-  filter: blur(40px);
-  opacity: 0.6;
+  filter: blur(60px);
+  opacity: 0.8;
   animation: subtle-gradient-shift 22s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
@@ -40,13 +40,13 @@
 
 /* Individual particle animations and sizes */
 
-/* Particle 1 - Pink circle */
+/* Particle 1 - Cyan */
 .particle-1 {
   width: 80px;
   height: 80px;
   top: 10%;
   left: 5%;
-  background: #EC4899;
+  background: #06B6D4;
   animation: float-particle-1 25s infinite ease-in-out;
 }
 
@@ -55,13 +55,13 @@
   50% { transform: translateY(-60px) translateX(40px); opacity: 0.25; }
 }
 
-/* Particle 2 - Purple circle */
+/* Particle 2 - Blue */
 .particle-2 {
   width: 120px;
   height: 120px;
   top: 20%;
   left: 15%;
-  background: #7C3AED;
+  background: #3B82F6;
   animation: float-particle-2 27s infinite ease-in-out;
   animation-delay: 2s;
 }
@@ -71,13 +71,13 @@
   50% { transform: translateY(-50px) translateX(-30px); opacity: 0.2; }
 }
 
-/* Particle 3 - Blue circle */
+/* Particle 3 - Violet */
 .particle-3 {
   width: 100px;
   height: 100px;
   top: 5%;
   right: 10%;
-  background: #3B82F6;
+  background: #8B5CF6;
   animation: float-particle-3 24s infinite ease-in-out;
   animation-delay: 1s;
 }
@@ -87,13 +87,13 @@
   50% { transform: translateY(-70px) translateX(50px); opacity: 0.22; }
 }
 
-/* Particle 4 - Pink circle */
+/* Particle 4 - Cyan */
 .particle-4 {
   width: 90px;
   height: 90px;
   top: 30%;
   right: 5%;
-  background: #EC4899;
+  background: #06B6D4;
   animation: float-particle-4 26s infinite ease-in-out;
   animation-delay: 3s;
 }
@@ -103,13 +103,13 @@
   50% { transform: translateY(-40px) translateX(-60px); opacity: 0.23; }
 }
 
-/* Particle 5 - Purple circle */
+/* Particle 5 - Blue */
 .particle-5 {
   width: 110px;
   height: 110px;
   bottom: 15%;
   left: 10%;
-  background: #7C3AED;
+  background: #3B82F6;
   animation: float-particle-5 28s infinite ease-in-out;
   animation-delay: 4s;
 }
@@ -119,13 +119,13 @@
   50% { transform: translateY(60px) translateX(40px); opacity: 0.24; }
 }
 
-/* Particle 6 - Blue circle */
+/* Particle 6 - Violet */
 .particle-6 {
   width: 75px;
   height: 75px;
   bottom: 10%;
   right: 8%;
-  background: #3B82F6;
+  background: #8B5CF6;
   animation: float-particle-6 25s infinite ease-in-out;
   animation-delay: 2.5s;
 }
@@ -135,13 +135,13 @@
   50% { transform: translateY(50px) translateX(-50px); opacity: 0.21; }
 }
 
-/* Particle 7 - Pink circle */
+/* Particle 7 - Cyan */
 .particle-7 {
   width: 95px;
   height: 95px;
   top: 50%;
   left: 2%;
-  background: #EC4899;
+  background: #06B6D4;
   animation: float-particle-7 26s infinite ease-in-out;
   animation-delay: 1.5s;
 }
@@ -151,13 +151,13 @@
   50% { transform: translateY(35px) translateX(45px); opacity: 0.22; }
 }
 
-/* Particle 8 - Purple circle */
+/* Particle 8 - Blue */
 .particle-8 {
   width: 85px;
   height: 85px;
   top: 45%;
   right: 12%;
-  background: #7C3AED;
+  background: #3B82F6;
   animation: float-particle-8 27s infinite ease-in-out;
   animation-delay: 3.5s;
 }
@@ -167,13 +167,13 @@
   50% { transform: translateY(-45px) translateX(55px); opacity: 0.23; }
 }
 
-/* Particle 9 - Blue circle */
+/* Particle 9 - Violet */
 .particle-9 {
   width: 105px;
   height: 105px;
   bottom: 25%;
   left: 20%;
-  background: #3B82F6;
+  background: #8B5CF6;
   animation: float-particle-9 25s infinite ease-in-out;
   animation-delay: 0.5s;
 }
@@ -183,13 +183,13 @@
   50% { transform: translateY(40px) translateX(-35px); opacity: 0.2; }
 }
 
-/* Particle 10 - Pink circle */
+/* Particle 10 - Cyan */
 .particle-10 {
   width: 70px;
   height: 70px;
   top: 75%;
   right: 15%;
-  background: #EC4899;
+  background: #06B6D4;
   animation: float-particle-10 26s infinite ease-in-out;
   animation-delay: 2.8s;
 }
@@ -199,13 +199,13 @@
   50% { transform: translateY(-55px) translateX(-45px); opacity: 0.24; }
 }
 
-/* Particle 11 - Purple circle */
+/* Particle 11 - Blue */
 .particle-11 {
   width: 115px;
   height: 115px;
   top: 65%;
   left: 80%;
-  background: #7C3AED;
+  background: #3B82F6;
   animation: float-particle-11 27s infinite ease-in-out;
   animation-delay: 0.8s;
 }
@@ -215,13 +215,13 @@
   50% { transform: translateY(50px) translateX(60px); opacity: 0.22; }
 }
 
-/* Particle 12 - Blue circle */
+/* Particle 12 - Violet */
 .particle-12 {
   width: 88px;
   height: 88px;
   bottom: 5%;
   left: 60%;
-  background: #3B82F6;
+  background: #8B5CF6;
   animation: float-particle-12 24s infinite ease-in-out;
   animation-delay: 1.2s;
 }

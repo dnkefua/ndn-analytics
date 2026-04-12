@@ -138,12 +138,12 @@ export default function Hero() {
         }}>
           {TESTIMONIALS.map(t => (
             <div key={t.company} style={{
-              background: '#FFFFFF',
-              border: '1px solid rgba(15, 23, 42, 0.08)',
+              background: 'rgba(7, 24, 41, 0.85)',
+              border: '1px solid rgba(6, 182, 212, 0.15)',
               borderRadius: 16,
               padding: 24,
-              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.06)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              backdropFilter: 'blur(8px)',
+              transition: 'transform 0.2s ease, border-color 0.2s ease',
             }}>
               <p style={{
                 fontSize: '0.9rem',
@@ -159,7 +159,7 @@ export default function Hero() {
                   width: 36,
                   height: 36,
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #EC4899, #7C3AED, #3B82F6)',
+                  background: 'var(--gradient-primary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

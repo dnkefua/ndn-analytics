@@ -35,18 +35,18 @@
 
 .btn-ghost {
   background: transparent;
-  color: var(--primary-purple);
-  border: 2px solid var(--primary-purple);
+  color: var(--brand-cyan);
+  border: 2px solid var(--brand-cyan);
 }
 
 .btn-ghost:hover {
-  background: rgba(124, 58, 237, 0.08);
-  border-color: var(--primary-purple);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.12);
+  background: rgba(6, 182, 212, 0.08);
+  border-color: var(--brand-cyan);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.12);
 }
 
 .btn-ghost:active {
-  background: rgba(124, 58, 237, 0.15);
+  background: rgba(6, 182, 212, 0.15);
 }
 
 .card {
