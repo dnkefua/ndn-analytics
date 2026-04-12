@@ -13,6 +13,7 @@ const COMPANY_LINKS = [
   ['Contact', '/contact'],
   ['Blog', '/blog'],
   ['Privacy Policy', '/privacy'],
+  ['Fine-Tuning App ↗', '/fine-tuning'],
 ];
 
 export default function Footer() {

@@ -10,6 +10,7 @@ const SOURCE_TO_SEQUENCE: Record<LeadSource, string | null> = {
   newsletter_footer: 'lead_nurture',
   newsletter_blog: 'lead_nurture',
   exit_intent: 'content_upgrade',
+  fine_tuning_teaser: 'lead_nurture',
 };
 
 export async function triggerSequenceForLead(

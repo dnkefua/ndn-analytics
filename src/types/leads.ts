@@ -7,7 +7,8 @@ export type LeadSource =
   | 'content_upgrade'
   | 'aria_chat'
   | 'contact_form'
-  | 'exit_intent';
+  | 'exit_intent'
+  | 'fine_tuning_teaser';
 
 export type LeadStatus = 'new' | 'nurturing' | 'qualified' | 'contacted' | 'customer';
 
