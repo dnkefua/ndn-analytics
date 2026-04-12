@@ -4,6 +4,7 @@ import type { Timestamp } from 'firebase/firestore';
 export type AffiliateProgram =
   | 'anthropic'
   | 'openai'
+  | 'gcp'
   | 'vercel'
   | 'supabase'
   | 'retool'
@@ -78,6 +79,7 @@ export const CATEGORY_LABELS: Record<AIProductCategory, string> = {
 export const AFFILIATE_PROGRAM_LABELS: Record<AffiliateProgram, string> = {
   anthropic: 'Anthropic Partner',
   openai: 'OpenAI Affiliate',
+  gcp: 'CJ Affiliate (GCP)',
   vercel: 'Vercel Partner',
   supabase: 'Supabase Affiliate',
   retool: 'Retool Partner',

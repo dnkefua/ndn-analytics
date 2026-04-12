@@ -123,7 +123,7 @@ export default AFFILIATE_CODES;
 export function buildAffiliateUrl(
   baseAffiliateUrl: string,
   programKey: keyof typeof AFFILIATE_CODES | string,
-  fallbackUtm: string,
+  _fallbackUtm: string,
 ): string {
   const entry = AFFILIATE_CODES[programKey];
 
