@@ -110,7 +110,7 @@ export default function ContactSection() {
               </div>
               <div className="contact-detail">
                 <span className="contact-detail-label">Integration Partners</span>
-                <span className="contact-detail-value">SAP · Salesforce · Snowflake · AWS</span>
+                <span className="contact-detail-value">Google Cloud · Ethereum · Solana · SAP · Salesforce · Snowflake</span>
               </div>
             </div>
             <div className="reveal stagger-4" style={{ marginTop: 24 }}>
