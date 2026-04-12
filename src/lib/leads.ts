@@ -6,14 +6,16 @@ import {
   getDocs,
   setDoc,
   updateDoc,
+  deleteDoc,
   query,
   where,
+  orderBy,
   serverTimestamp,
   addDoc,
   Timestamp,
 } from 'firebase/firestore';
 import { db, isFirebaseEnabled } from './firebase';
-import type { Lead, LeadSource, EngagementType } from '../types/leads';
+import type { Lead, LeadSource, LeadStatus, EngagementType, Engagement } from '../types/leads';
 
 const LEADS_COLLECTION = 'leads';
 const ENGAGEMENTS_SUBCOLLECTION = 'engagements';
@@ -179,3 +181,36 @@ function getEngagementScore(type: EngagementType): number {
 
 // Check if Firebase is available (for graceful degradation)
 export { isFirebaseEnabled };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Admin CRUD — requires authenticated user (firestore rules enforce auth)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Get all leads (admin)
+export async function getAllLeads(): Promise<Lead[]> {
+  if (!db) return [];
+  const q = query(collection(db, LEADS_COLLECTION), orderBy('createdAt', 'desc'));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as Lead);
+}
+
+// Update lead status (admin)
+export async function updateLeadStatus(leadId: string, status: LeadStatus): Promise<void> {
+  if (!db) return;
+  const leadRef = doc(db, LEADS_COLLECTION, leadId);
+  await updateDoc(leadRef, { status, updatedAt: serverTimestamp() });
+}
+
+// Delete lead (admin)
+export async function deleteLead(leadId: string): Promise<void> {
+  if (!db) return;
+  await deleteDoc(doc(db, LEADS_COLLECTION, leadId));
+}
+
+// Get engagements for a lead (admin)
+export async function getLeadEngagements(leadId: string): Promise<Engagement[]> {
+  if (!db) return [];
+  const ref = collection(db, LEADS_COLLECTION, leadId, ENGAGEMENTS_SUBCOLLECTION);
+  const snapshot = await getDocs(ref);
+  return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as Engagement);
+}

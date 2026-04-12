@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import { Suspense, lazy, useEffect } from 'react';
+import * as Sentry from '@sentry/react';
 import CustomCursor from './components/layout/CustomCursor';
 import FloatingParticlesBackground from './components/background/FloatingParticlesBackground';
 import GridOverlay from './components/layout/GridOverlay';
@@ -29,6 +30,7 @@ const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess
 const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
 const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
 const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'));
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
 
 function PageTracker() {
   const location = useLocation();
@@ -89,6 +91,7 @@ function AnimatedRoutes() {
             <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/fine-tuning" element={<FineTuningTeaser />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </Suspense>
       </motion.div>
@@ -98,20 +101,22 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <PageTracker />
-        <CustomCursor />
-        <FloatingParticlesBackground />
-        <GridOverlay />
-        <SpeedHUD />
-        <Navbar />
-        <main id="main-content">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <AriaFAB />
-      </BrowserRouter>
-    </HelmetProvider>
+    <Sentry.ErrorBoundary fallback={<div style={{ padding: '2rem', textAlign: 'center', color: '#94a3b8' }}>Something went wrong. Please refresh the page.</div>}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <PageTracker />
+          <CustomCursor />
+          <FloatingParticlesBackground />
+          <GridOverlay />
+          <SpeedHUD />
+          <Navbar />
+          <main id="main-content">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+          <AriaFAB />
+        </BrowserRouter>
+      </HelmetProvider>
+    </Sentry.ErrorBoundary>
   );
 }

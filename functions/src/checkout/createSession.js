@@ -18,8 +18,13 @@
 import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { defineSecret } from 'firebase-functions/params';
 import Stripe from 'stripe';
+import { checkRateLimit } from '../utils/rateLimit.js';
 
 const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
+
+// Rate limit: 5 checkout creations per minute per IP
+const CHECKOUT_RATE_LIMIT = 5;
+const CHECKOUT_WINDOW_MS  = 60_000;
 
 /** Products available for purchase */
 const PRODUCTS = {
@@ -43,6 +48,13 @@ const PRODUCTS = {
 export const createCheckoutSession = onCall(
   { secrets: [stripeSecretKey] },
   async (request) => {
+    // Rate limiting by IP
+    const ip = request.rawRequest?.ip || 'unknown';
+    const { limited } = checkRateLimit(`checkout:${ip}`, CHECKOUT_RATE_LIMIT, CHECKOUT_WINDOW_MS);
+    if (limited) {
+      throw new HttpsError('resource-exhausted', 'Too many requests. Please try again shortly.');
+    }
+
     const { productId = 'ai-readiness-assessment', customerEmail } = request.data ?? {};
 
     const product = PRODUCTS[productId];

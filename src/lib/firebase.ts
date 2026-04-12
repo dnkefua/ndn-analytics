@@ -1,6 +1,7 @@
 // Firebase initialization for lead capture and tracking
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,5 +18,6 @@ const hasConfig = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
 
 export const app = hasConfig ? initializeApp(firebaseConfig) : null;
 export const db = app ? getFirestore(app) : null;
+export const auth = app ? getAuth(app) : null;
 
 export const isFirebaseEnabled = (): boolean => Boolean(db);

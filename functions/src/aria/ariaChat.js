@@ -10,6 +10,7 @@
 
 import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { defineSecret } from 'firebase-functions/params';
+import { checkRateLimit } from '../utils/rateLimit.js';
 
 const anthropicApiKey = defineSecret('ANTHROPIC_API_KEY');
 
@@ -17,6 +18,10 @@ const ANTHROPIC_URL   = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_MODEL = 'claude-haiku-4-5';
 const MAX_TOKENS      = 1024;
 const MAX_HISTORY     = 20; // cap context window to avoid abuse
+
+// Rate limit: 20 requests per minute per IP
+const ARIA_RATE_LIMIT = 20;
+const ARIA_WINDOW_MS  = 60_000;
 
 const SYSTEM_PROMPT = `You are ARIA — the AI intelligence agent for NDN Analytics, an enterprise AI and blockchain intelligence platform. You are embedded in the NDN Analytics website.
 
@@ -79,6 +84,13 @@ Do NOT ask for email directly — the chat interface will handle that separately
 export const ariaChat = onCall(
   { secrets: [anthropicApiKey], timeoutSeconds: 30 },
   async (request) => {
+    // Rate limiting by IP
+    const ip = request.rawRequest?.ip || 'unknown';
+    const { limited } = checkRateLimit(`aria:${ip}`, ARIA_RATE_LIMIT, ARIA_WINDOW_MS);
+    if (limited) {
+      throw new HttpsError('resource-exhausted', 'Too many requests. Please wait a moment.');
+    }
+
     const apiKey = anthropicApiKey.value();
     if (!apiKey) {
       throw new HttpsError('failed-precondition', 'ANTHROPIC_API_KEY is not configured.');

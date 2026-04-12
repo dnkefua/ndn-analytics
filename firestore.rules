@@ -9,6 +9,8 @@ service cloud.firestore {
       allow update: if request.resource.data.email == resource.data.email;
       // Read requires authentication (admin only)
       allow read: if request.auth != null;
+      // Delete requires authentication (admin only)
+      allow delete: if request.auth != null;
 
       // Engagements subcollection
       match /engagements/{engagementId} {

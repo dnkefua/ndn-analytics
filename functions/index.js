@@ -3,6 +3,17 @@ import express from 'express';
 import { join, dirname } from 'node:path';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL, fileURLToPath } from 'node:url';
+import * as Sentry from '@sentry/node';
+
+// Initialize Sentry for server-side error tracking
+const sentryDsn = process.env.SENTRY_DSN;
+if (sentryDsn) {
+  Sentry.init({
+    dsn: sentryDsn,
+    tracesSampleRate: 0.1,
+    environment: process.env.NODE_ENV || 'production',
+  });
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SSR Function (existing)
