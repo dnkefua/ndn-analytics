@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeFi Implementation Playbook | NDN Analytics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1E293B;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      background: #FFFFFF;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #7C3AED;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: #7C3AED;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #64748B;
+    }
+
+    .intro {
+      background: #F8FAFC;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      border-left: 4px solid #7C3AED;
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: #475569;
+    }
+
+    .phase {
+      margin-bottom: 40px;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);
+      border-radius: 10px;
+      color: white;
+    }
+
+    .phase-number {
+      font-size: 28px;
+      font-weight: 700;
+      opacity: 0.8;
+      min-width: 40px;
+    }
+
+    .phase-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+      color: white;
+    }
+
+    .phase-header .duration {
+      margin-left: auto;
+      font-size: 13px;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+
+    .steps {
+      list-style: none;
+    }
+
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .step-icon {
+      width: 24px;
+      height: 24px;
+      background: #EDE9FE;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 13px;
+      color: #7C3AED;
+      font-weight: 700;
+    }
+
+    .steps li strong {
+      color: #0F172A;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .steps li p {
+      font-size: 14px;
+      color: #64748B;
+      margin: 0;
+    }
+
+    .deliverable {
+      display: inline-block;
+      background: #F0FDF4;
+      color: #16A34A;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-top: 4px;
+    }
+
+    .tech-stack {
+      background: #0F172A;
+      color: #E2E8F0;
+      padding: 24px 28px;
+      border-radius: 12px;
+      margin: 32px 0;
+    }
+
+    .tech-stack h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #7C3AED;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tech-item strong {
+      color: #94A3B8;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .tech-item span {
+      font-size: 14px;
+      color: #E2E8F0;
+    }
+
+    .risk-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    .risk-table th {
+      background: #F1F5F9;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: #475569;
+      border-bottom: 2px solid #E2E8F0;
+    }
+
+    .risk-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #E2E8F0;
+      color: #475569;
+      vertical-align: top;
+    }
+
+    .risk-high { color: #DC2626; font-weight: 600; }
+    .risk-med  { color: #D97706; font-weight: 600; }
+    .risk-low  { color: #16A34A; font-weight: 600; }
+
+    .cta {
+      text-align: center;
+      padding: 32px;
+      background: #F8FAFC;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    .cta h3 {
+      font-size: 20px;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #64748B;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #7C3AED;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #E2E8F0;
+      color: #94A3B8;
+      font-size: 13px;
+    }
+
+    @media print {
+      body { padding: 24px; }
+      .cta a { background: #7C3AED !important; -webkit-print-color-adjust: exact; }
+      .phase-header { -webkit-print-color-adjust: exact; }
+      .tech-stack { -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">NDN ANALYTICS</div>
+    <h1>DeFi Implementation Playbook</h1>
+    <p class="subtitle">Step-by-Step Guide to Deploying Decentralized Finance for Community Savings</p>
+  </div>
+
+  <div class="intro">
+    <p>This playbook guides community finance organizations, cooperatives, and fintechs through a structured 4-phase implementation of decentralized finance (DeFi) solutions. Built around the Njangi protocol — NDN Analytics' Web3 community savings platform digitizing rotating savings cooperatives (ROSCAs).</p>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-number">01</span>
+      <h2>Discovery &amp; Design</h2>
+      <span class="duration">Weeks 1–3</span>
+    </div>
+    <ul class="steps">
+      <li>
+        <div class="step-icon">A</div>
+        <div>
+          <strong>Map your savings circle structure</strong>
+          <p>Document cycle length, contribution amounts, payout rotation rules, and member trust mechanisms for your ROSCA or savings group.</p>
+          <span class="deliverable">Deliverable: Circle Configuration Blueprint</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">B</div>
+        <div>
+          <strong>Identify member onboarding requirements</strong>
+          <p>Determine KYC/KYB needs, wallet infrastructure (self-custody vs. custodial), and mobile/SMS access for low-bandwidth participants.</p>
+          <span class="deliverable">Deliverable: Member Onboarding Spec</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">C</div>
+        <div>
+          <strong>Select stablecoin and blockchain network</strong>
+          <p>Evaluate USDC, USDT, or local stablecoin on Ethereum mainnet vs. Polygon for gas cost optimization.</p>
+          <span class="deliverable">Deliverable: Token &amp; Network Decision Matrix</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">D</div>
+        <div>
+          <strong>Define governance and dispute resolution</strong>
+          <p>On-chain voting parameters, emergency pause mechanisms, and arbitration process for missed contributions.</p>
+          <span class="deliverable">Deliverable: Governance Framework Document</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-number">02</span>
+      <h2>Smart Contract Development</h2>
+      <span class="duration">Weeks 4–8</span>
+    </div>
+    <ul class="steps">
+      <li>
+        <div class="step-icon">A</div>
+        <div>
+          <strong>Deploy core savings pool contract</strong>
+          <p>ERC-20 compatible contract managing member deposits, payout rotation queue, and cycle management. Built with OpenZeppelin security primitives.</p>
+          <span class="deliverable">Deliverable: Audited Savings Pool Contract</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">B</div>
+        <div>
+          <strong>Implement trust scoring module</strong>
+          <p>On-chain reputation system tracking contribution history, on-time payments, and circle tenure for future credit scoring.</p>
+          <span class="deliverable">Deliverable: Trust Score Contract</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">C</div>
+        <div>
+          <strong>Integrate Chainlink automation for payouts</strong>
+          <p>Automate scheduled payout distributions using Chainlink Automation to eliminate manual intervention and human error.</p>
+          <span class="deliverable">Deliverable: Automated Payout System</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">D</div>
+        <div>
+          <strong>Smart contract audit</strong>
+          <p>Third-party security audit before mainnet deployment. Minimum Slither static analysis + manual review of access controls.</p>
+          <span class="deliverable">Deliverable: Audit Report</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-number">03</span>
+      <h2>Member Onboarding &amp; Pilot</h2>
+      <span class="duration">Weeks 9–14</span>
+    </div>
+    <ul class="steps">
+      <li>
+        <div class="step-icon">A</div>
+        <div>
+          <strong>Deploy to testnet with pilot group</strong>
+          <p>Run 1 full savings cycle on Polygon Mumbai or Sepolia testnet with 10–20 real members using test tokens to validate UX and logic.</p>
+          <span class="deliverable">Deliverable: Pilot Completion Report</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">B</div>
+        <div>
+          <strong>Wallet setup and member training</strong>
+          <p>Guide members through wallet creation, stablecoin acquisition, and contribution workflow. Provide translated guides for local languages.</p>
+          <span class="deliverable">Deliverable: Member Training Kit</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">C</div>
+        <div>
+          <strong>Mobile interface launch</strong>
+          <p>Deploy progressive web app (PWA) with SMS fallback for feature phone users. Dashboard shows cycle status, payout queue, and trust score.</p>
+          <span class="deliverable">Deliverable: Live PWA</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-number">04</span>
+      <h2>Mainnet Launch &amp; Scale</h2>
+      <span class="duration">Weeks 15–20</span>
+    </div>
+    <ul class="steps">
+      <li>
+        <div class="step-icon">A</div>
+        <div>
+          <strong>Mainnet contract deployment</strong>
+          <p>Deploy audited contracts to Polygon mainnet. Configure multi-sig admin wallet (3-of-5 threshold) for protocol upgrades and emergency actions.</p>
+          <span class="deliverable">Deliverable: Live Mainnet Contracts</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">B</div>
+        <div>
+          <strong>Monitoring &amp; alerting setup</strong>
+          <p>Configure The Graph subgraph for event indexing, Tenderly alerts for failed transactions, and Dune Analytics dashboard for circle health metrics.</p>
+          <span class="deliverable">Deliverable: Operations Dashboard</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">C</div>
+        <div>
+          <strong>Community expansion rollout</strong>
+          <p>Onboard additional circles using templated deployment scripts. Each new circle deploys its own contract instance with configurable parameters.</p>
+          <span class="deliverable">Deliverable: Scale Playbook</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tech-stack">
+    <h3>RECOMMENDED TECHNOLOGY STACK</h3>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <strong>Smart Contracts</strong>
+        <span>Solidity 0.8+, OpenZeppelin, Hardhat</span>
+      </div>
+      <div class="tech-item">
+        <strong>Blockchain Network</strong>
+        <span>Polygon (low gas) / Ethereum mainnet</span>
+      </div>
+      <div class="tech-item">
+        <strong>Automation</strong>
+        <span>Chainlink Automation &amp; Price Feeds</span>
+      </div>
+      <div class="tech-item">
+        <strong>Indexing</strong>
+        <span>The Graph Protocol subgraphs</span>
+      </div>
+      <div class="tech-item">
+        <strong>Frontend</strong>
+        <span>React PWA, Ethers.js v6, WalletConnect</span>
+      </div>
+      <div class="tech-item">
+        <strong>Stablecoin</strong>
+        <span>USDC (Circle) or local stablecoin</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="font-size:18px;font-weight:700;color:#0F172A;margin:32px 0 16px 0;">Key Risk Mitigation</h2>
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Severity</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Smart contract exploit</td>
+        <td class="risk-high">High</td>
+        <td>Third-party audit + bug bounty program</td>
+      </tr>
+      <tr>
+        <td>Member missed contributions</td>
+        <td class="risk-med">Medium</td>
+        <td>On-chain grace period + social trust scoring</td>
+      </tr>
+      <tr>
+        <td>Gas price spikes</td>
+        <td class="risk-med">Medium</td>
+        <td>Deploy on Polygon; batch transactions</td>
+      </tr>
+      <tr>
+        <td>Regulatory uncertainty</td>
+        <td class="risk-med">Medium</td>
+        <td>Legal opinion per jurisdiction before launch</td>
+      </tr>
+      <tr>
+        <td>Low member digital literacy</td>
+        <td class="risk-low">Low</td>
+        <td>SMS fallback + local language UI</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cta">
+    <h3>Ready to Launch Your DeFi Savings Circle?</h3>
+    <p>Njangi by NDN Analytics provides a fully audited, production-ready DeFi protocol for community savings organizations. Deployment in as little as 6 weeks.</p>
+    <a href="https://ndn-analytics.web.app/contact?utm_source=pdf&utm_medium=lead_magnet&utm_campaign=defi_playbook">Book a Protocol Demo →</a>
+  </div>
+
+  <div class="footer">
+    © 2026 NDN Analytics | ndn-analytics.web.app | AI &amp; Blockchain Solutions
+  </div>
+</body>
+</html>

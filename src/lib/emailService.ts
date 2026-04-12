@@ -1,5 +1,12 @@
 // Email service using Resend for transactional emails and sequences
 // Docs: https://resend.com/docs
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  Timestamp,
+} from 'firebase/firestore';
+import { db, isFirebaseEnabled } from './firebase';
 
 const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY;
 const FROM_EMAIL = 'NDN Analytics <hello@ndnanalytics.com>';
@@ -293,15 +300,28 @@ export async function triggerEmailSequence(
     await sendTemplatedEmail(email, immediateStep.templateId as keyof typeof EMAIL_TEMPLATES, data);
   }
 
-  // Note: For delayed emails, you'd typically use:
-  // 1. A backend job queue (Bull, Agenda, etc.)
-  // 2. Resend's scheduled sends feature
-  // 3. A serverless function triggered by a scheduler
-  //
-  // For now, we log the scheduled emails for backend implementation
+  // Persist delayed steps to Firestore for the Cloud Function worker to process
   const delayedSteps = sequence.steps.filter(s => s.delayDays > 0);
-  if (delayedSteps.length > 0) {
-    console.log(`Scheduled ${delayedSteps.length} delayed emails for ${email}:`, delayedSteps);
-    // TODO: Store in Firestore for backend worker to process
+  if (delayedSteps.length > 0 && isFirebaseEnabled() && db) {
+    const scheduledEmailsRef = collection(db, 'scheduledEmails');
+    const now = Date.now();
+
+    const writes = delayedSteps.map(step => {
+      const sendAt = Timestamp.fromMillis(now + step.delayDays * 24 * 60 * 60 * 1000);
+      return addDoc(scheduledEmailsRef, {
+        to: email,
+        templateId: step.templateId,
+        sequenceId,
+        delayDays: step.delayDays,
+        data,
+        sendAt,
+        status: 'pending',
+        createdAt: serverTimestamp(),
+      });
+    });
+
+    await Promise.all(writes).catch(err =>
+      console.error('Failed to schedule delayed emails:', err)
+    );
   }
 }

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare AI Readiness Assessment | NDN Analytics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1E293B;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      background: #FFFFFF;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #7C3AED;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: #7C3AED;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #64748B;
+    }
+
+    .intro {
+      background: #F8FAFC;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      border-left: 4px solid #7C3AED;
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: #475569;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 32px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2 .number {
+      background: #7C3AED;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #CBD5E1;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checklist li strong {
+      color: #0F172A;
+    }
+
+    .checklist li span {
+      color: #64748B;
+      font-size: 14px;
+    }
+
+    .compliance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EFF6FF;
+      color: #2563EB;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+    }
+
+    .score-section {
+      background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);
+      color: white;
+      padding: 32px;
+      border-radius: 12px;
+      margin: 40px 0;
+    }
+
+    .score-section h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .score-item {
+      background: rgba(255,255,255,0.15);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .score-item strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .score-item span {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .warning-box {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-left: 4px solid #F97316;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: #7C3509;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 32px;
+      background: #F8FAFC;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    .cta h3 {
+      font-size: 20px;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #64748B;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #7C3AED;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #E2E8F0;
+      color: #94A3B8;
+      font-size: 13px;
+    }
+
+    @media print {
+      body { padding: 24px; }
+      .cta a { background: #7C3AED !important; -webkit-print-color-adjust: exact; }
+      .score-section { -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">NDN ANALYTICS</div>
+    <h1>Healthcare AI Readiness Assessment</h1>
+    <p class="subtitle">Self-Assessment Tool for Hospital AI Implementation Readiness</p>
+  </div>
+
+  <div class="intro">
+    <p>Use this assessment to determine your hospital or health network's readiness to deploy AI-powered care prediction systems, including NDN Care Predict. Score each item honestly — results guide your implementation roadmap, not a pass/fail gate.</p>
+  </div>
+
+  <div class="warning-box">
+    <strong>Compliance Note:</strong> Healthcare AI deployments must meet HIPAA, HL7/FHIR, and applicable state regulations. Items marked with compliance requirements are non-negotiable prerequisites.
+  </div>
+
+  <h2><span class="number">1</span> Data Governance &amp; Compliance</h2>
+  <ul class="checklist">
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>HIPAA Business Associate Agreement (BAA) process in place <span class="compliance-badge">HIPAA Required</span></strong><br><span>Formal process to execute BAAs with AI vendors before data sharing</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Patient data de-identification capability <span class="compliance-badge">HIPAA Required</span></strong><br><span>Ability to de-identify PHI for model training per Safe Harbor or Expert Determination methods</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Data governance committee or officer exists</strong><br><span>Designated owner for healthcare data policies and AI data use approvals</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Audit logging for data access</strong><br><span>Full audit trails on who accessed patient data and when</span></div>
+    </li>
+  </ul>
+
+  <h2><span class="number">2</span> EHR &amp; Interoperability</h2>
+  <ul class="checklist">
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>EHR system supports HL7/FHIR APIs <span class="compliance-badge">Integration</span></strong><br><span>Epic, Cerner, Meditech, or other FHIR R4-compatible system</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Historical admission/discharge/transfer (ADT) data accessible</strong><br><span>Minimum 3 years of patient encounter data for model training</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Structured clinical data available</strong><br><span>Lab results, vitals, diagnoses (ICD-10), medications in structured format</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>IT team can expose sandbox API environment</strong><br><span>Safe test environment for integration validation without touching live data</span></div>
+    </li>
+  </ul>
+
+  <h2><span class="number">3</span> Clinical &amp; Operational Readiness</h2>
+  <ul class="checklist">
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Clinical champion identified</strong><br><span>CMO, CNO, or department head committed to AI adoption</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Readmission is a tracked quality metric</strong><br><span>Hospital tracks 30-day all-cause or condition-specific readmission rates</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Care coordination team in place</strong><br><span>Discharge planning nurses or case managers who will act on AI alerts</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Workflow integration plan defined</strong><br><span>Clear plan for how AI risk scores surface in EHR or care team dashboards</span></div>
+    </li>
+  </ul>
+
+  <h2><span class="number">4</span> Technology &amp; Infrastructure</h2>
+  <ul class="checklist">
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Cloud or on-prem compute environment available</strong><br><span>GCP, AWS, Azure — or on-prem servers sized for ML workloads</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Network security meets healthcare standards</strong><br><span>Encrypted data in transit (TLS 1.2+) and at rest (AES-256)</span></div>
+    </li>
+    <li>
+      <div class="checkbox"></div>
+      <div><strong>Vendor security review process established</strong><br><span>IT and legal can conduct security assessments for AI software vendors</span></div>
+    </li>
+  </ul>
+
+  <div class="score-section">
+    <h3>Calculate Your Readiness Score</h3>
+    <div class="score-grid">
+      <div class="score-item">
+        <strong>0–5</strong>
+        <span>Pre-Foundation<br>Address compliance &amp; data governance first</span>
+      </div>
+      <div class="score-item">
+        <strong>6–10</strong>
+        <span>Pilot Ready<br>Begin with limited department pilot</span>
+      </div>
+      <div class="score-item">
+        <strong>11–15</strong>
+        <span>Enterprise Ready<br>Full system-wide deployment possible</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Ready to Reduce Readmissions with AI?</h3>
+    <p>NDN Care Predict identifies high-risk patients 48–72 hours before discharge with HIPAA-compliant, HL7/FHIR-native integration for Epic and Cerner.</p>
+    <a href="https://ndn-analytics.web.app/contact?utm_source=pdf&utm_medium=lead_magnet&utm_campaign=healthcare_assessment">Request a Clinical Demo →</a>
+  </div>
+
+  <div class="footer">
+    © 2026 NDN Analytics | ndn-analytics.web.app | AI &amp; Blockchain Solutions
+  </div>
+</body>
+</html>

@@ -64,5 +64,8 @@ export const ssr = onRequest(app);
 // Daily content generator - runs at 6 AM UTC
 export { dailyContentGenerator } from './src/scheduled/dailyContentGenerator.js';
 
+// Email queue processor - runs every hour, sends delayed sequence emails
+export { emailQueueProcessor } from './src/scheduled/emailQueueProcessor.js';
+
 // Affiliate redirect handler - /go/:productId
 export { affiliateRedirect } from './src/affiliate/redirectHandler.js';
