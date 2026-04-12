@@ -133,16 +133,16 @@ export default function PricingSection() {
             {TIERS.map(tier => (
               <div key={tier.name} style={{
                 background: tier.highlight
-                  ? 'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.08))'
-                  : '#FFFFFF',
+                  ? 'linear-gradient(135deg, rgba(6,182,212,0.10), rgba(59,130,246,0.08))'
+                  : 'var(--bg-surface)',
                 border: tier.highlight
-                  ? '2px solid #7C3AED'
-                  : '1px solid #E2E8F0',
+                  ? '2px solid var(--brand-cyan)'
+                  : '1px solid var(--border-subtle)',
                 borderRadius: 16,
                 padding: 36,
                 position: 'relative',
                 transition: 'transform 0.3s, box-shadow 0.3s',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                boxShadow: tier.highlight ? '0 4px 32px rgba(6,182,212,0.12)' : 'none',
               }}
                 onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseOut={e => { e.currentTarget.style.transform = 'none'; }}>
@@ -152,8 +152,8 @@ export default function PricingSection() {
                     top: -14,
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    background: '#7C3AED',
-                    color: '#FFFFFF',
+                    background: 'var(--brand-cyan)',
+                    color: '#020B18',
                     padding: '4px 16px',
                     borderRadius: 20,
                     fontSize: '0.7rem',
@@ -170,7 +170,7 @@ export default function PricingSection() {
                   fontSize: '1.4rem',
                   fontWeight: 700,
                   marginBottom: 8,
-                  color: '#0F172A',
+                  color: 'var(--text-primary)',
                 }}>
                   {tier.name}
                 </h3>
@@ -193,13 +193,13 @@ export default function PricingSection() {
                   {tier.features.map(f => (
                     <li key={f} style={{
                       fontSize: '0.85rem',
-                      color: '#475569',
+                      color: 'var(--text-secondary)',
                       marginBottom: 12,
                       display: 'flex',
                       alignItems: 'flex-start',
                       gap: 10,
                     }}>
-                      <span style={{ color: '#7C3AED', flexShrink: 0, marginTop: 2 }}>&#10003;</span>
+                      <span style={{ color: 'var(--brand-cyan)', flexShrink: 0, marginTop: 2 }}>&#10003;</span>
                       {f}
                     </li>
                   ))}
@@ -240,15 +240,15 @@ export default function PricingSection() {
           <div style={{
             marginTop: 80,
             padding: 48,
-            background: '#F8FAFC',
-            border: '1px solid #E2E8F0',
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border-subtle)',
             borderRadius: 16,
             textAlign: 'center',
           }}>
-            <h3 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: '#0F172A' }}>
+            <h3 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: 'var(--text-primary)' }}>
               Need a custom solution?
             </h3>
-            <p style={{ color: '#64748B', marginBottom: 28, maxWidth: 500, margin: '0 auto 28px', lineHeight: 1.7 }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 28, maxWidth: 500, margin: '0 auto 28px', lineHeight: 1.7 }}>
               Every enterprise has unique requirements. Let's discuss your stack, scale, and compliance needs.
             </p>
             <Link
