@@ -25,6 +25,8 @@ const PricingSection = lazy(() => import('./components/pricing/PricingSection'))
 const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'));
 const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'));
 const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'));
+const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'));
+const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
 
 function PageTracker() {
   const location = useLocation();
@@ -81,6 +83,8 @@ function AnimatedRoutes() {
             <Route path="/ai-tools"    element={<AIToolsSection />} />
             <Route path="/case-studies" element={<CaseStudiesSection />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
           </Routes>
         </Suspense>
       </motion.div>

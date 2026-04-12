@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import SEO from '../seo/SEO';
 import { trackCTAClick, trackDemoBooking } from '../../lib/analytics';
+
+async function startCheckout(): Promise<void> {
+  const functions = getFunctions();
+  const createCheckoutSession = httpsCallable<
+    { productId: string },
+    { url: string }
+  >(functions, 'createCheckoutSession');
+
+  const result = await createCheckoutSession({ productId: 'ai-readiness-assessment' });
+  const { url } = result.data;
+  if (url) window.location.href = url;
+}
 
 const TIERS = [
   {
@@ -72,6 +86,21 @@ const TIERS = [
 ];
 
 export default function PricingSection() {
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  const handleBuyAssessment = async () => {
+    setCheckoutLoading(true);
+    setCheckoutError(null);
+    trackCTAClick('pricing_ai_readiness_assessment', 'pricing_page');
+    try {
+      await startCheckout();
+    } catch (err: unknown) {
+      console.error('Checkout failed:', err);
+      setCheckoutError('Payment system unavailable — please contact us directly at hello@ndn-analytics.com');
+      setCheckoutLoading(false);
+    }
+  };
   return (
     <>
       <SEO
@@ -175,6 +204,23 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
+                {tier.name === 'AI Readiness Assessment' ? (
+                  <div>
+                    <button
+                      className="btn btn-ghost"
+                      style={{ width: '100%', justifyContent: 'center' }}
+                      onClick={handleBuyAssessment}
+                      disabled={checkoutLoading}
+                    >
+                      {checkoutLoading ? 'Redirecting to checkout…' : 'Buy Now — $499 →'}
+                    </button>
+                    {checkoutError && (
+                      <p style={{ marginTop: 10, fontSize: '0.78rem', color: '#DC2626', lineHeight: 1.4 }}>
+                        {checkoutError}
+                      </p>
+                    )}
+                  </div>
+                ) : (
                 <Link
                   to="/contact"
                   className={tier.highlight ? 'btn btn-primary' : 'btn btn-ghost'}
@@ -186,6 +232,7 @@ export default function PricingSection() {
                 >
                   {tier.cta} &rarr;
                 </Link>
+                )}
               </div>
             ))}
           </div>

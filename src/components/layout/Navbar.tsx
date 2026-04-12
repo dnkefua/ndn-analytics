@@ -5,12 +5,12 @@ import useABTest from '../../lib/abtest';
 import './Navbar.css';
 
 const NAV_LINKS = [
-  { label: 'About',      href: '/about'     },
-  { label: 'Products',   href: '/products'  },
-  { label: 'Solutions',  href: '/solutions' },
-  { label: 'AI Tools',   href: '/ai-tools'  },
-  { label: 'Pricing',    href: '/pricing'   },
-  { label: 'Blog',       href: '/blog'      },
+  { label: 'About',        href: '/about'        },
+  { label: 'Products',     href: '/products'     },
+  { label: 'Solutions',    href: '/solutions'    },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Pricing',      href: '/pricing'      },
+  { label: 'Blog',         href: '/blog'         },
 ];
 
 export default function Navbar() {

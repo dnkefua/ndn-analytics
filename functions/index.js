@@ -69,3 +69,6 @@ export { emailQueueProcessor } from './src/scheduled/emailQueueProcessor.js';
 
 // Affiliate redirect handler - /go/:productId
 export { affiliateRedirect } from './src/affiliate/redirectHandler.js';
+
+// Stripe checkout session creator
+export { createCheckoutSession } from './src/checkout/createSession.js';
