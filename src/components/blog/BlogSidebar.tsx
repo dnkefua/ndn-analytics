@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../products/productData';
 import NewsletterSignup from '../newsletter/NewsletterSignup';
-import type { BlogPost } from './blogData';
+import type { UnifiedBlogPost } from '../../types/blogPosts';
 
 interface Props {
-  post: BlogPost;
+  post: UnifiedBlogPost;
 }
 
 export default function BlogSidebar({ post }: Props) {

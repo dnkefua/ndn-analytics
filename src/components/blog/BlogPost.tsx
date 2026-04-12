@@ -129,12 +129,12 @@ export default function BlogPost() {
               <ServiceCTA
                 serviceCTA={post.ndnServiceCTA}
                 relatedProducts={post.relatedProducts}
-                source={(post.source === 'ai_generated' ? 'ai_generated' : 'manual') as any}
+                source={post.source === 'ai_generated' ? 'ai_generated' : 'manual'}
               />
             </div>
 
             {/* Sidebar */}
-            <BlogSidebar post={post as any} />
+            <BlogSidebar post={post} />
           </div>
         </div>
         <style>{`
