@@ -12,6 +12,7 @@ const COMPANY_LINKS = [
   ['Technology', '/tech'],
   ['Contact', '/contact'],
   ['Blog', '/blog'],
+  ['Privacy Policy', '/privacy'],
 ];
 
 export default function Footer() {

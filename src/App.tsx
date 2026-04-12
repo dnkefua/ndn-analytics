@@ -27,6 +27,7 @@ const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudi
 const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'));
 const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'));
 const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
+const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
 
 function PageTracker() {
   const location = useLocation();
@@ -85,6 +86,7 @@ function AnimatedRoutes() {
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
         </Suspense>
       </motion.div>
