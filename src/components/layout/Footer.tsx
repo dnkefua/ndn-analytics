@@ -29,7 +29,11 @@ export default function Footer() {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 40, marginBottom: 48 }}>
           <div>
-            <div style={{ fontFamily: "'Syne Variable', 'Syne', sans-serif", fontSize: '1rem', fontWeight: 900, color: 'var(--brand-cyan)', marginBottom: 12 }}>NDN ANALYTICS</div>
+            <img
+              src="/logo.jpg"
+              alt="NDN Analytics"
+              style={{ height: 60, width: 'auto', borderRadius: 10, marginBottom: 12, display: 'block' }}
+            />
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
               Enterprise AI & Blockchain intelligence for the next era of business.
             </p>

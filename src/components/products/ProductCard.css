@@ -1,6 +1,6 @@
 .product-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 32px;
   position: relative;
@@ -9,14 +9,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  box-shadow: none;
 }
 
 .product-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent, var(--primary-purple));
-  box-shadow: 0 0 0 transparent,
-              0 20px 40px rgba(124, 58, 237, 0.12);
+  border-color: var(--accent, var(--brand-cyan));
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.12);
 }
 
 .product-card:active {

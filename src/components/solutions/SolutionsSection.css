@@ -13,14 +13,14 @@
 }
 
 .solution-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 36px 32px;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  box-shadow: none;
 }
 
 .solution-card::before {
@@ -48,14 +48,14 @@
 
 .solution-industry {
   font-size: 1.45rem;
-  color: #0F172A;
+  color: var(--text-primary);
   margin-bottom: 14px;
   font-weight: 700;
 }
 
 .solution-desc {
   font-size: 1.05rem;
-  color: #334155;
+  color: var(--text-secondary);
   line-height: 1.75;
   margin-bottom: 24px;
 }

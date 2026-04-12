@@ -1,47 +1,52 @@
 :root {
-  /* Primary Colors - Uniswap Palette */
-  --primary-purple: #7C3AED;
-  --primary-pink: #EC4899;
+  /* === NDN Analytics — Enterprise Dark Theme === */
+  /* Palette extracted from logo: electric cyan circuit traces + steel-blue letterforms + violet node dots */
+
+  /* Core Brand */
+  --brand-cyan: #06B6D4;           /* circuit-trace cyan — primary accent */
+  --brand-cyan-light: #67E8F9;     /* light glow */
+  --brand-blue: #3B82F6;           /* steel blue */
+  --brand-blue-light: #93C5FD;
+  --brand-purple: #8B5CF6;         /* circuit-node violet */
+  --brand-gold: #F59E0B;
+
+  /* Primary / Secondary aliases */
+  --primary-purple: #8B5CF6;
+  --primary-pink: #06B6D4;         /* repurposed: cyan leads */
   --secondary-blue: #3B82F6;
   --accent-cyan: #06B6D4;
 
-  /* Background Colors - Light Theme */
-  --bg-primary: #F8FAFC;
-  --bg-secondary: #F1F5F9;
-  --bg-surface: #FFFFFF;
+  /* Background Colors — Deep Space */
+  --bg-primary: #020B18;           /* base page background */
+  --bg-secondary: #030F20;         /* alternate section bg */
+  --bg-surface: #071829;           /* cards, panels */
 
-  /* Text Colors - Dark Theme */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #94A3B8;
+  /* Text Colors */
+  --text-primary: #EFF6FF;         /* cool near-white */
+  --text-secondary: #94A3B8;       /* muted slate-blue */
+  --text-tertiary: #475569;        /* very muted */
 
-  /* Shadow System - Soft, Professional */
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.1);
-  --shadow-lg: 0 10px 28px rgba(15, 23, 42, 0.15);
-  --shadow-xl: 0 20px 48px rgba(15, 23, 42, 0.2);
+  /* Shadow System — depth on dark */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.65);
+  --shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.75);
 
-  /* Gradient System - Uniswap Inspired */
-  --gradient-primary: linear-gradient(135deg, #EC4899 0%, #7C3AED 50%, #3B82F6 100%);
-  --gradient-subtle: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-  --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #7C3AED 100%);
+  /* Gradient System — Cyan → Blue → Violet */
+  --gradient-primary: linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%);
+  --gradient-subtle: linear-gradient(135deg, #030F20 0%, #071829 100%);
+  --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
 
-  /* Border Colors - Subtle */
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-hover: rgba(15, 23, 42, 0.15);
+  /* Border Colors — cyan glass */
+  --border-subtle: rgba(6, 182, 212, 0.12);
+  --border-hover: rgba(6, 182, 212, 0.28);
 
-  /* Legacy names (for compatibility) - mapped to new palette */
-  --brand-cyan: #7C3AED;
-  --brand-cyan-light: #E879F9;
-  --brand-blue: #3B82F6;
-  --brand-blue-light: #93C5FD;
-  --brand-purple: #7C3AED;
-  --brand-gold: #F59E0B;
-  --dark-void: #F8FAFC;
-  --dark-surface: #F1F5F9;
-  --dark-card: #FFFFFF;
+  /* Legacy compat names */
+  --dark-void: #020B18;
+  --dark-surface: #030F20;
+  --dark-card: #071829;
 
-  /* Spacing & Layout */
+  /* Layout */
   --nav-height: 84px;
   --radius-sm: 8px;
   --radius-md: 12px;

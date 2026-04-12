@@ -18,7 +18,7 @@ body {
   font-family: 'Inter Variable', 'Inter', sans-serif;
   font-weight: 400;
   color: var(--text-primary);
-  background: #F8FAFC;
+  background: #020B18;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -35,14 +35,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple), var(--secondary-blue));
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  text-shadow: 0 0 24px rgba(6, 182, 212, 0.45);
 }
 
 /* ── Mobile typography scaling ───────────────────────────────────────────────── */

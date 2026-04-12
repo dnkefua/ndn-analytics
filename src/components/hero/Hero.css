@@ -25,7 +25,7 @@
   gap: 12px;
   font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   font-size: 0.85rem;
-  color: var(--primary-purple);
+  color: var(--brand-cyan);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 36px;
@@ -33,7 +33,7 @@
 
 .hero-eyebrow-dot {
   width: 7px; height: 7px;
-  background: var(--primary-purple);
+  background: var(--brand-cyan);
   border-radius: 50%;
   animation: softPulse 2s infinite;
 }
@@ -46,7 +46,7 @@
 }
 
 .hero-title-line2 {
-  background: linear-gradient(90deg, var(--primary-pink), var(--primary-purple), var(--secondary-blue));
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -86,7 +86,7 @@
   font-family: 'Syne Variable', 'Syne', sans-serif;
   font-size: 2.6rem;
   font-weight: 900;
-  color: var(--primary-purple);
+  color: var(--brand-cyan);
 }
 
 .hero-stat-label {
@@ -116,7 +116,7 @@
 .scroll-line {
   width: 1px;
   height: 44px;
-  background: linear-gradient(to bottom, var(--primary-purple), transparent);
+  background: linear-gradient(to bottom, var(--brand-cyan), transparent);
 }
 
 .hero-scroll-hint span {
