@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAIProducts } from '../../lib/aiProductsService';
+import STATIC_PRODUCTS from '../../lib/aiProductsData';
 import AIToolCard from './AIToolCard';
 import SEO from '../seo/SEO';
 import type { AIProduct, AIProductCategory } from '../../types/aiProducts';
@@ -9,6 +10,7 @@ const CATEGORIES: AIProductCategory[] = [
   'llm_api',
   'dev_tools',
   'productivity',
+  'design',
   'analytics',
   'automation',
   'database',
@@ -16,8 +18,8 @@ const CATEGORIES: AIProductCategory[] = [
 ];
 
 export default function AIToolsSection() {
-  const [products, setProducts] = useState<AIProduct[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Initialise with static data so the page renders immediately (no loading flash)
+  const [products, setProducts] = useState<AIProduct[]>(STATIC_PRODUCTS);
   const [selectedCategory, setSelectedCategory] = useState<AIProductCategory | 'all'>('all');
 
   useEffect(() => {
@@ -25,16 +27,14 @@ export default function AIToolsSection() {
 
     async function loadProducts() {
       try {
-        const allProducts = await fetchAIProducts();
-        if (mounted) {
-          setProducts(allProducts);
+        const liveProducts = await fetchAIProducts();
+        // Only replace static data if Firestore returned actual products
+        if (mounted && liveProducts.length > 0) {
+          setProducts(liveProducts);
         }
       } catch (error) {
-        console.error('Failed to load AI products:', error);
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+        // Static fallback remains displayed — no user-visible error
+        console.warn('Firestore unavailable, using static product catalog:', error);
       }
     }
 
@@ -129,40 +129,8 @@ export default function AIToolsSection() {
             ))}
           </div>
 
-          {/* Loading state */}
-          {loading && (
-            <div style={{
-              textAlign: 'center',
-              padding: '60px 20px',
-              color: 'var(--text-tertiary)',
-              fontFamily: "'JetBrains Mono Variable', monospace",
-              fontSize: '0.85rem',
-              letterSpacing: '0.1em',
-            }}>
-              Loading AI tools...
-            </div>
-          )}
-
-          {/* Empty state */}
-          {!loading && products.length === 0 && (
-            <div style={{
-              textAlign: 'center',
-              padding: '60px 20px',
-              background: 'rgba(10,22,40,0.6)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: 12,
-            }}>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
-                AI tools directory is being populated.
-              </p>
-              <p style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem' }}>
-                Check back soon for curated recommendations.
-              </p>
-            </div>
-          )}
-
           {/* Featured section */}
-          {!loading && featuredProducts.length > 0 && selectedCategory === 'all' && (
+          {featuredProducts.length > 0 && selectedCategory === 'all' && (
             <>
               <h2 style={{
                 fontFamily: "'Syne Variable', sans-serif",
@@ -187,7 +155,7 @@ export default function AIToolsSection() {
           )}
 
           {/* All products grid */}
-          {!loading && filteredProducts.length > 0 && (
+          {filteredProducts.length > 0 && (
             <>
               {selectedCategory === 'all' && featuredProducts.length > 0 && (
                 <h2 style={{

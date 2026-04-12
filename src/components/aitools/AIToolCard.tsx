@@ -1,5 +1,5 @@
 import type { AIProduct } from '../../types/aiProducts';
-import { buildTrackedLink, trackAffiliateClick } from '../../lib/aiProductsService';
+import { buildDirectLink, trackAffiliateClick } from '../../lib/aiProductsService';
 
 interface Props {
   product: AIProduct;
@@ -25,14 +25,16 @@ const PRICING_LABELS: Record<string, string> = {
 
 export default function AIToolCard({ product }: Props) {
   const handleClick = () => {
+    // Track the click in Firestore (best-effort — does not block navigation)
     trackAffiliateClick(product, window.location.pathname, 'aitools');
   };
 
-  const trackedLink = buildTrackedLink(product, 'aitools');
+  // Use direct affiliate URL with UTM params — works without server-side redirect
+  const affiliateLink = buildDirectLink(product, 'aitools');
 
   return (
     <a
-      href={trackedLink}
+      href={affiliateLink}
       onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"

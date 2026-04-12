@@ -430,6 +430,142 @@ const AI_PRODUCTS = [
     sortOrder: 61,
     isActive: true,
   },
+
+  // ── Productivity / AI Writing ──────────────────────────────────────────────
+  {
+    name: 'Jasper AI',
+    tagline: 'AI copilot for enterprise marketing teams',
+    description:
+      'Generate marketing copy, blog posts, social media content, and ads at scale. Jasper is used by 100,000+ teams worldwide and integrates with your existing marketing stack.',
+    logoUrl: 'https://www.jasper.ai/favicon.ico',
+    websiteUrl: 'https://www.jasper.ai',
+    affiliateUrl: 'https://www.jasper.ai?fpr=ndnanalytics',
+    affiliateProgramUrl: 'https://www.jasper.ai/partners',
+    affiliateProgram: 'partnerstack',
+    commissionRate: '30% recurring',
+    cookieDuration: 30,
+    ndnServiceTieIn:
+      'NDN Analytics integrates Jasper into your content pipeline for automated blog generation and multi-channel marketing.',
+    category: 'productivity',
+    tags: ['ai', 'writing', 'marketing', 'content', 'copywriting'],
+    pricing: 'paid',
+    featured: true,
+    sortOrder: 21,
+    badge: '30% Recurring',
+    isActive: true,
+  },
+  {
+    name: 'Copy.ai',
+    tagline: 'AI-powered copywriting at scale',
+    description:
+      'Create marketing copy, product descriptions, and sales content in seconds. Trusted by 10M+ users, Copy.ai automates GTM workflows and entire content operations for enterprise teams.',
+    logoUrl: 'https://www.copy.ai/favicon.ico',
+    websiteUrl: 'https://www.copy.ai',
+    affiliateUrl: 'https://www.copy.ai?via=ndnanalytics',
+    affiliateProgramUrl: 'https://www.copy.ai/partners',
+    affiliateProgram: 'partnerstack',
+    commissionRate: '45% first year',
+    cookieDuration: 60,
+    ndnServiceTieIn:
+      'Our team embeds Copy.ai workflows into your marketing automation stack for fully autonomous content production.',
+    category: 'productivity',
+    tags: ['ai', 'writing', 'copywriting', 'marketing', 'gtm'],
+    pricing: 'freemium',
+    featured: true,
+    sortOrder: 22,
+    badge: '45% Commission',
+    isActive: true,
+  },
+  {
+    name: 'Otter.ai',
+    tagline: 'AI meeting assistant and transcription',
+    description:
+      'Automated meeting notes, real-time transcription, and AI summaries. Integrates with Zoom, Microsoft Teams, and Google Meet to capture every decision and action item automatically.',
+    logoUrl: 'https://otter.ai/favicon.ico',
+    websiteUrl: 'https://otter.ai',
+    affiliateUrl: 'https://otter.ai?ref=ndnanalytics',
+    affiliateProgramUrl: 'https://otter.ai/affiliates',
+    affiliateProgram: 'impact',
+    commissionRate: '20%',
+    cookieDuration: 30,
+    ndnServiceTieIn:
+      'NDN Interpreter handles real-time ASL translation with similar edge-AI technology — built for inclusivity at enterprise scale.',
+    category: 'productivity',
+    tags: ['ai', 'transcription', 'meetings', 'notes', 'automation'],
+    pricing: 'freemium',
+    featured: false,
+    sortOrder: 23,
+    isActive: true,
+  },
+
+  // ── Design / Video AI ──────────────────────────────────────────────────────
+  {
+    name: 'Synthesia',
+    tagline: 'AI video generation platform',
+    description:
+      'Create professional AI avatar videos from text in minutes. No cameras, studios, or actors required. Used by 50,000+ teams for training, marketing, and communications at scale.',
+    logoUrl: 'https://www.synthesia.io/favicon.ico',
+    websiteUrl: 'https://www.synthesia.io',
+    affiliateUrl: 'https://www.synthesia.io?ref=ndnanalytics',
+    affiliateProgramUrl: 'https://www.synthesia.io/affiliates',
+    affiliateProgram: 'partnerstack',
+    commissionRate: '20-25% recurring',
+    cookieDuration: 90,
+    ndnServiceTieIn:
+      'NDN Analytics embeds AI video generation into enterprise training and marketing workflows — reducing video production costs by 80%.',
+    category: 'design',
+    tags: ['ai', 'video', 'avatars', 'training', 'marketing'],
+    pricing: 'paid',
+    featured: true,
+    sortOrder: 30,
+    badge: '25% Recurring',
+    isActive: true,
+  },
+  {
+    name: 'Descript',
+    tagline: 'All-in-one video and podcast editing',
+    description:
+      'Edit video and audio by editing the transcript — the most intuitive editor ever made. AI Overdub, filler-word removal, screen recording, and automatic captions built in.',
+    logoUrl: 'https://www.descript.com/favicon.ico',
+    websiteUrl: 'https://www.descript.com',
+    affiliateUrl: 'https://www.descript.com?ref=ndnanalytics',
+    affiliateProgramUrl: 'https://www.descript.com/affiliates',
+    affiliateProgram: 'impact',
+    commissionRate: '15% recurring',
+    cookieDuration: 30,
+    ndnServiceTieIn:
+      'NDN Interpreter uses similar real-time AI for sign language translation — reducing communication barriers across enterprise.',
+    category: 'design',
+    tags: ['ai', 'video', 'audio', 'podcasting', 'transcription'],
+    pricing: 'freemium',
+    featured: false,
+    sortOrder: 31,
+    isActive: true,
+  },
+
+  // ── Analytics / SEO ───────────────────────────────────────────────────────
+  {
+    name: 'Surfer SEO',
+    tagline: 'AI-powered SEO and content optimization',
+    description:
+      'Write content that ranks on page one. Real-time NLP-based SEO suggestions, keyword research, content auditing, and SERP analyzer built for content teams and agencies.',
+    logoUrl: 'https://surferseo.com/favicon.ico',
+    websiteUrl: 'https://surferseo.com',
+    affiliateUrl: 'https://surferseo.com?fp_ref=ndnanalytics',
+    affiliateProgramUrl: 'https://surferseo.com/affiliate-program',
+    affiliateProgram: 'direct',
+    commissionRate: '25% recurring',
+    cookieDuration: 60,
+    ndnServiceTieIn:
+      'NDN Analytics implements Surfer SEO alongside our blog auto-generation pipeline to produce content that ranks automatically.',
+    category: 'analytics',
+    tags: ['seo', 'content', 'ai', 'optimization', 'ranking'],
+    pricing: 'paid',
+    featured: true,
+    sortOrder: 40,
+    badge: '25% Recurring',
+    isActive: true,
+  },
 ];
 
 // ─── Upsert / clear ───────────────────────────────────────────────────────────
