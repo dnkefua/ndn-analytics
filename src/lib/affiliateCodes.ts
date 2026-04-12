@@ -100,6 +100,18 @@ const AFFILIATE_CODES: Record<string, AffiliateCodeEntry> = {
     paramKey: 'ref',
     notes: '20% commission first year. B2B — higher conversion rate.',
   },
+
+  // ── Google Cloud (CJ Affiliate) ────────────────────────────────────────────
+  gcp: {
+    platform: 'Google Cloud Affiliate (via CJ Affiliate)',
+    registered: false,
+    code: null,                 // ← paste your CJ Affiliate publisher ID / tracking code
+    registrationUrl: 'https://cloud.google.com/affiliate-program',
+    dashboardUrl: 'https://members.cj.com',
+    paramKey: 'utm_source',   // GCP uses standard UTM — CJ injects its own click IDs
+    notes: 'Tiered commissions, no cap. Gives audience $350 free trial (vs $300 standard). ' +
+           'Apply via CJ Affiliate. Approval is website-content-reviewed.',
+  },
 };
 
 export default AFFILIATE_CODES;

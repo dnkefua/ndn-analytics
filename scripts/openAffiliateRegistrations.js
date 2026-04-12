@@ -61,6 +61,13 @@ const PROGRAMS = [
     commission: '20% first year — highest B2B order values',
     note: 'Enterprise tool — customers pay $10k+ per year.',
   },
+  {
+    name: 'Google Cloud Affiliate (CJ Affiliate)',
+    url: 'https://cloud.google.com/affiliate-program',
+    covers: ['Google Cloud (tiered commissions, no cap)'],
+    commission: 'Tiered — scales with referral volume, no annual cap',
+    note: 'Runs via CJ Affiliate. Gives your audience $350 free trial (vs $300 standard). Apply on the GCP page, get redirected to CJ to complete signup.',
+  },
 ];
 
 const listOnly = process.argv.includes('--list');
