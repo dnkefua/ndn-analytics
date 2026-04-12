@@ -72,4 +72,8 @@ export { affiliateRedirect } from './src/affiliate/redirectHandler.js';
 
 // Stripe checkout session creator
 export { createCheckoutSession } from './src/checkout/createSession.js';
+
+// Stripe webhook — fulfil orders (record to Firestore + send emails)
+export { stripeWebhook } from './src/checkout/webhookHandler.js';
+
 export { ariaChat } from './src/aria/ariaChat.js';
