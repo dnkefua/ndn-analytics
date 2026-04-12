@@ -72,3 +72,4 @@ export { affiliateRedirect } from './src/affiliate/redirectHandler.js';
 
 // Stripe checkout session creator
 export { createCheckoutSession } from './src/checkout/createSession.js';
+export { ariaChat } from './src/aria/ariaChat.js';
