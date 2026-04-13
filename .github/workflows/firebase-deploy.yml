@@ -42,5 +42,10 @@ jobs:
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
 
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+
       - name: Deploy to Firebase
         run: npx firebase-tools deploy --only hosting,functions --project ndn-analytics --token ${{ secrets.FIREBASE_TOKEN }}

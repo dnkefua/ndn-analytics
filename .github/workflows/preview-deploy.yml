@@ -43,6 +43,11 @@ jobs:
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
 
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+
       - name: E2E tests
         run: |
           npx playwright install --with-deps chromium
