@@ -100,5 +100,11 @@ service cloud.firestore {
     match /purchases/{sessionId} {
       allow read, write: if false;
     }
+
+    // Rate limit counters — written exclusively by Cloud Functions (admin SDK)
+    // No client-side access: prevents bypass
+    match /_rateLimits/{key} {
+      allow read, write: if false;
+    }
   }
 }

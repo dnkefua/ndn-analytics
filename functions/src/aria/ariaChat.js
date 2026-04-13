@@ -86,7 +86,7 @@ export const ariaChat = onCall(
   async (request) => {
     // Rate limiting by IP
     const ip = request.rawRequest?.ip || 'unknown';
-    const { limited } = checkRateLimit(`aria:${ip}`, ARIA_RATE_LIMIT, ARIA_WINDOW_MS);
+    const { limited } = await checkRateLimit(`aria:${ip}`, ARIA_RATE_LIMIT, ARIA_WINDOW_MS);
     if (limited) {
       throw new HttpsError('resource-exhausted', 'Too many requests. Please wait a moment.');
     }

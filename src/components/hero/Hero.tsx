@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../seo/SEO';
 import OrganizationSchema from '../seo/OrganizationSchema';
@@ -81,27 +81,40 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const duration = 1400;
-        const start = performance.now();
-        const animate = (now: number) => {
-          const t = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - t, 3);
-          setVal(parseFloat((eased * target).toFixed(1)));
-          if (t < 1) requestAnimationFrame(animate);
-          else setVal(target);
-        };
-        requestAnimationFrame(animate);
-      }
-    }, { threshold: 0.5 });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+  const runAnimation = useCallback(() => {
+    if (started.current) return;
+    started.current = true;
+    const duration = 1400;
+    const start = performance.now();
+    const animate = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setVal(parseFloat((eased * target).toFixed(1)));
+      if (t < 1) requestAnimationFrame(animate);
+      else setVal(target);
+    };
+    requestAnimationFrame(animate);
   }, [target]);
 
-  return <span ref={ref}>{target % 1 === 0 ? Math.round(val) : val.toFixed(1)}{suffix}</span>;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    // If already visible in viewport (above the fold), start immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      runAnimation();
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) runAnimation();
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, runAnimation]);
+
+  return <span ref={ref} aria-label={`${target}${suffix}`}>{target % 1 === 0 ? Math.round(val) : val.toFixed(1)}{suffix}</span>;
 }
 
 export default function Hero() {

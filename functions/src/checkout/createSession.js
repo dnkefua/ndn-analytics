@@ -50,7 +50,7 @@ export const createCheckoutSession = onCall(
   async (request) => {
     // Rate limiting by IP
     const ip = request.rawRequest?.ip || 'unknown';
-    const { limited } = checkRateLimit(`checkout:${ip}`, CHECKOUT_RATE_LIMIT, CHECKOUT_WINDOW_MS);
+    const { limited } = await checkRateLimit(`checkout:${ip}`, CHECKOUT_RATE_LIMIT, CHECKOUT_WINDOW_MS);
     if (limited) {
       throw new HttpsError('resource-exhausted', 'Too many requests. Please try again shortly.');
     }

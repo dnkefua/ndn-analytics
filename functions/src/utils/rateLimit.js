@@ -1,49 +1,56 @@
 /**
- * Simple in-memory rate limiter for Cloud Functions.
+ * Firestore-backed rate limiter for Cloud Functions.
  *
- * Tracks request counts per IP using a sliding window.
- * Memory resets on cold start, which is acceptable — it prevents
- * sustained abuse without needing Redis or external storage.
+ * Persists request counts per key in Firestore, surviving cold starts
+ * and shared across all function instances.
+ *
+ * Collection: _rateLimits/{key}
+ * Fields: count (number), windowStart (timestamp ms)
  */
 
-const buckets = new Map();
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
-const CLEANUP_INTERVAL = 60_000; // 1 minute
-
-// Periodic cleanup of expired entries
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, entry] of buckets) {
-    if (now - entry.windowStart > entry.windowMs) {
-      buckets.delete(key);
-    }
-  }
-}, CLEANUP_INTERVAL);
+const COLLECTION = '_rateLimits';
 
 /**
  * Check if a request should be rate-limited.
  *
- * @param {string} key     - Unique key (typically IP address)
- * @param {number} limit   - Max requests per window
- * @param {number} windowMs - Window size in ms (default: 60 000 = 1 minute)
- * @returns {{ limited: boolean, remaining: number, resetIn: number }}
+ * @param {string} key       - Unique key (e.g. "checkout:192.168.1.1")
+ * @param {number} limit     - Max requests per window
+ * @param {number} windowMs  - Window size in ms (default: 60 000 = 1 minute)
+ * @returns {Promise<{ limited: boolean, remaining: number, resetIn: number }>}
  */
-export function checkRateLimit(key, limit, windowMs = 60_000) {
+export async function checkRateLimit(key, limit, windowMs = 60_000) {
+  const db = getFirestore();
+  const docRef = db.collection(COLLECTION).doc(encodeURIComponent(key));
   const now = Date.now();
-  let entry = buckets.get(key);
 
-  if (!entry || now - entry.windowStart > windowMs) {
-    entry = { count: 1, windowStart: now, windowMs };
-    buckets.set(key, entry);
-    return { limited: false, remaining: limit - 1, resetIn: windowMs };
+  try {
+    const result = await db.runTransaction(async (tx) => {
+      const snap = await tx.get(docRef);
+
+      if (!snap.exists || now - snap.data().windowStart > windowMs) {
+        // New window — reset counter
+        tx.set(docRef, { count: 1, windowStart: now });
+        return { limited: false, remaining: limit - 1, resetIn: windowMs };
+      }
+
+      const data = snap.data();
+      const newCount = data.count + 1;
+
+      if (newCount > limit) {
+        const resetIn = windowMs - (now - data.windowStart);
+        return { limited: true, remaining: 0, resetIn };
+      }
+
+      tx.update(docRef, { count: FieldValue.increment(1) });
+      return { limited: false, remaining: limit - newCount, resetIn: windowMs - (now - data.windowStart) };
+    });
+
+    return result;
+  } catch (err) {
+    // On Firestore failure, fail open (allow the request) to avoid blocking users
+    console.error('Rate limit check failed, allowing request:', err);
+    return { limited: false, remaining: limit, resetIn: windowMs };
   }
-
-  entry.count += 1;
-
-  if (entry.count > limit) {
-    const resetIn = windowMs - (now - entry.windowStart);
-    return { limited: true, remaining: 0, resetIn };
-  }
-
-  return { limited: false, remaining: limit - entry.count, resetIn: windowMs - (now - entry.windowStart) };
 }
