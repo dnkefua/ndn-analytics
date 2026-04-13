@@ -58,3 +58,21 @@ export function trackProductView(productId: string) {
 export function trackBlogRead(slug: string) {
   trackEvent('blog_read', { article_slug: slug });
 }
+
+export function reportWebVitals() {
+  import('web-vitals').then(({ onCLS, onLCP, onINP }) => {
+    const send = (metric: { name: string; value: number; delta: number; id: string }) => {
+      trackEvent('web_vitals', {
+        event_category: 'Web Vitals',
+        event_label: metric.id,
+        value: Math.round(metric.name === 'CLS' ? metric.delta * 1000 : metric.delta),
+        metric_name: metric.name,
+        metric_value: metric.value,
+        non_interaction: true,
+      });
+    };
+    onCLS(send);
+    onLCP(send);
+    onINP(send);
+  });
+}

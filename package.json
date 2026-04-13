@@ -22,14 +22,13 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/syne": "^5.2.7",
     "@sentry/react": "^10.48.0",
-    "@types/three": "^0.183.1",
     "firebase": "^12.11.0",
     "framer-motion": "^12.38.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.13.1",
-    "three": "^0.183.2"
+    "web-vitals": "^5.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

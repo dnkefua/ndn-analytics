@@ -6,6 +6,7 @@ import type { UnifiedBlogPost } from '../../types/blogPosts';
 import BlogSidebar from './BlogSidebar';
 import ServiceCTA from './ServiceCTA';
 import SEO from '../seo/SEO';
+import ArticleSchema from '../seo/ArticleSchema';
 import OptimizedImage from '../ui/OptimizedImage';
 import ExitIntentProvider from '../leadgen/ExitIntentProvider';
 import ContentUpgradeModal from '../leadgen/ContentUpgradeModal';
@@ -99,6 +100,15 @@ export default function BlogPost() {
           { name: 'Blog', path: '/blog' },
           { name: post.title, path: `/blog/${post.slug}` },
         ]}
+      />
+      <ArticleSchema
+        title={post.title}
+        excerpt={post.excerpt}
+        slug={post.slug}
+        author={post.author}
+        datePublished={post.date}
+        image={post.image}
+        category={post.category}
       />
       <article style={{ paddingTop: 120, paddingBottom: 80, minHeight: '100vh' }}>
         <div className="container">

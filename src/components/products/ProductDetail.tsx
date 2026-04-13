@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { PRODUCTS } from './productData';
 import SEO from '../seo/SEO';
+import ProductSchema from '../seo/ProductSchema';
 import './ProductDetail.css';
 
 const STACK_COLORS: Record<string, string> = {
@@ -68,6 +69,7 @@ export default function ProductDetail() {
           { name: product.name, path: `/products/${product.id}` },
         ]}
       />
+      <ProductSchema product={product} />
       <div className="pd-wrapper" style={{ '--accent': color } as React.CSSProperties}>
 
       {/* ── HERO ── */}

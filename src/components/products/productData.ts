@@ -223,6 +223,26 @@ export const PRODUCTS: Product[] = [
     metrics: ['Sub-200ms translation latency', '95%+ gesture recognition accuracy', 'Supports multiple sign languages', 'Web and mobile native deployment'],
     website: 'https://interpreter-app-909081961263.us-central1.run.app/',
   },
+  {
+    id: 'ndn-012',
+    number: 'NDN—012',
+    name: 'NDN Model Studio',
+    description: 'No-code fine-tuning platform that lets you pick any Hugging Face model, upload your data, train on managed GPUs via Google Vertex AI, and deploy to a serverless Firebase endpoint — in clicks, not weeks.',
+    tagline: 'Fine-tune AI models. No ML team required.',
+    features: ['900K+ Hugging Face models', 'Managed GPU training via Vertex AI', 'One-click Firebase deployment', 'GGUF, ONNX, SafeTensors export'],
+    badge: 'Coming Soon',
+    stack: 'new',
+    icon: '⚙',
+    industries: ['ML/AI Engineering', 'Data Science', 'Enterprise AI', 'Research'],
+    useCases: [
+      'Fine-tune an open-source LLM on your proprietary data without provisioning GPUs',
+      'Deploy a custom model as a serverless endpoint with auto-scaling and near-zero cold start',
+      'Export fine-tuned models in GGUF, ONNX, or SafeTensors for on-premise or edge deployment',
+      'Iterate 4-6x faster than self-managed training clusters with spend guardrails built in',
+    ],
+    howItWorks: 'NDN Model Studio connects to Hugging Face Hub to browse and select base models. Upload your training data (JSONL, CSV, or BigQuery), configure hyperparameters, and launch training on Google Vertex AI managed GPU clusters. Monitor progress in real time, then deploy with one click to a Firebase Functions v2 serverless endpoint.',
+    metrics: ['900K+ models on Hugging Face', '4-6x faster iteration vs. self-managed', 'Near-zero cold start deployment', 'Spend guardrails included'],
+  },
 ];
 
 export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');

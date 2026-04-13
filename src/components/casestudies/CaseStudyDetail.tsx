@@ -3,6 +3,7 @@ import SEO from '../seo/SEO';
 import { getCaseStudyBySlug, CASE_STUDIES } from './caseStudyData';
 import CaseStudyCard from './CaseStudyCard';
 import { trackCTAClick } from '../../lib/analytics';
+import './CaseStudies.css';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -124,6 +125,7 @@ export default function CaseStudyDetail() {
 
         <div className="container">
           <div
+            className="cs-detail-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 300px',
@@ -266,7 +268,7 @@ export default function CaseStudyDetail() {
             </div>
 
             {/* Sidebar */}
-            <aside style={{ position: 'sticky', top: 100, alignSelf: 'start' }}>
+            <aside className="cs-detail-sidebar" style={{ position: 'sticky', top: 100, alignSelf: 'start' }}>
               {/* Technologies */}
               <div
                 style={{
@@ -349,6 +351,7 @@ export default function CaseStudyDetail() {
                 More Success Stories
               </h2>
               <div
+                className="cs-related-grid"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',

@@ -1,12 +1,29 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Rate-limit helper: max 1 lead creation per 10 seconds per IP-session.
+    // Firestore doesn't have native rate-limiting, so we validate required
+    // fields and enforce email format + size limits to deter spam.
+    // ─────────────────────────────────────────────────────────────────────────
+
     // Leads collection - write from client, read only with auth
     match /leads/{leadId} {
-      // Allow create from anonymous clients (website visitors)
-      allow create: if true;
-      // Allow update only if updating score, engagements, or status
-      allow update: if request.resource.data.email == resource.data.email;
+      // Allow create with field validation to prevent spam/abuse
+      allow create: if request.resource.data.keys().hasAll(['email', 'source'])
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() > 5
+                    && request.resource.data.email.size() < 255
+                    && request.resource.data.email.matches('.*@.*[.].*')
+                    && request.resource.data.source is string
+                    && request.resource.data.source.size() < 100
+                    && (!('name' in request.resource.data) || request.resource.data.name.size() < 200)
+                    && request.resource.data.keys().size() < 20;
+      // Allow update only if email unchanged and only safe fields modified
+      allow update: if request.resource.data.email == resource.data.email
+                    && request.resource.data.diff(resource.data).affectedKeys()
+                       .hasOnly(['score', 'engagements', 'status', 'productInterests', 'tags', 'updatedAt', 'name', 'company']);
       // Read requires authentication (admin only)
       allow read: if request.auth != null;
       // Delete requires authentication (admin only)
@@ -14,15 +31,22 @@ service cloud.firestore {
 
       // Engagements subcollection
       match /engagements/{engagementId} {
-        allow create: if true;
+        allow create: if request.resource.data.keys().hasAll(['type'])
+                      && request.resource.data.type is string
+                      && request.resource.data.keys().size() < 15;
         allow read: if request.auth != null;
       }
     }
 
-    // ARIA conversations - write from client
+    // ARIA conversations - write from authenticated or session-tracked users
     match /ariaConversations/{conversationId} {
-      allow create: if true;
-      allow update: if true;
+      allow create: if request.resource.data.keys().hasAll(['sessionId'])
+                    && request.resource.data.sessionId is string
+                    && request.resource.data.sessionId.size() > 5
+                    && request.resource.data.sessionId.size() < 100
+                    && request.resource.data.keys().size() < 20;
+      allow update: if resource.data.sessionId == request.resource.data.sessionId
+                    && request.resource.data.keys().size() < 20;
       allow read: if request.auth != null;
     }
 

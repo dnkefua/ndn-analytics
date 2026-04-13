@@ -142,3 +142,14 @@
     transition-delay: 0ms;
   }
 }
+
+/* ── Mobile performance: simplify animations ── */
+@media (max-width: 768px) {
+  .reveal {
+    transition-duration: 0.15s;
+  }
+
+  .animated-gradient {
+    animation: none;
+  }
+}

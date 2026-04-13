@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import { Suspense, lazy, useEffect } from 'react';
 import * as Sentry from '@sentry/react';
+import SkeletonLoader from './components/ui/SkeletonLoader';
 import CustomCursor from './components/layout/CustomCursor';
 import FloatingParticlesBackground from './components/background/FloatingParticlesBackground';
 import GridOverlay from './components/layout/GridOverlay';
@@ -31,6 +32,7 @@ const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCance
 const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
 const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'));
 const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
+const NotFound = lazy(() => import('./components/errors/NotFound'));
 
 function PageTracker() {
   const location = useLocation();
@@ -47,19 +49,6 @@ function PageTracker() {
   return null;
 }
 
-function PageLoader() {
-  return (
-    <div style={{
-      minHeight: '100vh', display: 'flex', alignItems: 'center',
-      justifyContent: 'center', color: 'var(--brand-cyan)',
-      fontFamily: "'JetBrains Mono Variable', monospace",
-      fontSize: '0.75rem', letterSpacing: '0.2em',
-    }}>
-      LOADING...
-    </div>
-  );
-}
-
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -72,7 +61,7 @@ function AnimatedRoutes() {
         transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
         style={{ position: 'relative', zIndex: 10 }}
       >
-        <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<SkeletonLoader />}>
           <Routes location={location}>
             <Route path="/"            element={<Hero />} />
             <Route path="/products"    element={<ProductsSection />} />
@@ -92,6 +81,7 @@ function AnimatedRoutes() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/fine-tuning" element={<FineTuningTeaser />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </motion.div>
@@ -109,6 +99,7 @@ export default function App() {
           <FloatingParticlesBackground />
           <GridOverlay />
           <SpeedHUD />
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Navbar />
           <main id="main-content">
             <AnimatedRoutes />

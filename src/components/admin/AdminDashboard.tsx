@@ -103,6 +103,28 @@ export default function AdminDashboard() {
     if (auth) await signOut(auth);
   }
 
+  function exportCSV() {
+    const headers = ['Email', 'Name', 'Company', 'Source', 'Score', 'Status', 'Products', 'Created'];
+    const rows = filtered.map((l) => [
+      l.email,
+      l.name || '',
+      l.company || '',
+      l.source,
+      String(l.score),
+      l.status,
+      l.productInterests.join('; '),
+      formatDate(l.createdAt),
+    ]);
+    const csv = [headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ndn-leads-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div className="admin-dash">
       <div className="admin-dash__header">
@@ -115,6 +137,7 @@ export default function AdminDashboard() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          <button className="admin-dash__logout" onClick={exportCSV} style={{ marginRight: 8 }}>Export CSV</button>
           <button className="admin-dash__logout" onClick={handleLogout}>Sign Out</button>
         </div>
       </div>

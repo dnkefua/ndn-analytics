@@ -3,6 +3,7 @@ import SEO from '../seo/SEO';
 import CaseStudyCard from './CaseStudyCard';
 import { CASE_STUDIES } from './caseStudyData';
 import { trackCTAClick } from '../../lib/analytics';
+import './CaseStudies.css';
 
 export default function CaseStudiesSection() {
   const featuredStudies = CASE_STUDIES.filter(cs => cs.featured);
@@ -99,6 +100,7 @@ export default function CaseStudiesSection() {
 
           {/* Featured Case Studies */}
           <div
+            className="cs-featured-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',

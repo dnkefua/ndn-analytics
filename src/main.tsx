@@ -8,7 +8,7 @@ import './styles/animations.css'
 import './styles/components.css'
 import './index.css'
 import App from './App.tsx'
-import { initAnalytics, debugAnalytics } from './lib/analytics'
+import { initAnalytics, debugAnalytics, reportWebVitals } from './lib/analytics'
 
 // Initialize Sentry error tracking (if DSN configured)
 const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
@@ -36,3 +36,5 @@ createRoot(document.getElementById('root')!).render(
 initAnalytics();
 // log debug output so developer can verify in browser console
 debugAnalytics();
+// report Core Web Vitals (CLS, LCP, INP) to Google Analytics
+reportWebVitals();

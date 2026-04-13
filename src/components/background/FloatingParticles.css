@@ -230,3 +230,20 @@
   0%, 100% { transform: translateY(0) translateX(0); opacity: 0.13; }
   50% { transform: translateY(-30px) translateX(-55px); opacity: 0.23; }
 }
+
+/* ── Mobile: reduce particles for performance ── */
+@media (max-width: 768px) {
+  .particle-5, .particle-6, .particle-7, .particle-8,
+  .particle-9, .particle-10, .particle-11, .particle-12 {
+    display: none;
+  }
+
+  .particle {
+    opacity: 0.08;
+  }
+
+  .particles-gradient {
+    filter: blur(40px);
+    animation: none;
+  }
+}

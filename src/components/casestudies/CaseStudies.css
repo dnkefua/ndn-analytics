@@ -1,0 +1,23 @@
+/* ── Case Studies Responsive ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Detail page: stack sidebar below main content */
+  .cs-detail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .cs-detail-sidebar {
+    position: static !important;
+  }
+
+  /* Listing page: allow single-column cards */
+  .cs-featured-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Related studies grid */
+  .cs-related-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

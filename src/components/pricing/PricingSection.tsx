@@ -4,14 +4,14 @@ import { getFunctions, httpsCallable } from 'firebase/functions';
 import SEO from '../seo/SEO';
 import { trackCTAClick, trackDemoBooking } from '../../lib/analytics';
 
-async function startCheckout(): Promise<void> {
+async function startCheckout(productId: string): Promise<void> {
   const functions = getFunctions();
   const createCheckoutSession = httpsCallable<
     { productId: string },
     { url: string }
   >(functions, 'createCheckoutSession');
 
-  const result = await createCheckoutSession({ productId: 'ai-readiness-assessment' });
+  const result = await createCheckoutSession({ productId });
   const { url } = result.data;
   if (url) window.location.href = url;
 }
@@ -32,6 +32,7 @@ const TIERS = [
     ],
     cta: 'Get Started',
     highlight: false,
+    productId: 'ai-readiness-assessment',
   },
   {
     name: 'Starter',
@@ -48,6 +49,7 @@ const TIERS = [
     ],
     cta: 'Start Free Trial',
     highlight: false,
+    productId: 'starter-monthly',
   },
   {
     name: 'Enterprise',
@@ -94,7 +96,7 @@ export default function PricingSection() {
     setCheckoutError(null);
     trackCTAClick('pricing_ai_readiness_assessment', 'pricing_page');
     try {
-      await startCheckout();
+      await startCheckout('ai-readiness-assessment');
     } catch (err: unknown) {
       console.error('Checkout failed:', err);
       setCheckoutError('Payment system unavailable — please contact us directly at hello@ndn-analytics.com');
@@ -213,6 +215,33 @@ export default function PricingSection() {
                       disabled={checkoutLoading}
                     >
                       {checkoutLoading ? 'Redirecting to checkout…' : 'Buy Now — $499 →'}
+                    </button>
+                    {checkoutError && (
+                      <p style={{ marginTop: 10, fontSize: '0.78rem', color: '#DC2626', lineHeight: 1.4 }}>
+                        {checkoutError}
+                      </p>
+                    )}
+                  </div>
+                ) : tier.name === 'Starter' ? (
+                  <div>
+                    <button
+                      className="btn btn-ghost"
+                      style={{ width: '100%', justifyContent: 'center' }}
+                      onClick={async () => {
+                        setCheckoutLoading(true);
+                        setCheckoutError(null);
+                        trackCTAClick('pricing_starter', 'pricing_page');
+                        try {
+                          await startCheckout('starter-monthly');
+                        } catch (err: unknown) {
+                          console.error('Checkout failed:', err);
+                          setCheckoutError('Payment system unavailable — please contact us directly at hello@ndn-analytics.com');
+                          setCheckoutLoading(false);
+                        }
+                      }}
+                      disabled={checkoutLoading}
+                    >
+                      {checkoutLoading ? 'Redirecting to checkout…' : 'Subscribe — $2,500/mo →'}
                     </button>
                     {checkoutError && (
                       <p style={{ marginTop: 10, fontSize: '0.78rem', color: '#DC2626', lineHeight: 1.4 }}>

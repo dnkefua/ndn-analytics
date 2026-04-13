@@ -11,6 +11,50 @@ const STATS = [
   { value: 24, label: 'Hour Support', suffix: '/7' },
 ];
 
+const FEATURED_PRODUCTS = [
+  {
+    id: 'ndn-001',
+    icon: '◈',
+    name: 'NDN Demand IQ',
+    tagline: 'Predict demand before it happens.',
+    badge: 'Google Cloud',
+    color: '#06B6D4',
+  },
+  {
+    id: 'ndn-005',
+    icon: '⬡',
+    name: 'NDN TraceChain',
+    tagline: 'Every product. Every step. On-chain.',
+    badge: 'Ethereum',
+    color: '#4F46E5',
+  },
+  {
+    id: 'ndn-006',
+    icon: '◈',
+    name: 'NDN PayStream',
+    tagline: 'Payments that execute themselves.',
+    badge: 'Ethereum',
+    color: '#4F46E5',
+  },
+];
+
+const CASE_STUDY_HIGHLIGHTS = [
+  {
+    slug: 'regional-grocery-demand-forecasting',
+    product: 'NDN Demand IQ',
+    headline: '45% Stockout Reduction',
+    metric: '$4.2M annual savings',
+    client: 'Regional Grocery Chain — 150+ stores',
+  },
+  {
+    slug: 'pharma-supply-chain-traceability',
+    product: 'NDN TraceChain',
+    headline: '100% FDA Compliance',
+    metric: '85% faster audits',
+    client: 'National Pharma Distributor — $5.3B volume',
+  },
+];
+
 const TESTIMONIALS = [
   {
     quote: "NDN's AI forecasting cut our operational costs by 40%. The GCP integration was seamless and the results were immediate.",
@@ -19,7 +63,7 @@ const TESTIMONIALS = [
     company: "TechScale Inc",
   },
   {
-    quote: "Their Solana-based payment solution gave us sub-second settlements. Game-changer for our global marketplace.",
+    quote: "NDN's Ethereum smart contract escrow system gave us automated, trustless B2B settlements. Game-changer for our global marketplace.",
     name: "Dr. James Okafor",
     role: "CTO",
     company: "PayFlow Global",
@@ -78,8 +122,8 @@ export default function Hero() {
     <>
       <SEO
         title="NDN Analytics"
-        description="NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum and Solana bring transparency, security, and speed to your operations."
-        keywords="AI products, AI services, Google Cloud Platform, GCP, Ethereum, Solana, blockchain, enterprise AI, machine learning"
+        description="NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum bring transparency, security, and speed to your operations."
+        keywords="AI products, AI services, Google Cloud Platform, GCP, Ethereum, blockchain, enterprise AI, machine learning, smart contracts"
         canonicalPath="/"
       />
       <OrganizationSchema />
@@ -99,7 +143,7 @@ export default function Hero() {
 
         <p className="hero-subtitle reveal stagger-3">
           We build cutting-edge <strong>AI products</strong> and deliver <strong>enterprise AI services</strong> powered by Google Cloud Platform.
-          Our blockchain solutions on <strong>Ethereum</strong> and <strong>Solana</strong> bring transparency, security, and speed to your operations.
+          Our blockchain solutions on <strong>Ethereum</strong> bring transparency, security, and speed to your operations.
         </p>
 
         <div className="hero-ctas reveal stagger-4">
@@ -130,8 +174,177 @@ export default function Hero() {
           ))}
         </div>
 
+        {/* Featured Products */}
+        <div className="reveal stagger-6" style={{ marginTop: 64 }}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: 28,
+          }}>
+            <div style={{
+              fontSize: '0.7rem',
+              fontFamily: "'JetBrains Mono Variable', monospace",
+              color: 'var(--brand-cyan)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: 8,
+            }}>
+              Featured Products
+            </div>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 20,
+          }}>
+            {FEATURED_PRODUCTS.map(fp => (
+              <Link
+                key={fp.id}
+                to={`/products/${fp.id}`}
+                style={{
+                  background: 'rgba(7, 24, 41, 0.85)',
+                  border: '1px solid rgba(6, 182, 212, 0.12)',
+                  borderRadius: 14,
+                  padding: '24px 20px',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease',
+                  textDecoration: 'none',
+                  display: 'block',
+                }}
+                onMouseOver={e => { e.currentTarget.style.borderColor = fp.color; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.12)'; e.currentTarget.style.transform = 'none'; }}
+                onClick={() => trackCTAClick(`featured_${fp.id}`, 'hero')}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                  <span style={{ fontSize: '1.3rem' }}>{fp.icon}</span>
+                  <span style={{
+                    fontSize: '0.65rem',
+                    fontFamily: "'JetBrains Mono Variable', monospace",
+                    color: fp.color,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    background: `${fp.color}15`,
+                    padding: '3px 8px',
+                    borderRadius: 6,
+                  }}>
+                    {fp.badge}
+                  </span>
+                </div>
+                <div style={{
+                  fontSize: '1.1rem',
+                  fontWeight: 700,
+                  fontFamily: "'Syne Variable', sans-serif",
+                  color: 'var(--text-primary)',
+                  marginBottom: 4,
+                }}>
+                  {fp.name}
+                </div>
+                <div style={{
+                  fontSize: '0.82rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.5,
+                }}>
+                  {fp.tagline}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 16 }}>
+            <Link
+              to="/products"
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--brand-cyan)',
+                textDecoration: 'none',
+                fontFamily: "'JetBrains Mono Variable', monospace",
+                letterSpacing: '0.05em',
+              }}
+              onClick={() => trackCTAClick('view_all_products', 'hero')}
+            >
+              View All 11 Products →
+            </Link>
+          </div>
+        </div>
+
+        {/* Case Studies */}
         <div className="hero-testimonials reveal stagger-6" style={{
           marginTop: 64,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 24,
+        }}>
+          {CASE_STUDY_HIGHLIGHTS.map(cs => (
+            <Link
+              to={`/case-studies/${cs.slug}`}
+              key={cs.slug}
+              style={{
+                background: 'rgba(7, 24, 41, 0.85)',
+                border: '1px solid rgba(6, 182, 212, 0.25)',
+                borderRadius: 16,
+                padding: 28,
+                backdropFilter: 'blur(8px)',
+                transition: 'transform 0.2s ease, border-color 0.2s ease',
+                textDecoration: 'none',
+                display: 'block',
+              }}
+              onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--brand-cyan)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+              onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.25)'; e.currentTarget.style.transform = 'none'; }}
+              onClick={() => trackCTAClick(`case_study_${cs.slug}`, 'hero')}
+            >
+              <div style={{
+                fontSize: '0.7rem',
+                fontFamily: "'JetBrains Mono Variable', monospace",
+                color: 'var(--brand-cyan)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                marginBottom: 8,
+              }}>
+                Case Study &middot; {cs.product}
+              </div>
+              <div style={{
+                fontSize: '1.3rem',
+                fontWeight: 700,
+                fontFamily: "'Syne Variable', sans-serif",
+                color: 'var(--text-primary)',
+                marginBottom: 6,
+              }}>
+                {cs.headline}
+              </div>
+              <div style={{
+                fontSize: '0.95rem',
+                color: 'var(--brand-cyan)',
+                fontWeight: 600,
+                marginBottom: 10,
+              }}>
+                {cs.metric}
+              </div>
+              <div style={{
+                fontSize: '0.8rem',
+                color: 'var(--text-tertiary)',
+              }}>
+                {cs.client}
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <Link
+            to="/case-studies"
+            style={{
+              fontSize: '0.85rem',
+              color: 'var(--brand-cyan)',
+              textDecoration: 'none',
+              fontFamily: "'JetBrains Mono Variable', monospace",
+              letterSpacing: '0.05em',
+            }}
+            onClick={() => trackCTAClick('view_all_case_studies', 'hero')}
+          >
+            View All Case Studies →
+          </Link>
+        </div>
+
+        <div className="hero-testimonials reveal stagger-7" style={{
+          marginTop: 48,
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 24,
