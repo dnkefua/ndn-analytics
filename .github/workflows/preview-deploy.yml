@@ -43,6 +43,11 @@ jobs:
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
 
+      - name: E2E tests
+        run: |
+          npx playwright install --with-deps chromium
+          npx playwright test
+
       - name: Deploy preview channel
         run: |
           npx firebase-tools hosting:channel:deploy pr-${{ github.event.pull_request.number }} \
