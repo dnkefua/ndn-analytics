@@ -1,119 +1,118 @@
-# React + TypeScript + Vite
+# NDN Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Enterprise AI products and blockchain solutions — [ndnanalytics.com](https://www.ndnanalytics.com/)
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 19, TypeScript (strict), Vite 8 |
+| Styling | CSS Modules, Framer Motion |
+| Hosting | Firebase Hosting (CDN) |
+| Backend | Firebase Cloud Functions (Node 22) |
+| Database | Cloud Firestore |
+| Auth | Firebase Auth |
+| Payments | Stripe Checkout + Webhooks |
+| Email | Resend API |
+| AI | Anthropic Claude (ARIA chatbot) |
+| Analytics | Google Analytics 4, Web Vitals |
+| Monitoring | Sentry (error tracking + replay) |
+| CI/CD | GitHub Actions → Firebase deploy |
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-## Local development & preview
-
-Set environment variables in a local `.env` file (copy from `.env.example`) to enable analytics and other public runtime config:
+## Project Structure
 
 ```
-VITE_GA_ID=G-XXXXXXXXXX
+src/
+├── components/       # React components by feature
+│   ├── hero/         # Homepage hero with animated counters
+│   ├── products/     # Product catalog (11 AI/blockchain products)
+│   ├── checkout/     # Stripe checkout flow
+│   ├── blog/         # Dynamic blog (Firestore-backed)
+│   ├── aria/         # ARIA AI chatbot panel
+│   ├── seo/          # SEO components (6 JSON-LD schemas)
+│   ├── admin/        # Admin dashboard
+│   └── ...
+├── lib/              # Utilities (analytics, leads, A/B testing)
+├── styles/           # Global CSS (variables, typography, animations)
+├── test/             # Unit & integration tests (vitest)
+└── types/            # TypeScript type definitions
+functions/
+├── src/
+│   ├── aria/         # ARIA chatbot Cloud Function (Anthropic)
+│   ├── checkout/     # Stripe session creator + webhook handler
+│   ├── scheduled/    # Email queue processor
+│   └── utils/        # Rate limiter (Firestore-backed)
+e2e/                  # Playwright E2E smoke tests
 ```
 
-Start the dev server:
+## Getting Started
 
-```powershell
-cd "c:\Users\A2Z\OneDrive\Documents\NDN Analytics\NDN Analytic website\ndn-analytics"
+```bash
+# 1. Install dependencies
 npm install
+
+# 2. Copy environment variables
+cp .env.example .env
+# Fill in your keys (see .env.example for descriptions)
+
+# 3. Start dev server
 npm run dev
+
+# 4. Run tests
+npm test
+
+# 5. Build for production
+npm run build
 ```
 
-If `5173` is in use, Vite will choose another port (e.g. `5174`). Open the `Local` URL printed by Vite.
+## Scripts
 
-## Caching & Hosting recommendations
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Vite dev server (HMR) |
+| `npm run build` | TypeScript compile + Vite production build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | ESLint (flat config) |
+| `npm test` | Vitest in watch mode |
+| `npm run test:run` | Vitest single run |
+| `npm run test:coverage` | Vitest with v8 coverage |
+| `npm run test:e2e` | Playwright E2E tests |
+| `npm run optimize:images` | Convert images to WebP via Sharp |
 
-- Serve static assets (JS/CSS/images/fonts) with far-future `Cache-Control` when files are fingerprinted.
-- Use `Cache-Control: public, max-age=31536000, immutable` for production fingerprinted assets.
-- Use short caching or `no-cache` for HTML responses so clients pick up new content quickly.
+## Cloud Functions
 
-Example Express middleware (already added to `server.js`) that sets appropriate headers:
+```bash
+cd functions
+npm install
 
-```js
-app.use((req, res, next) => {
-  const url = req.url.split('?')[0];
-  if (/\.(js|css|png|jpg|jpeg|svg|webp|avif|woff2|woff)$/.test(url)) {
-    if (process.env.NODE_ENV === 'production') {
-      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    }
-  }
-  next();
-});
+# Lint
+npx eslint .
+
+# Set secrets (one-time)
+firebase functions:secrets:set STRIPE_SECRET_KEY
+firebase functions:secrets:set STRIPE_WEBHOOK_SECRET
+firebase functions:secrets:set ANTHROPIC_API_KEY
+firebase functions:secrets:set RESEND_API_KEY
 ```
 
-Hosting notes:
-- Vercel/Netlify: they automatically set appropriate caching; configure `_headers` or server settings for custom rules.
-- Firebase Hosting: add `headers` in `firebase.json` to set `Cache-Control` for assets.
-- Cloudflare: enable caching and Brotli/HTTP/2 for best performance.
+## Deployment
+
+Pushes to `main` trigger the **Deploy to Firebase Hosting** workflow:
+
+1. Lint + type check
+2. Lint Cloud Functions
+3. Unit & integration tests (253+ tests)
+4. Build
+5. Deploy to Firebase (hosting + functions)
+
+PRs trigger **Preview Deploy** with E2E tests and a temporary Firebase hosting channel (expires in 7 days).
+
+## Security
+
+- **CSP** enforced via `Content-Security-Policy` header (not report-only)
+- **HSTS**, **X-Frame-Options: DENY**, **X-Content-Type-Options: nosniff**
+- **Firestore rules** validate all client writes (email format, field limits, rate limiting)
+- **Rate limiting** via Firestore-backed counters (persists across cold starts)
+- **Secrets** stored in Firebase Secret Manager (never in source)
+- **Stripe webhook** signature verification on every event
 

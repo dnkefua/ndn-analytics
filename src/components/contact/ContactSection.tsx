@@ -141,9 +141,10 @@ export default function ContactSection() {
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
-                  <label className="form-label">Full Name</label>
+                  <label className="form-label" htmlFor="from_name">Full Name</label>
                   <input
                     type="text"
+                    id="from_name"
                     name="from_name"
                     required
                     className="form-input"
@@ -153,9 +154,10 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Email Address</label>
+                  <label className="form-label" htmlFor="from_email">Email Address</label>
                   <input
                     type="email"
+                    id="from_email"
                     name="from_email"
                     required
                     className="form-input"
@@ -165,8 +167,9 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Product Interest</label>
+                  <label className="form-label" htmlFor="product_interest">Product Interest</label>
                   <select
+                    id="product_interest"
                     name="product_interest"
                     className="form-input form-select"
                     value={form.product}
@@ -180,8 +183,9 @@ export default function ContactSection() {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Message</label>
+                  <label className="form-label" htmlFor="message">Message</label>
                   <textarea
+                    id="message"
                     name="message"
                     required
                     className="form-input form-textarea"
