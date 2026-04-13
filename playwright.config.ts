@@ -17,11 +17,9 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: process.env.CI
-    ? undefined
-    : {
-        command: 'npm run preview',
-        port: 4173,
-        reuseExistingServer: true,
-      },
+  webServer: {
+    command: 'npm run preview',
+    port: 4173,
+    reuseExistingServer: !process.env.CI,
+  },
 });
