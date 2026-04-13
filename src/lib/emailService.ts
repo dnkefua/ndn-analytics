@@ -191,7 +191,7 @@ export const EMAIL_TEMPLATES: Record<string, (data: Record<string, string>) => s
       </ul>
 
       <div style="text-align: center; margin: 32px 0;">
-        <a href="https://calendly.com/ndnanalytics/demo" style="display: inline-block; background: #7C3AED; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+        <a href="https://www.ndnanalytics.com/#contact" style="display: inline-block; background: #7C3AED; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600;">
           Book Free Consultation →
         </a>
       </div>

@@ -63,10 +63,11 @@ export default function ContactSection() {
     }
   };
 
-  const handleCalendly = () => {
+  const handleContactRedirect = () => {
     trackDemoBooking('contact_page');
-    if (typeof Calendly !== 'undefined') {
-      Calendly.initPopupWidget({ url: 'https://calendly.com/ndnanalytics/demo' });
+    const formEl = document.querySelector('.contact-form-wrap');
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -116,7 +117,7 @@ export default function ContactSection() {
             <div className="reveal stagger-4" style={{ marginTop: 24 }}>
               <button
                 className="btn btn-primary"
-                onClick={handleCalendly}
+                onClick={handleContactRedirect}
                 style={{ width: '100%', justifyContent: 'center' }}
               >
                 &#128197; Schedule a Demo
