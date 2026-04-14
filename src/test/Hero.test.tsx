@@ -58,9 +58,10 @@ describe('Hero integration', () => {
       </HelmetProvider>
     );
 
-    expect(screen.getByText('NDN Demand IQ')).toBeInTheDocument();
-    expect(screen.getByText('NDN TraceChain')).toBeInTheDocument();
-    expect(screen.getByText('NDN PayStream')).toBeInTheDocument();
+    // Use getAllByText since product names now appear in both featured section and FAQ
+    expect(screen.getAllByText('NDN Demand IQ').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('NDN TraceChain').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('NDN PayStream').length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders case study highlights', async () => {
