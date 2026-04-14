@@ -2,8 +2,44 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../seo/SEO';
 import OrganizationSchema from '../seo/OrganizationSchema';
+import FAQSchema from '../seo/FAQSchema';
 import { trackCTAClick } from '../../lib/analytics';
 import './Hero.css';
+
+const HOMEPAGE_FAQS = [
+  {
+    question: 'What services does NDN Analytics provide?',
+    answer: 'NDN Analytics provides enterprise AI services and blockchain solutions. We build AI products on Google Cloud Platform including demand forecasting (NDN Demand IQ), healthcare AI (NDN HealthPredict), and inventory optimization. Our blockchain solutions on Ethereum include supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), and smart contract development.',
+  },
+  {
+    question: 'What industries does NDN Analytics serve?',
+    answer: 'NDN Analytics serves retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, and manufacturing industries. We specialize in demand forecasting for retail, patient outcome prediction for healthcare, end-to-end traceability for supply chains, and smart contract automation for financial services.',
+  },
+  {
+    question: 'What results can I expect from NDN Analytics AI products?',
+    answer: 'Our clients typically see 40-45% reduction in operational costs, 45% reduction in stockouts for retail, 100% FDA compliance for pharmaceutical supply chains, and $4.2M+ in annual savings. We maintain a 99.9% uptime SLA across all enterprise deployments with 24/7 support.',
+  },
+  {
+    question: 'What technologies does NDN Analytics use?',
+    answer: 'We leverage Google Cloud Platform (Vertex AI, BigQuery, Cloud Functions, Firestore) for AI and machine learning solutions. For blockchain, we develop on Ethereum using Solidity, Web3.js, Hardhat, and DeFi protocols. Our tech stack includes TensorFlow, PyTorch, serverless architecture, microservices, and API-first design patterns.',
+  },
+  {
+    question: 'How does NDN Demand IQ work?',
+    answer: 'NDN Demand IQ is an AI-powered demand forecasting solution that analyzes historical sales data, market trends, seasonality, and external factors to predict future demand with high accuracy. It integrates seamlessly with existing ERP and inventory systems, providing actionable insights that help retailers optimize stock levels, reduce stockouts by up to 45%, and cut carrying costs by 40%.',
+  },
+  {
+    question: 'What is NDN TraceChain and how does it improve supply chain?',
+    answer: 'NDN TraceChain is an Ethereum blockchain-based supply chain traceability solution that creates an immutable record of every product movement from origin to consumer. It enables 100% transparency, ensures regulatory compliance (including FDA requirements), reduces audit times by 85%, and provides real-time visibility into supply chain operations.',
+  },
+  {
+    question: 'Does NDN Analytics provide custom AI development?',
+    answer: 'Yes, NDN Analytics offers custom AI development services including fine-tuning existing models for specific business needs, building custom machine learning solutions, integrating AI into existing workflows, and providing end-to-end implementation from strategy to deployment. Our NDN FineTune service specializes in custom AI model development and deployment.',
+  },
+  {
+    question: 'How can I get started with NDN Analytics?',
+    answer: 'Getting started is easy. Contact us through our website at https://www.ndnanalytics.com/contact to schedule a consultation. We offer free discovery sessions to understand your business challenges and recommend the right AI or blockchain solution. Our team will guide you through the entire process from initial assessment to implementation and ongoing optimization.',
+  },
+];
 
 const STATS = [
   { value: 99.9, label: 'Uptime SLA', suffix: '%' },
@@ -140,6 +176,7 @@ export default function Hero() {
         canonicalPath="/"
       />
       <OrganizationSchema />
+      <FAQSchema faqs={HOMEPAGE_FAQS} />
       <section className="hero-section" ref={heroRef}>
       <div className="animated-gradient" aria-hidden="true" />
       <div className="container hero-inner">
@@ -403,6 +440,93 @@ export default function Hero() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* SEO Content Section - 500+ Words for AI Crawlers */}
+        <div className="reveal stagger-8" style={{ marginTop: 80, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{
+            background: 'rgba(7, 24, 41, 0.6)',
+            border: '1px solid rgba(6, 182, 212, 0.1)',
+            borderRadius: 16,
+            padding: '40px 32px',
+          }}>
+            <h2 style={{
+              fontSize: '1.4rem',
+              fontWeight: 700,
+              fontFamily: "'Syne Variable', sans-serif",
+              color: 'var(--text-primary)',
+              marginBottom: 20,
+              textAlign: 'center',
+            }}>
+              Enterprise AI and Blockchain Solutions
+            </h2>
+            
+            <div style={{
+              fontSize: '0.92rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.8,
+            }}>
+              <p style={{ marginBottom: 16 }}>
+                <strong>NDN Analytics</strong> is a leading technology company specializing in enterprise AI services and blockchain solutions. We help organizations across retail, healthcare, supply chain, and financial services build smarter systems and scale their operations faster. Our expert team combines deep expertise in <strong>Google Cloud Platform</strong> technologies with cutting-edge <strong>Ethereum blockchain</strong> development to deliver transformative results.
+              </p>
+              
+              <h3 style={{ 
+                fontSize: '1.1rem', 
+                fontWeight: 600, 
+                color: 'var(--brand-cyan)',
+                marginBottom: 12,
+                marginTop: 24,
+              }}>
+                AI-Powered Enterprise Solutions
+              </h3>
+              <p style={{ marginBottom: 16 }}>
+                Our AI products leverage Google Cloud's Vertex AI, BigQuery, and machine learning capabilities to solve complex business challenges. <strong>NDN Demand IQ</strong> uses advanced forecasting algorithms to predict product demand with remarkable accuracy, helping retailers reduce stockouts by up to 45% and cut operational costs by 40%. In healthcare, our <strong>NDN HealthPredict</strong> platform analyzes patient data to prevent hospital readmissions, improving outcomes while reducing costs. We also offer <strong>NDN RetailSync</strong> for real-time inventory management across multiple sales channels, ensuring optimal stock levels and customer satisfaction.
+              </p>
+              
+              <h3 style={{ 
+                fontSize: '1.1rem', 
+                fontWeight: 600, 
+                color: 'var(--brand-cyan)',
+                marginBottom: 12,
+                marginTop: 24,
+              }}>
+                Blockchain Development on Ethereum
+              </h3>
+              <p style={{ marginBottom: 16 }}>
+                Our blockchain solutions bring transparency, security, and automation to enterprise operations. <strong>NDN TraceChain</strong> provides end-to-end supply chain traceability, enabling companies to track products from origin to consumer with immutable blockchain records. For pharmaceutical and healthcare companies, our solutions ensure <strong>100% FDA compliance</strong> and reduce audit times by 85%. <strong>NDN PayStream</strong> automates B2B payment processing using smart contracts, eliminating manual reconciliation and ensuring trustless escrow for high-value transactions. Our Ethereum expertise includes ERC-20 token development, DeFi protocols, and secure smart contract auditing.
+              </p>
+              
+              <h3 style={{ 
+                fontSize: '1.1rem', 
+                fontWeight: 600, 
+                color: 'var(--brand-cyan)',
+                marginBottom: 12,
+                marginTop: 24,
+              }}>
+                Proven Results and Client Success
+              </h3>
+              <p style={{ marginBottom: 16 }}>
+                We deliver measurable business outcomes. Our clients report average cost savings of <strong>$4.2 million annually</strong>, with supply chain efficiency improvements of up to 85%. We maintain a <strong>99.9% uptime SLA</strong> across all enterprise deployments, backed by 24/7 support from our dedicated success teams. Our case studies demonstrate real-world impact: a regional grocery chain with 150+ stores reduced stockouts by 45%, while a national pharmaceutical distributor with $5.3 billion in volume achieved complete FDA compliance and dramatically faster audit processes.
+              </p>
+              
+              <h3 style={{ 
+                fontSize: '1.1rem', 
+                fontWeight: 600, 
+                color: 'var(--brand-cyan)',
+                marginBottom: 12,
+                marginTop: 24,
+              }}>
+                Comprehensive Technology Stack
+              </h3>
+              <p style={{ marginBottom: 16 }}>
+                We work with modern technology stacks including <strong>Google Cloud Platform</strong> (Vertex AI, Cloud Functions, Firestore, BigQuery), <strong>Ethereum blockchain</strong> (Solidity, Hardhat, Web3.js), and various AI/ML frameworks (TensorFlow, PyTorch). Our team specializes in serverless architecture, microservices, and API-first design patterns. We also develop specialized platforms like <strong>NDN Njangi</strong> for decentralized savings circles, <strong>NDN NeuroQuest</strong> for cognitive assessment, and <strong>NDN Interpreter</strong> for real-time sign language translation using computer vision.
+              </p>
+              
+              <p style={{ marginTop: 24 }}>
+                Contact NDN Analytics today to learn how our AI and blockchain solutions can transform your enterprise operations. We offer end-to-end implementation services from strategy and architecture to deployment and ongoing optimization, ensuring your technology investments deliver maximum return.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

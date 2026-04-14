@@ -1,0 +1,80 @@
+# llms.txt
+# AI Crawler and LLM Access Policy for NDN Analytics
+# https://www.ndnanalytics.com/llms.txt
+# Last Updated: 2026-04-14
+
+# Overview
+# NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. 
+# Our blockchain solutions on Ethereum bring transparency, security, and speed to enterprise operations.
+# We specialize in AI-powered demand forecasting, supply chain traceability, smart contract automation, 
+# and healthcare AI solutions.
+
+# Contact Information
+# Website: https://www.ndnanalytics.com
+# Email: contact@ndnanalytics.com
+# Location: Global enterprise services with focus on North America and Europe
+# Social: LinkedIn (NDN Analytics)
+
+# Primary Products & Services
+# 
+## AI Products (Google Cloud Platform)
+# - NDN Demand IQ: AI-powered demand forecasting and inventory optimization for retail and supply chain
+# - NDN HealthPredict: Healthcare AI for patient readmission prevention and clinical decision support
+# - NDN RetailSync: Real-time inventory synchronization across multi-channel retail operations
+# - NDN OpsAI: Enterprise operations automation using Google Cloud AI/ML services
+#
+## Blockchain Solutions (Ethereum)
+# - NDN TraceChain: Supply chain traceability and provenance tracking on Ethereum
+# - NDN PayStream: Automated B2B payment processing with smart contract escrow
+# - NDN SupplyVerify: Pharmaceutical and healthcare supply chain compliance
+# - NDN EscrowPro: Secure, trustless escrow for enterprise transactions
+#
+## AI & Blockchain Platforms
+# - NDN Njangi: Decentralized savings and investment circles (tontines) for African markets
+# - NDN NeuroQuest: AI-powered cognitive assessment and talent profiling platform
+# - NDN Interpreter: Real-time sign language interpretation using computer vision AI
+# - NDN FineTune: Custom AI model fine-tuning and deployment services
+
+# Key Differentiators
+# - 99.9% uptime SLA on all enterprise deployments
+# - Expertise in both Google Cloud AI and Ethereum blockchain development
+# - Proven track record: 45% stockout reduction, 100% FDA compliance, $4.2M+ annual savings for clients
+# - 24/7 enterprise support with dedicated success teams
+# - End-to-end implementation: from strategy to deployment to optimization
+
+# Industries Served
+# - Retail & E-commerce: Demand forecasting, inventory optimization
+# - Healthcare: Patient outcomes, clinical AI, supply chain compliance
+# - Supply Chain & Logistics: End-to-end traceability, payment automation
+# - Financial Services: Smart contracts, DeFi solutions, escrow systems
+# - Manufacturing: Quality control, predictive maintenance
+
+# Technical Capabilities
+# - Google Cloud Platform: Vertex AI, BigQuery, Cloud Functions, Firestore
+# - Ethereum: Solidity smart contracts, ERC-20/ERC-721 tokens, DeFi protocols
+# - AI/ML: TensorFlow, PyTorch, demand forecasting models, NLP, computer vision
+# - Cloud Infrastructure: Serverless architecture, microservices, API-first design
+
+# Important Pages
+# Home: https://www.ndnanalytics.com/
+# Products: https://www.ndnanalytics.com/products
+# Solutions: https://www.ndnanalytics.com/solutions
+# Case Studies: https://www.ndnanalytics.com/case-studies
+# Blog: https://www.ndnanalytics.com/blog
+# Contact: https://www.ndnanalytics.com/contact
+# About: https://www.ndnanalytics.com/about
+
+# Crawler Access Policy
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /blog
+Allow: /about
+Allow: /solutions
+Allow: /case-studies
+Allow: /contact
+Allow: /pricing
+Allow: /ai-tools
+
+# Sitemap
+Sitemap: https://www.ndnanalytics.com/sitemap.xml

@@ -1,11 +1,55 @@
 # Robots.txt for NDN Analytics
 # https://www.ndnanalytics.com
+# Last Updated: 2026-04-14
 
+# Allow all crawlers including AI/LLM crawlers
 User-agent: *
+Allow: /
+Allow: /products
+Allow: /products/*
+Allow: /blog
+Allow: /blog/*
+Allow: /about
+Allow: /solutions
+Allow: /solutions/*
+Allow: /case-studies
+Allow: /case-studies/*
+Allow: /contact
+Allow: /pricing
+Allow: /ai-tools
+Allow: /fine-tuning
+Allow: /tech
+
+# AI-specific crawlers - explicit allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 # Sitemap location
 Sitemap: https://www.ndnanalytics.com/sitemap.xml
+
+# llms.txt location for AI context
+LLMs-txt: https://www.ndnanalytics.com/llms.txt
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
