@@ -7,7 +7,6 @@ import SkeletonLoader from './components/ui/SkeletonLoader';
 import CustomCursor from './components/layout/CustomCursor';
 import FloatingParticlesBackground from './components/background/FloatingParticlesBackground';
 import GridOverlay from './components/layout/GridOverlay';
-import SpeedHUD from './components/layout/SpeedHUD';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import AriaFAB from './components/aria/AriaFAB';
@@ -98,7 +97,6 @@ export default function App() {
           <CustomCursor />
           <FloatingParticlesBackground />
           <GridOverlay />
-          <SpeedHUD />
           <a href="#main-content" className="skip-link">Skip to content</a>
           <Navbar />
           <main id="main-content">
