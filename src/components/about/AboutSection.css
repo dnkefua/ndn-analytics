@@ -138,3 +138,69 @@
     padding: 4px 10px;
   }
 }
+
+/* ── Leadership Section ────────────────────────────────────────────────────── */
+.leadership-section {
+  margin-top: 80px;
+  padding-top: 80px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+}
+
+.founder-card {
+  text-align: center;
+}
+
+.founder-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--border-subtle);
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.founder-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.founder-title {
+  font-size: 0.9rem;
+  color: var(--brand-cyan);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.founder-bio {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.founder-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--brand-cyan);
+  color: var(--brand-cyan);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.founder-linkedin:hover {
+  background: rgba(6, 182, 212, 0.1);
+}

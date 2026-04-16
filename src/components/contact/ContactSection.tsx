@@ -98,6 +98,10 @@ export default function ContactSection() {
             </p>
             <div className="contact-details reveal stagger-3">
               <div className="contact-detail">
+                <span className="contact-detail-label">Location</span>
+                <span className="contact-detail-value">5406 E 23rd St, Tulsa, Oklahoma 74114, US</span>
+              </div>
+              <div className="contact-detail">
                 <span className="contact-detail-label">Email</span>
                 <span className="contact-detail-value">nkefua@ndnanalytics.com</span>
               </div>

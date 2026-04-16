@@ -17,6 +17,14 @@ export default function OrganizationSchema() {
     },
     description: 'NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum bring transparency, security, and speed to enterprise operations. We specialize in AI-powered demand forecasting, supply chain traceability, smart contract automation, and healthcare AI solutions.',
     foundingDate: '2024',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '5406 E 23rd St',
+      addressLocality: 'Tulsa',
+      addressRegion: 'Oklahoma',
+      postalCode: '74114',
+      addressCountry: 'US',
+    },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -113,6 +121,41 @@ export default function OrganizationSchema() {
       '100% FDA Compliance - Pharmaceutical Distributor',
       '$4.2M Annual Cost Savings - Client Achievements',
     ],
+    founder: {
+      '@type': 'Person',
+      name: 'Nkefua Desmond',
+      url: 'https://www.linkedin.com/in/desmond-nkefua-data-analyst/?skipRedirect=true',
+      jobTitle: 'Founder & CEO',
+      birthPlace: {
+        '@type': 'Place',
+        name: 'Cameroon',
+      },
+      alumniOf: [
+        {
+          '@type': 'EducationalOrganization',
+          name: 'East Central University',
+          location: {
+            '@type': 'Place',
+            name: 'Ada, Oklahoma, United States',
+          },
+          degree: 'Masters',
+        },
+      ],
+      workLocation: [
+        {
+          '@type': 'Place',
+          name: 'United States',
+        },
+        {
+          '@type': 'Place',
+          name: 'Canada',
+        },
+        {
+          '@type': 'Place',
+          name: 'Dubai, United Arab Emirates',
+        },
+      ],
+    },
     makesOffer: {
       '@type': 'Offer',
       itemOffered: {
