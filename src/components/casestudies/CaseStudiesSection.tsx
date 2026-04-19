@@ -11,9 +11,9 @@ export default function CaseStudiesSection() {
   return (
     <>
       <SEO
-        title="Case Studies"
-        description="See how NDN Analytics helps organizations achieve measurable results with AI and blockchain solutions. Real implementations, real outcomes."
-        keywords="AI case studies, blockchain implementation, enterprise AI results, supply chain traceability, demand forecasting"
+        title="Reference Implementations — NDN Analytics"
+        description="Reference implementations showing how NDN Analytics products address real-world challenges in retail, healthcare, and supply chain. Modeled scenarios based on product architecture and domain research."
+        keywords="AI reference implementation, blockchain scenario, demand forecasting, supply chain traceability, healthcare AI"
         canonicalPath="/case-studies"
         breadcrumbs={[
           { name: 'Home', path: '/' },
@@ -39,7 +39,7 @@ export default function CaseStudiesSection() {
                 marginBottom: 16,
               }}
             >
-              Case Studies
+              Reference Implementations
             </div>
             <h1
               style={{
@@ -50,23 +50,24 @@ export default function CaseStudiesSection() {
                 lineHeight: 1.2,
               }}
             >
-              Real Results From<br />
-              <span style={{ color: '#7C3AED' }}>Real Implementations</span>
+              Products Applied to<br />
+              <span style={{ color: '#7C3AED' }}>Real-World Scenarios</span>
             </h1>
             <p
               style={{
                 fontSize: '1.1rem',
                 color: '#64748B',
-                maxWidth: 600,
+                maxWidth: 660,
                 margin: '0 auto',
                 lineHeight: 1.7,
               }}
             >
-              See how organizations across industries are achieving measurable outcomes with NDN Analytics AI and blockchain solutions.
+              These reference implementations show how NDN Analytics products address specific industry challenges.
+              Scenarios are modeled against real domain constraints and product architecture — not historical client engagements.
             </p>
           </div>
 
-          {/* Stats Banner */}
+          {/* Domain Coverage */}
           <div
             style={{
               display: 'grid',
@@ -81,20 +82,20 @@ export default function CaseStudiesSection() {
             }}
           >
             <div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>95%</div>
-              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Client Retention</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>12</div>
+              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Products</div>
             </div>
             <div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>$50M+</div>
-              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Client Savings</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>2</div>
+              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Blockchain Networks</div>
             </div>
             <div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>90 Days</div>
-              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Avg. Time to ROI</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>GCP</div>
+              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>AI Infrastructure</div>
             </div>
             <div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>12+</div>
-              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Industries Served</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>Apache 2</div>
+              <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Open Source License</div>
             </div>
           </div>
 
@@ -131,7 +132,7 @@ export default function CaseStudiesSection() {
                 marginBottom: 12,
               }}
             >
-              Ready to Become Our Next Success Story?
+              See How This Applies to Your Problem
             </h2>
             <p
               style={{
@@ -142,7 +143,7 @@ export default function CaseStudiesSection() {
                 lineHeight: 1.7,
               }}
             >
-              Let's discuss how NDN Analytics can deliver measurable results for your organization.
+              These scenarios are starting points. Bring your specific challenge and we'll scope a solution against your actual stack and constraints.
             </p>
             <Link
               to="/contact?utm_source=case_studies&utm_medium=cta"

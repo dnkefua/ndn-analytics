@@ -15,8 +15,8 @@ export default function OrganizationSchema() {
       width: 512,
       height: 512,
     },
-    description: 'NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum bring transparency, security, and speed to enterprise operations. We specialize in AI-powered demand forecasting, supply chain traceability, smart contract automation, and healthcare AI solutions.',
-    foundingDate: '2024',
+    description: 'NDN Analytics is a technology company building AI and blockchain products on Google Cloud Platform and Ethereum. Founded and led by an experienced developer based in Dubai, incorporated in Tulsa, Oklahoma. Products span demand forecasting, supply chain traceability, smart contract payments, healthcare AI, IPFS storage infrastructure, and community finance.',
+    foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '5406 E 23rd St',
@@ -116,11 +116,6 @@ export default function OrganizationSchema() {
         },
       ],
     },
-    award: [
-      '45% Stockout Reduction - Regional Grocery Chain Case Study',
-      '100% FDA Compliance - Pharmaceutical Distributor',
-      '$4.2M Annual Cost Savings - Client Achievements',
-    ],
     founder: {
       '@type': 'Person',
       name: 'Nkefua Desmond',
@@ -141,20 +136,14 @@ export default function OrganizationSchema() {
           degree: 'Masters',
         },
       ],
-      workLocation: [
-        {
-          '@type': 'Place',
-          name: 'United States',
-        },
-        {
-          '@type': 'Place',
-          name: 'Canada',
-        },
-        {
-          '@type': 'Place',
-          name: 'Dubai, United Arab Emirates',
-        },
-      ],
+      workLocation: {
+        '@type': 'Place',
+        name: 'Dubai, United Arab Emirates',
+      },
+      homeLocation: {
+        '@type': 'Place',
+        name: 'Dubai, United Arab Emirates',
+      },
     },
     makesOffer: {
       '@type': 'Offer',

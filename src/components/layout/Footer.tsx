@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
           <div>
             <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Compliance</div>
-            {['SOC 2 Type II', 'ISO 27001', 'HIPAA', 'GDPR'].map(c => (
+            {['GDPR-Ready', 'HIPAA-Aware', 'Security-First', 'Audit-Friendly'].map(c => (
               <div key={c} style={{ marginBottom: 8, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{c}</div>
             ))}
           </div>

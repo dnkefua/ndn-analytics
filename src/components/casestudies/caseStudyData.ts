@@ -1,9 +1,11 @@
-// Case study data definitions
+// Reference implementation scenarios — illustrate product capabilities against realistic industry challenges.
+// These are not actual client engagements; they are modeled scenarios based on product architecture and domain research.
 export interface CaseStudy {
   id: string;
   slug: string;
   title: string;
   subtitle: string;
+  isReferenceImplementation: true;
   client: {
     name: string;
     industry: string;
@@ -17,11 +19,6 @@ export interface CaseStudy {
     value: string;
     description: string;
   }[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-  };
   timeline: string;
   technologies: string[];
   relatedProducts: string[];
@@ -33,137 +30,125 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'cs-001',
     slug: 'regional-grocery-demand-forecasting',
-    title: 'AI-Powered Demand Forecasting Transforms Regional Grocery Chain',
-    subtitle: 'How NDN Demand IQ reduced stockouts by 45% and improved forecast accuracy by 32% across 150+ store locations',
+    isReferenceImplementation: true,
+    title: 'AI Demand Forecasting for High-SKU Grocery Retail',
+    subtitle: 'Reference implementation: how NDN Demand IQ addresses stockout reduction and forecast accuracy for mid-scale grocery retailers operating 100–200 locations',
     client: {
-      name: 'Confidential — Southeastern US Grocery Retailer',
+      name: 'Reference Scenario — Southeastern US Grocery Retailer',
       industry: 'Retail / Grocery',
-      size: '150+ stores, $2.1B annual revenue, 8,000 SKUs',
+      size: 'Scenario scale: 100–200 stores, 6,000–10,000 SKUs',
     },
-    challenge: 'The client\'s 150-store network relied on a 15-year-old inventory system that produced weekly aggregate forecasts — no SKU-level or store-level precision. Manual buyer overrides introduced inconsistency across regions, leading to $12M annual losses from perishable write-offs and an 11% stockout rate on top-50 items. Category managers spent 60% of their week on forecast correction instead of supplier strategy.',
-    solution: 'We deployed NDN Demand IQ in a 12-week engagement. Phase 1 unified 3 years of POS data, promotional calendars, weather feeds, and competitor pricing into a BigQuery warehouse. Phase 2 trained gradient-boosted ensemble models per product category with weekly automated retraining. Phase 3 integrated AI-generated replenishment orders directly into the client\'s existing Oracle Retail system — no workflow changes for store teams.',
+    challenge: 'A mid-scale grocery retailer operating 100–200 stores relies on legacy weekly aggregate forecasts with no SKU-level or store-level precision. Manual buyer overrides introduce inconsistency across regions, contributing to perishable write-offs and stockout rates on top-moving items. Category managers spend a disproportionate share of their week correcting forecasts rather than working on supplier strategy.',
+    solution: 'NDN Demand IQ is deployed in a phased engagement. Phase 1 consolidates POS data, promotional calendars, weather feeds, and competitor pricing into a BigQuery warehouse. Phase 2 trains gradient-boosted ensemble models per product category with weekly automated retraining. Phase 3 integrates AI-generated replenishment signals directly into the retailer\'s existing ERP system — no workflow changes required for store teams.',
     results: [
       {
         metric: 'Forecast Accuracy',
         value: '+32%',
-        description: 'MAPE improvement vs. legacy system baseline (measured over 90 days post-launch)',
+        description: 'Modeled MAPE improvement vs. legacy weekly-aggregate baseline over a 90-day evaluation window',
       },
       {
         metric: 'Stockout Rate',
-        value: '45% drop',
-        description: 'Top-50 item stockouts fell from 11% to 6.1% in the first quarter',
+        value: '~45% drop',
+        description: 'Modeled reduction in top-item stockouts based on improved replenishment signal precision',
       },
       {
         metric: 'Waste Reduction',
-        value: '$4.2M',
-        description: 'First-year annualised savings from reduced perishable write-offs',
+        value: 'Significant',
+        description: 'Perishable write-off savings scale with store count and SKU volume; modeled from industry benchmarks',
       },
       {
-        metric: 'Time to ROI',
-        value: '9 weeks',
-        description: 'Positive return on implementation investment achieved before full go-live',
+        metric: 'Time to Value',
+        value: '8–12 wks',
+        description: 'Typical phased rollout timeline from data onboarding to live replenishment signals',
       },
     ],
-    testimonial: {
-      quote: 'We went from gut-feel ordering to data-driven precision in under three months. What surprised us most was how little had to change for store teams — the AI worked inside the systems they already used. Our category managers now spend their time on strategy, not spreadsheets.',
-      author: 'VP of Supply Chain',
-      role: 'Southeastern US Grocery Retailer (150+ stores)',
-    },
-    timeline: '12 weeks implementation',
+    timeline: '8–12 week reference implementation',
     technologies: ['Google Cloud Platform', 'BigQuery', 'Vertex AI', 'Cloud Functions'],
     relatedProducts: ['ndn-001'],
     featured: true,
-    publishedAt: '2026-03-15',
+    publishedAt: '2026-04-01',
   },
   {
     id: 'cs-002',
     slug: 'pharma-supply-chain-traceability',
-    title: 'Blockchain Traceability Ensures Pharmaceutical Supply Chain Integrity',
-    subtitle: 'How NDN TraceChain delivered 100% FDA DSCSA compliance and cut audit time by 85% for a national pharmaceutical distributor',
+    isReferenceImplementation: true,
+    title: 'Blockchain Traceability for Pharmaceutical Supply Chain Compliance',
+    subtitle: 'Reference implementation: how NDN TraceChain addresses FDA DSCSA unit-level traceability requirements for pharmaceutical distributors',
     client: {
-      name: 'Confidential — National Pharmaceutical Distributor',
+      name: 'Reference Scenario — National Pharmaceutical Distributor',
       industry: 'Healthcare / Pharmaceuticals',
-      size: '500+ supplier relationships, $5.3B annual distribution volume',
+      size: 'Scenario scale: 300–600 supplier relationships, multi-DC network',
     },
-    challenge: 'FDA DSCSA Phase II enforcement (November 2024 deadline) required complete electronic chain-of-custody documentation at the package level for all prescription drugs. The client\'s legacy EDI system captured lot-level data but couldn\'t provide the unit-level serialisation trail regulators demanded. Non-compliance exposure: potential loss of $50M+ in distribution contracts and DEA licensing risk.',
-    solution: 'NDN TraceChain was deployed in 16 weeks across the client\'s 3 distribution centres and integrated with 120 supplier EDI feeds. Every package movement — receipt, pick, pack, ship — is recorded as a cryptographically signed transaction on a private Ethereum network anchored to the Ethereum mainnet every 6 hours. A REST API layer exposes verification endpoints to regulators and trading partners without exposing the chain directly.',
+    challenge: 'FDA DSCSA Phase II enforcement requires complete electronic chain-of-custody documentation at the package level for all prescription drugs. A distributor relying on lot-level EDI data cannot provide the unit-level serialisation trail regulators demand. Non-compliance exposes distribution contracts and DEA licensing to risk. Manual retrieval processes make FDA inspection response times measured in weeks rather than hours.',
+    solution: 'NDN TraceChain is deployed across distribution centres and integrated with supplier EDI feeds. Every package movement — receipt, pick, pack, ship — is recorded as a cryptographically signed transaction on a private Ethereum network anchored to mainnet on a configurable schedule. A REST API layer exposes verification endpoints to regulators and trading partners without exposing the underlying chain directly.',
     results: [
       {
-        metric: 'Compliance Rate',
+        metric: 'Compliance Coverage',
         value: '100%',
-        description: 'DSCSA unit-level traceability achieved 3 weeks ahead of enforcement deadline',
+        description: 'DSCSA unit-level traceability achieved across all tracked SKUs by design — completeness is a product requirement, not a target',
       },
       {
-        metric: 'Audit Duration',
-        value: '–85%',
-        description: 'FDA inspection response time: from 2 weeks of manual retrieval to 4 hours via API query',
+        metric: 'Audit Response Time',
+        value: 'Hours vs weeks',
+        description: 'FDA inspection queries answered via API in minutes; replaces multi-week manual retrieval process',
       },
       {
         metric: 'Dispute Resolution',
-        value: '4 hours',
-        description: 'Supplier disputes resolved via on-chain audit trail (was 2 weeks average)',
+        value: 'Same-day',
+        description: 'Supplier disputes resolvable against on-chain audit trail; no back-and-forth document requests',
       },
       {
-        metric: 'Annual Savings',
-        value: '$2.1M',
-        description: 'Compliance labour and dispute resolution costs eliminated in year 1',
+        metric: 'Implementation Timeline',
+        value: '14–18 wks',
+        description: 'Typical phased rollout across distribution centres and supplier EDI integrations',
       },
     ],
-    testimonial: {
-      quote: 'When the FDA inspector arrived, we pulled the complete chain-of-custody for any unit in our facility in under 30 seconds. That\'s not something our legacy system could have done in 30 days. NDN TraceChain is now core infrastructure — not optional.',
-      author: 'Chief Compliance Officer',
-      role: 'National Pharmaceutical Distributor ($5B volume)',
-    },
-    timeline: '16 weeks implementation',
+    timeline: '14–18 week reference implementation',
     technologies: ['Ethereum', 'IPFS', 'Google Cloud Platform', 'Smart Contracts'],
     relatedProducts: ['ndn-005'],
     featured: true,
-    publishedAt: '2026-02-28',
+    publishedAt: '2026-04-01',
   },
   {
     id: 'cs-003',
     slug: 'hospital-readmission-prevention',
-    title: 'AI Predicts and Prevents Hospital Readmissions Before Patients Leave',
-    subtitle: 'How NDN Care Predict reduced 30-day readmissions by 28% and avoided $5.2M in CMS penalties for a 12-hospital health system',
+    isReferenceImplementation: true,
+    title: 'AI Readmission Risk Scoring for Multi-Hospital Health Systems',
+    subtitle: 'Reference implementation: how NDN HealthPredict addresses 30-day readmission risk identification and care coordinator prioritisation',
     client: {
-      name: 'Confidential — Mid-Atlantic Regional Health System',
+      name: 'Reference Scenario — Regional Multi-Hospital Health System',
       industry: 'Healthcare',
-      size: '12 hospitals, 2.3M patient encounters/year, 8,400 licensed beds',
+      size: 'Scenario scale: 8–15 hospitals, 1.5M–3M patient encounters/year',
     },
-    challenge: 'CMS excess readmission penalties had reached $8.3M annually — one of the highest rates among regional health systems in the Mid-Atlantic. Traditional risk scoring (LACE index) was catching only 38% of patients who would actually readmit. Care coordinators were drowning in manual chart reviews with no way to prioritise which patients needed intervention before discharge. Average time from risk flag to intervention: 28 hours — often after the discharge had already been processed.',
-    solution: 'NDN Care Predict was deployed via Epic FHIR APIs across all 12 hospitals in a 20-week phased rollout. The model ingests 200+ real-time signals — vital trends, lab trajectories, medication fill patterns, social determinants, and care team notes — scoring each patient every 4 hours. High-risk alerts surface directly in nursing Epic workflows with specific intervention recommendations. The model was trained on 3 years of system-specific patient data for local calibration.',
+    challenge: 'CMS excess readmission penalties accumulate when high-risk patients are discharged without timely intervention. Traditional risk scoring tools (e.g. LACE index) capture a fraction of patients who ultimately readmit, leaving care coordinators to work through manual chart reviews with no way to prioritise. The result: many high-risk discharges happen before any intervention is possible.',
+    solution: 'NDN HealthPredict connects to existing EMR systems via Epic FHIR APIs and scores every inpatient every 4 hours across 200+ real-time signals — vital trends, lab trajectories, medication fill patterns, social determinants, and care team notes. High-risk alerts surface directly inside nursing and case management workflows with specific intervention recommendations. The model is calibrated on each health system\'s own historical data before go-live.',
     results: [
       {
         metric: '30-day Readmissions',
-        value: '–28%',
-        description: 'System-wide reduction in 30-day all-cause readmissions within 6 months of go-live',
+        value: 'Material reduction',
+        description: 'Modeled from intervention rate improvement when high-risk patients are identified 24–48 hours earlier in the episode',
       },
       {
-        metric: 'CMS Penalty Avoided',
-        value: '$5.2M',
-        description: 'Annual reduction in excess readmission penalty payments (year 1 actuals)',
-      },
-      {
-        metric: 'Risk Detection Accuracy',
-        value: '94%',
-        description: 'Sensitivity in identifying patients who readmit (vs 38% for LACE baseline)',
+        metric: 'Risk Detection Sensitivity',
+        value: 'High (>90%)',
+        description: 'Model architecture targets >90% sensitivity — substantially higher than LACE baseline — through multi-signal real-time scoring',
       },
       {
         metric: 'Coordinator Throughput',
-        value: '3× more',
-        description: 'Patients reviewed per care coordinator per shift via AI-prioritised worklists',
+        value: '2–3× more',
+        description: 'AI-prioritised worklists reduce time spent on manual chart review, enabling coordinators to cover more patients per shift',
+      },
+      {
+        metric: 'Integration Timeline',
+        value: '16–22 wks',
+        description: 'Phased rollout via FHIR APIs; timeline scales with number of hospitals and EMR configuration complexity',
       },
     ],
-    testimonial: {
-      quote: 'We\'ve tried three different readmission tools over the past decade. None of them did what NDN Care Predict does: identify the patients our clinicians would have missed, inside the EMR they already use, and tell them specifically what to do. The 28% reduction is real — we can trace it patient by patient.',
-      author: 'Chief Medical Officer',
-      role: 'Mid-Atlantic Regional Health System (12 hospitals)',
-    },
-    timeline: '20 weeks implementation',
+    timeline: '16–22 week reference implementation',
     technologies: ['Google Cloud Platform', 'Vertex AI', 'FHIR', 'HL7'],
     relatedProducts: ['ndn-002'],
     featured: true,
-    publishedAt: '2026-01-20',
+    publishedAt: '2026-04-01',
   },
 ];
 

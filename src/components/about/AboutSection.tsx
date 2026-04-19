@@ -13,13 +13,13 @@ const VALUES = [
   {
     icon: '⬡',
     title: 'Security',
-    description: 'SOC 2 Type II, ISO 27001, HIPAA, and GDPR compliance are not checkboxes — they are foundations of every product we build.',
+    description: 'Security and compliance are built in from the start — GDPR-ready data handling, HIPAA-aware healthcare architecture, and audit-friendly design patterns across every product.',
     color: 'var(--brand-blue)',
   },
   {
     icon: '◉',
-    title: 'Global Scale',
-    description: 'Built on infrastructure that scales to millions of transactions, serving enterprises across continents without compromise.',
+    title: 'Built to Scale',
+    description: 'Architected on GCP and Ethereum from day one — infrastructure that grows from early deployment to production load without rewrites.',
     color: 'var(--brand-purple)',
   },
   {
@@ -46,8 +46,8 @@ export default function AboutSection() {
     <>
       <SEO
         title="About NDN Analytics"
-        description="NDN Analytics is an enterprise AI and blockchain intelligence company. We unite Google Cloud AI with Ethereum to build platforms that predict, automate, and verify at scale."
-        keywords="NDN Analytics, enterprise AI company, blockchain intelligence, Google Cloud partner, Ethereum solutions"
+        description="NDN Analytics is a technology company building AI and blockchain products on Google Cloud Platform and Ethereum. Founded by an experienced developer with expertise across North American and Middle Eastern markets."
+        keywords="NDN Analytics, AI products, blockchain solutions, Google Cloud, Ethereum, founder-led technology company"
         canonicalPath="/about"
         breadcrumbs={[
           { name: 'Home', path: '/' },
@@ -57,15 +57,15 @@ export default function AboutSection() {
       <FAQSchema faqs={[
         {
           question: 'What is NDN Analytics?',
-          answer: 'NDN Analytics is an enterprise AI and blockchain intelligence platform that converges Google Cloud AI with Ethereum blockchain technology to deliver predictive, automated, and verifiable intelligence solutions at scale.',
+          answer: 'NDN Analytics is a technology company that builds AI and blockchain products on Google Cloud Platform and Ethereum. Founded and led by an experienced developer, we build focused products — not broad consulting packages — across demand forecasting, healthcare AI, supply chain traceability, smart contract payments, community finance, and more.',
         },
         {
           question: 'What products does NDN Analytics offer?',
-          answer: 'NDN Analytics offers 10 enterprise products spanning demand forecasting, healthcare AI, route optimization, churn prevention, supply chain traceability, smart contract payments, credential verification, real estate tokenization, community finance, and cognitive intelligence.',
+          answer: 'NDN Analytics offers 12 products spanning demand forecasting, healthcare AI, route optimization, churn prevention, supply chain traceability, smart contract payments, credential verification, real estate tokenization, community finance, IPFS storage infrastructure, and cognitive assessment.',
         },
         {
           question: 'How does NDN Analytics integrate with existing systems?',
-          answer: 'Our products integrate natively with enterprise systems including SAP, Salesforce, Snowflake, Epic, Cerner, Oracle Health, and major CRM/CSM platforms through REST APIs and HL7/FHIR standards.',
+          answer: 'Our products are designed to integrate with existing infrastructure through REST APIs and standard data formats. They are built to work alongside ERP systems, healthcare data standards (HL7/FHIR), and common cloud data platforms — without requiring wholesale replacement of existing systems.',
         },
       ]} />
       <section className="section about-section" ref={ref}>
@@ -78,13 +78,13 @@ export default function AboutSection() {
               <span className="text-gradient">Without Limits</span>
             </h2>
             <p className="about-para reveal stagger-2">
-              NDN Analytics is an enterprise AI and blockchain intelligence company building the next generation of decision-making infrastructure. We unite the predictive power of Google Cloud AI with the immutable trust of Ethereum to create platforms that don't just analyze — they transform.
+              NDN Analytics is a technology company founded by an experienced developer with deep expertise across AI and blockchain engineering. We build focused, well-architected products — not broad consulting packages — on Google Cloud Platform and Ethereum, so organizations of any size can access enterprise-grade intelligence without enterprise-sized procurement cycles.
             </p>
             <p className="about-para reveal stagger-3">
-              Across 10 products and two technology stacks, we serve industries from healthcare to community finance — believing that transformative intelligence should be accessible to every organization, regardless of size or geography.
+              Twelve products. Two technology stacks. From demand forecasting and healthcare AI to decentralized payments and community savings circles — each one designed from working code and domain knowledge, not slide decks.
             </p>
             <div className="about-compliance reveal stagger-4">
-              {['SOC 2 Type II', 'ISO 27001', 'HIPAA', 'GDPR'].map(c => (
+              {['GDPR-Ready', 'HIPAA-Aware', 'Security-First', 'Audit-Friendly'].map(c => (
                 <div key={c} className="compliance-badge">{c}</div>
               ))}
             </div>
@@ -119,7 +119,7 @@ export default function AboutSection() {
               <h3 className="founder-name">Nkefua Desmond</h3>
               <p className="founder-title">Founder & CEO</p>
               <p className="founder-bio">
-                Cameroonian-born data analyst and AI architect with advanced expertise spanning North America and the Gulf. Masters degree from East Central University (Ada, Oklahoma) combined with deep experience across US, Canadian, and Middle Eastern markets. Driving NDN Analytics' vision to democratize enterprise intelligence across AI and blockchain ecosystems.
+                Cameroonian-born developer with a Masters from East Central University (Ada, Oklahoma) and hands-on experience across US, Canadian, and Gulf markets. NDN Analytics Inc. is registered in Tulsa, Oklahoma; Nkefua builds from Dubai. Solo founder and engineer on every product — from the GCP AI stack to Ethereum smart contracts to the live IPFS infrastructure at NDN IPFS Chain.
               </p>
               <a
                 href="https://www.linkedin.com/in/desmond-nkefua-data-analyst/?skipRedirect=true"

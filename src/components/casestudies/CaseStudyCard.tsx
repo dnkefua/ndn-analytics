@@ -48,7 +48,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
               marginBottom: 12,
             }}
           >
-            {caseStudy.client.industry}
+            Reference Implementation &middot; {caseStudy.client.industry}
           </div>
           <h3
             style={{
@@ -89,22 +89,6 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
             ))}
           </div>
 
-          {caseStudy.testimonial && (
-            <blockquote
-              style={{
-                borderLeft: '3px solid #7C3AED',
-                paddingLeft: 16,
-                margin: 0,
-                fontStyle: 'italic',
-                color: '#475569',
-                fontSize: '0.9rem',
-                lineHeight: 1.6,
-              }}
-            >
-              "{caseStudy.testimonial.quote.slice(0, 120)}..."
-            </blockquote>
-          )}
-
           <div
             style={{
               marginTop: 20,
@@ -130,7 +114,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
               ))}
             </div>
             <span style={{ color: '#7C3AED', fontWeight: 600, fontSize: '0.9rem' }}>
-              Read Case Study →
+              View Reference →
             </span>
           </div>
         </div>
@@ -213,7 +197,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
           </span>
         </div>
         <span style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500 }}>
-          Read More →
+          View Reference →
         </span>
       </div>
     </Link>

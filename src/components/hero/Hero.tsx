@@ -9,42 +9,42 @@ import './Hero.css';
 const HOMEPAGE_FAQS = [
   {
     question: 'What services does NDN Analytics provide?',
-    answer: 'NDN Analytics provides enterprise AI services and blockchain solutions. We build AI products on Google Cloud Platform including demand forecasting (NDN Demand IQ), healthcare AI (NDN HealthPredict), and inventory optimization. Our blockchain solutions on Ethereum include supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), and smart contract development.',
+    answer: 'NDN Analytics builds AI products and blockchain solutions. Our AI products run on Google Cloud Platform and cover demand forecasting (NDN Demand IQ), healthcare AI (NDN HealthPredict), and inventory optimization. Our blockchain products run on Ethereum and cover supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), and smart contract development.',
   },
   {
     question: 'What industries does NDN Analytics serve?',
-    answer: 'NDN Analytics serves retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, and manufacturing industries. We specialize in demand forecasting for retail, patient outcome prediction for healthcare, end-to-end traceability for supply chains, and smart contract automation for financial services.',
+    answer: 'NDN Analytics targets retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, and community finance. Each product is purpose-built for its domain — demand forecasting for retail, patient outcome modeling for healthcare, immutable provenance for supply chains, and smart contract automation for payments.',
   },
   {
     question: 'What results can I expect from NDN Analytics AI products?',
-    answer: 'Our clients typically see 40-45% reduction in operational costs, 45% reduction in stockouts for retail, 100% FDA compliance for pharmaceutical supply chains, and $4.2M+ in annual savings. We maintain a 99.9% uptime SLA across all enterprise deployments with 24/7 support.',
+    answer: 'Our products are architected to address the highest-cost inefficiencies in each domain — demand forecasting to reduce waste and stockouts, traceability to compress audit cycles, and smart contract automation to eliminate manual reconciliation. Outcomes depend on your current stack; we scope every engagement against your specific baseline rather than generic benchmarks.',
   },
   {
     question: 'What technologies does NDN Analytics use?',
-    answer: 'We leverage Google Cloud Platform (Vertex AI, BigQuery, Cloud Functions, Firestore) for AI and machine learning solutions. For blockchain, we develop on Ethereum using Solidity, Web3.js, Hardhat, and DeFi protocols. Our tech stack includes TensorFlow, PyTorch, serverless architecture, microservices, and API-first design patterns.',
+    answer: 'We build on Google Cloud Platform (Vertex AI, BigQuery, Cloud Functions, Firestore) for AI and machine learning, and on Ethereum (Solidity, Web3.js, Hardhat) for blockchain. Our stack also includes TensorFlow, PyTorch, serverless architecture, microservices, and API-first design patterns.',
   },
   {
     question: 'How does NDN Demand IQ work?',
-    answer: 'NDN Demand IQ is an AI-powered demand forecasting solution that analyzes historical sales data, market trends, seasonality, and external factors to predict future demand with high accuracy. It integrates seamlessly with existing ERP and inventory systems, providing actionable insights that help retailers optimize stock levels, reduce stockouts by up to 45%, and cut carrying costs by 40%.',
+    answer: 'NDN Demand IQ is an AI-powered demand forecasting product that analyzes historical sales data, market trends, seasonality, and external factors to predict future demand. It integrates with existing ERP and inventory systems, delivering actionable replenishment signals that help retailers reduce excess stock and minimize stockouts. The model retrains on your own data over time, improving precision continuously.',
   },
   {
     question: 'What is NDN TraceChain and how does it improve supply chain?',
-    answer: 'NDN TraceChain is an Ethereum blockchain-based supply chain traceability solution that creates an immutable record of every product movement from origin to consumer. It enables 100% transparency, ensures regulatory compliance (including FDA requirements), reduces audit times by 85%, and provides real-time visibility into supply chain operations.',
+    answer: 'NDN TraceChain is an Ethereum blockchain-based supply chain traceability product that creates an immutable record of every product movement from origin to consumer. It enables end-to-end transparency, supports regulatory compliance requirements, and provides real-time visibility into supply chain operations — replacing paper trails with verifiable on-chain events.',
   },
   {
     question: 'Does NDN Analytics provide custom AI development?',
-    answer: 'Yes, NDN Analytics offers custom AI development services including fine-tuning existing models for specific business needs, building custom machine learning solutions, integrating AI into existing workflows, and providing end-to-end implementation from strategy to deployment. Our NDN FineTune service specializes in custom AI model development and deployment.',
+    answer: 'Yes. We offer custom AI development including fine-tuning models for specific business needs, building tailored machine learning pipelines, and integrating AI into existing workflows. Our NDN FineTune product specializes in custom model development and deployment on GCP.',
   },
   {
     question: 'How can I get started with NDN Analytics?',
-    answer: 'Getting started is easy. Contact us through our website at https://www.ndnanalytics.com/contact to schedule a consultation. We offer free discovery sessions to understand your business challenges and recommend the right AI or blockchain solution. Our team will guide you through the entire process from initial assessment to implementation and ongoing optimization.',
+    answer: 'Contact us at https://www.ndnanalytics.com/contact to schedule a consultation. We offer discovery sessions to understand your business challenge and identify the right product or custom engagement. From there we scope, architect, and build — with direct founder involvement at every stage.',
   },
 ];
 
 const STATS = [
-  { value: 99.9, label: 'Uptime SLA', suffix: '%' },
+  { value: 12, label: 'Products', suffix: '' },
   { value: 2,  label: 'Blockchain Networks', suffix: '' },
-  { value: 24, label: 'Hour Support', suffix: '/7' },
+  { value: 99.9, label: 'Uptime Target', suffix: '%' },
 ];
 
 const FEATURED_PRODUCTS = [
@@ -74,43 +74,25 @@ const FEATURED_PRODUCTS = [
   },
 ];
 
-const CASE_STUDY_HIGHLIGHTS = [
+const PRODUCT_SPOTLIGHTS = [
   {
-    slug: 'regional-grocery-demand-forecasting',
+    id: 'ndn-001',
+    linkPath: '/products/ndn-001',
     product: 'NDN Demand IQ',
-    headline: '45% Stockout Reduction',
-    metric: '$4.2M annual savings',
-    client: 'Regional Grocery Chain — 150+ stores',
+    headline: 'AI Demand Forecasting',
+    metric: 'Retail & supply chain intelligence',
+    description: 'ML-driven predictions that reduce overstock, cut write-offs, and surface replenishment signals before stockouts happen.',
   },
   {
-    slug: 'pharma-supply-chain-traceability',
+    id: 'ndn-005',
+    linkPath: '/products/ndn-005',
     product: 'NDN TraceChain',
-    headline: '100% FDA Compliance',
-    metric: '85% faster audits',
-    client: 'National Pharma Distributor — $5.3B volume',
+    headline: 'On-Chain Supply Chain Traceability',
+    metric: 'Immutable provenance on Ethereum',
+    description: 'Every product movement recorded as a verifiable on-chain event — from origin to consumer, with full audit trail.',
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote: "NDN's AI forecasting cut our operational costs by 40%. The GCP integration was seamless and the results were immediate.",
-    name: "Sarah Chen",
-    role: "VP Operations",
-    company: "TechScale Inc",
-  },
-  {
-    quote: "NDN's Ethereum smart contract escrow system gave us automated, trustless B2B settlements. Game-changer for our global marketplace.",
-    name: "Dr. James Okafor",
-    role: "CTO",
-    company: "PayFlow Global",
-  },
-  {
-    quote: "The Ethereum smart contracts NDN built automate 80% of our compliance workflows. Outstanding engineering team.",
-    name: "Maria Rodriguez",
-    role: "CFO",
-    company: "FinSecure Corp",
-  },
-];
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const [val, setVal] = useState(0);
@@ -192,8 +174,8 @@ export default function Hero() {
         </h1>
 
         <p className="hero-subtitle reveal stagger-3">
-          We build cutting-edge <strong>AI products</strong> and deliver <strong>enterprise AI services</strong> powered by Google Cloud Platform.
-          Our blockchain solutions on <strong>Ethereum</strong> bring transparency, security, and speed to your operations.
+          We build focused <strong>AI products</strong> and <strong>blockchain solutions</strong> on Google Cloud Platform and Ethereum —
+          purpose-built for retail, healthcare, supply chain, and community finance.
         </p>
 
         <div className="hero-ctas reveal stagger-4">
@@ -310,22 +292,22 @@ export default function Hero() {
               }}
               onClick={() => trackCTAClick('view_all_products', 'hero')}
             >
-              View All 11 Products →
+              View All 12 Products →
             </Link>
           </div>
         </div>
 
-        {/* Case Studies */}
+        {/* Product Spotlights */}
         <div className="hero-testimonials reveal stagger-6" style={{
           marginTop: 64,
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 24,
         }}>
-          {CASE_STUDY_HIGHLIGHTS.map(cs => (
+          {PRODUCT_SPOTLIGHTS.map(ps => (
             <Link
-              to={`/case-studies/${cs.slug}`}
-              key={cs.slug}
+              to={ps.linkPath}
+              key={ps.id}
               style={{
                 background: 'rgba(7, 24, 41, 0.85)',
                 border: '1px solid rgba(6, 182, 212, 0.25)',
@@ -338,7 +320,7 @@ export default function Hero() {
               }}
               onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--brand-cyan)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
               onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.25)'; e.currentTarget.style.transform = 'none'; }}
-              onClick={() => trackCTAClick(`case_study_${cs.slug}`, 'hero')}
+              onClick={() => trackCTAClick(`spotlight_${ps.id}`, 'hero')}
             >
               <div style={{
                 fontSize: '0.7rem',
@@ -348,7 +330,7 @@ export default function Hero() {
                 textTransform: 'uppercase',
                 marginBottom: 8,
               }}>
-                Case Study &middot; {cs.product}
+                Product &middot; {ps.product}
               </div>
               <div style={{
                 fontSize: '1.3rem',
@@ -357,7 +339,7 @@ export default function Hero() {
                 color: 'var(--text-primary)',
                 marginBottom: 6,
               }}>
-                {cs.headline}
+                {ps.headline}
               </div>
               <div style={{
                 fontSize: '0.95rem',
@@ -365,13 +347,14 @@ export default function Hero() {
                 fontWeight: 600,
                 marginBottom: 10,
               }}>
-                {cs.metric}
+                {ps.metric}
               </div>
               <div style={{
                 fontSize: '0.8rem',
                 color: 'var(--text-tertiary)',
+                lineHeight: 1.5,
               }}>
-                {cs.client}
+                {ps.description}
               </div>
             </Link>
           ))}
@@ -379,7 +362,7 @@ export default function Hero() {
 
         <div style={{ textAlign: 'center', marginTop: 20 }}>
           <Link
-            to="/case-studies"
+            to="/products"
             style={{
               fontSize: '0.85rem',
               color: 'var(--brand-cyan)',
@@ -387,63 +370,14 @@ export default function Hero() {
               fontFamily: "'JetBrains Mono Variable', monospace",
               letterSpacing: '0.05em',
             }}
-            onClick={() => trackCTAClick('view_all_case_studies', 'hero')}
+            onClick={() => trackCTAClick('view_all_products_spotlight', 'hero')}
           >
-            View All Case Studies →
+            View All Products →
           </Link>
         </div>
 
-        <div className="hero-testimonials reveal stagger-7" style={{
-          marginTop: 48,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 24,
-        }}>
-          {TESTIMONIALS.map(t => (
-            <div key={t.company} style={{
-              background: 'rgba(7, 24, 41, 0.85)',
-              border: '1px solid rgba(6, 182, 212, 0.15)',
-              borderRadius: 16,
-              padding: 24,
-              backdropFilter: 'blur(8px)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease',
-            }}>
-              <p style={{
-                fontSize: '0.9rem',
-                color: 'var(--text-secondary)',
-                lineHeight: 1.7,
-                marginBottom: 16,
-                fontStyle: 'italic',
-              }}>
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: '50%',
-                  background: 'var(--gradient-primary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: "'Syne Variable', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '0.85rem',
-                  color: '#fff',
-                }}>
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>{t.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>{t.role}, {t.company}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* SEO Content Section - 500+ Words for AI Crawlers */}
-        <div className="reveal stagger-8" style={{ marginTop: 80, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
+        {/* About the Company */}
+        <div className="reveal stagger-7" style={{ marginTop: 80, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
           <div style={{
             background: 'rgba(7, 24, 41, 0.6)',
             border: '1px solid rgba(6, 182, 212, 0.1)',
@@ -458,72 +392,59 @@ export default function Hero() {
               marginBottom: 20,
               textAlign: 'center',
             }}>
-              Enterprise AI and Blockchain Solutions
+              Expert-Built AI and Blockchain Products
             </h2>
-            
+
             <div style={{
               fontSize: '0.92rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.8,
             }}>
               <p style={{ marginBottom: 16 }}>
-                <strong>NDN Analytics</strong> is a leading technology company specializing in enterprise AI services and blockchain solutions. We help organizations across retail, healthcare, supply chain, and financial services build smarter systems and scale their operations faster. Our expert team combines deep expertise in <strong>Google Cloud Platform</strong> technologies with cutting-edge <strong>Ethereum blockchain</strong> development to deliver transformative results.
+                <strong>NDN Analytics</strong> is a technology company founded by an experienced developer with a track record across North American and Middle Eastern markets. We build focused, well-engineered products — not broad consulting packages — across <strong>Google Cloud Platform</strong> and <strong>Ethereum</strong>, so organizations of any size can access the same enterprise-grade intelligence that large enterprises pay consultants to build from scratch.
               </p>
-              
-              <h3 style={{ 
-                fontSize: '1.1rem', 
-                fontWeight: 600, 
+
+              <h3 style={{
+                fontSize: '1.1rem',
+                fontWeight: 600,
                 color: 'var(--brand-cyan)',
                 marginBottom: 12,
                 marginTop: 24,
               }}>
-                AI-Powered Enterprise Solutions
+                AI Products on Google Cloud Platform
               </h3>
               <p style={{ marginBottom: 16 }}>
-                Our AI products leverage Google Cloud's Vertex AI, BigQuery, and machine learning capabilities to solve complex business challenges. <strong>NDN Demand IQ</strong> uses advanced forecasting algorithms to predict product demand with remarkable accuracy, helping retailers reduce stockouts by up to 45% and cut operational costs by 40%. In healthcare, our <strong>NDN HealthPredict</strong> platform analyzes patient data to prevent hospital readmissions, improving outcomes while reducing costs. We also offer <strong>NDN RetailSync</strong> for real-time inventory management across multiple sales channels, ensuring optimal stock levels and customer satisfaction.
+                Our AI products are built on Google Cloud's Vertex AI, BigQuery, and machine learning infrastructure. <strong>NDN Demand IQ</strong> uses ensemble forecasting to predict product demand at the SKU and store level, giving retailers the signal they need before stockouts happen — not after. <strong>NDN HealthPredict</strong> models patient risk factors to flag readmission candidates before discharge. <strong>NDN RetailSync</strong> synchronizes inventory data across sales channels in real time. Each product is architected to integrate with existing ERP and data infrastructure — no rip-and-replace required.
               </p>
-              
-              <h3 style={{ 
-                fontSize: '1.1rem', 
-                fontWeight: 600, 
+
+              <h3 style={{
+                fontSize: '1.1rem',
+                fontWeight: 600,
                 color: 'var(--brand-cyan)',
                 marginBottom: 12,
                 marginTop: 24,
               }}>
-                Blockchain Development on Ethereum
+                Blockchain Products on Ethereum
               </h3>
               <p style={{ marginBottom: 16 }}>
-                Our blockchain solutions bring transparency, security, and automation to enterprise operations. <strong>NDN TraceChain</strong> provides end-to-end supply chain traceability, enabling companies to track products from origin to consumer with immutable blockchain records. For pharmaceutical and healthcare companies, our solutions ensure <strong>100% FDA compliance</strong> and reduce audit times by 85%. <strong>NDN PayStream</strong> automates B2B payment processing using smart contracts, eliminating manual reconciliation and ensuring trustless escrow for high-value transactions. Our Ethereum expertise includes ERC-20 token development, DeFi protocols, and secure smart contract auditing.
+                Our blockchain products bring transparency and automation to operations that still run on paper trails and manual reconciliation. <strong>NDN TraceChain</strong> records every product movement as an immutable on-chain event, creating an audit-ready provenance record from origin to consumer. <strong>NDN PayStream</strong> automates B2B settlements through smart contract escrow — payments execute when conditions are met, without intermediaries. Our Ethereum work spans ERC-20 tokens, DeFi protocols, and secure smart contract development with a security-first design pattern.
               </p>
-              
-              <h3 style={{ 
-                fontSize: '1.1rem', 
-                fontWeight: 600, 
+
+              <h3 style={{
+                fontSize: '1.1rem',
+                fontWeight: 600,
                 color: 'var(--brand-cyan)',
                 marginBottom: 12,
                 marginTop: 24,
               }}>
-                Proven Results and Client Success
+                Built to Scale. Designed to Last.
               </h3>
               <p style={{ marginBottom: 16 }}>
-                We deliver measurable business outcomes. Our clients report average cost savings of <strong>$4.2 million annually</strong>, with supply chain efficiency improvements of up to 85%. We maintain a <strong>99.9% uptime SLA</strong> across all enterprise deployments, backed by 24/7 support from our dedicated success teams. Our case studies demonstrate real-world impact: a regional grocery chain with 150+ stores reduced stockouts by 45%, while a national pharmaceutical distributor with $5.3 billion in volume achieved complete FDA compliance and dramatically faster audit processes.
+                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook. <strong>NDN Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal cooperative finance for generations. <strong>NDN NeuroQuest</strong> delivers cognitive assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>, <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design — is chosen for durability and interoperability, not trend-chasing.
               </p>
-              
-              <h3 style={{ 
-                fontSize: '1.1rem', 
-                fontWeight: 600, 
-                color: 'var(--brand-cyan)',
-                marginBottom: 12,
-                marginTop: 24,
-              }}>
-                Comprehensive Technology Stack
-              </h3>
-              <p style={{ marginBottom: 16 }}>
-                We work with modern technology stacks including <strong>Google Cloud Platform</strong> (Vertex AI, Cloud Functions, Firestore, BigQuery), <strong>Ethereum blockchain</strong> (Solidity, Hardhat, Web3.js), and various AI/ML frameworks (TensorFlow, PyTorch). Our team specializes in serverless architecture, microservices, and API-first design patterns. We also develop specialized platforms like <strong>NDN Njangi</strong> for decentralized savings circles, <strong>NDN NeuroQuest</strong> for cognitive assessment, and <strong>NDN Interpreter</strong> for real-time sign language translation using computer vision.
-              </p>
-              
+
               <p style={{ marginTop: 24 }}>
-                Contact NDN Analytics today to learn how our AI and blockchain solutions can transform your enterprise operations. We offer end-to-end implementation services from strategy and architecture to deployment and ongoing optimization, ensuring your technology investments deliver maximum return.
+                The company is early-stage and founder-led, which means direct technical accountability on every engagement. There is no account management layer between you and the engineer building your product. <a href="/contact" style={{ color: 'var(--brand-cyan)', textDecoration: 'none' }}>Start with a discovery call</a> — scope, architecture, and timeline in one session.
               </p>
             </div>
           </div>

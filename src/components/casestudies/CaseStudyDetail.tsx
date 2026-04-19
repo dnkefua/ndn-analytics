@@ -63,7 +63,7 @@ export default function CaseStudyDetail() {
                 marginBottom: 24,
               }}
             >
-              ← Back to Case Studies
+              ← Back to Reference Implementations
             </Link>
 
             <div
@@ -76,7 +76,7 @@ export default function CaseStudyDetail() {
                 marginBottom: 16,
               }}
             >
-              {caseStudy.client.industry} • {caseStudy.timeline}
+              Reference Implementation &middot; {caseStudy.client.industry} &middot; {caseStudy.timeline}
             </div>
 
             <h1
@@ -136,10 +136,24 @@ export default function CaseStudyDetail() {
           >
             {/* Main Content */}
             <div>
-              {/* Client Info */}
+              {/* Reference Scenario Notice */}
               <section style={{ marginBottom: 48 }}>
+                <div
+                  style={{
+                    background: 'rgba(124,58,237,0.06)',
+                    border: '1px solid rgba(124,58,237,0.2)',
+                    borderRadius: 12,
+                    padding: '16px 20px',
+                    marginBottom: 24,
+                    fontSize: '0.85rem',
+                    color: '#475569',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <strong style={{ color: '#7C3AED' }}>Reference Implementation</strong> — This scenario is modeled against realistic industry constraints to demonstrate how the product architecture addresses this class of problem. It is not a historical client engagement.
+                </div>
                 <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
-                  About the Client
+                  Reference Scenario
                 </h2>
                 <div
                   style={{
@@ -151,7 +165,7 @@ export default function CaseStudyDetail() {
                 >
                   <div style={{ display: 'grid', gap: 12 }}>
                     <div>
-                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Organization: </span>
+                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Scenario: </span>
                       <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.name}</span>
                     </div>
                     <div>
@@ -159,7 +173,7 @@ export default function CaseStudyDetail() {
                       <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.industry}</span>
                     </div>
                     <div>
-                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Size: </span>
+                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Scale: </span>
                       <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.size}</span>
                     </div>
                   </div>
@@ -189,7 +203,7 @@ export default function CaseStudyDetail() {
               {/* Results Detail */}
               <section style={{ marginBottom: 48 }}>
                 <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
-                  Results Achieved
+                  Modeled Outcomes
                 </h2>
                 <div style={{ display: 'grid', gap: 16 }}>
                   {caseStudy.results.map(result => (
@@ -228,43 +242,6 @@ export default function CaseStudyDetail() {
                 </div>
               </section>
 
-              {/* Testimonial */}
-              {caseStudy.testimonial && (
-                <section style={{ marginBottom: 48 }}>
-                  <blockquote
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.08))',
-                      borderLeft: '4px solid #7C3AED',
-                      padding: 32,
-                      borderRadius: 12,
-                      margin: 0,
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: '1.15rem',
-                        fontStyle: 'italic',
-                        color: '#0F172A',
-                        lineHeight: 1.7,
-                        marginBottom: 16,
-                      }}
-                    >
-                      "{caseStudy.testimonial.quote}"
-                    </p>
-                    <footer>
-                      <cite style={{ fontStyle: 'normal' }}>
-                        <span style={{ fontWeight: 600, color: '#0F172A' }}>
-                          {caseStudy.testimonial.author}
-                        </span>
-                        <br />
-                        <span style={{ color: '#64748B', fontSize: '0.9rem' }}>
-                          {caseStudy.testimonial.role}
-                        </span>
-                      </cite>
-                    </footer>
-                  </blockquote>
-                </section>
-              )}
             </div>
 
             {/* Sidebar */}
@@ -311,10 +288,10 @@ export default function CaseStudyDetail() {
                 }}
               >
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: 8 }}>
-                  Want Similar Results?
+                  Apply This to Your Problem
                 </h3>
                 <p style={{ fontSize: '0.9rem', opacity: 0.9, marginBottom: 16 }}>
-                  Let's discuss your specific challenges.
+                  Bring your actual stack and constraints — we'll scope a solution that fits.
                 </p>
                 <Link
                   to="/contact?utm_source=case_study&utm_medium=sidebar"
@@ -348,7 +325,7 @@ export default function CaseStudyDetail() {
                   textAlign: 'center',
                 }}
               >
-                More Success Stories
+                More Reference Implementations
               </h2>
               <div
                 className="cs-related-grid"
