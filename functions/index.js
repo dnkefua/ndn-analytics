@@ -49,6 +49,26 @@ app.use(express.static(DIST_PATH, {
   immutable: true,
 }));
 
+// Explicit XML routes — must come before the SSR catch-all so Google gets
+// correct Content-Type instead of text/html from the SSR renderer.
+app.get('/feed.xml', (req, res) => {
+  res.set('Content-Type', 'application/rss+xml; charset=utf-8');
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'feed.xml'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.set('Content-Type', 'application/xml; charset=utf-8');
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.set('Content-Type', 'text/plain; charset=utf-8');
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'robots.txt'));
+});
+
 app.get('*', async (req, res) => {
   try {
     if (!render) {

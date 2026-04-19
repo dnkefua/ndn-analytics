@@ -21,4 +21,10 @@ if (existsSync('dist/ssr/assets')) {
   cpSync('dist/ssr/assets', `${FUNCTIONS}/assets`, { recursive: true });
 }
 
+// Copy XML/text assets that must be served by the Cloud Function with correct
+// Content-Type (Firebase rewrites send all requests through the SSR function).
+cpSync('dist/feed.xml', `${FUNCTIONS}/feed.xml`);
+cpSync('dist/sitemap.xml', `${FUNCTIONS}/sitemap.xml`);
+cpSync('dist/robots.txt', `${FUNCTIONS}/robots.txt`);
+
 console.log('Build artifacts copied to functions/');
