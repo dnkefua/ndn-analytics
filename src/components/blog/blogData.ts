@@ -1401,19 +1401,19 @@ Integers in Solidity have fixed sizes. Exceeding the maximum or going below zero
 ### 3. **Unchecked Call Return Values**
 Function calls return a boolean success value. If you don't check it, failures are silently ignored.
 
-**Example:** `transfer()` returns false if it fails, but the contract continues as if it succeeded.
+**Example:** transfer() returns false if it fails, but the contract continues as if it succeeded.
 
 **Defense:**
-- Always check return values: `require(token.transfer(recipient, amount), "Transfer failed")`
-- Prefer `safeTransfer()` from OpenZeppelin (reverts instead of returning false)
+- Always check return values: require(token.transfer(recipient, amount), "Transfer failed")
+- Prefer safeTransfer() from OpenZeppelin (reverts instead of returning false)
 
 ### 4. **Access Control Flaws**
 Missing or incorrect permission checks allow unauthorized users to execute admin functions.
 
-**Example:** A contract has an `emergencyWithdraw()` function with no `onlyOwner` modifier — anyone can drain it.
+**Example:** A contract has an emergencyWithdraw() function with no onlyOwner modifier — anyone can drain it.
 
 **Defense:**
-- Use OpenZeppelin's `Ownable` or `AccessControl` for permission management
+- Use OpenZeppelin's Ownable or AccessControl for permission management
 - Default to deny, explicitly grant permissions
 - Test with different roles (owner, user, attacker)
 
@@ -1440,9 +1440,9 @@ A flash loan allows you to borrow massive amounts without collateral, but you mu
 - Implement circuit breakers that pause trading if prices move >X% in Y blocks
 
 ### 7. **Delegatecall Vulnerabilities**
-`delegatecall` allows one contract to execute another's code in its own storage context. If misused, an attacker can modify storage.
+delegatecall allows one contract to execute another's code in its own storage context. If misused, an attacker can modify storage.
 
-**Example:** A proxy contract uses delegatecall to forward calls to an implementation contract. The implementation contract has `selfdestruct()` — goodbye to the proxy.
+**Example:** A proxy contract uses delegatecall to forward calls to an implementation contract. The implementation contract has selfdestruct() — goodbye to the proxy.
 
 **Defense:**
 - Avoid delegatecall unless you understand the implications
@@ -1457,7 +1457,7 @@ Lack of validation on input parameters allows invalid states.
 
 **Defense:**
 - Validate all inputs: ranges, types, formats
-- Use `require()` statements liberally
+- Use require() statements liberally
 - Test with edge cases: zero, maximum uint256, negative numbers
 
 ## The NDN Analytics Security Approach
