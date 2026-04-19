@@ -27,6 +27,11 @@ export default function ProductDetail() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
 
+  useEffect(() => {
+    const videoEl = document.querySelector('.pd-media-video') as HTMLVideoElement;
+    if (videoEl) videoEl.playbackRate = 2;
+  });
+
   if (!product) {
     return (
       <>
@@ -111,6 +116,28 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {/* ── MEDIA SHOWCASE ── */}
+      {product.media && (
+        <section className="pd-media-showcase">
+          <div className="container">
+            {product.media.video ? (
+              <video
+                src={product.media.video}
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                playbackRate={2}
+                className="pd-media-video"
+              />
+            ) : product.media.image ? (
+              <img src={product.media.image} alt={`${product.name} demo`} className="pd-media-image" />
+            ) : null}
+          </div>
+        </section>
+      )}
 
       {/* ── METRICS STRIP ── */}
       {product.metrics && (

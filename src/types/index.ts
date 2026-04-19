@@ -13,6 +13,10 @@ export interface Product {
   howItWorks?: string;
   metrics?: string[];
   website?: string;
+  media?: {
+    video?: string;
+    image?: string;
+  };
 }
 
 export interface Solution {
