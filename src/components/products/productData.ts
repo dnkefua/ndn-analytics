@@ -101,8 +101,7 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'NDN TraceChain deploys smart contracts on Ethereum mainnet or a private EVM chain. Each supply chain event (manufacture, transfer, inspection, retail) writes a hash to the chain. Consumers and regulators verify provenance via a public API or QR-linked product passport page.',
     metrics: ['Ethereum mainnet & EVM-compatible chains', 'Consumer-facing QR product passports', 'FDA & EU supply chain compliance', 'Real-time counterfeiting alerts'],
     media: {
-      video: '/assets/tracechain-demo.mp4',
-      image: '/assets/tracechain-landing.png',
+      image: '/assets/tracechain-demo.gif',
     },
   },
   {
@@ -185,8 +184,7 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'Njangi smart contracts manage circle membership, contribution schedules, and payout rotations. Members deposit funds each cycle; the contract releases the pooled amount to the designated recipient according to the agreed rotation. Trust scores accumulate on-chain and are portable across DeFi protocols.',
     metrics: ['Multi-chain deployment (EVM)', 'Mobile-first wallet interface', 'On-chain trust score system', 'Supports stablecoin contributions'],
     media: {
-      video: '/assets/njangi-demo.mp4',
-      image: '/assets/njangi-landing.png',
+      image: '/assets/njangi-demo.gif',
     },
     website: 'https://www.njangi.xyz',
   },
