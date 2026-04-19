@@ -42,9 +42,9 @@ describe('Hero integration', () => {
       </HelmetProvider>
     );
 
-    expect(screen.getByText('Uptime SLA')).toBeInTheDocument();
+    expect(screen.getByText('Uptime Target')).toBeInTheDocument();
     expect(screen.getByText('Blockchain Networks')).toBeInTheDocument();
-    expect(screen.getByText('Hour Support')).toBeInTheDocument();
+    expect(screen.getByText('Products')).toBeInTheDocument();
   });
 
   it('renders featured products section', async () => {
@@ -75,11 +75,11 @@ describe('Hero integration', () => {
       </HelmetProvider>
     );
 
-    expect(screen.getByText('45% Stockout Reduction')).toBeInTheDocument();
-    expect(screen.getByText('100% FDA Compliance')).toBeInTheDocument();
+    expect(screen.getByText('AI Demand Forecasting')).toBeInTheDocument();
+    expect(screen.getByText('On-Chain Supply Chain Traceability')).toBeInTheDocument();
   });
 
-  it('renders testimonials', async () => {
+  it('renders product spotlights section', async () => {
     const { default: Hero } = await import('../components/hero/Hero');
 
     render(
@@ -90,9 +90,8 @@ describe('Hero integration', () => {
       </HelmetProvider>
     );
 
-    expect(screen.getByText(/Sarah Chen/)).toBeInTheDocument();
-    expect(screen.getByText(/Dr. James Okafor/)).toBeInTheDocument();
-    expect(screen.getByText(/Maria Rodriguez/)).toBeInTheDocument();
+    expect(screen.getByText('Retail & supply chain intelligence')).toBeInTheDocument();
+    expect(screen.getByText('Immutable provenance on Ethereum')).toBeInTheDocument();
   });
 
   it('renders CTA buttons', async () => {

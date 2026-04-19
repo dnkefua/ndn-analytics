@@ -37,7 +37,7 @@ describe('ArticleSchema', () => {
     expect(script).toBeTruthy();
     if (script) {
       const data = JSON.parse(script.textContent || '');
-      expect(data['@type']).toBe('Article');
+      expect(data['@type']).toBe('BlogPosting');
       expect(data.headline).toBe('Test Article');
       expect(data.author.name).toBe('NDN Analytics');
     }
