@@ -48,6 +48,9 @@ Allow: /
 # Sitemap location
 Sitemap: https://www.ndnanalytics.com/sitemap.xml
 
+# RSS feed
+Feed: https://www.ndnanalytics.com/feed.xml
+
 # llms.txt location for AI context
 LLMs-txt: https://www.ndnanalytics.com/llms.txt
 

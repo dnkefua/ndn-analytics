@@ -8,22 +8,39 @@ interface ArticleSchemaProps {
   slug: string;
   author: string;
   datePublished: string;
+  dateModified?: string;
   image?: string;
   category: string;
+  keywords?: string[];
 }
 
-export default function ArticleSchema({ title, excerpt, slug, author, datePublished, image, category }: ArticleSchemaProps) {
+export default function ArticleSchema({
+  title,
+  excerpt,
+  slug,
+  author,
+  datePublished,
+  dateModified,
+  image,
+  category,
+  keywords = [],
+}: ArticleSchemaProps) {
+  const url = `${BASE_URL}/blog/${slug}`;
+  const ogImage = image || `${BASE_URL}/og-image.png`;
+
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: title,
     description: excerpt,
-    url: `${BASE_URL}/blog/${slug}`,
+    url,
     datePublished,
-    dateModified: datePublished,
+    dateModified: dateModified ?? datePublished,
+    inLanguage: 'en-US',
     author: {
       '@type': 'Person',
       name: author,
+      url: `${BASE_URL}/about`,
     },
     publisher: {
       '@type': 'Organization',
@@ -32,14 +49,32 @@ export default function ArticleSchema({ title, excerpt, slug, author, datePublis
       logo: {
         '@type': 'ImageObject',
         url: `${BASE_URL}/logo.jpg`,
+        width: 512,
+        height: 512,
       },
+    },
+    image: {
+      '@type': 'ImageObject',
+      url: ogImage,
+      width: 1200,
+      height: 630,
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${BASE_URL}/blog/${slug}`,
+      '@id': url,
     },
-    ...(image && { image }),
-    ...(category && { articleSection: category }),
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${BASE_URL}/blog`,
+      name: 'NDN Analytics Blog',
+      publisher: {
+        '@type': 'Organization',
+        name: 'NDN Analytics',
+        url: BASE_URL,
+      },
+    },
+    articleSection: category,
+    ...(keywords.length > 0 && { keywords: keywords.join(', ') }),
   };
 
   return (

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "dev:ssr": "node server.js",
+    "generate:blog": "node scripts/generate-blog-assets.js",
+    "prebuild": "node scripts/generate-blog-assets.js",
     "build": "tsc -b && vite build",
     "build:ssr": "tsc -b && vite build && vite build --ssr src/entry-ssr.tsx --outDir dist/ssr && node scripts/postbuild.js",
     "lint": "eslint .",

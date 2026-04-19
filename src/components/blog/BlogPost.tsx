@@ -109,6 +109,10 @@ export default function BlogPost() {
         datePublished={post.date}
         image={post.image}
         category={post.category}
+        keywords={[
+          post.category.toLowerCase(),
+          ...post.title.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(w => w.length > 4),
+        ]}
       />
       <article style={{ paddingTop: 120, paddingBottom: 80, minHeight: '100vh' }}>
         <div className="container">
