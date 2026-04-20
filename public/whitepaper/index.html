@@ -1273,26 +1273,27 @@
     ============================================================ */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
     .reveal-left {
       opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateX(-24px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
     }
-    .reveal-left.visible {
+
+    .reveal.visible, .reveal-left.visible {
       opacity: 1;
-      transform: translateX(0);
+      transform: translate(0, 0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-4 { transition-delay: 0.6s; }
 
     /* ============================================================
        RIBBON / CALLOUTS
@@ -1423,6 +1424,121 @@
       flex-shrink: 0;
     }
     .ref-list a { color: var(--blue-400); word-break: break-all; }
+
+    /* Save PDF Button */
+    .save-pdf {
+      background: var(--blue-500);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 10px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2);
+    }
+    .save-pdf:hover {
+      background: var(--blue-400);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    }
+    .save-pdf:active { transform: translateY(0); }
+    .save-pdf svg { width: 18px; height: 18px; }
+
+    /* ============================================================
+       PRINT STYLES (PDF EXPORT)
+    ============================================================ */
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 14mm 14mm 14mm;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      body {
+        background-color: var(--bg-00) !important;
+        color: var(--text-primary) !important;
+        font-size: 11pt;
+      }
+
+      nav, #toc-sidebar, .save-pdf, .reading-progress, .back-to-top, #toc-toggle {
+        display: none !important;
+      }
+
+      .wrapper {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .hero {
+        min-height: unset !important;
+        padding-top: 20px !important;
+        padding-bottom: 40px !important;
+      }
+
+      section {
+        padding: 40px 0 !important;
+        page-break-inside: auto;
+      }
+
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+
+      .plane-card, .problem-card, .hero-stat, .api-section-wrap, .comp-table-wrap, .milestone-card {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-bottom: 20px !important;
+      }
+
+      .bg-canvas, .bg-grid, .hero-glow {
+        display: none !important;
+      }
+
+      /* Ensure animations are "finished" so elements are visible */
+      .reveal, .reveal-left, .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        transition: none !important;
+      }
+
+      .arch-diagram {
+        padding: 20px !important;
+        background: #f8fafc !important;
+        color: #1e293b !important;
+      }
+
+      table {
+        font-size: 9pt !important;
+        border-collapse: collapse !important;
+      }
+
+      th, td {
+        border: 1px solid #e2e8f0 !important;
+        padding: 8px !important;
+      }
+
+      .col-ndn {
+        background: rgba(59, 130, 246, 0.05) !important;
+      }
+
+      /* Force dark theme colors in print */
+      .gradient-text, .hero-stat-val, .plane-name {
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: #2563eb !important;
+      }
+
+    }
   </style>
 </head>
 <body>
@@ -1462,7 +1578,12 @@
     </ul>
     <div class="nav-actions">
       <span class="nav-badge">NDP v1.0</span>
-      <button class="btn-print" onclick="window.print()">🖨 Save as PDF</button>
+      <button class="save-pdf" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+        Save as PDF
+      </button>
     </div>
   </div>
 </nav>

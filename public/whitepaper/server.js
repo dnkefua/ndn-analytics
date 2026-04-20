@@ -1,9 +1,12 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = 5199;
-const DIR = __dirname;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -20,7 +23,7 @@ const MIME = {
 const server = http.createServer((req, res) => {
   let urlPath = req.url.split('?')[0];
   if (urlPath === '/' || urlPath === '') urlPath = '/index.html';
-  const filePath = path.join(DIR, urlPath);
+  const filePath = path.join(__dirname, urlPath);
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
@@ -40,7 +43,7 @@ server.listen(PORT, '127.0.0.1', () => {
   console.log('  ┌────────────────────────────────────────────────────┐');
   console.log('  │  NDN IPFS Chain — Interactive White Paper Server   │');
   console.log('  ├────────────────────────────────────────────────────┤');
-  console.log(`  │  🌐  http://localhost:${PORT}                          │`);
+  console.log(`  │  http://localhost:${PORT}                          │`);
   console.log('  │  Press Ctrl+C to stop                              │');
   console.log('  └────────────────────────────────────────────────────┘');
   console.log('');

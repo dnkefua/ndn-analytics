@@ -79,6 +79,7 @@ function AnimatedRoutes() {
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/whitepaper" element={<WhitePaper />} />
             <Route path="/fine-tuning" element={<FineTuningTeaser />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="*" element={<NotFound />} />
