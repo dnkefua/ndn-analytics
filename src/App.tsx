@@ -26,6 +26,7 @@ const PricingSection = lazy(() => import('./components/pricing/PricingSection'))
 const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'));
 const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'));
 const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'));
+const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'));
 const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'));
 const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
 const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
