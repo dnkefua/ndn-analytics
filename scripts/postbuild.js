@@ -27,4 +27,10 @@ cpSync('dist/feed.xml', `${FUNCTIONS}/feed.xml`);
 cpSync('dist/sitemap.xml', `${FUNCTIONS}/sitemap.xml`);
 cpSync('dist/robots.txt', `${FUNCTIONS}/robots.txt`);
 
+// Copy whitepaper static files for direct serving
+const WHITEPPAPER_SRC = 'dist/whitepaper';
+if (existsSync(WHITEPPAPER_SRC)) {
+  cpSync(WHITEPPAPER_SRC, `${FUNCTIONS}/whitepaper`, { recursive: true });
+}
+
 console.log('Build artifacts copied to functions/');
