@@ -22,6 +22,7 @@ const PricingSection = lazy(() => import('./components/pricing/PricingSection'))
 const Navbar = lazy(() => import('./components/layout/Navbar'))
 const Footer = lazy(() => import('./components/layout/Footer'))
 const AriaFAB = lazy(() => import('./components/aria/AriaFAB'))
+const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'))
 
 function PageLoader() {
   return (
@@ -60,6 +61,7 @@ function SSRApp({ url }: { url: string }) {
                   <Route path="/blog" element={<BlogSection />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/pricing" element={<PricingSection />} />
+                  <Route path="/whitepaper" element={<WhitePaper />} />
                 </Routes>
               </Suspense>
             </main>
