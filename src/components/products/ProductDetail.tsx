@@ -129,7 +129,6 @@ export default function ProductDetail() {
                 muted
                 loop
                 playsInline
-                playbackRate={2}
                 className="pd-media-video"
               />
             ) : product.media.image ? (
