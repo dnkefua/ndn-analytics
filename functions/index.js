@@ -69,6 +69,11 @@ app.get('/robots.txt', (req, res) => {
   res.sendFile(join(DIST_PATH, 'robots.txt'));
 });
 
+app.get('/whitepaper', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'whitepaper', 'index.html'));
+});
+
 app.get('*', async (req, res) => {
   try {
     if (!render) {

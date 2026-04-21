@@ -12,10 +12,6 @@
     ],
     "rewrites": [
       {
-        "source": "/whitepaper",
-        "destination": "/whitepaper/index.html"
-      },
-      {
         "source": "/go/**",
         "function": "affiliateRedirect",
         "region": "us-central1"
