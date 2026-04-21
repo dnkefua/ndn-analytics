@@ -47,6 +47,7 @@ init();
 app.use(express.static(DIST_PATH, {
   maxAge: '1y',
   immutable: true,
+  index: false, // Don't serve index.html for directory requests
 }));
 
 // Explicit XML routes — must come before the SSR catch-all so Google gets
@@ -67,6 +68,12 @@ app.get('/robots.txt', (req, res) => {
   res.set('Content-Type', 'text/plain; charset=utf-8');
   res.set('Cache-Control', 'public, max-age=3600');
   res.sendFile(join(DIST_PATH, 'robots.txt'));
+});
+
+// Serve whitepaper standalone page (not through React SSR)
+app.get('/whitepaper-standalone', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'whitepaper', 'index.html'));
 });
 
 app.get('*', async (req, res) => {
