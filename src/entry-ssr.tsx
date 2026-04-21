@@ -19,10 +19,19 @@ const ContactSection = lazy(() => import('./components/contact/ContactSection'))
 const BlogSection = lazy(() => import('./components/blog/BlogSection'))
 const BlogPost = lazy(() => import('./components/blog/BlogPost'))
 const PricingSection = lazy(() => import('./components/pricing/PricingSection'))
+const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'))
+const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'))
+const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'))
 const Navbar = lazy(() => import('./components/layout/Navbar'))
 const Footer = lazy(() => import('./components/layout/Footer'))
 const AriaFAB = lazy(() => import('./components/aria/AriaFAB'))
 const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'))
+const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'))
+const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'))
+const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'))
+const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'))
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'))
+const NotFound = lazy(() => import('./components/errors/NotFound'))
 
 function PageLoader() {
   return (
@@ -61,7 +70,16 @@ function SSRApp({ url }: { url: string }) {
                   <Route path="/blog" element={<BlogSection />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/pricing" element={<PricingSection />} />
+                  <Route path="/ai-tools" element={<AIToolsSection />} />
+                  <Route path="/case-studies" element={<CaseStudiesSection />} />
+                  <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+                  <Route path="/checkout/success" element={<CheckoutSuccess />} />
+                  <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
                   <Route path="/whitepaper" element={<WhitePaper />} />
+                  <Route path="/fine-tuning" element={<FineTuningTeaser />} />
+                  <Route path="/admin" element={<AdminDashboard />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
             </main>
