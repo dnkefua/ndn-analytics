@@ -1,80 +1,172 @@
-# llms.txt
-# AI Crawler and LLM Access Policy for NDN Analytics
+# NDN Analytics — AI & Blockchain Intelligence Platform
 # https://www.ndnanalytics.com/llms.txt
-# Last Updated: 2026-04-14
+# Last Updated: 2026-04-21
+# For: AI crawlers, LLMs, search engines, and automated agents
 
-# Overview
-# NDN Analytics builds AI products and delivers enterprise AI services on Google Cloud Platform. 
-# Our blockchain solutions on Ethereum bring transparency, security, and speed to enterprise operations.
-# We specialize in AI-powered demand forecasting, supply chain traceability, smart contract automation, 
-# and healthcare AI solutions.
+---
 
-# Contact Information
-# Website: https://www.ndnanalytics.com
-# Email: contact@ndnanalytics.com
-# Location: Global enterprise services with focus on North America and Europe
-# Social: LinkedIn (NDN Analytics)
+## Company Overview
 
-# Primary Products & Services
-# 
-## AI Products (Google Cloud Platform)
-# - NDN Demand IQ: AI-powered demand forecasting and inventory optimization for retail and supply chain
-# - NDN HealthPredict: Healthcare AI for patient readmission prevention and clinical decision support
-# - NDN RetailSync: Real-time inventory synchronization across multi-channel retail operations
-# - NDN OpsAI: Enterprise operations automation using Google Cloud AI/ML services
-#
-## Blockchain Solutions (Ethereum)
-# - NDN TraceChain: Supply chain traceability and provenance tracking on Ethereum
-# - NDN PayStream: Automated B2B payment processing with smart contract escrow
-# - NDN SupplyVerify: Pharmaceutical and healthcare supply chain compliance
-# - NDN EscrowPro: Secure, trustless escrow for enterprise transactions
-#
-## AI & Blockchain Platforms
-# - NDN Njangi: Decentralized savings and investment circles (tontines) for African markets
-# - NDN NeuroQuest: AI-powered cognitive assessment and talent profiling platform
-# - NDN Interpreter: Real-time sign language interpretation using computer vision AI
-# - NDN FineTune: Custom AI model fine-tuning and deployment services
+**NDN Analytics** builds AI products and delivers enterprise AI services on Google Cloud Platform. Our blockchain solutions on Ethereum bring transparency, security, and speed to enterprise operations.
 
-# Key Differentiators
-# - 99.9% uptime SLA on all enterprise deployments
-# - Expertise in both Google Cloud AI and Ethereum blockchain development
-# - Proven track record: 45% stockout reduction, 100% FDA compliance, $4.2M+ annual savings for clients
-# - 24/7 enterprise support with dedicated success teams
-# - End-to-end implementation: from strategy to deployment to optimization
+- **Website:** https://www.ndnanalytics.com
+- **Contact:** contact@ndnanalytics.com
+- **Location:** 5406 E 23rd St, Tulsa, Oklahoma 74114, US (incorporated in Oklahoma, founder based in Dubai)
+- **Founded:** 2026
+- **Founder:** Nkefua Desmond — Founder & CEO
 
-# Industries Served
-# - Retail & E-commerce: Demand forecasting, inventory optimization
-# - Healthcare: Patient outcomes, clinical AI, supply chain compliance
-# - Supply Chain & Logistics: End-to-end traceability, payment automation
-# - Financial Services: Smart contracts, DeFi solutions, escrow systems
-# - Manufacturing: Quality control, predictive maintenance
+---
 
-# Technical Capabilities
-# - Google Cloud Platform: Vertex AI, BigQuery, Cloud Functions, Firestore
-# - Ethereum: Solidity smart contracts, ERC-20/ERC-721 tokens, DeFi protocols
-# - AI/ML: TensorFlow, PyTorch, demand forecasting models, NLP, computer vision
-# - Cloud Infrastructure: Serverless architecture, microservices, API-first design
+## Technical Stack
 
-# Important Pages
-# Home: https://www.ndnanalytics.com/
-# Products: https://www.ndnanalytics.com/products
-# Solutions: https://www.ndnanalytics.com/solutions
-# Case Studies: https://www.ndnanalytics.com/case-studies
-# Blog: https://www.ndnanalytics.com/blog
-# Contact: https://www.ndnanalytics.com/contact
-# About: https://www.ndnanalytics.com/about
+- **AI Platform:** Google Cloud Platform (Vertex AI, BigQuery, Cloud Functions)
+- **Blockchain:** Ethereum (Solidity smart contracts, ERC-20/ERC-721 tokens)
+- **Frontend:** Vite + React + TypeScript + Three.js (3D space engine)
+- **Deployment:** Firebase Hosting with CI/CD via GitHub Actions
 
-# Crawler Access Policy
+---
+
+## Products & Services
+
+### AI Products (Google Cloud Platform)
+1. **NDN Demand IQ** — AI-powered demand forecasting and inventory optimization for retail and supply chain. Reduces stockouts by 35-45%.
+2. **NDN Care Predict** — Healthcare AI for patient readmission prevention and clinical decision support. 28% readmission reduction.
+3. **NDN Route AI** — Last-mile delivery optimization using reinforcement learning. 25% fleet cost reduction.
+4. **NDN Churn Guard** — SaaS churn prediction using 50+ behavioral signals. 40% churn reduction.
+5. **NDN Interpreter** — Real-time sign language translation using computer vision (ASL at launch).
+
+### Blockchain Solutions (Ethereum)
+6. **NDN TraceChain** — Supply chain traceability and provenance tracking. EU Digital Product Passport compliant.
+7. **NDN PayStream** — Automated B2B payment processing with smart contract escrow. 60% DSO reduction.
+8. **NDN CredVault** — Tamper-proof digital credential verification on blockchain.
+9. **NDN PropLedger** — Real estate tokenization for fractional ownership (SEC compliant).
+
+### Community Finance (Solana)
+10. **Njangi** — African ROSCA (rotating savings circles) on-chain. Diaspora and unbanked populations.
+
+### Additional Services
+- **AI Readiness Assessment** — $499 structured discovery for AI implementation planning
+- **Fine-tuning Services** — Custom AI model fine-tuning and deployment
+
+---
+
+## Key Pages
+
+| Page | URL | Priority | Description |
+|------|-----|----------|-------------|
+| Home | https://www.ndnanalytics.com/ | 1.0 | AI & blockchain products and services |
+| Products | https://www.ndnanalytics.com/products | 0.9 | All 10+ AI and blockchain products |
+| Product Detail | https://www.ndnanalytics.com/products/{id} | 0.8 | Individual product pages (ndn-001 through ndn-010+) |
+| Solutions | https://www.ndnanalytics.com/solutions | 0.8 | Industry solutions |
+| Tech | https://www.ndnanalytics.com/tech | 0.7 | Technology stack details |
+| About | https://www.ndnanalytics.com/about | 0.7 | Company and founder profile |
+| Contact | https://www.ndnanalytics.com/contact | 0.6 | Contact form and location |
+| Pricing | https://www.ndnanalytics.com/pricing | 0.8 | Starter, Enterprise, Platform Partner tiers |
+| Blog | https://www.ndnanalytics.com/blog | 0.8 | AI and blockchain insights (22 posts) |
+| Case Studies | https://www.ndnanalytics.com/case-studies | 0.8 | Client success stories |
+| AI Tools | https://www.ndnanalytics.com/ai-tools | 0.7 | Interactive AI tools |
+| Fine-tuning | https://www.ndnanalytics.com/fine-tuning | 0.7 | Custom AI fine-tuning |
+| Whitepaper | https://www.ndnanalytics.com/whitepaper | 0.6 | NDN platform overview |
+
+---
+
+## Crawler & Bot Access Policy
+
+```
 User-agent: *
 Allow: /
-Allow: /products
-Allow: /blog
-Allow: /about
-Allow: /solutions
-Allow: /case-studies
-Allow: /contact
-Allow: /pricing
-Allow: /ai-tools
 
-# Sitemap
-Sitemap: https://www.ndnanalytics.com/sitemap.xml
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Facebot
+Allow: /
+```
+
+**Disallowed paths:**
+- `/admin` — internal dashboard
+- `/checkout/*` — payment flow
+- `/api/*` — internal API endpoints
+
+---
+
+## Structured Data / Schema
+
+The site includes the following JSON-LD structured data:
+- WebSite (with SearchAction)
+- Organization (with founder, address, contactPoint)
+- BlogPosting (on all blog articles)
+- SoftwareApplication (on all product pages)
+- FAQPage (on pages with FAQ content)
+- BreadcrumbList (on detail pages)
+- ContactPage (on contact page)
+
+---
+
+## Sitemap & Feeds
+
+- **XML Sitemap:** https://www.ndnanalytics.com/sitemap.xml
+- **RSS/Atom Feed:** https://www.ndnanalytics.com/feed.xml
+- **llms.txt:** https://www.ndnanalytics.com/llms.txt
+
+---
+
+## Industries Served
+
+- Retail & E-commerce
+- Healthcare & Clinical
+- Supply Chain & Logistics
+- Financial Services (DeFi, smart contracts)
+- Manufacturing
+- Government & Compliance (EU DPP, FDA DSCSA, CSRD)
+
+---
+
+## Guarantees & Differentiators
+
+- 99.9% uptime SLA on enterprise deployments
+- 70% of projects reach production (vs. industry 15%)
+- Proven ROI: 45% stockout reduction, $4.2M+ annual client savings
+- End-to-end: strategy → deployment → optimization
+- HIPAA BAA available, SOC 2 Type II process
+- Third-party security audits (Quantstamp, Trail of Bits)
+
+---
+
+## Compliance & Standards
+
+- EU Digital Product Passport (DPP) compliant
+- FDA DSCSA pharmaceutical traceability
+- GDPR-compliant architectures
+- SEC Climate Disclosure Rule support
+- EU CSRD (Corporate Sustainability Reporting Directive)

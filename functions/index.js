@@ -70,6 +70,12 @@ app.get('/robots.txt', (req, res) => {
   res.sendFile(join(DIST_PATH, 'robots.txt'));
 });
 
+app.get('/llms.txt', (req, res) => {
+  res.set('Content-Type', 'text/plain; charset=utf-8');
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(DIST_PATH, 'llms.txt'));
+});
+
 // Serve whitepaper standalone page (not through React SSR)
 app.get('/whitepaper-standalone', (req, res) => {
   res.set('Cache-Control', 'public, max-age=3600');

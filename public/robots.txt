@@ -1,8 +1,11 @@
-# Robots.txt for NDN Analytics
-# https://www.ndnanalytics.com
-# Last Updated: 2026-04-14
+# Disallow admin, checkout, and internal paths from all crawlers
+Disallow: /admin
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /internal/
 
-# Allow all crawlers including AI/LLM crawlers
+# Allow all major pages for crawlers
 User-agent: *
 Allow: /
 Allow: /products
@@ -19,6 +22,7 @@ Allow: /pricing
 Allow: /ai-tools
 Allow: /fine-tuning
 Allow: /tech
+Allow: /whitepaper
 
 # AI-specific crawlers - explicit allow
 User-agent: GPTBot
@@ -28,6 +32,9 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
 Allow: /
 
 User-agent: Anthropic-AI
@@ -42,7 +49,31 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
 User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Yandex
 Allow: /
 
 # Sitemap location
@@ -54,5 +85,5 @@ Feed: https://www.ndnanalytics.com/feed.xml
 # llms.txt location for AI context
 LLMs-txt: https://www.ndnanalytics.com/llms.txt
 
-# Crawl-delay for polite crawling
+# Crawl-delay for polite crawling (optional, crawlers may ignore)
 Crawl-delay: 1
