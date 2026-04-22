@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = 5199;
+const PORT = process.env.WHITEPAPER_PORT || 5199;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -38,12 +38,12 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '127.0.0.1', () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log('');
   console.log('  ┌────────────────────────────────────────────────────┐');
   console.log('  │  NDN IPFS Chain — Interactive White Paper Server   │');
   console.log('  ├────────────────────────────────────────────────────┤');
-  console.log(`  │  http://localhost:${PORT}                          │`);
+  console.log(`  │  Server running at http://0.0.0.0:${PORT}          │`);
   console.log('  │  Press Ctrl+C to stop                              │');
   console.log('  └────────────────────────────────────────────────────┘');
   console.log('');
