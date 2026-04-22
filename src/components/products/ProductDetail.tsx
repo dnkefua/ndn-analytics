@@ -117,26 +117,30 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* ── MEDIA SHOWCASE ── */}
-      {product.media && (
-        <section className="pd-media-showcase">
-          <div className="container">
-            {product.media.video ? (
-              <video
-                src={product.media.video}
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="pd-media-video"
-              />
-            ) : product.media.image ? (
-              <img src={product.media.image} alt={`${product.name} demo`} className="pd-media-image" />
-            ) : null}
-          </div>
-        </section>
-      )}
+       {/* ── MEDIA SHOWCASE ── */}
+       {product.media && (
+         <section className="pd-media-showcase">
+           <div className="container">
+             {product.media.video && !product.media.video.endsWith('.gif') ? (
+               <video
+                 src={product.media.video}
+                 controls
+                 autoPlay
+                 muted
+                 loop
+                 playsInline
+                 className="pd-media-video"
+               />
+             ) : (product.media.video && product.media.video.endsWith('.gif')) || product.media.image ? (
+               <img 
+                 src={product.media.video && product.media.video.endsWith('.gif') ? product.media.video : product.media.image}
+                 alt={`${product.name} demo`}
+                 className="pd-media-image"
+               />
+             ) : null}
+           </div>
+         </section>
+       )}
 
       {/* ── METRICS STRIP ── */}
       {product.metrics && (
