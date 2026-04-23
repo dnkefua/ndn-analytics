@@ -1,5 +1,6 @@
 /**
- * Generates public/sitemap.xml and public/feed.xml from blogData.ts.
+ * Generates public/sitemap.xml, public/feed.xml, and public/llms.txt
+ * from the current product and blog source files.
  * Run: node scripts/generate-blog-assets.js
  * Wired into: npm run build (via prebuild hook)
  */
@@ -12,22 +13,17 @@ const ROOT = resolve(__dirname, '..');
 const BASE_URL = 'https://www.ndnanalytics.com';
 const TODAY = new Date().toISOString().split('T')[0];
 
-// ── Parse blogData.ts ──────────────────────────────────────────────────────
-const src = readFileSync(resolve(ROOT, 'src/components/blog/blogData.ts'), 'utf8');
-
-function extractField(block, field) {
-  const m = block.match(new RegExp(`${field}:\\s*['"\`]([^'"\`\\n]+)['"\`]`));
-  return m ? m[1] : '';
+function extractQuotedField(block, field) {
+  const match = block.match(new RegExp(`${field}:\\s*['"\`]([^'"\`\\n]+)['"\`]`));
+  return match ? match[1] : '';
 }
 
 function extractExcerpt(block) {
-  // excerpt may span multiple lines with backtick template literal
-  const m = block.match(/excerpt:\s*[`'"]([^`'"]+)[`'"]/s);
-  return m ? m[1].replace(/\s+/g, ' ').trim() : '';
+  const match = block.match(/excerpt:\s*[`'"]([^`'"]+)[`'"]/s);
+  return match ? match[1].replace(/\s+/g, ' ').trim() : '';
 }
 
 function extractContent(block) {
-  // Grab everything after "content: `" up to the closing backtick
   const start = block.indexOf('content: `');
   if (start === -1) return '';
   const inner = block.slice(start + 10);
@@ -35,48 +31,32 @@ function extractContent(block) {
   return end === -1 ? inner : inner.slice(0, end);
 }
 
-// Split into individual post blocks by slug field
-const postBlocks = src.split(/(?=\n\s*\{[\s\S]*?slug:)/g).filter(b => b.includes("slug: '"));
+function escapeXml(str) {
+  return (str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
 
-const posts = postBlocks.map(block => ({
-  slug: extractField(block, 'slug'),
-  title: extractField(block, 'title'),
-  excerpt: extractExcerpt(block) || extractField(block, 'excerpt'),
-  date: extractField(block, 'date'),
-  author: extractField(block, 'author'),
-  category: extractField(block, 'category'),
-  readTime: extractField(block, 'readTime'),
-  content: extractContent(block),
-})).filter(p => p.slug && p.date);
+function stripMarkdown(markdown) {
+  return markdown
+    .replace(/#+\s/g, '')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .replace(/^\s*[-*]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
 
-console.log(`Found ${posts.length} blog posts`);
+function rfc822(dateStr) {
+  return new Date(`${dateStr}T12:00:00Z`).toUTCString();
+}
 
-// ── Static pages (manually maintained) ───────────────────────────────────
-const STATIC_PAGES = [
-  { loc: '/',              lastmod: TODAY, changefreq: 'weekly',  priority: '1.0' },
-  { loc: '/products',      lastmod: TODAY, changefreq: 'weekly',  priority: '0.9' },
-  { loc: '/solutions',     lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
-  { loc: '/tech',          lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
-  { loc: '/about',         lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
-  { loc: '/contact',       lastmod: TODAY, changefreq: 'monthly', priority: '0.6' },
-  { loc: '/pricing',       lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
-  { loc: '/blog',          lastmod: TODAY, changefreq: 'weekly',  priority: '0.8' },
-  { loc: '/case-studies',  lastmod: TODAY, changefreq: 'weekly',  priority: '0.8' },
-  { loc: '/fine-tuning',   lastmod: TODAY, changefreq: 'weekly',  priority: '0.7' },
-  // Products
-  ...Array.from({ length: 12 }, (_, i) => ({
-    loc: `/products/ndn-${String(i + 1).padStart(3, '0')}`,
-    lastmod: TODAY,
-    changefreq: 'weekly',
-    priority: '0.8',
-  })),
-  // Reference implementations
-  { loc: '/case-studies/regional-grocery-demand-forecasting', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { loc: '/case-studies/pharma-supply-chain-traceability',    lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { loc: '/case-studies/hospital-readmission-prevention',     lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-];
-
-// ── Sitemap ────────────────────────────────────────────────────────────────
 function urlEntry({ loc, lastmod, changefreq, priority }) {
   return `  <url>
     <loc>${BASE_URL}${loc}</loc>
@@ -86,11 +66,67 @@ function urlEntry({ loc, lastmod, changefreq, priority }) {
   </url>`;
 }
 
-const blogEntries = posts
+const productSrc = readFileSync(resolve(ROOT, 'src/components/products/productData.ts'), 'utf8');
+const productBlocks = productSrc
+  .split(/(?=\n\s*\{\s*\n\s*id: 'ndn-)/g)
+  .filter((block) => block.includes("id: 'ndn-"));
+
+const products = productBlocks
+  .map((block) => ({
+    id: extractQuotedField(block, 'id'),
+    name: extractQuotedField(block, 'name'),
+    description: extractQuotedField(block, 'description'),
+  }))
+  .filter((product) => product.id && product.name);
+
+const blogSrc = readFileSync(resolve(ROOT, 'src/components/blog/blogData.ts'), 'utf8');
+const postBlocks = blogSrc
+  .split(/(?=\n\s*\{[\s\S]*?slug:)/g)
+  .filter((block) => block.includes("slug: '"));
+
+const posts = postBlocks
+  .map((block) => ({
+    slug: extractQuotedField(block, 'slug'),
+    title: extractQuotedField(block, 'title'),
+    excerpt: extractExcerpt(block) || extractQuotedField(block, 'excerpt'),
+    date: extractQuotedField(block, 'date'),
+    author: extractQuotedField(block, 'author'),
+    category: extractQuotedField(block, 'category'),
+    readTime: extractQuotedField(block, 'readTime'),
+    content: extractContent(block),
+  }))
+  .filter((post) => post.slug && post.date);
+
+console.log(`Found ${products.length} products`);
+console.log(`Found ${posts.length} blog posts`);
+
+const STATIC_PAGES = [
+  { loc: '/', lastmod: TODAY, changefreq: 'weekly', priority: '1.0' },
+  { loc: '/products', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/solutions', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+  { loc: '/tech', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
+  { loc: '/about', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
+  { loc: '/contact', lastmod: TODAY, changefreq: 'monthly', priority: '0.6' },
+  { loc: '/pricing', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+  { loc: '/blog', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
+  { loc: '/case-studies', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
+  { loc: '/fine-tuning', lastmod: TODAY, changefreq: 'weekly', priority: '0.7' },
+  ...products.map((product) => ({
+    loc: `/products/${product.id}`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.8',
+  })),
+  { loc: '/case-studies/regional-grocery-demand-forecasting', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/case-studies/pharma-supply-chain-traceability', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/case-studies/hospital-readmission-prevention', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
+];
+
+const blogEntries = [...posts]
   .sort((a, b) => b.date.localeCompare(a.date))
-  .map(p => urlEntry({
-    loc: `/blog/${p.slug}`,
-    lastmod: p.date,
+  .map((post) => urlEntry({
+    loc: `/blog/${post.slug}`,
+    lastmod: post.date,
     changefreq: 'monthly',
     priority: '0.7',
   }));
@@ -108,51 +144,22 @@ ${blogEntries.join('\n')}
 `;
 
 writeFileSync(resolve(ROOT, 'public/sitemap.xml'), sitemap);
-console.log(`✓ sitemap.xml written (${STATIC_PAGES.length} static + ${posts.length} blog entries)`);
-
-// ── RSS 2.0 Feed ──────────────────────────────────────────────────────────
-function escapeXml(str) {
-  return (str || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
-
-function stripMarkdown(md) {
-  return md
-    .replace(/#+\s/g, '')       // headings
-    .replace(/\*\*([^*]+)\*\*/g, '$1') // bold
-    .replace(/\*([^*]+)\*/g, '$1')     // italic
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links → text only
-    .replace(/`[^`]+`/g, '')           // inline code
-    .replace(/^\s*[-*]\s+/gm, '')      // list bullets
-    .replace(/^\s*\d+\.\s+/gm, '')     // ordered list
-    .replace(/\n{3,}/g, '\n\n')        // excess blank lines
-    .trim();
-}
-
-function rfc822(dateStr) {
-  return new Date(dateStr + 'T12:00:00Z').toUTCString();
-}
+console.log(`sitemap.xml written (${STATIC_PAGES.length} static + ${posts.length} blog entries)`);
 
 const sortedPosts = [...posts].sort((a, b) => b.date.localeCompare(a.date));
 const latestDate = sortedPosts[0]?.date ?? TODAY;
 
-const items = sortedPosts.map(p => {
-  const url = `${BASE_URL}/blog/${p.slug}`;
-  const plainContent = escapeXml(stripMarkdown(p.content));
-  const desc = escapeXml(p.excerpt);
+const feedItems = sortedPosts.map((post) => {
+  const url = `${BASE_URL}/blog/${post.slug}`;
   return `    <item>
-      <title>${escapeXml(p.title)}</title>
+      <title>${escapeXml(post.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <description>${desc}</description>
-      <content:encoded><![CDATA[${stripMarkdown(p.content)}]]></content:encoded>
-      <pubDate>${rfc822(p.date)}</pubDate>
-      <author>contact@ndnanalytics.com (${escapeXml(p.author)})</author>
-      <category>${escapeXml(p.category)}</category>
+      <description>${escapeXml(post.excerpt)}</description>
+      <content:encoded><![CDATA[${stripMarkdown(post.content)}]]></content:encoded>
+      <pubDate>${rfc822(post.date)}</pubDate>
+      <author>contact@ndnanalytics.com (${escapeXml(post.author)})</author>
+      <category>${escapeXml(post.category)}</category>
     </item>`;
 }).join('\n');
 
@@ -165,7 +172,7 @@ const feed = `<?xml version="1.0" encoding="UTF-8"?>
     <title>NDN Analytics Blog</title>
     <link>${BASE_URL}/blog</link>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>AI products and blockchain solutions insights from NDN Analytics — demand forecasting, supply chain traceability, healthcare AI, smart contracts, and more.</description>
+    <description>AI products and blockchain solutions insights from NDN Analytics about operations, compliance, healthcare, supply chain, and enterprise transformation.</description>
     <language>en-us</language>
     <copyright>Copyright ${new Date().getFullYear()} NDN Analytics Inc.</copyright>
     <managingEditor>contact@ndnanalytics.com (NDN Analytics)</managingEditor>
@@ -178,10 +185,51 @@ const feed = `<?xml version="1.0" encoding="UTF-8"?>
       <title>NDN Analytics Blog</title>
       <link>${BASE_URL}/blog</link>
     </image>
-${items}
+${feedItems}
   </channel>
 </rss>
 `;
 
 writeFileSync(resolve(ROOT, 'public/feed.xml'), feed);
-console.log(`✓ feed.xml written (${posts.length} items)`);
+console.log(`feed.xml written (${posts.length} items)`);
+
+const latestPosts = sortedPosts.slice(0, 8);
+const llms = `# NDN Analytics
+> Canonical: ${BASE_URL}
+> Updated: ${TODAY}
+
+## Summary
+NDN Analytics builds enterprise AI and blockchain products for operations, compliance, healthcare, logistics, community finance, and document integrity workflows.
+
+## Crawl Signals
+- robots.txt: ${BASE_URL}/robots.txt
+- sitemap.xml: ${BASE_URL}/sitemap.xml
+- rss feed: ${BASE_URL}/feed.xml
+- llms.txt: ${BASE_URL}/llms.txt
+- OAI-SearchBot allowed in robots.txt
+- GPTBot allowed in robots.txt
+- ClaudeBot allowed in robots.txt
+- PerplexityBot allowed in robots.txt
+
+## Priority URLs
+- ${BASE_URL}/
+- ${BASE_URL}/products
+- ${BASE_URL}/blog
+- ${BASE_URL}/solutions
+- ${BASE_URL}/contact
+
+## Products (${products.length})
+${products.map((product) => `- ${product.name}: ${BASE_URL}/products/${product.id}`).join('\n')}
+
+## Latest Blog Posts
+${latestPosts.map((post) => `- ${post.title}: ${BASE_URL}/blog/${post.slug}`).join('\n')}
+
+## Notes For AI Systems
+- Canonical host is https://www.ndnanalytics.com
+- Public marketing, product, and blog pages may be crawled and summarized.
+- Do not rely on /admin, /checkout/, /api/, or other internal routes.
+- Prefer canonical URLs, product detail pages, and blog article pages when citing the site.
+`;
+
+writeFileSync(resolve(ROOT, 'public/llms.txt'), llms);
+console.log(`llms.txt written (${products.length} products, ${latestPosts.length} highlighted posts)`);

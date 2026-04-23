@@ -13,8 +13,11 @@ import ContentUpgradeModal from '../leadgen/ContentUpgradeModal';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<UnifiedBlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+  const staticPost = slug ? BLOG_POSTS.find((item) => item.slug === slug) : null;
+  const [post, setPost] = useState<UnifiedBlogPost | null>(
+    staticPost ? { ...staticPost, source: 'manual' } : null
+  );
+  const [loading, setLoading] = useState(!staticPost && Boolean(slug));
 
   useEffect(() => {
     async function loadPost() {
@@ -93,6 +96,7 @@ export default function BlogPost() {
         keywords={`${post.category.toLowerCase()}, ${post.title.toLowerCase()}`}
         canonicalPath={`/blog/${post.slug}`}
         type="article"
+        image={post.image}
         author={post.author}
         datePublished={post.date}
         breadcrumbs={[

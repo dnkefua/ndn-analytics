@@ -28,6 +28,11 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
       name: 'NDN Analytics',
       url: BASE_URL,
     },
+    ...(product.media?.image && {
+      image: product.media.image.startsWith('http')
+        ? product.media.image
+        : `${BASE_URL}${product.media.image}`,
+    }),
     featureList: product.features.join(', '),
     ...(product.industries && {
       audience: {

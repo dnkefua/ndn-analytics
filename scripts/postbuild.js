@@ -26,6 +26,7 @@ if (existsSync('dist/ssr/assets')) {
 cpSync('dist/feed.xml', `${FUNCTIONS}/feed.xml`);
 cpSync('dist/sitemap.xml', `${FUNCTIONS}/sitemap.xml`);
 cpSync('dist/robots.txt', `${FUNCTIONS}/robots.txt`);
+cpSync('dist/llms.txt', `${FUNCTIONS}/llms.txt`);
 
 // Copy whitepaper static files for direct serving
 const WHITEPPAPER_SRC = 'dist/whitepaper';

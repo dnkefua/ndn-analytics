@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useInRouterContext, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { HelmetProvider } from 'react-helmet-async';
 import { Suspense, lazy, useEffect } from 'react';
 import * as Sentry from '@sentry/react';
 import SkeletonLoader from './components/ui/SkeletonLoader';
@@ -90,24 +89,36 @@ function AnimatedRoutes() {
   );
 }
 
+function AppShell() {
+  return (
+    <>
+      <PageTracker />
+      <CustomCursor />
+      <FloatingParticlesBackground />
+      <GridOverlay />
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <Navbar />
+      <main id="main-content">
+        <AnimatedRoutes />
+      </main>
+      <Footer />
+      <AriaFAB />
+    </>
+  );
+}
+
 export default function App() {
+  const isInRouterContext = useInRouterContext();
+
   return (
     <Sentry.ErrorBoundary fallback={<div style={{ padding: '2rem', textAlign: 'center', color: '#94a3b8' }}>Something went wrong. Please refresh the page.</div>}>
-      <HelmetProvider>
+      {isInRouterContext ? (
+        <AppShell />
+      ) : (
         <BrowserRouter>
-          <PageTracker />
-          <CustomCursor />
-          <FloatingParticlesBackground />
-          <GridOverlay />
-          <a href="#main-content" className="skip-link">Skip to content</a>
-          <Navbar />
-          <main id="main-content">
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-          <AriaFAB />
+          <AppShell />
         </BrowserRouter>
-      </HelmetProvider>
+      )}
     </Sentry.ErrorBoundary>
   );
 }

@@ -51,10 +51,11 @@ function PageLoader() {
   );
 }
 
-function SSRApp({ url }: { url: string }) {
-  return (
+export function render(url: string) {
+  const helmetContext: { helmet?: import('react-helmet-async').HelmetServerState } = {}
+  const html = renderToString(
     <StrictMode>
-      <HelmetProvider>
+      <HelmetProvider context={helmetContext}>
         <StaticRouter location={url}>
           <Suspense fallback={<PageLoader />}>
             <Navbar />
@@ -91,9 +92,6 @@ function SSRApp({ url }: { url: string }) {
       </HelmetProvider>
     </StrictMode>
   )
-}
 
-export function render(url: string) {
-  const html = renderToString(<SSRApp url={url} />)
-  return { html }
+  return { html, helmet: helmetContext.helmet }
 }

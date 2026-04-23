@@ -63,6 +63,7 @@ export default function ProductDetail() {
         keywords={keywords}
         canonicalPath={`/products/${product.id}`}
         type="product"
+        image={product.media?.image}
         product={{
           name: product.name,
           description: product.description,

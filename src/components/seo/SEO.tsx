@@ -14,6 +14,7 @@ interface SEOProps {
   };
   author?: string;
   datePublished?: string;
+  dateModified?: string;
   breadcrumbs?: Array<{
     name: string;
     path: string;
@@ -33,19 +34,24 @@ export default function SEO({
   product,
   author,
   datePublished,
+  dateModified,
   breadcrumbs,
 }: SEOProps) {
   const fullTitle = title === 'NDN Analytics' ? title : `${title} | NDN Analytics`;
   const canonicalUrl = canonicalPath ? `${BASE_URL}${canonicalPath}` : BASE_URL;
   const imageUrl = image.startsWith('http') ? image : `${BASE_URL}${image}`;
+  const effectiveDatePublished = datePublished || new Date().toISOString();
+  const effectiveDateModified = dateModified || effectiveDatePublished;
 
   return (
     <Helmet>
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="author" content={author || 'NDN Analytics'} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" type="application/rss+xml" title="NDN Analytics Blog Feed" href={`${BASE_URL}/feed.xml`} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -53,10 +59,14 @@ export default function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="NDN Analytics" />
       <meta property="og:locale" content="en_US" />
+      {type === 'article' && <meta property="article:published_time" content={effectiveDatePublished} />}
+      {type === 'article' && <meta property="article:modified_time" content={effectiveDateModified} />}
+      {type === 'article' && author && <meta property="article:author" content={author} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -67,8 +77,8 @@ export default function SEO({
       <meta name="twitter:site" content="@NDNAnalytics" />
 
       {/* Additional SEO */}
-      <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
       {/* JSON-LD Structured Data */}
       {type === 'article' ? (
@@ -80,7 +90,8 @@ export default function SEO({
             headline: fullTitle,
             description,
             image: imageUrl,
-            datePublished: (datePublished || new Date().toISOString()),
+            datePublished: effectiveDatePublished,
+            dateModified: effectiveDateModified,
             author: author ? { '@type': 'Person', name: author } : { '@type': 'Organization', name: 'NDN Analytics' },
             publisher: {
               '@type': 'Organization',

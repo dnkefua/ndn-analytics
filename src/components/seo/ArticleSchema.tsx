@@ -26,7 +26,9 @@ export default function ArticleSchema({
   keywords = [],
 }: ArticleSchemaProps) {
   const url = `${BASE_URL}/blog/${slug}`;
-  const ogImage = image || `${BASE_URL}/og-image.png`;
+  const ogImage = image
+    ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
+    : `${BASE_URL}/og-image.png`;
 
   const data = {
     '@context': 'https://schema.org',

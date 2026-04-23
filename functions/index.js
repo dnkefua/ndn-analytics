@@ -79,6 +79,42 @@ const contentTypes = {
   'txt': 'text/plain'
 };
 
+const SEO_BLOCK_PATTERN = /<!-- Primary Meta Tags -->[\s\S]*?<!-- Google Analytics: initialized at runtime from VITE_GA_ID -->/;
+
+function splitRenderedHead(appHtml) {
+  const bodyStart = appHtml.indexOf('<nav');
+  if (bodyStart === -1) {
+    return { head: '', body: appHtml };
+  }
+
+  return {
+    head: appHtml.slice(0, bodyStart),
+    body: appHtml.slice(bodyStart),
+  };
+}
+
+function injectRenderedHtml(template, appHtml, helmet) {
+  const { head, body } = splitRenderedHead(appHtml);
+  let html = template.replace('<!--ssr-outlet-->', body);
+
+  const headTags = head || [
+    helmet?.title?.toString?.(),
+    helmet?.priority?.toString?.(),
+    helmet?.meta?.toString?.(),
+    helmet?.link?.toString?.(),
+    helmet?.script?.toString?.(),
+  ].filter(Boolean).join('\n');
+
+  if (!headTags) {
+    return html;
+  }
+
+  return html.replace(
+    SEO_BLOCK_PATTERN,
+    `<!-- Primary Meta Tags -->\n${headTags}\n\n    <!-- Google Analytics: initialized at runtime from VITE_GA_ID -->`
+  );
+}
+
 // Helper to serve static files
 function serveStaticFile(filePath, res, next) {
   try {
@@ -195,7 +231,7 @@ app.get('/', async (req, res) => {
     const result = await render('/');
     const appHtml = result.html;
     
-    const html = template.replace('<!--ssr-outlet-->', appHtml);
+    const html = injectRenderedHtml(template, appHtml, result.helmet);
     res.set('Content-Type', 'text/html; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=0');
     res.send(html);
@@ -222,7 +258,7 @@ app.get('*', async (req, res) => {
     const result = await render(url);
     const appHtml = result.html;
     
-    const html = template.replace('<!--ssr-outlet-->', appHtml);
+    const html = injectRenderedHtml(template, appHtml, result.helmet);
     res.set('Content-Type', 'text/html; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=0');
     res.send(html);

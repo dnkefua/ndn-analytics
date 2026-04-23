@@ -1,30 +1,29 @@
-# Disallow admin, checkout, and internal paths from all crawlers
+User-agent: *
+Allow: /
 Disallow: /admin
 Disallow: /checkout/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /internal/
 
-# Allow all major pages for crawlers
-User-agent: *
+User-agent: Googlebot
 Allow: /
-Allow: /products
-Allow: /products/*
-Allow: /blog
-Allow: /blog/*
-Allow: /about
-Allow: /solutions
-Allow: /solutions/*
-Allow: /case-studies
-Allow: /case-studies/*
-Allow: /contact
-Allow: /pricing
-Allow: /ai-tools
-Allow: /fine-tuning
-Allow: /tech
-Allow: /whitepaper
 
-# AI-specific crawlers - explicit allow
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -41,21 +40,6 @@ User-agent: Anthropic-AI
 Allow: /
 
 User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Video
 Allow: /
 
 User-agent: Bingbot
@@ -76,14 +60,8 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-# Sitemap location
 Sitemap: https://www.ndnanalytics.com/sitemap.xml
 
-# RSS feed
-Feed: https://www.ndnanalytics.com/feed.xml
-
-# llms.txt location for AI context
-LLMs-txt: https://www.ndnanalytics.com/llms.txt
-
-# Crawl-delay for polite crawling (optional, crawlers may ignore)
-Crawl-delay: 1
+# Feed and AI-readable documentation
+# RSS: https://www.ndnanalytics.com/feed.xml
+# llms.txt: https://www.ndnanalytics.com/llms.txt
