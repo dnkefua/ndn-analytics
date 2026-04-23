@@ -13,7 +13,7 @@ interface Props {
 const WELCOME: AriaMessage = {
   id: '0',
   role: 'aria',
-  content: "Hello! I'm ARIA, NDN Analytics' AI intelligence agent. Ask me anything about our 10 products, technology stack, or how to get started.",
+  content: "Hello! I'm ARIA, NDN Analytics' AI intelligence agent. Ask me anything about our 13 products, technology stack, or how to get started.",
   timestamp: new Date(),
 };
 

@@ -121,7 +121,7 @@ export default function ProductDetail() {
        {product.media && (
          <section className="pd-media-showcase">
            <div className="container">
-             {product.media.video && !product.media.video.endsWith('.gif') ? (
+             {product.media.video && (product.media.video.toLowerCase().endsWith('.mp4') || product.media.video.toLowerCase().endsWith('.webm')) ? (
                <video
                  src={product.media.video}
                  controls
@@ -129,13 +129,15 @@ export default function ProductDetail() {
                  muted
                  loop
                  playsInline
+                 poster={product.media.image}
                  className="pd-media-video"
                />
-             ) : (product.media.video && product.media.video.endsWith('.gif')) || product.media.image ? (
-               <img 
-                 src={product.media.video && product.media.video.endsWith('.gif') ? product.media.video : product.media.image}
+             ) : (product.media.video && product.media.video.toLowerCase().endsWith('.gif')) || product.media.image ? (
+               <img
+                 src={product.media.video && product.media.video.toLowerCase().endsWith('.gif') ? product.media.video : product.media.image}
                  alt={`${product.name} demo`}
                  className="pd-media-image"
+                 loading="lazy"
                />
              ) : null}
            </div>

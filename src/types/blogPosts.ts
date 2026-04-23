@@ -17,6 +17,7 @@ export interface DynamicBlogPost {
   category: BlogCategory;
   readTime: string;
   image?: string;
+  video?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;
@@ -52,6 +53,7 @@ export interface UnifiedBlogPost {
   category: BlogCategory;
   readTime: string;
   image?: string;
+  video?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;

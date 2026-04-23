@@ -8,6 +8,7 @@ export interface BlogPost {
   category: 'AI' | 'Blockchain' | 'Industry' | 'Product';
   readTime: string;
   image?: string;
+  video?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;
@@ -17,6 +18,69 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: 'ndn-ipfs-chain-enterprise-proof-layer',
+    title: 'Introducing NDN IPFS CHAIN: The Enterprise Proof Layer for Critical Files',
+    excerpt: 'NDN IPFS CHAIN combines IPFS and Ethereum to create tamper-evident chain-of-custody for contracts, records, and compliance evidence.',
+    content: `Most organizations still trust critical files to systems that can be edited, overwritten, or silently replaced. That creates legal, financial, and operational risk when proof of integrity is required.
+
+## What NDN IPFS CHAIN Solves
+
+NDN IPFS CHAIN gives your team verifiable proof for every important file event:
+- File creation
+- File transfer
+- File approval
+- File retrieval
+
+Each artifact receives a cryptographic fingerprint (CID) on IPFS, while proof anchors are written on Ethereum for immutable timestamping.
+
+## Why This Matters in 2026
+
+Regulators and enterprise auditors now expect evidence trails that are machine-verifiable, not just screenshot-based process notes.
+
+High-risk workflows include:
+- Vendor contracts and amendments
+- Compliance evidence packets
+- Product quality certificates
+- Legal evidence bundles
+
+When integrity disputes happen, "we think this is the latest version" is no longer acceptable.
+
+## How the Architecture Works
+
+1. **Hash and package**: Each file is hashed before storage.
+2. **Store to IPFS**: The encrypted payload is stored with a content-addressed CID.
+3. **Anchor proof on Ethereum**: CID, timestamp, and signer metadata are recorded on-chain.
+4. **Verify on demand**: Teams and auditors can re-hash and confirm integrity instantly.
+
+This model keeps storage practical while preserving cryptographic proof where it matters.
+
+## Implementation Benefits
+
+- Faster compliance audits with deterministic integrity checks
+- Reduced evidence disputes across teams and counterparties
+- Immutable chain-of-custody for sensitive documents
+- Easy API integration into existing legal, procurement, and operations workflows
+
+## See It in Action
+
+Visit the product page for the full demo and architecture overview:
+[NDN IPFS CHAIN product page](/products/ndn-013)
+
+Or [book a demo](/contact?utm_source=blog&utm_medium=cta&utm_campaign=ipfs_chain) with NDN Analytics to map the best rollout path for your environment.`,
+    date: '2026-04-23',
+    author: 'NDN Analytics Team',
+    category: 'Blockchain',
+    readTime: '8 min read',
+    image: '/assets/ndn-ipfs-chain-homepage.png',
+    video: '/assets/ndn-ipfs-chain-video.mp4',
+    relatedProducts: ['ndn-013', 'ndn-005'],
+    contentUpgrade: {
+      title: 'Enterprise Chain-of-Custody Checklist',
+      description: 'Assess whether your current document workflows can stand up to audit and dispute review.',
+      downloadId: 'ipfs-chain-checklist',
+    },
+  },
   {
     slug: 'ai-demand-forecasting-retail-2026',
     title: 'Why AI Demand Forecasting Is the #1 Retail Priority in 2026',

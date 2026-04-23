@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, Routes, Route } from 'react-router'
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import './styles/variables.css'
 import './styles/typography.css'
@@ -9,29 +9,30 @@ import './styles/animations.css'
 import './styles/components.css'
 import './index.css'
 
-const Hero = lazy(() => import('./components/hero/Hero'))
-const ProductsSection = lazy(() => import('./components/products/ProductsSection'))
-const ProductDetail = lazy(() => import('./components/products/ProductDetail'))
-const SolutionsSection = lazy(() => import('./components/solutions/SolutionsSection'))
-const TechSection = lazy(() => import('./components/tech/TechSection'))
-const AboutSection = lazy(() => import('./components/about/AboutSection'))
-const ContactSection = lazy(() => import('./components/contact/ContactSection'))
-const BlogSection = lazy(() => import('./components/blog/BlogSection'))
-const BlogPost = lazy(() => import('./components/blog/BlogPost'))
-const PricingSection = lazy(() => import('./components/pricing/PricingSection'))
-const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'))
-const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'))
-const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'))
-const Navbar = lazy(() => import('./components/layout/Navbar'))
-const Footer = lazy(() => import('./components/layout/Footer'))
-const AriaFAB = lazy(() => import('./components/aria/AriaFAB'))
-const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'))
-const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'))
-const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'))
-const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'))
-const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'))
-const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'))
-const NotFound = lazy(() => import('./components/errors/NotFound'))
+// Import components directly for SSR (no lazy loading)
+import Hero from './components/hero/Hero'
+import ProductsSection from './components/products/ProductsSection'
+import ProductDetail from './components/products/ProductDetail'
+import SolutionsSection from './components/solutions/SolutionsSection'
+import TechSection from './components/tech/TechSection'
+import AboutSection from './components/about/AboutSection'
+import ContactSection from './components/contact/ContactSection'
+import BlogSection from './components/blog/BlogSection'
+import BlogPost from './components/blog/BlogPost'
+import PricingSection from './components/pricing/PricingSection'
+import AIToolsSection from './components/aitools/AIToolsSection'
+import CaseStudiesSection from './components/casestudies/CaseStudiesSection'
+import CaseStudyDetail from './components/casestudies/CaseStudyDetail'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
+import AriaFAB from './components/aria/AriaFAB'
+import WhitePaper from './components/whitepaper/WhitePaper'
+import CheckoutSuccess from './components/checkout/CheckoutSuccess'
+import CheckoutCancelled from './components/checkout/CheckoutCancelled'
+import PrivacyPolicy from './components/legal/PrivacyPolicy'
+import FineTuningTeaser from './components/products/FineTuningTeaser'
+import AdminDashboard from './components/admin/AdminDashboard'
+import NotFound from './components/errors/NotFound'
 
 function PageLoader() {
   return (

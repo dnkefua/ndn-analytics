@@ -7,15 +7,22 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
+    "@emailjs/browser": "^4.4.1",
     "@sentry/node": "^10.48.0",
     "express": "^4.21.0",
+    "firebase": "^12.11.0",
     "firebase-admin": "^12.7.0",
     "firebase-functions": "^7.2.3",
+    "framer-motion": "^12.38.0",
+    "invariant": "^2.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-compare": "^3.2.2",
+    "react-helmet-async": "^3.0.0",
     "react-router": "^7.0.0",
+    "react-router-dom": "^7.0.0",
     "rss-parser": "^3.13.0",
+    "shallowequal": "^1.1.0",
     "stripe": "^17.7.0"
   },
   "devDependencies": {

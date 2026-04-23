@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'NDN TraceChain deploys smart contracts on Ethereum mainnet or a private EVM chain. Each supply chain event (manufacture, transfer, inspection, retail) writes a hash to the chain. Consumers and regulators verify provenance via a public API or QR-linked product passport page.',
     metrics: ['Ethereum mainnet & EVM-compatible chains', 'Consumer-facing QR product passports', 'FDA & EU supply chain compliance', 'Real-time counterfeiting alerts'],
     media: {
-      video: '/assets/tracechain-demo.gif',
+      video: '/assets/tracechain-demo.mp4',
       image: '/assets/tracechain-landing.png',
     },
   },
@@ -185,8 +185,8 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'Njangi smart contracts manage circle membership, contribution schedules, and payout rotations. Members deposit funds each cycle; the contract releases the pooled amount to the designated recipient according to the agreed rotation. Trust scores accumulate on-chain and are portable across DeFi protocols.',
     metrics: ['Multi-chain deployment (EVM)', 'Mobile-first wallet interface', 'On-chain trust score system', 'Supports stablecoin contributions'],
     media: {
-      video: '/assets/njangi-demo.gif',
-      image: '/assets/Njangi landing page.png',
+      video: '/assets/njangi-demo.mp4',
+      image: '/assets/njangi-landing.png',
     },
     website: 'https://www.njangi.xyz',
   },
@@ -250,6 +250,30 @@ export const PRODUCTS: Product[] = [
     ],
     howItWorks: 'NDN Model Studio connects to Hugging Face Hub to browse and select base models. Upload your training data (JSONL, CSV, or BigQuery), configure hyperparameters, and launch training on Google Vertex AI managed GPU clusters. Monitor progress in real time, then deploy with one click to a Firebase Functions v2 serverless endpoint.',
     metrics: ['900K+ models on Hugging Face', '4-6x faster iteration vs. self-managed', 'Near-zero cold start deployment', 'Spend guardrails included'],
+  },
+  {
+    id: 'ndn-013',
+    number: 'NDN-013',
+    name: 'NDN IPFS CHAIN',
+    description: 'Enterprise-grade immutable document and media ledger powered by IPFS + Ethereum, giving your organization verifiable chain-of-custody for contracts, records, and digital evidence.',
+    tagline: 'Prove every file. Trust every transfer.',
+    features: ['IPFS content-addressed storage', 'On-chain proof anchoring', 'Tamper-evident audit timeline', 'Role-based enterprise access controls'],
+    badge: 'Ethereum + IPFS',
+    stack: 'ethereum',
+    icon: '⬢',
+    industries: ['Legal & Compliance', 'Supply Chain', 'Healthcare', 'Financial Services'],
+    useCases: [
+      'Anchor signed contracts and compliance records with immutable timestamped proofs',
+      'Verify evidence package integrity in legal or regulatory investigations',
+      'Track chain-of-custody for sensitive files shared across internal and external teams',
+      'Publish customer-facing trust proofs without exposing private document contents',
+    ],
+    howItWorks: 'NDN IPFS CHAIN hashes each uploaded file, stores encrypted payloads on IPFS, and anchors the content IDs to Ethereum smart contracts for immutable verification. Authorized teams access a dashboard and API to validate file authenticity, audit transfer history, and automate compliance exports.',
+    metrics: ['Immutable CID-based verification', 'Ethereum-backed proof records', 'Private file encryption at rest', 'Audit-ready chain-of-custody exports'],
+    media: {
+      video: '/assets/ndn-ipfs-chain-video.mp4',
+      image: '/assets/ndn-ipfs-chain-homepage.png',
+    },
   },
 ];
 

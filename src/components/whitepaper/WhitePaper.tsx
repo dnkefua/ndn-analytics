@@ -1,14 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './WhitePaper.css';
 
 export default function WhitePaper() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="wp-wrapper">
@@ -28,7 +23,7 @@ export default function WhitePaper() {
         </Link>
       </nav>
       <div className="wp-content">
-        {!mounted && (
+        {!loaded && (
           <div className="wp-loading">
             <div style={{ textAlign: 'center' }}>
               <div className="wp-spinner" />
@@ -36,13 +31,13 @@ export default function WhitePaper() {
             </div>
           </div>
         )}
-        {mounted && (
-          <iframe
-            src="/whitepaper/index.html"
-            className="wp-iframe"
-            title="NDN IPFS Chain White Paper"
-          />
-        )}
+        <iframe
+          src="/whitepaper/index.html"
+          className="wp-iframe"
+          title="NDN IPFS Chain White Paper"
+          onLoad={() => setLoaded(true)}
+          style={{ display: loaded ? 'block' : 'none' }}
+        />
       </div>
     </div>
   );

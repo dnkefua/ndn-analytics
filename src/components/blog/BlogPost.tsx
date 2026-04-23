@@ -131,6 +131,18 @@ export default function BlogPost() {
                   <OptimizedImage src={post.image} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" />
                 </div>
               )}
+              {post.video && (
+                <div style={{ marginBottom: 28 }}>
+                  <video
+                    src={post.video}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border-subtle)', background: 'rgba(10,22,40,0.45)' }}
+                  />
+                </div>
+              )}
               <div style={{ display: 'flex', gap: 24, marginBottom: 40, fontSize: '0.85rem', color: 'var(--text-tertiary)', fontFamily: "'JetBrains Mono Variable', monospace" }}>
                 <span>{post.author}</span>
                 <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>

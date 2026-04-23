@@ -30,6 +30,7 @@ function convertToUnified(doc: DynamicBlogPost): UnifiedBlogPost {
     category: doc.category,
     readTime: doc.readTime,
     image: doc.image,
+    video: doc.video,
     relatedProducts: doc.relatedProducts,
     contentUpgrade: doc.contentUpgrade,
     id: doc.id,
