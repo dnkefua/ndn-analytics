@@ -34,8 +34,8 @@ jobs:
       - name: Unit & integration tests
         run: npm run test:coverage
 
-      - name: Build
-        run: npm run build
+      - name: Build SSR
+        run: npm run build:ssr
         env:
           VITE_ANTHROPIC_API_KEY: ${{ secrets.VITE_ANTHROPIC_API_KEY }}
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
