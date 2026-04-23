@@ -97,7 +97,7 @@ function serveStaticFile(filePath, res, next) {
     }
     
     res.send(content);
-  } catch (err) {
+  } catch {
     next();
   }
 }
@@ -128,7 +128,7 @@ app.get('/robots.txt', (req, res, next) => {
     res.set('Content-Type', 'text/plain; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=3600');
     res.send(content);
-  } catch (err) {
+  } catch {
     next();
   }
 });
@@ -140,7 +140,7 @@ app.get('/sitemap.xml', (req, res, next) => {
     res.set('Content-Type', 'application/xml; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=3600');
     res.send(content);
-  } catch (err) {
+  } catch {
     next();
   }
 });
@@ -152,7 +152,7 @@ app.get('/feed.xml', (req, res, next) => {
     res.set('Content-Type', 'application/rss+xml; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=3600');
     res.send(content);
-  } catch (err) {
+  } catch {
     next();
   }
 });
@@ -164,7 +164,7 @@ app.get('/llms.txt', (req, res, next) => {
     res.set('Content-Type', 'text/plain; charset=utf-8');
     res.set('Cache-Control', 'public, max-age=3600');
     res.send(content);
-  } catch (err) {
+  } catch {
     next();
   }
 });
