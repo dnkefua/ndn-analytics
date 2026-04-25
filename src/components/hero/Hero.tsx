@@ -13,7 +13,7 @@ const HOMEPAGE_FAQS = [
   },
   {
     question: 'What industries does NDN Analytics serve?',
-    answer: 'NDN Analytics targets retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, and community finance. Each product is purpose-built for its domain — demand forecasting for retail, patient outcome modeling for healthcare, immutable provenance for supply chains, and smart contract automation for payments.',
+    answer: 'NDN Analytics targets retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, community finance, and diaspora networks. Each product is purpose-built for its domain — demand forecasting for retail, patient outcome modeling for healthcare, immutable provenance for supply chains, and smart contract automation for payments.',
   },
   {
     question: 'What results can I expect from NDN Analytics AI products?',
@@ -42,7 +42,7 @@ const HOMEPAGE_FAQS = [
 ];
 
 const STATS = [
-  { value: 12, label: 'Products', suffix: '' },
+  { value: 14, label: 'Products', suffix: '' },
   { value: 2,  label: 'Blockchain Networks', suffix: '' },
   { value: 99.9, label: 'Uptime Target', suffix: '%' },
 ];
@@ -71,6 +71,14 @@ const FEATURED_PRODUCTS = [
     tagline: 'Payments that execute themselves.',
     badge: 'Ethereum',
     color: '#4F46E5',
+  },
+  {
+    id: 'ndn-014',
+    icon: 'D',
+    name: 'TheDiaspora App',
+    tagline: 'Connect the diaspora. Build trusted opportunity.',
+    badge: 'Diaspora',
+    color: '#F59E0B',
   },
 ];
 
@@ -175,7 +183,7 @@ export default function Hero() {
 
         <p className="hero-subtitle reveal stagger-3">
           We build focused <strong>AI products</strong> and <strong>blockchain solutions</strong> on Google Cloud Platform and Ethereum —
-          purpose-built for retail, healthcare, supply chain, and community finance.
+          purpose-built for retail, healthcare, supply chain, community finance, and diaspora networks.
         </p>
 
         <div className="hero-ctas reveal stagger-4">
@@ -292,7 +300,7 @@ export default function Hero() {
               }}
               onClick={() => trackCTAClick('view_all_products', 'hero')}
             >
-              View All 12 Products →
+              View All 14 Products →
             </Link>
           </div>
         </div>
@@ -440,7 +448,7 @@ export default function Hero() {
                 Built to Scale. Designed to Last.
               </h3>
               <p style={{ marginBottom: 16 }}>
-                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook. <strong>NDN Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal cooperative finance for generations. <strong>NDN NeuroQuest</strong> delivers cognitive assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>, <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design — is chosen for durability and interoperability, not trend-chasing.
+                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook. <strong>NDN Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal cooperative finance for generations. <strong>TheDiaspora App</strong> gives global communities a trusted digital home for identity, discovery, culture, and opportunity. <strong>NDN NeuroQuest</strong> delivers cognitive assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>, <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design — is chosen for durability and interoperability, not trend-chasing.
               </p>
 
               <p style={{ marginTop: 24 }}>

@@ -39,10 +39,10 @@ const SOLUTIONS = [
     color: 'var(--brand-purple)',
   },
   {
-    industry: 'Community Finance',
+    industry: 'Community & Diaspora',
     icon: '★',
-    description: 'Digitize traditional savings cooperatives with decentralized smart contract governance and transparency.',
-    products: ['Njangi'],
+    description: 'Digitize trusted community finance and connect diaspora members through identity, discovery, and opportunity infrastructure.',
+    products: ['Njangi', 'TheDiaspora App'],
     color: 'var(--brand-gold)',
   },
 ];
@@ -63,8 +63,8 @@ export default function SolutionsSection() {
     <>
       <SEO
         title="Industry Solutions"
-        description="NDN Analytics delivers tailored AI and blockchain solutions for healthcare, retail, logistics, real estate, luxury goods, and community finance sectors."
-        keywords="healthcare AI, retail analytics, logistics optimization, real estate blockchain, supply chain traceability, community finance"
+        description="NDN Analytics delivers tailored AI and blockchain solutions for healthcare, retail, logistics, real estate, luxury goods, community finance, and diaspora networks."
+        keywords="healthcare AI, retail analytics, logistics optimization, real estate blockchain, supply chain traceability, community finance, diaspora app"
         canonicalPath="/solutions"
       />
       <section className="section solutions-section" ref={ref}>

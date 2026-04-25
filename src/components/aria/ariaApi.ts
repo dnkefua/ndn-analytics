@@ -51,6 +51,12 @@ const PRODUCT_KEYWORDS: Record<string, string> = {
   'neuroquest': 'ndn-010',
   'personality': 'ndn-010',
   'behavioral': 'ndn-010',
+  'model studio': 'ndn-012',
+  'fine tuning': 'ndn-012',
+  'ipfs chain': 'ndn-013',
+  'diaspora': 'ndn-014',
+  'thediaspora': 'ndn-014',
+  'community network': 'ndn-014',
 };
 
 // Analyze message for intent signals

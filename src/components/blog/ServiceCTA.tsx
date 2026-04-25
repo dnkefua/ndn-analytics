@@ -19,6 +19,9 @@ const PRODUCT_INFO: Record<string, { name: string; tagline: string }> = {
   'ndn-009': { name: 'Njangi', tagline: 'Web3 community finance' },
   'ndn-010': { name: 'NeuroQuest', tagline: 'Cognitive AI profiling' },
   'ndn-011': { name: 'NDN Interpreter', tagline: 'Sign language translation' },
+  'ndn-012': { name: 'NDN Model Studio', tagline: 'No-code fine-tuning' },
+  'ndn-013': { name: 'NDN IPFS CHAIN', tagline: 'IPFS proof layer' },
+  'ndn-014': { name: 'TheDiaspora App', tagline: 'Diaspora community network' },
 };
 
 export default function ServiceCTA({ serviceCTA, relatedProducts, source }: ServiceCTAProps) {
@@ -92,7 +95,7 @@ export default function ServiceCTA({ serviceCTA, relatedProducts, source }: Serv
               return (
                 <Link
                   key={productId}
-                  to={`/products#${productId}`}
+                  to={`/products/${productId}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

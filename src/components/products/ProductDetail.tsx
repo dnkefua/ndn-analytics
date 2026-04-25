@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { PRODUCTS } from './productData';
+import type { ProductMediaAsset } from '../../types';
 import SEO from '../seo/SEO';
 import ProductSchema from '../seo/ProductSchema';
 import './ProductDetail.css';
@@ -16,6 +17,32 @@ const STACK_LABELS: Record<string, string> = {
   ethereum: '⬡ Ethereum',
   new: '★ New Launch',
 };
+
+function GalleryMedia({ item }: { item: ProductMediaAsset }) {
+  if (item.type === 'video') {
+    return (
+      <video
+        src={item.src}
+        controls
+        muted
+        playsInline
+        preload="metadata"
+        poster={item.poster}
+        aria-label={item.alt}
+        className="pd-gallery-media"
+      />
+    );
+  }
+
+  return (
+    <img
+      src={item.src}
+      alt={item.alt}
+      className="pd-gallery-media"
+      loading="lazy"
+    />
+  );
+}
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -54,6 +81,7 @@ export default function ProductDetail() {
   const currentIndex = PRODUCTS.findIndex(p => p.id === id);
   const prevProduct = PRODUCTS[currentIndex - 1];
   const nextProduct = PRODUCTS[currentIndex + 1];
+  const gallery = product.media?.gallery ?? [];
 
   return (
     <>
@@ -107,12 +135,19 @@ export default function ProductDetail() {
             </div>
 
             <div className="pd-hero-right">
-              <div className="pd-icon-display">
-                <span className="pd-big-icon">{product.icon}</span>
-                <div className="pd-icon-ring pd-ring-1" />
-                <div className="pd-icon-ring pd-ring-2" />
-                <div className="pd-icon-ring pd-ring-3" />
-              </div>
+              {product.media?.image ? (
+                <div className="pd-hero-preview">
+                  <img src={product.media.image} alt={`${product.name} interface preview`} />
+                  <span className="pd-hero-preview-label">{product.name}</span>
+                </div>
+              ) : (
+                <div className="pd-icon-display">
+                  <span className="pd-big-icon">{product.icon}</span>
+                  <div className="pd-icon-ring pd-ring-1" />
+                  <div className="pd-icon-ring pd-ring-2" />
+                  <div className="pd-icon-ring pd-ring-3" />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -126,10 +161,9 @@ export default function ProductDetail() {
                <video
                  src={product.media.video}
                  controls
-                 autoPlay
                  muted
-                 loop
                  playsInline
+                 preload="metadata"
                  poster={product.media.image}
                  className="pd-media-video"
                />
@@ -141,6 +175,16 @@ export default function ProductDetail() {
                  loading="lazy"
                />
              ) : null}
+             {gallery.length > 0 && (
+               <div className="pd-media-gallery">
+                 {gallery.map(item => (
+                   <figure className="pd-gallery-item" key={item.src}>
+                     <GalleryMedia item={item} />
+                     <figcaption>{item.label}</figcaption>
+                   </figure>
+                 ))}
+               </div>
+             )}
            </div>
          </section>
        )}

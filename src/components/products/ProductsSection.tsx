@@ -35,7 +35,7 @@ export default function ProductsSection() {
     <>
       <SEO
         title="Enterprise AI & Blockchain Products"
-        description="Explore 13 enterprise products from NDN Analytics - demand forecasting, healthcare AI, supply chain traceability, blockchain payments, credential verification, community finance (Njangi), IPFS chain-of-custody, and cognitive AI."
+        description="Explore 14 enterprise products from NDN Analytics - demand forecasting, healthcare AI, supply chain traceability, blockchain payments, credential verification, community finance, diaspora networking, IPFS chain-of-custody, and cognitive AI."
         keywords="enterprise AI products, demand forecasting, healthcare AI, supply chain blockchain, Ethereum smart contracts, credential verification, real estate tokenization"
         canonicalPath="/products"
       />
@@ -43,7 +43,7 @@ export default function ProductsSection() {
       <div className="container">
         <div className="section-tag reveal">Products</div>
         <h2 className="section-title reveal stagger-1">
-          13 Products. Three Stacks.<br />
+          14 Products. Three Stacks.<br />
           <span className="text-gradient">Infinite Intelligence.</span>
         </h2>
         <p className="products-subtitle reveal stagger-2">

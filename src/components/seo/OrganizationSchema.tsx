@@ -15,7 +15,7 @@ export default function OrganizationSchema() {
       width: 512,
       height: 512,
     },
-    description: 'NDN Analytics is a technology company building AI and blockchain products on Google Cloud Platform and Ethereum. Founded and led by an experienced developer based in Dubai, incorporated in Tulsa, Oklahoma. Products span demand forecasting, supply chain traceability, smart contract payments, healthcare AI, IPFS storage infrastructure, and community finance.',
+    description: 'NDN Analytics is a technology company building AI and blockchain products on Google Cloud Platform and Ethereum. Founded and led by an experienced developer based in Dubai, incorporated in Tulsa, Oklahoma. Products span demand forecasting, supply chain traceability, smart contract payments, healthcare AI, IPFS storage infrastructure, community finance, and diaspora networking.',
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
@@ -59,6 +59,8 @@ export default function OrganizationSchema() {
       'Clinical Decision Support',
       'B2B Payments',
       'Payment Automation',
+      'Diaspora Networks',
+      'Community Platforms',
     ],
     areaServed: {
       '@type': 'Place',
@@ -112,6 +114,15 @@ export default function OrganizationSchema() {
             name: 'NDN HealthPredict',
             applicationCategory: 'HealthApplication',
             description: 'Healthcare AI for patient readmission prevention and clinical decision support',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'SoftwareApplication',
+            name: 'TheDiaspora App',
+            applicationCategory: 'SocialNetworkingApplication',
+            description: 'Diaspora community network for trusted profiles, discovery, mentorship, and cross-border opportunity',
           },
         },
       ],

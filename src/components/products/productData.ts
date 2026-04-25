@@ -102,7 +102,7 @@ export const PRODUCTS: Product[] = [
     metrics: ['Ethereum mainnet & EVM-compatible chains', 'Consumer-facing QR product passports', 'FDA & EU supply chain compliance', 'Real-time counterfeiting alerts'],
     media: {
       video: '/assets/tracechain-demo.mp4',
-      image: '/assets/tracechain-landing.png',
+      image: '/assets/tracechain-landing.webp',
     },
   },
   {
@@ -186,7 +186,7 @@ export const PRODUCTS: Product[] = [
     metrics: ['Multi-chain deployment (EVM)', 'Mobile-first wallet interface', 'On-chain trust score system', 'Supports stablecoin contributions'],
     media: {
       video: '/assets/njangi-demo.mp4',
-      image: '/assets/njangi-landing.png',
+      image: '/assets/njangi-landing.webp',
     },
     website: 'https://www.njangi.xyz',
   },
@@ -209,6 +209,10 @@ export const PRODUCTS: Product[] = [
     ],
     howItWorks: 'NeuroQuest administers a validated psychometric assessment battery, then runs results through a neural network trained on cognitive science research. The platform generates a multi-dimensional cognitive profile covering decision style, risk tolerance, creativity index, and interpersonal patterns — delivered via dashboard and API.',
     metrics: ['Validated psychometric battery', 'Multi-dimensional cognitive profiling', 'Team composition analytics', 'API-first for HR platform integration'],
+    media: {
+      video: '/assets/neuroquest-academy-demo.mp4',
+      image: '/assets/neuroquest-academy-landing.webp',
+    },
   },
   {
     id: 'ndn-011',
@@ -250,6 +254,19 @@ export const PRODUCTS: Product[] = [
     ],
     howItWorks: 'NDN Model Studio connects to Hugging Face Hub to browse and select base models. Upload your training data (JSONL, CSV, or BigQuery), configure hyperparameters, and launch training on Google Vertex AI managed GPU clusters. Monitor progress in real time, then deploy with one click to a Firebase Functions v2 serverless endpoint.',
     metrics: ['900K+ models on Hugging Face', '4-6x faster iteration vs. self-managed', 'Near-zero cold start deployment', 'Spend guardrails included'],
+    media: {
+      video: '/assets/fine-tune-demo.mp4',
+      image: '/assets/fine-tune-command-center.webp',
+      gallery: [
+        {
+          type: 'video',
+          src: '/assets/fine-tune-facebook-data-demo.mp4',
+          poster: '/assets/fine-tune-command-center.webp',
+          label: 'Facebook data fine-tune',
+          alt: 'FineTune App demo showing a Facebook data fine-tuning workflow',
+        },
+      ],
+    },
   },
   {
     id: 'ndn-013',
@@ -272,7 +289,38 @@ export const PRODUCTS: Product[] = [
     metrics: ['Immutable CID-based verification', 'Ethereum-backed proof records', 'Private file encryption at rest', 'Audit-ready chain-of-custody exports'],
     media: {
       video: '/assets/ndn-ipfs-chain-video.mp4',
-      image: '/assets/ndn-ipfs-chain-homepage.png',
+      image: '/assets/ndn-ipfs-chain-homepage.webp',
+    },
+  },
+  {
+    id: 'ndn-014',
+    number: 'NDN-014',
+    name: 'TheDiaspora App',
+    description: 'A digital home for diaspora communities, connecting identity, trusted profiles, cultural belonging, professional opportunity, and cross-border collaboration in one mobile-first network.',
+    tagline: 'Connect the diaspora. Build trusted opportunity.',
+    features: ['Verified community profiles', 'Diaspora discovery feed', 'Professional and cultural networking', 'Cross-border opportunity hub'],
+    badge: 'Diaspora Network',
+    stack: 'new',
+    icon: 'D',
+    industries: ['Diaspora Communities', 'Professional Networks', 'Creator Communities', 'Community Commerce'],
+    useCases: [
+      'Help diaspora members discover trusted communities, events, founders, creators, and professional opportunities',
+      'Give members a portable profile that captures identity, skills, background, and community participation',
+      'Create a safer digital space for cross-border collaboration without losing cultural context',
+      'Support diaspora-led commerce, hiring, mentorship, investment, and community initiatives from one platform',
+    ],
+    howItWorks: 'TheDiaspora App combines member profiles, social discovery, community content, and opportunity matching into a single platform. Members build a profile, discover relevant people and initiatives, and connect around work, culture, mentorship, commerce, and community projects. The platform is designed to become the trust layer for diaspora networks that are spread across cities, countries, and time zones.',
+    metrics: ['Mobile-first community onboarding', 'Member profiles and trust signals', 'Cross-border discovery workflows', 'Built for diaspora-led commerce'],
+    media: {
+      image: '/assets/diaspora-app-home.webp',
+      gallery: [
+        {
+          type: 'image',
+          src: '/assets/diaspora-app-profile.webp',
+          label: 'Member profile',
+          alt: 'TheDiaspora app member profile screen with community identity and profile details',
+        },
+      ],
     },
   },
 ];

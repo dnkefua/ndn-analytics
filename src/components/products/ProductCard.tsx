@@ -22,7 +22,18 @@ export default function ProductCard({ product }: Props) {
         <span className="product-number">{product.number}</span>
         <span className="product-badge">{product.badge}</span>
       </div>
-      <div className="product-icon">{product.icon}</div>
+      {product.media?.image ? (
+        <div className="product-card-media">
+          <img
+            src={product.media.image}
+            alt={`${product.name} interface preview`}
+            loading="lazy"
+          />
+          <span className="product-card-media-icon">{product.icon}</span>
+        </div>
+      ) : (
+        <div className="product-icon">{product.icon}</div>
+      )}
       <h3 className="product-name">{product.name}</h3>
       <p className="product-desc">{product.description}</p>
       <ul className="product-features">

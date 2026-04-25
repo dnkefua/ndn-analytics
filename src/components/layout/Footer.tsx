@@ -3,7 +3,7 @@ import { PRODUCTS } from '../products/productData';
 import NewsletterSignup from '../newsletter/NewsletterSignup';
 
 const FOOTER_PRODUCTS = PRODUCTS.filter(p =>
-  ['ndn-001', 'ndn-002', 'ndn-005', 'ndn-009', 'ndn-010'].includes(p.id)
+  ['ndn-001', 'ndn-002', 'ndn-005', 'ndn-009', 'ndn-010', 'ndn-014'].includes(p.id)
 );
 
 const COMPANY_LINKS = [

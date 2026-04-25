@@ -16,7 +16,16 @@ export interface Product {
   media?: {
     video?: string;
     image?: string;
+    gallery?: ProductMediaAsset[];
   };
+}
+
+export interface ProductMediaAsset {
+  type: 'image' | 'video';
+  src: string;
+  poster?: string;
+  label: string;
+  alt: string;
 }
 
 export interface Solution {
