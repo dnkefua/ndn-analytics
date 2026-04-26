@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useInRouterContext, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useInRouterContext, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Suspense, lazy, useEffect } from 'react';
 import * as Sentry from '@sentry/react';
@@ -21,8 +21,12 @@ const AboutSection   = lazy(() => import('./components/about/AboutSection'));
 const ContactSection = lazy(() => import('./components/contact/ContactSection'));
 const BlogSection    = lazy(() => import('./components/blog/BlogSection'));
 const BlogPost       = lazy(() => import('./components/blog/BlogPost'));
-const PricingSection = lazy(() => import('./components/pricing/PricingSection'));
 const AIToolsSection = lazy(() => import('./components/aitools/AIToolsSection'));
+const AIProductsLanding = lazy(() => import('./components/landing/AIProductsLanding'));
+const BlockchainSolutionsLanding = lazy(() => import('./components/landing/BlockchainSolutionsLanding'));
+const GoogleCloudAILanding = lazy(() => import('./components/landing/GoogleCloudAILanding'));
+const SmartContractLanding = lazy(() => import('./components/landing/SmartContractLanding'));
+const AIAutomationLanding = lazy(() => import('./components/landing/AIAutomationLanding'));
 const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'));
 const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'));
 const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'));
@@ -71,8 +75,13 @@ function AnimatedRoutes() {
             <Route path="/contact"     element={<ContactSection />} />
             <Route path="/blog"        element={<BlogSection />} />
             <Route path="/blog/:slug"  element={<BlogPost />} />
-            <Route path="/pricing"     element={<PricingSection />} />
+            <Route path="/pricing"     element={<Navigate to="/contact" replace />} />
             <Route path="/ai-tools"    element={<AIToolsSection />} />
+            <Route path="/ai-products" element={<AIProductsLanding />} />
+            <Route path="/blockchain-solutions" element={<BlockchainSolutionsLanding />} />
+            <Route path="/google-cloud-ai-consulting" element={<GoogleCloudAILanding />} />
+            <Route path="/smart-contract-development" element={<SmartContractLanding />} />
+            <Route path="/ai-automation" element={<AIAutomationLanding />} />
             <Route path="/case-studies" element={<CaseStudiesSection />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />

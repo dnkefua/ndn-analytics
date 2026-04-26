@@ -16,6 +16,15 @@ const COMPANY_LINKS = [
   ['Fine-Tuning App ↗', '/fine-tuning'],
 ];
 
+const SERVICES_LINKS = [
+  ['AI Products', '/ai-products'],
+  ['AI Automation', '/ai-automation'],
+  ['Blockchain Solutions', '/blockchain-solutions'],
+  ['Google Cloud AI Consulting', '/google-cloud-ai-consulting'],
+  ['Smart Contract Development', '/smart-contract-development'],
+  ['Case Studies', '/case-studies'],
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -57,6 +66,18 @@ export default function Footer() {
                   onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
                   onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
                   {p.name}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Services</div>
+            {SERVICES_LINKS.map(([label, href]) => (
+              <div key={href} style={{ marginBottom: 8 }}>
+                <Link to={href} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                  onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                  {label}
                 </Link>
               </div>
             ))}

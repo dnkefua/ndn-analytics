@@ -9,7 +9,7 @@ import './Hero.css';
 const HOMEPAGE_FAQS = [
   {
     question: 'What services does NDN Analytics provide?',
-    answer: 'NDN Analytics builds AI products and blockchain solutions. Our AI products run on Google Cloud Platform and cover demand forecasting (NDN Demand IQ), healthcare AI (NDN HealthPredict), and inventory optimization. Our blockchain products run on Ethereum and cover supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), and smart contract development.',
+    answer: 'NDN Analytics builds AI products and blockchain solutions. Our AI products run on Google Cloud Platform and cover demand forecasting (NDN Demand IQ), healthcare readmission prevention (NDN Care Predict), last-mile delivery routing (NDN Route AI), and SaaS churn prevention (NDN Churn Guard). Our blockchain products run on Ethereum and cover supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), credential verification (NDN CredVault), and real estate tokenization (NDN PropLedger).',
   },
   {
     question: 'What industries does NDN Analytics serve?',
@@ -33,7 +33,7 @@ const HOMEPAGE_FAQS = [
   },
   {
     question: 'Does NDN Analytics provide custom AI development?',
-    answer: 'Yes. We offer custom AI development including fine-tuning models for specific business needs, building tailored machine learning pipelines, and integrating AI into existing workflows. Our NDN FineTune product specializes in custom model development and deployment on GCP.',
+    answer: 'Yes. We offer custom AI development including fine-tuning models for specific business needs, building tailored machine learning pipelines, and integrating AI into existing workflows. Our NDN Model Studio product specializes in no-code fine-tuning and one-click deployment on Google Cloud.',
   },
   {
     question: 'How can I get started with NDN Analytics?',
@@ -188,18 +188,18 @@ export default function Hero() {
 
         <div className="hero-ctas reveal stagger-4">
           <Link
-            to="/products"
+            to="/contact"
             className="btn btn-primary"
-            onClick={() => trackCTAClick('explore_products', 'hero')}
+            onClick={() => trackCTAClick('book_discovery_call', 'hero')}
           >
-            Explore Our Products →
+            Book a Discovery Call →
           </Link>
           <Link
-            to="/contact"
+            to="/products"
             className="btn btn-ghost"
-            onClick={() => trackCTAClick('book_demo', 'hero')}
+            onClick={() => trackCTAClick('explore_products', 'hero')}
           >
-            Get Started
+            View Our Products
           </Link>
         </div>
 
@@ -212,6 +212,77 @@ export default function Hero() {
               <div className="hero-stat-label">{s.label}</div>
             </div>
           ))}
+        </div>
+
+        {/* How We Work — Process strip */}
+        <div className="reveal stagger-5" style={{ marginTop: 80 }}>
+          <div style={{ textAlign: 'center', marginBottom: 32 }}>
+            <div style={{
+              fontSize: '0.7rem',
+              fontFamily: "'JetBrains Mono Variable', monospace",
+              color: 'var(--brand-cyan)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+              How We Work
+            </div>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              fontFamily: "'Syne Variable', sans-serif",
+              color: 'var(--text-primary)',
+              margin: 0,
+            }}>
+              Discovery → Architecture → Build → Deploy → Support
+            </h2>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: 16,
+          }}>
+            {[
+              { step: '01', title: 'Discovery', body: 'A working session to scope the problem, the data, and what success looks like.' },
+              { step: '02', title: 'Architecture', body: 'A reference architecture, stack choice, and timeline you can take to your team.' },
+              { step: '03', title: 'Build', body: 'Direct founder involvement on the build — no account-management layer.' },
+              { step: '04', title: 'Deploy', body: 'Cloud-native deployment on GCP or Ethereum, integrated with your existing stack.' },
+              { step: '05', title: 'Support', body: 'Ongoing model retraining, contract upgrades, and SLA-backed monitoring.' },
+            ].map(({ step, title, body }) => (
+              <div key={step} style={{
+                background: 'rgba(7, 24, 41, 0.6)',
+                border: '1px solid rgba(6, 182, 212, 0.12)',
+                borderRadius: 12,
+                padding: '20px 18px',
+              }}>
+                <div style={{
+                  fontSize: '0.65rem',
+                  fontFamily: "'JetBrains Mono Variable', monospace",
+                  color: 'var(--brand-cyan)',
+                  letterSpacing: '0.1em',
+                  marginBottom: 8,
+                }}>
+                  STEP {step}
+                </div>
+                <div style={{
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  fontFamily: "'Syne Variable', sans-serif",
+                  color: 'var(--text-primary)',
+                  marginBottom: 6,
+                }}>
+                  {title}
+                </div>
+                <div style={{
+                  fontSize: '0.8rem',
+                  color: 'var(--text-tertiary)',
+                  lineHeight: 1.55,
+                }}>
+                  {body}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Featured Products */}
@@ -422,7 +493,7 @@ export default function Hero() {
                 AI Products on Google Cloud Platform
               </h3>
               <p style={{ marginBottom: 16 }}>
-                Our AI products are built on Google Cloud's Vertex AI, BigQuery, and machine learning infrastructure. <strong>NDN Demand IQ</strong> uses ensemble forecasting to predict product demand at the SKU and store level, giving retailers the signal they need before stockouts happen — not after. <strong>NDN HealthPredict</strong> models patient risk factors to flag readmission candidates before discharge. <strong>NDN RetailSync</strong> synchronizes inventory data across sales channels in real time. Each product is architected to integrate with existing ERP and data infrastructure — no rip-and-replace required.
+                Our AI products are built on Google Cloud's Vertex AI, BigQuery, and machine learning infrastructure. <strong>NDN Demand IQ</strong> uses ensemble forecasting to predict product demand at the SKU and store level, giving retailers the signal they need before stockouts happen — not after. <strong>NDN Care Predict</strong> models patient risk factors to flag readmission candidates before discharge, integrating with EHRs via HL7/FHIR. <strong>NDN Route AI</strong> solves last-mile vehicle routing for thousands of stops in seconds. <strong>NDN Churn Guard</strong> surfaces at-risk SaaS accounts 45+ days before renewal. Each product is architected to integrate with existing ERP and data infrastructure — no rip-and-replace required.
               </p>
 
               <h3 style={{
@@ -448,7 +519,7 @@ export default function Hero() {
                 Built to Scale. Designed to Last.
               </h3>
               <p style={{ marginBottom: 16 }}>
-                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook. <strong>NDN Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal cooperative finance for generations. <strong>TheDiaspora App</strong> gives global communities a trusted digital home for identity, discovery, culture, and opportunity. <strong>NDN NeuroQuest</strong> delivers cognitive assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>, <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design — is chosen for durability and interoperability, not trend-chasing.
+                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook. <strong>Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal cooperative finance for generations. <strong>TheDiaspora App</strong> gives global communities a trusted digital home for identity, discovery, culture, and opportunity. <strong>NDN NeuroQuest</strong> delivers cognitive assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>, <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design — is chosen for durability and interoperability, not trend-chasing.
               </p>
 
               <p style={{ marginTop: 24 }}>

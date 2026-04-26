@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: 'Solutions',    href: '/solutions'    },
   { label: 'White Paper',  href: '/whitepaper'   },
   { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Pricing',      href: '/pricing'      },
   { label: 'Blog',         href: '/blog'         },
 ];
 

@@ -57,10 +57,10 @@ describe('Checkout Flow', () => {
       expect(screen.getByText(/cancel/i)).toBeInTheDocument();
     });
 
-    it('provides link back to pricing', () => {
+    it('provides link to discovery call', () => {
       renderWithProviders(<CheckoutCancelled />);
-      const pricingLink = screen.getByRole('link', { name: /pricing|try again/i });
-      expect(pricingLink).toBeInTheDocument();
+      const ctaLink = screen.getByRole('link', { name: /discovery call|browse products/i });
+      expect(ctaLink).toBeInTheDocument();
     });
   });
 });

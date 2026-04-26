@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-04-25
+> Updated: 2026-04-26
 
 ## Summary
 NDN Analytics builds enterprise AI and blockchain products for operations, compliance, healthcare, logistics, community finance, and document integrity workflows.
@@ -21,6 +21,13 @@ NDN Analytics builds enterprise AI and blockchain products for operations, compl
 - https://www.ndnanalytics.com/blog
 - https://www.ndnanalytics.com/solutions
 - https://www.ndnanalytics.com/contact
+
+## Service Practices
+- AI Products (custom AI software development): https://www.ndnanalytics.com/ai-products
+- AI Automation (workflow automation, AI agents): https://www.ndnanalytics.com/ai-automation
+- Blockchain Solutions (Ethereum, Web3): https://www.ndnanalytics.com/blockchain-solutions
+- Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): https://www.ndnanalytics.com/google-cloud-ai-consulting
+- Smart Contract Development (Solidity, EVM): https://www.ndnanalytics.com/smart-contract-development
 
 ## Products (14)
 - NDN Demand IQ: https://www.ndnanalytics.com/products/ndn-001

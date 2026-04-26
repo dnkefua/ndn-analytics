@@ -1083,7 +1083,7 @@ We've run assessments for teams ranging from 5-person startups to 50,000-employe
 - ROI projection report
 - 30-day email support
 
-[Book your AI Readiness Assessment — $499](/pricing?utm_source=blog&utm_medium=cta&utm_campaign=readiness_assessment_post) and get your roadmap within one week.`,
+[Book a free AI Readiness discovery call](/contact?utm_source=blog&utm_medium=cta&utm_campaign=readiness_assessment_post) and we'll scope your roadmap together.`,
     date: '2026-04-12',
     author: 'NDN Analytics Team',
     category: 'AI',
@@ -1172,7 +1172,7 @@ We're not going to claim perfection — but we do have direct answers to every q
 
 The best way to evaluate us is to start with the AI Readiness Assessment. It's a 2-hour working session — you'll know within an hour whether our approach matches your needs.
 
-[Start with the AI Readiness Assessment — $499](/pricing?utm_source=blog&utm_medium=cta&utm_campaign=how_to_choose_consultant) and get a clear AI roadmap within one week.`,
+[Start with a free AI Readiness discovery call](/contact?utm_source=blog&utm_medium=cta&utm_campaign=how_to_choose_consultant) and we'll map a clear AI roadmap with you.`,
     date: '2026-04-12',
     author: 'NDN Analytics Team',
     category: 'AI',

@@ -114,14 +114,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: 'hospital-readmission-prevention',
     isReferenceImplementation: true,
     title: 'AI Readmission Risk Scoring for Multi-Hospital Health Systems',
-    subtitle: 'Reference implementation: how NDN HealthPredict addresses 30-day readmission risk identification and care coordinator prioritisation',
+    subtitle: 'Reference implementation: how NDN Care Predict addresses 30-day readmission risk identification and care coordinator prioritisation',
     client: {
       name: 'Reference Scenario — Regional Multi-Hospital Health System',
       industry: 'Healthcare',
       size: 'Scenario scale: 8–15 hospitals, 1.5M–3M patient encounters/year',
     },
     challenge: 'CMS excess readmission penalties accumulate when high-risk patients are discharged without timely intervention. Traditional risk scoring tools (e.g. LACE index) capture a fraction of patients who ultimately readmit, leaving care coordinators to work through manual chart reviews with no way to prioritise. The result: many high-risk discharges happen before any intervention is possible.',
-    solution: 'NDN HealthPredict connects to existing EMR systems via Epic FHIR APIs and scores every inpatient every 4 hours across 200+ real-time signals — vital trends, lab trajectories, medication fill patterns, social determinants, and care team notes. High-risk alerts surface directly inside nursing and case management workflows with specific intervention recommendations. The model is calibrated on each health system\'s own historical data before go-live.',
+    solution: 'NDN Care Predict connects to existing EMR systems via Epic FHIR APIs and scores every inpatient every 4 hours across 200+ real-time signals — vital trends, lab trajectories, medication fill patterns, social determinants, and care team notes. High-risk alerts surface directly inside nursing and case management workflows with specific intervention recommendations. The model is calibrated on each health system\'s own historical data before go-live.',
     results: [
       {
         metric: '30-day Readmissions',

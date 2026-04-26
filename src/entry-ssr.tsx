@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { renderToString } from 'react-dom/server'
-import { StaticRouter, Routes, Route } from 'react-router'
+import { StaticRouter, Routes, Route, Navigate } from 'react-router'
 import { StrictMode, Suspense } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import './styles/variables.css'
@@ -19,8 +19,12 @@ import AboutSection from './components/about/AboutSection'
 import ContactSection from './components/contact/ContactSection'
 import BlogSection from './components/blog/BlogSection'
 import BlogPost from './components/blog/BlogPost'
-import PricingSection from './components/pricing/PricingSection'
 import AIToolsSection from './components/aitools/AIToolsSection'
+import AIProductsLanding from './components/landing/AIProductsLanding'
+import BlockchainSolutionsLanding from './components/landing/BlockchainSolutionsLanding'
+import GoogleCloudAILanding from './components/landing/GoogleCloudAILanding'
+import SmartContractLanding from './components/landing/SmartContractLanding'
+import AIAutomationLanding from './components/landing/AIAutomationLanding'
 import CaseStudiesSection from './components/casestudies/CaseStudiesSection'
 import CaseStudyDetail from './components/casestudies/CaseStudyDetail'
 import Navbar from './components/layout/Navbar'
@@ -71,8 +75,13 @@ export function render(url: string) {
                   <Route path="/contact" element={<ContactSection />} />
                   <Route path="/blog" element={<BlogSection />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
-                  <Route path="/pricing" element={<PricingSection />} />
+                  <Route path="/pricing" element={<Navigate to="/contact" replace />} />
                   <Route path="/ai-tools" element={<AIToolsSection />} />
+                  <Route path="/ai-products" element={<AIProductsLanding />} />
+                  <Route path="/blockchain-solutions" element={<BlockchainSolutionsLanding />} />
+                  <Route path="/google-cloud-ai-consulting" element={<GoogleCloudAILanding />} />
+                  <Route path="/smart-contract-development" element={<SmartContractLanding />} />
+                  <Route path="/ai-automation" element={<AIAutomationLanding />} />
                   <Route path="/case-studies" element={<CaseStudiesSection />} />
                   <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
                   <Route path="/checkout/success" element={<CheckoutSuccess />} />

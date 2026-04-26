@@ -107,7 +107,11 @@ const STATIC_PAGES = [
   { loc: '/tech', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
   { loc: '/about', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
   { loc: '/contact', lastmod: TODAY, changefreq: 'monthly', priority: '0.6' },
-  { loc: '/pricing', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+  { loc: '/ai-products', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/ai-automation', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/blockchain-solutions', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/google-cloud-ai-consulting', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/smart-contract-development', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
   { loc: '/blog', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
   { loc: '/case-studies', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
   { loc: '/fine-tuning', lastmod: TODAY, changefreq: 'weekly', priority: '0.7' },
@@ -217,6 +221,13 @@ NDN Analytics builds enterprise AI and blockchain products for operations, compl
 - ${BASE_URL}/blog
 - ${BASE_URL}/solutions
 - ${BASE_URL}/contact
+
+## Service Practices
+- AI Products (custom AI software development): ${BASE_URL}/ai-products
+- AI Automation (workflow automation, AI agents): ${BASE_URL}/ai-automation
+- Blockchain Solutions (Ethereum, Web3): ${BASE_URL}/blockchain-solutions
+- Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): ${BASE_URL}/google-cloud-ai-consulting
+- Smart Contract Development (Solidity, EVM): ${BASE_URL}/smart-contract-development
 
 ## Products (${products.length})
 ${products.map((product) => `- ${product.name}: ${BASE_URL}/products/${product.id}`).join('\n')}

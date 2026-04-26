@@ -6,7 +6,7 @@ export default function CheckoutCancelled() {
     <>
       <SEO
         title="Payment Cancelled"
-        description="Your checkout was cancelled. Return to pricing to try again."
+        description="Your checkout was cancelled. Reach out to us if you have questions."
         canonicalPath="/checkout/cancelled"
       />
       <section style={{ minHeight: '100vh', paddingTop: 160, paddingBottom: 80, display: 'flex', alignItems: 'center' }}>
@@ -37,16 +37,15 @@ export default function CheckoutCancelled() {
           </h1>
 
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, marginBottom: 40 }}>
-            Your payment was not processed. If you have questions about the AI Readiness Assessment
-            before purchasing, we're happy to answer them.
+            Your payment was not processed. If you have questions about working with us, we're happy to answer them.
           </p>
 
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/pricing" className="btn btn-primary">
-              Back to pricing →
+            <Link to="/contact" className="btn btn-primary">
+              Book a discovery call →
             </Link>
-            <Link to="/contact" className="btn btn-ghost">
-              Ask a question
+            <Link to="/products" className="btn btn-ghost">
+              Browse products
             </Link>
           </div>
         </div>

@@ -18,10 +18,10 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
     operatingSystem: 'Cloud',
     offers: {
       '@type': 'Offer',
-      price: '0',
       priceCurrency: 'USD',
-      description: 'Contact for custom enterprise pricing',
-      url: `${BASE_URL}/pricing`,
+      availability: 'https://schema.org/Inquire',
+      description: 'Contact for a custom scope and timeline',
+      url: `${BASE_URL}/contact`,
     },
     provider: {
       '@type': 'Organization',

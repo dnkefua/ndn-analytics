@@ -17,7 +17,16 @@ export default function ContactSection() {
   const ref = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>('idle');
-  const [form, setForm] = useState({ name: '', email: '', product: '', message: '' });
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    company: '',
+    product: '',
+    projectType: '',
+    budget: '',
+    timeline: '',
+    message: '',
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +66,16 @@ export default function ContactSection() {
       // Send email via EmailJS
       await emailjs.sendForm(EJS_SERVICE, EJS_TEMPLATE, formRef.current, { publicKey: EJS_PUBLIC });
       setStatus('success');
-      setForm({ name: '', email: '', product: '', message: '' });
+      setForm({
+        name: '',
+        email: '',
+        company: '',
+        product: '',
+        projectType: '',
+        budget: '',
+        timeline: '',
+        message: '',
+      });
     } catch {
       setStatus('error');
     }
@@ -172,7 +190,38 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="product_interest">Product Interest</label>
+                  <label className="form-label" htmlFor="company">Company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    className="form-input"
+                    placeholder="Your organization (optional)"
+                    value={form.company}
+                    onChange={e => setForm({ ...form, company: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="project_type">Project Type</label>
+                  <select
+                    id="project_type"
+                    name="project_type"
+                    className="form-input form-select"
+                    value={form.projectType}
+                    onChange={e => setForm({ ...form, projectType: e.target.value })}
+                  >
+                    <option value="">What kind of project?</option>
+                    <option value="AI Product Build">AI product build (custom AI/ML)</option>
+                    <option value="Google Cloud AI Consulting">Google Cloud AI consulting / deployment</option>
+                    <option value="Smart Contract Development">Smart contract / Ethereum development</option>
+                    <option value="Blockchain Solution">Blockchain solution (provenance, payments, tokenization)</option>
+                    <option value="Existing Product">Implement an existing NDN product</option>
+                    <option value="AI Strategy / Audit">AI strategy or readiness audit</option>
+                    <option value="Other">Other / not sure yet</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="product_interest">Specific Product Interest</label>
                   <select
                     id="product_interest"
                     name="product_interest"
@@ -180,7 +229,7 @@ export default function ContactSection() {
                     value={form.product}
                     onChange={e => setForm({ ...form, product: e.target.value })}
                   >
-                    <option value="">Select a product...</option>
+                    <option value="">Optional — pick a product if relevant</option>
                     {PRODUCTS.map(p => (
                       <option key={p.id} value={p.name}>{p.name}</option>
                     ))}
@@ -188,13 +237,47 @@ export default function ContactSection() {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="message">Message</label>
+                  <label className="form-label" htmlFor="budget">Budget Range</label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    className="form-input form-select"
+                    value={form.budget}
+                    onChange={e => setForm({ ...form, budget: e.target.value })}
+                  >
+                    <option value="">Helps us scope realistically</option>
+                    <option value="Under $25k">Under $25k</option>
+                    <option value="$25k–$75k">$25k – $75k</option>
+                    <option value="$75k–$200k">$75k – $200k</option>
+                    <option value="$200k+">$200k+</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="timeline">Timeline</label>
+                  <select
+                    id="timeline"
+                    name="timeline"
+                    className="form-input form-select"
+                    value={form.timeline}
+                    onChange={e => setForm({ ...form, timeline: e.target.value })}
+                  >
+                    <option value="">When do you need this?</option>
+                    <option value="ASAP / urgent">ASAP / urgent</option>
+                    <option value="1–3 months">1 – 3 months</option>
+                    <option value="3–6 months">3 – 6 months</option>
+                    <option value="6+ months">6+ months</option>
+                    <option value="Just exploring">Just exploring</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="message">Project Brief</label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     className="form-input form-textarea"
-                    placeholder="Tell us about your use case and scale..."
+                    placeholder="What problem are you trying to solve, and what does success look like?"
                     rows={5}
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
@@ -213,7 +296,7 @@ export default function ContactSection() {
                   style={{ width: '100%', justifyContent: 'center' }}
                   disabled={status === 'sending'}
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Message \u2192'}
+                  {status === 'sending' ? 'Sending...' : 'Send Project Brief \u2192'}
                 </button>
               </form>
             )}

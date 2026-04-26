@@ -111,7 +111,7 @@ export default function OrganizationSchema() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'SoftwareApplication',
-            name: 'NDN HealthPredict',
+            name: 'NDN Care Predict',
             applicationCategory: 'HealthApplication',
             description: 'Healthcare AI for patient readmission prevention and clinical decision support',
           },
