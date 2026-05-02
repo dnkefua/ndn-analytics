@@ -323,6 +323,27 @@ export const PRODUCTS: Product[] = [
       ],
     },
   },
+  {
+    id: 'ndn-015',
+    number: 'NDN—015',
+    name: 'CamDiag',
+    description: 'AI-powered medical diagnostic assistant for Cameroon healthcare system, leveraging Google MedGemma for medical image analysis, drug interaction checking, and clinical decision support.',
+    tagline: 'AI healthcare assistance for Cameroon.',
+    features: ['Medical image analysis', 'Drug interaction checking', 'Drug database browsing', 'Clinical decision support', 'Bilingual support (English/French)', 'Patient records tracking'],
+    badge: 'Healthcare AI',
+    stack: 'new',
+    icon: '⊕',
+    industries: ['Healthcare', 'Community Medicine', 'Pharmacies', 'Telemedicine'],
+    useCases: [
+      'Analyze lab results, X-rays, and RDT tests using device camera for preliminary diagnostics',
+      'Check drug interactions across recommended medications to prevent contraindications',
+      'Locate nearby healthcare facilities including clinics, hospitals, pharmacies, and telehealth providers',
+      'Track diagnostic history and provide medical feedback through community health questionnaires',
+    ],
+    howItWorks: 'CamDiag integrates Google\'s MedGemma model via the Gemini API for medical image analysis and drug interaction detection. The app captures images through device cameras, routes them through Firebase Functions for AI processing, and returns diagnostic suggestions with confidence scoring. A comprehensive drug database covers medications available in Cameroon including traditional remedies. Bilingual interface supports both English and French users across different regions.',
+    metrics: ['AI medical image analysis via MedGemma', 'Bilingual English/French support', 'Drug interaction checking for Cameroon medications', 'Offline connection awareness', 'Mobile-first design'],
+    website: 'https://github.com/dnkefua/camdiag-app',
+  },
 ];
 
 export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');

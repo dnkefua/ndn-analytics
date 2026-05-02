@@ -2440,4 +2440,149 @@ Whether you're building a team from scratch or strengthening an existing one:
       downloadId: 'ai-hiring-playbook',
     },
   },
+  {
+    slug: 'camdiag-ai-healthcare-cameroon',
+    title: 'CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics',
+    excerpt: 'How CamDiag is bringing medical image analysis and clinical decision support to Cameroon's healthcare system through Google MedGemma and mobile-first design.',
+    content: `Cameroon's healthcare system faces a critical challenge: patients in remote and underserved areas lack access to timely, expert diagnostic support. Travel distances to hospitals, limited radiologist availability, and inconsistent access to medical expertise create delays that cost lives.
+
+CamDiag is designed to address this gap by bringing AI-powered diagnostic assistance directly to healthcare workers and patients across Cameroon — right on their mobile devices.
+
+## The Healthcare Challenge in Cameroon
+
+Cameroon has approximately 15,000 registered medical doctors serving over 28 million people. The distribution is heavily concentrated in major cities like Yaoundé and Douala, leaving rural and semi-urban regions severely underserved.
+
+Key challenges:
+- **Limited specialist access**: Diagnostic expertise (radiology, pathology) is concentrated in major hospitals
+- **Long travel distances**: Patients in rural areas may travel 2-6 hours to reach diagnostic facilities
+- **Delayed results**: Film-based and manual documentation creates processing bottlenecks
+- **High operational costs**: Maintaining medical equipment and facilities strains local healthcare budgets
+- **Drug interaction knowledge gaps**: Healthcare workers struggle to track medication contraindications across complex cases
+
+These barriers translate directly into worse patient outcomes — treatable conditions advance to critical stages while awaiting diagnosis.
+
+## How CamDiag Works
+
+CamDiag integrates Google's **MedGemma** model through the Gemini API to provide:
+
+### 1. AI Medical Image Analysis
+Healthcare workers and patients can photograph lab results, X-rays, RDT tests, and medical scans using a standard smartphone camera. The image is processed by MedGemma — a specialized medical AI model trained on diagnostic imaging — to provide preliminary analysis and flagged areas of concern.
+
+The system includes:
+- **Confidence scoring**: Shows the AI's certainty level for each analysis
+- **Medical disclaimers**: Always emphasizes that this is a decision support tool, not a diagnosis
+- **Context capture**: Records the clinical context (patient symptoms, medications, history) for richer analysis
+
+### 2. Drug Interaction Checking
+Cameroon has a diverse medication landscape — both modern pharmaceuticals and traditional remedies coexist. CamDiag's drug database covers medications available in Cameroon and automatically detects dangerous interactions between:
+- Prescription medications
+- Over-the-counter drugs
+- Traditional remedies and modern medicines
+- Supplements and primary medications
+
+This catches contraindications that paper-based or manual workflows can miss.
+
+### 3. Bilingual Interface (English & French)
+Cameroon is a bilingual country. CamDiag's interface supports both English and French with professional medical terminology, allowing healthcare workers and patients to use the tool in their preferred language.
+
+### 4. Nearby Facility Locator
+The app helps users find:
+- Clinics and hospitals
+- Pharmacies
+- Telehealth providers
+- Community health centers
+
+This network discovery reduces time-to-care and helps patients locate appropriate follow-up services.
+
+### 5. Patient Records Tracking
+Healthcare workers can maintain basic patient diagnostic histories — building a longitudinal record even in settings without electronic health records. This historical context improves diagnostic accuracy for follow-up visits.
+
+## Why This Matters for Cameroon
+
+The impact of CamDiag extends beyond individual diagnoses. It addresses systemic challenges:
+
+**For Healthcare Workers**: Clinical staff in rural facilities gain access to expert-level diagnostic insights without traveling to major hospitals. This reduces referral delays and improves case management.
+
+**For Patients**: Faster diagnosis reduces anxiety and enables earlier intervention. The bilingual interface and familiar mobile platform lower the technology barrier.
+
+**For the Healthcare System**: CamDiag reduces unnecessary specialist referrals and optimizes resource allocation — expensive specialist time is reserved for complex cases, while routine diagnostics are streamlined.
+
+**For Maternal & Child Health**: Cameroon's maternal mortality ratio remains high at 738 deaths per 100,000 live births. Early diagnostic support for complications (gestational diabetes, pre-eclampsia, infection) could prevent critical outcomes.
+
+**For Communicable Diseases**: In a country where malaria, typhoid, and other fever-causing illnesses are endemic, rapid diagnostic confirmation and treatment guidance matter enormously.
+
+## Technical Approach & Security
+
+CamDiag is built on modern, secure infrastructure:
+
+- **React 19 + TypeScript** for cross-platform mobile and web compatibility
+- **Firebase Functions** as a secure backend proxy — the Gemini API key is never exposed to the browser
+- **Input sanitization** prevents injection attacks on all user-submitted data
+- **Offline awareness**: The app detects connection status and gracefully degrades when offline
+- **Rate limiting**: Backend enforces request limits to prevent abuse and manage costs
+
+Critical medical analysis flows through authenticated, audited backend pipelines — not raw client-side calls.
+
+## The Path Forward
+
+CamDiag's initial release focuses on diagnostic image analysis and drug interaction checking. The roadmap includes:
+
+1. **Integration with mobile money** (MTN Mobile Money, Orange Money) for sustainable micropayments
+2. **Expansion to other African countries** with localized drug databases
+3. **Integration with government health information systems** as Cameroon's digital health infrastructure matures
+4. **Specialist consultation booking**: Seamless referral pathways to telehealth doctors when advanced care is needed
+5. **Community health worker training**: Structured modules teaching best practices for using AI diagnostic tools
+
+## Real-World Example
+
+Imagine a 42-year-old woman in Bamenda (a city in the Northwest Region) develops abdominal pain and fever. The nearest hospital is 40km away. Instead:
+
+1. She visits a local clinic with basic imaging capability
+2. The healthcare worker takes a mobile ultrasound image and uploads it to CamDiag
+3. MedGemma analyzes the image and flags possible appendicitis
+4. CamDiag checks her current medications (three medications for hypertension) and suggests safe antibiotic alternatives
+5. The healthcare worker books an urgent teleconsultation with a surgeon in Yaoundé
+6. The patient is referred to a hospital before the condition becomes life-threatening
+
+**Time saved**: 4-6 hours
+**Outcome**: Early intervention instead of emergency surgery
+
+## How NDN Analytics Supports CamDiag
+
+CamDiag represents NDN Analytics' commitment to putting advanced AI technology at the service of underserved populations. This aligns with our broader vision:
+
+- **AI for impact**: Building products that address real human needs, not just technical novelty
+- **Localization**: Designing for specific regional contexts (Cameroon's bilingual reality, available medications, healthcare infrastructure)
+- **Sustainable models**: Building toward revenue models (micropayments, government partnerships) rather than grant dependency
+- **Open contribution**: We welcome healthcare professionals in Cameroon to contribute local medical knowledge and clinical feedback
+
+## Getting Started with CamDiag
+
+CamDiag is live and available for healthcare workers and patients across Cameroon:
+
+**Download**: Available on web and mobile
+**Learn more**: [Visit the CamDiag project](/products/ndn-015)
+**For healthcare facilities**: Interested in deployment at your clinic, hospital, or health center? [Book a consultation](/contact?utm_source=blog&utm_medium=cta&utm_campaign=camdiag) with our healthcare AI team.
+
+---
+
+## Final Thoughts
+
+Healthcare access is not a problem that AI solves alone. CamDiag works because it's designed around the Cameroonian context: the people, the languages, the diseases, the existing infrastructure, and the barriers that matter on the ground.
+
+The goal isn't to replace healthcare workers. It's to empower them — giving every healthcare worker access to the kind of diagnostic confidence that currently only exists in major hospitals.
+
+That's how technology creates real impact in emerging markets.`,
+    date: '2026-05-02',
+    author: 'NDN Analytics Team',
+    category: 'Product',
+    readTime: '12 min read',
+    image: '/assets/camdiag-hero.webp',
+    relatedProducts: ['ndn-015'],
+    contentUpgrade: {
+      title: 'AI in African Healthcare: Implementation Playbook',
+      description: 'How healthcare organizations across Africa can deploy AI-powered diagnostic tools responsibly.',
+      downloadId: 'african-healthcare-ai-playbook',
+    },
+  },
 ];
