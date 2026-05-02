@@ -59,7 +59,7 @@ describe('Checkout Flow', () => {
 
     it('provides link to discovery call', () => {
       renderWithProviders(<CheckoutCancelled />);
-      const ctaLink = screen.getByRole('link', { name: /discovery call|browse products/i });
+      const ctaLink = screen.getByRole('link', { name: /discovery call/i });
       expect(ctaLink).toBeInTheDocument();
     });
   });

@@ -105,7 +105,7 @@ describe('Hero integration', () => {
       </HelmetProvider>
     );
 
-    expect(screen.getByText(/Explore Our Products/)).toBeInTheDocument();
-    expect(screen.getByText('Get Started')).toBeInTheDocument();
+    expect(screen.getByText(/Book a Discovery Call/)).toBeInTheDocument();
+    expect(screen.getByText(/View Our Products/)).toBeInTheDocument();
   });
 });
