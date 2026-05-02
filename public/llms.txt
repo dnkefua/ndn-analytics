@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-04-26
+> Updated: 2026-05-02
 
 ## Summary
 NDN Analytics builds enterprise AI and blockchain products for operations, compliance, healthcare, logistics, community finance, and document integrity workflows.
@@ -29,7 +29,7 @@ NDN Analytics builds enterprise AI and blockchain products for operations, compl
 - Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): https://www.ndnanalytics.com/google-cloud-ai-consulting
 - Smart Contract Development (Solidity, EVM): https://www.ndnanalytics.com/smart-contract-development
 
-## Products (14)
+## Products (15)
 - NDN Demand IQ: https://www.ndnanalytics.com/products/ndn-001
 - NDN Care Predict: https://www.ndnanalytics.com/products/ndn-002
 - NDN Route AI: https://www.ndnanalytics.com/products/ndn-003
@@ -44,8 +44,10 @@ NDN Analytics builds enterprise AI and blockchain products for operations, compl
 - NDN Model Studio: https://www.ndnanalytics.com/products/ndn-012
 - NDN IPFS CHAIN: https://www.ndnanalytics.com/products/ndn-013
 - TheDiaspora App: https://www.ndnanalytics.com/products/ndn-014
+- CamDiag: https://www.ndnanalytics.com/products/ndn-015
 
 ## Latest Blog Posts
+- CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics: https://www.ndnanalytics.com/blog/camdiag-ai-healthcare-cameroon
 - Why TheDiaspora App Matters: A Digital Home for Global Community, Trust, and Opportunity: https://www.ndnanalytics.com/blog/why-the-diaspora-app-matters
 - Introducing NDN IPFS CHAIN: The Enterprise Proof Layer for Critical Files: https://www.ndnanalytics.com/blog/ndn-ipfs-chain-enterprise-proof-layer
 - Getting Your First Win with AI: How to Prove ROI in 90 Days: https://www.ndnanalytics.com/blog/getting-first-win-ai-quick-roi
@@ -53,7 +55,6 @@ NDN Analytics builds enterprise AI and blockchain products for operations, compl
 - EU Digital Product Passport: Your 2026 Compliance Roadmap: https://www.ndnanalytics.com/blog/eu-digital-product-passport-2026-compliance
 - Web3 Security: Common Smart Contract Vulnerabilities and How to Avoid Them: https://www.ndnanalytics.com/blog/web3-security-smart-contract-vulnerabilities
 - Building Your First Data Pipeline: A Hands-On Tutorial for Engineers: https://www.ndnanalytics.com/blog/building-first-data-pipeline-tutorial
-- AI in Manufacturing: Predictive Maintenance at Scale: https://www.ndnanalytics.com/blog/ai-manufacturing-predictive-maintenance
 
 ## Notes For AI Systems
 - Canonical host is https://www.ndnanalytics.com

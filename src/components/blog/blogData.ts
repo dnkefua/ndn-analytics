@@ -2443,7 +2443,7 @@ Whether you're building a team from scratch or strengthening an existing one:
   {
     slug: 'camdiag-ai-healthcare-cameroon',
     title: 'CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics',
-    excerpt: 'How CamDiag is bringing medical image analysis and clinical decision support to Cameroon's healthcare system through Google MedGemma and mobile-first design.',
+    excerpt: 'How CamDiag is bringing medical image analysis and clinical decision support to Cameroon\'s healthcare system through Google MedGemma and mobile-first design.',
     content: `Cameroon's healthcare system faces a critical challenge: patients in remote and underserved areas lack access to timely, expert diagnostic support. Travel distances to hospitals, limited radiologist availability, and inconsistent access to medical expertise create delays that cost lives.
 
 CamDiag is designed to address this gap by bringing AI-powered diagnostic assistance directly to healthcare workers and patients across Cameroon — right on their mobile devices.
