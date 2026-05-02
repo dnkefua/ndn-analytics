@@ -2577,7 +2577,7 @@ That's how technology creates real impact in emerging markets.`,
     author: 'NDN Analytics Team',
     category: 'Product',
     readTime: '12 min read',
-    image: '/assets/camdiag-hero.webp',
+    image: '/assets/camdiag-landing.png',
     relatedProducts: ['ndn-015'],
     contentUpgrade: {
       title: 'AI in African Healthcare: Implementation Playbook',

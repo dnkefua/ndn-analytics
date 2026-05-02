@@ -343,6 +343,9 @@ export const PRODUCTS: Product[] = [
     howItWorks: 'CamDiag integrates Google\'s MedGemma model via the Gemini API for medical image analysis and drug interaction detection. The app captures images through device cameras, routes them through Firebase Functions for AI processing, and returns diagnostic suggestions with confidence scoring. A comprehensive drug database covers medications available in Cameroon including traditional remedies. Bilingual interface supports both English and French users across different regions.',
     metrics: ['AI medical image analysis via MedGemma', 'Bilingual English/French support', 'Drug interaction checking for Cameroon medications', 'Offline connection awareness', 'Mobile-first design'],
     website: 'https://github.com/dnkefua/camdiag-app',
+    media: {
+      image: '/assets/camdiag-landing.png',
+    },
   },
 ];
 
