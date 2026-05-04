@@ -138,6 +138,11 @@ export default function ProductDetail() {
               {product.media?.image ? (
                 <div className="pd-hero-preview">
                   <img src={product.media.image} alt={`${product.name} interface preview`} />
+                  {product.media.logo && (
+                    <div className="pd-hero-logo-mark">
+                      <img src={product.media.logo} alt={`${product.name} logo`} />
+                    </div>
+                  )}
                   <span className="pd-hero-preview-label">{product.name}</span>
                 </div>
               ) : (
@@ -157,6 +162,11 @@ export default function ProductDetail() {
        {product.media && (
          <section className="pd-media-showcase">
            <div className="container">
+             {product.media.logo && (
+               <div className="pd-media-brand">
+                 <img src={product.media.logo} alt={`${product.name} logo`} />
+               </div>
+             )}
              {product.media.video && (product.media.video.toLowerCase().endsWith('.mp4') || product.media.video.toLowerCase().endsWith('.webm')) ? (
                <video
                  src={product.media.video}

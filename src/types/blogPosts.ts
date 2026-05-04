@@ -18,6 +18,8 @@ export interface DynamicBlogPost {
   readTime: string;
   image?: string;
   video?: string;
+  logo?: string;
+  logoAnimation?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;
@@ -54,6 +56,8 @@ export interface UnifiedBlogPost {
   readTime: string;
   image?: string;
   video?: string;
+  logo?: string;
+  logoAnimation?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;

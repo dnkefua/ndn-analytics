@@ -9,6 +9,8 @@ export interface BlogPost {
   readTime: string;
   image?: string;
   video?: string;
+  logo?: string;
+  logoAnimation?: string;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;
@@ -2578,6 +2580,9 @@ That's how technology creates real impact in emerging markets.`,
     category: 'Product',
     readTime: '12 min read',
     image: '/assets/camdiag-landing.png',
+    video: '/assets/camdiag-edited-video.mp4',
+    logo: '/assets/camdiag-logo.png',
+    logoAnimation: '/assets/camdiag-logo-animation.mp4',
     relatedProducts: ['ndn-015'],
     contentUpgrade: {
       title: 'AI in African Healthcare: Implementation Playbook',

@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-05-02
+> Updated: 2026-05-04
 
 ## Summary
 NDN Analytics builds enterprise AI and blockchain products for operations, compliance, healthcare, logistics, community finance, and document integrity workflows.

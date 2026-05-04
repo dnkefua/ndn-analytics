@@ -345,6 +345,24 @@ export const PRODUCTS: Product[] = [
     website: 'https://github.com/dnkefua/camdiag-app',
     media: {
       image: '/assets/camdiag-landing.png',
+      video: '/assets/camdiag-edited-video.mp4',
+      logo: '/assets/camdiag-logo.png',
+      logoAnimation: '/assets/camdiag-logo-animation.mp4',
+      gallery: [
+        {
+          type: 'video',
+          src: '/assets/camdiag-logo-animation.mp4',
+          poster: '/assets/camdiag-logo.png',
+          label: 'Logo animation',
+          alt: 'Animated CamDiag logo reveal',
+        },
+        {
+          type: 'image',
+          src: '/assets/camdiag-logo.png',
+          label: 'CamDiag logo',
+          alt: 'CamDiag product logo',
+        },
+      ],
     },
   },
 ];

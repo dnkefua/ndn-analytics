@@ -130,9 +130,28 @@ export default function BlogPost() {
                 <span style={{ fontSize: '0.7rem', fontFamily: "'JetBrains Mono Variable', monospace", color: 'var(--text-tertiary)', padding: '4px 10px' }}>{post.readTime}</span>
               </div>
               <h1 style={{ fontFamily: "'Syne Variable', sans-serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: 24, color: 'var(--text-primary)' }}>{post.title}</h1>
+              {post.logo && (
+                <div style={{ width: 'min(180px, 52vw)', marginBottom: 24, padding: 14, borderRadius: 12, border: '1px solid var(--border-subtle)', background: 'rgba(255,255,255,0.94)', boxShadow: '0 18px 48px rgba(0,0,0,0.18)' }}>
+                  <img src={post.logo} alt="CamDiag logo" style={{ width: '100%', display: 'block', objectFit: 'contain' }} />
+                </div>
+              )}
               {post.image && (
                 <div style={{ marginBottom: 28 }}>
                   <OptimizedImage src={post.image} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" />
+                </div>
+              )}
+              {post.logoAnimation && (
+                <div style={{ marginBottom: 28 }}>
+                  <video
+                    src={post.logoAnimation}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    poster={post.logo}
+                    aria-label="CamDiag logo animation"
+                    style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border-subtle)', background: 'rgba(10,22,40,0.45)' }}
+                  />
                 </div>
               )}
               {post.video && (

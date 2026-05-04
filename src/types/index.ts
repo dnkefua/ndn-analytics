@@ -16,6 +16,8 @@ export interface Product {
   media?: {
     video?: string;
     image?: string;
+    logo?: string;
+    logoAnimation?: string;
     gallery?: ProductMediaAsset[];
   };
 }
