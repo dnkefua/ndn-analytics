@@ -365,6 +365,41 @@ export const PRODUCTS: Product[] = [
       ],
     },
   },
+  {
+    id: 'ndn-016',
+    number: 'NDN-016',
+    name: 'Student Teacher App',
+    description: 'EIS Maths Studio branded AI teaching workspace for cinematic maths lessons, lesson planning, grading, online classrooms, parent communication, and NeuroQuest practice.',
+    tagline: 'Plan, teach, explain, assess, and reinforce learning from one AI classroom.',
+    features: ['AI cinematic lesson engine', 'Teacher lesson planner', 'AI grading and feedback', 'Camera-ready virtual classroom', 'NeuroQuest practice missions', 'Parent and faculty email assistant'],
+    badge: 'Education AI',
+    stack: 'new',
+    icon: 'S',
+    industries: ['K-12 Education', 'International Schools', 'Maths Departments', 'Online Learning'],
+    useCases: [
+      'Turn maths chapters and subtopics into cinematic visual explainers with scenes, worked examples, quizzes, and rewards',
+      'Generate teacher-ready lesson plans from topics, reference URLs, images, PDFs, and NeuroQuest learning activities',
+      'Evaluate student submissions against a marking scheme and produce structured feedback for faster formative assessment',
+      'Run camera-enabled online classes with chat, waiting room controls, screen sharing, AI voice answers, and behavior monitoring',
+      'Draft parent, student, and faculty emails from lesson or NeuroQuest progress context',
+    ],
+    howItWorks: 'Student Teacher App is built as a Next.js AI teaching platform using Gemini for lesson planning, grading, classroom support, and communication workflows. Teachers can launch EIS Grade 8 Maths content, generate cinematic lesson asset packages, teach live with camera and screen share, assign NeuroQuest practice, evaluate evidence, and communicate progress from one branded workspace.',
+    metrics: ['Gemini-powered lesson planning and grading', 'EIS Maths Studio branded learning workspace', '30-seat virtual classroom workflow', 'NeuroQuest practice integration', 'Camera and microphone enabled teaching tools'],
+    website: 'https://github.com/dnkefua/Student-Teacher-App',
+    media: {
+      image: '/assets/student-teacher-app-landing.png',
+      video: '/assets/student-teacher-app-demo.mp4',
+      logo: '/assets/eis-maths-studio-logo.png',
+      gallery: [
+        {
+          type: 'image',
+          src: '/assets/eis-maths-studio-logo.png',
+          label: 'EIS Maths Studio brand mark',
+          alt: 'EIS Maths Studio logo for the Student Teacher App',
+        },
+      ],
+    },
+  },
 ];
 
 export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');

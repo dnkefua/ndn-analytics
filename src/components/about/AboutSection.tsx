@@ -61,7 +61,7 @@ export default function AboutSection() {
         },
         {
           question: 'What products does NDN Analytics offer?',
-          answer: 'NDN Analytics offers 14 products spanning demand forecasting, healthcare AI, route optimization, churn prevention, supply chain traceability, smart contract payments, credential verification, real estate tokenization, community finance, diaspora networking, IPFS storage infrastructure, and cognitive assessment.',
+          answer: 'NDN Analytics offers 16 products spanning demand forecasting, healthcare AI, route optimization, churn prevention, supply chain traceability, smart contract payments, credential verification, real estate tokenization, community finance, diaspora networking, IPFS storage infrastructure, education AI, and cognitive assessment.',
         },
         {
           question: 'How does NDN Analytics integrate with existing systems?',
@@ -81,7 +81,7 @@ export default function AboutSection() {
               NDN Analytics is a technology company founded by an experienced developer with deep expertise across AI and blockchain engineering. We build focused, well-architected products — not broad consulting packages — on Google Cloud Platform and Ethereum, so organizations of any size can access enterprise-grade intelligence without enterprise-sized procurement cycles.
             </p>
             <p className="about-para reveal stagger-3">
-              Fourteen products. Two technology stacks. From demand forecasting and healthcare AI to decentralized payments, community savings circles, and diaspora networking — each one designed from working code and domain knowledge, not slide decks.
+              Sixteen products. Two technology stacks. From demand forecasting and healthcare AI to decentralized payments, community savings circles, diaspora networking, and AI classroom tools — each one designed from working code and domain knowledge, not slide decks.
             </p>
             <div className="about-compliance reveal stagger-4">
               {['GDPR-Ready', 'HIPAA-Aware', 'Security-First', 'Audit-Friendly'].map(c => (

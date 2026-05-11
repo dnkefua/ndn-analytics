@@ -12,8 +12,8 @@
     <copyright>Copyright 2026 NDN Analytics Inc.</copyright>
     <managingEditor>contact@ndnanalytics.com (NDN Analytics)</managingEditor>
     <webMaster>contact@ndnanalytics.com (NDN Analytics)</webMaster>
-    <lastBuildDate>Mon, 04 May 2026 12:00:00 GMT</lastBuildDate>
-    <pubDate>Sat, 02 May 2026 12:00:00 GMT</pubDate>
+    <lastBuildDate>Mon, 11 May 2026 12:00:00 GMT</lastBuildDate>
+    <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
     <ttl>1440</ttl>
     <image>
       <url>https://www.ndnanalytics.com/logo.jpg</url>
@@ -21,10 +21,103 @@
       <link>https://www.ndnanalytics.com/blog</link>
     </image>
     <item>
+      <title>Student Teacher App: The AI Classroom Workspace for Cinematic Maths Learning</title>
+      <link>https://www.ndnanalytics.com/blog/student-teacher-app-ai-classroom</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/student-teacher-app-ai-classroom</guid>
+      <description>Student Teacher App brings EIS Maths Studio, Gemini-powered planning, AI grading, live classroom tools, and NeuroQuest practice into one branded teaching workspace.</description>
+      <content:encoded><![CDATA[Teachers do not need another disconnected tool. They need one workspace that helps them prepare the lesson, teach it clearly, check understanding, collect evidence, and communicate progress without losing the rhythm of the classroom.
+
+Student Teacher App is built for that full teaching loop.
+
+The product starts with a simple idea: maths learning becomes stronger when students can see the reasoning. Instead of reducing a lesson to static notes, the app turns topics into cinematic visual explainers, guided boards, worked examples, quizzes, and reward moments that help students follow each step.
+
+For Emirates International School, that experience is branded as EIS Maths Studio. For NDN Analytics, it is a blueprint for what modern education AI should feel like: practical for teachers, visual for students, and connected across planning, delivery, assessment, and reinforcement.
+
+What the Student Teacher App Solves
+
+Many school technology stacks are fragmented.
+Lesson plans live in one tool
+Slide outlines live somewhere else
+Grading happens manually or in a separate system
+Online class tools are disconnected from the lesson context
+Parent communication takes additional teacher time
+Practice evidence is hard to connect back to instruction
+
+That fragmentation creates a hidden tax on teachers. Every handoff costs attention.
+
+Student Teacher App compresses that workflow into a single AI teaching workspace where the lesson plan, cinematic explainer, virtual classroom, assessment feedback, NeuroQuest practice, and communication layer can support one another.
+
+Cinematic Lessons Students Can Follow
+
+The hero capability is the AI cinematic lesson engine.
+
+Teachers choose the subject, grade, chapter, and subtopic. The app builds a lesson asset package with scenes, narration, animation steps, visual models, exam walkthroughs, quiz checks, and reward feedback.
+
+For maths, that matters because students often struggle not with the final answer, but with the movement between steps. A cinematic lesson can show:
+Where each quantity comes from
+Why a transformation is valid
+How a number line, algebra tile, fraction model, or place value board changes over time
+Which step is the current focus
+How an exam answer is built one decision at a time
+
+That visual continuity helps students see the structure behind the procedure.
+
+Built for the Real Teacher Workflow
+
+Student Teacher App is not only a presentation surface. It also gives teachers operational tools:
+Lesson Planner: Generates plans and slide outlines from topics, reference URLs, images, PDFs, and optional NeuroQuest activity context
+Grader and Evaluator: Reviews text, images, or PDFs against a marking scheme and returns score breakdowns with constructive feedback
+Virtual Classroom: Supports camera and microphone checks, 30-seat class flow, chat, waiting room controls, screen sharing, AI voice answers, and behavior analysis
+Email Assistant: Drafts parent, student, or faculty emails with the right tone and lesson context
+NeuroQuest Academy: Connects game-based learning activities to planning, grading, classroom delivery, and parent updates
+
+This is the difference between an AI demo and a teaching system. A demo answers a prompt. A system carries context across the day.
+
+Why Gemini Fits the Product
+
+The app uses Gemini for multimodal teaching workflows. That includes generating lesson plans, reading uploaded materials, evaluating student submissions, responding to classroom questions, and drafting communications.
+
+Multimodal support is important because classrooms are not text-only environments. Teachers work with worksheets, screenshots, handwritten solutions, PDFs, links, lesson notes, and live questions. A useful education AI must work across those materials instead of forcing everything into one input format.
+
+The EIS Maths Studio Experience
+
+The EIS Maths Studio landing experience is intentionally visual. The first screen signals the product immediately: branded maths workspace, cinematic lesson promise, and a direct route into the teaching platform.
+
+The product page on NDN Analytics now includes the app screenshot and demo video so schools, teachers, and partners can see the actual interface rather than reading a generic description.
+
+View the Student Teacher App product page
+
+Where This Product Can Go Next
+
+Student Teacher App already has the foundation for a strong school deployment:
+Branded school workspace
+AI-assisted lesson planning
+Visual maths instruction
+Live online teaching controls
+AI-assisted grading and feedback
+Game-based practice integration
+Parent and faculty communication support
+
+The next layer is institutional intelligence. Once a school connects curriculum maps, assessment rubrics, student progress data, and classroom evidence, the platform can help department heads see where students are struggling and where teachers need better support materials.
+
+That is where NDN Analytics can make the product more powerful: secure data architecture, AI workflow design, classroom analytics, and school-ready deployment.
+
+Final Thought
+
+The best education technology does not replace the teacher. It gives the teacher more clarity, more time, and a stronger way to make thinking visible.
+
+Student Teacher App is built around that principle. It helps teachers move from planning to explanation to practice to feedback without breaking the learning flow.
+
+Explore Student Teacher App or review the GitHub project to see the product foundation.]]></content:encoded>
+      <pubDate>Mon, 11 May 2026 12:00:00 GMT</pubDate>
+      <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
+      <category>Product</category>
+    </item>
+    <item>
       <title>CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics</title>
       <link>https://www.ndnanalytics.com/blog/camdiag-ai-healthcare-cameroon</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/camdiag-ai-healthcare-cameroon</guid>
-      <description>How CamDiag is bringing medical image analysis and clinical decision support to Cameroon\</description>
+      <description>How CamDiag is bringing medical image analysis and clinical decision support to Cameroon&apos;s healthcare system through Google MedGemma and mobile-first design.</description>
       <content:encoded><![CDATA[Cameroon's healthcare system faces a critical challenge: patients in remote and underserved areas lack access to timely, expert diagnostic support. Travel distances to hospitals, limited radiologist availability, and inconsistent access to medical expertise create delays that cost lives.
 
 CamDiag is designed to address this gap by bringing AI-powered diagnostic assistance directly to healthcare workers and patients across Cameroon — right on their mobile devices.
@@ -311,7 +404,7 @@ Or book a demo with NDN Analytics to map the best rollout path for your environm
       <title>Getting Your First Win with AI: How to Prove ROI in 90 Days</title>
       <link>https://www.ndnanalytics.com/blog/getting-first-win-ai-quick-roi</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/getting-first-win-ai-quick-roi</guid>
-      <description>Skip the multi-year roadmaps. Here\</description>
+      <description>Skip the multi-year roadmaps. Here&apos;s how to identify, build, and deploy a high-impact AI project that delivers measurable returns in a single quarter.</description>
       <content:encoded><![CDATA[Most AI projects fail not because of bad technology, but because they try to solve everything at once. The path to enterprise AI adoption isn't a grand transformation — it's a series of small, undeniable wins.
 
 The First Win Strategy
@@ -405,7 +498,7 @@ Book an AI Readiness Assessment — $499 and identify your fastest path to AI RO
       <title>Data Quality: The Unsexy Foundation of AI Success (and Why It Matters)</title>
       <link>https://www.ndnanalytics.com/blog/data-quality-foundation-ai-success</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/data-quality-foundation-ai-success</guid>
-      <description>Garbage in, garbage out. 85% of AI project failures trace back to data quality issues, not model complexity. Here\</description>
+      <description>Garbage in, garbage out. 85% of AI project failures trace back to data quality issues, not model complexity. Here&apos;s how to audit and fix yours.</description>
       <content:encoded><![CDATA[AI projects fail silently. The model trains. The metrics look good. Then it goes to production and nobody uses it because the predictions make no sense.
 
 In 70% of cases, the issue isn't the algorithm — it's the data it was trained on.
@@ -525,7 +618,7 @@ Start with a data quality audit — book an AI Readiness Assessment and we'll sh
       <title>EU Digital Product Passport: Your 2026 Compliance Roadmap</title>
       <link>https://www.ndnanalytics.com/blog/eu-digital-product-passport-2026-compliance</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/eu-digital-product-passport-2026-compliance</guid>
-      <description>The Digital Product Passport mandate is 18 months away. Here\</description>
+      <description>The Digital Product Passport mandate is 18 months away. Here&apos;s what your supply chain needs to do now to avoid penalties and maintain market access.</description>
       <content:encoded><![CDATA[The EU just made transparency a legal requirement. Starting September 2026, manufacturers selling into EU markets must provide digital product passports for textiles, electronics, and batteries. By 2028, the mandate expands to all products.
 
 This isn't a nice-to-have. Non-compliance means:
@@ -786,7 +879,210 @@ This guide shows you how to move from "notebook that kind of works" to "producti
 Architecture: From Notebook to Pipeline
 
 The Notebook Phase (What You Probably Have)
-\]]></content:encoded>
+Notebook (runs on your laptop)
+  ↓
+  Reads from database
+  ↓
+  Transforms data
+  ↓
+  Writes to CSV
+
+Problems:
+Only runs when you run it
+Hard to debug when it fails (was it the data? Your code?)
+No alerting if something breaks
+Scaling to larger datasets requires manual optimization
+
+The Production Pipeline (What You Need)
+Scheduled Job (Cloud Run or Cloud Functions)
+  ↓ (Daily at 2 AM)
+  Reads from data warehouse
+  ↓
+  Transforms (with error handling)
+  ↓
+  Validates output
+  ↓
+  Writes to production database
+  ↓
+  Monitoring + Alerting (Slack if it fails)
+
+This architecture handles failures, scales automatically, and lets you sleep at night.
+
+The Step-by-Step Guide
+
+Step 1: Choose Your Stack
+
+For most teams, Google Cloud is the fastest path:
+Cloud Storage: Data lake (S3 equivalent)
+BigQuery: Data warehouse (petabyte-scale SQL)
+Cloud Run: Scheduled containers (no server management)
+Cloud Logging: Centralized logs and alerts
+
+Why Cloud? Because it integrates with NDN products (Demand IQ, Care Predict, Route AI all use Cloud).
+
+Step 2: Define Your Data Flow
+
+Before writing code, document:
+Input source: Where does raw data come from? (API? Database? S3 dump?)
+Transformation: What processing happens? (Cleaning? Aggregation? ML scoring?)
+Output: Where does final data go? (Data warehouse? Real-time API? Email report?)
+Schedule: How often? (Daily? Hourly? Real-time?)
+SLA: How long can it take? (Must finish before 6 AM? Can run all day?)
+
+Step 3: Build Locally (Docker)
+
+Package your code in a Docker container so it runs identically everywhere.
+
+Example Dockerfile for a Python data pipeline:
+
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY pipeline.py .
+
+CMD ["python", "pipeline.py"]
+
+requirements.txt:
+google-cloud-storage==2.10.0
+google-cloud-bigquery==3.13.0
+pandas==2.0.3
+
+pipeline.py:
+from google.cloud import bigquery, storage
+import pandas as pd
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def run():
+    logger.info("Starting data pipeline...")
+
+    Read from BigQuery
+    client = bigquery.Client()
+    query = """
+      SELECT
+        date,
+        product_id,
+        COUNT() as sales_count
+      FROM project.dataset.orders
+      WHERE date >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)
+      GROUP BY date, product_id
+    """
+    df = client.query(query).to_dataframe()
+    logger.info(f"Read {len(df)} rows from BigQuery")
+
+    Transform
+    df['sales_count'] = df['sales_count'].fillna(0).astype(int)
+
+    Validate
+    assert df['sales_count'].min() >= 0, "Negative sales counts!"
+    logger.info(f"Validation passed: all values in valid range")
+
+    Write to BigQuery
+    job_config = bigquery.LoadJobConfig(write_disposition="WRITE_APPEND")
+    client.load_table_from_dataframe(
+        df,
+        "project.dataset.daily_aggregates",
+        job_config=job_config
+    )
+    logger.info("Pipeline complete")
+
+if __name__ == "__main__":
+    run()
+
+Step 4: Deploy to Cloud Run
+
+Cloud Run runs your container on a schedule without managing servers.
+
+Deploy your container:
+Build and push to Container Registry
+gcloud builds submit --tag gcr.io/YOUR-PROJECT/data-pipeline
+
+Deploy to Cloud Run
+gcloud run deploy data-pipeline \
+  --image gcr.io/YOUR-PROJECT/data-pipeline \
+  --platform managed \
+  --region us-central1 \
+  --no-allow-unauthenticated
+
+Schedule it with Cloud Scheduler:
+gcloud scheduler jobs create app-engine daily-pipeline \
+  --schedule="0 2   " \
+  --http-method=POST \
+  --uri=https://us-central1-YOUR-PROJECT.cloudfunctions.net/trigger-pipeline \
+  --oidc-service-account-email=SA-EMAIL@YOUR-PROJECT.iam.gserviceaccount.com
+
+This runs your pipeline every day at 2 AM. If it fails, you get a notification.
+
+Step 5: Add Monitoring
+
+Monitor three things:
+Execution time: Did the pipeline finish before SLA?
+Data quality: Are output records valid?
+Error rate: Did any records fail processing?
+
+Cloud Logging setup:
+
+In your pipeline.py
+logger.info(f"Pipeline completed: {len(df)} records processed in {elapsed_time}s")
+
+Create an alert in Cloud Monitoring
+Alert if execution time > 30 minutes or error rate > 5%
+
+Common Pitfalls
+
+Pitfall 1: Not Handling Failures
+Your pipeline stops halfway through. Old data is left half-processed.
+
+Fix: Use transactions (data warehouse feature) so either all data updates or none. Fail loudly with clear error messages.
+
+Pitfall 2: Not Monitoring Data Quality
+Your pipeline runs successfully but outputs garbage data. Nobody notices for 2 weeks.
+
+Fix: Add validation checks (schema validation, range checks, duplicate detection) and alert if validation fails.
+
+Pitfall 3: Assuming Data Never Changes Format
+Your data source adds a new column. Your pipeline breaks.
+
+Fix: Use schema validation at the start of your pipeline. Fail fast if schema doesn't match expectations.
+
+Pitfall 4: Not Documenting Dependencies
+Your pipeline depends on a third-party API. Nobody knows.
+
+Fix: Document all dependencies (data sources, external APIs, timezone assumptions) in code comments and runbooks.
+
+Scaling Beyond the Basics
+
+Once you have a working pipeline, you can scale:
+Add more pipelines: Build pipelines for different datasets
+Use a DAG framework: Airflow or Dagster for complex dependencies
+Implement incremental processing: Only process new data, not the whole dataset
+Add real-time streaming: Switch from daily batch to continuous (Apache Beam, Kafka)
+
+How NDN Products Use Data Pipelines
+
+Every NDN product includes enterprise data pipelines:
+Demand IQ: Hourly pipelines ingesting POS, inventory, and weather data
+Care Predict: Real-time pipelines consuming EHR updates
+Route AI: Continuous pipelines aggregating traffic and delivery data
+TraceChain: Event-driven pipelines for supply chain records
+
+When you work with NDN, you're getting battle-tested pipeline patterns.
+
+Your Next Steps
+
+Start with a simple pipeline and iterate. Don't try to build a perfect system on day one.
+
+Week 1: Build locally, test thoroughly
+Week 2: Deploy to Cloud Run with daily schedule
+Week 3: Add monitoring and alerting
+Week 4: Document and make it someone else's responsibility
+
+If you need guidance building data pipelines for AI products, book a technical consultation and we'll show you the right architecture for your use case.]]></content:encoded>
       <pubDate>Mon, 13 Apr 2026 12:00:00 GMT</pubDate>
       <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
       <category>AI</category>
@@ -795,7 +1091,7 @@ The Notebook Phase (What You Probably Have)
       <title>AI in Manufacturing: Predictive Maintenance at Scale</title>
       <link>https://www.ndnanalytics.com/blog/ai-manufacturing-predictive-maintenance</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/ai-manufacturing-predictive-maintenance</guid>
-      <description>Equipment failures cost manufacturers $50B annually. Here\</description>
+      <description>Equipment failures cost manufacturers $50B annually. Here&apos;s how machine learning predicts breakdowns before they happen.</description>
       <content:encoded><![CDATA[Unplanned equipment downtime is the silent killer of manufacturing margins. A single 8-hour production line shutdown can cost $50K-$500K depending on the industry.
 
 Most manufacturers run maintenance on a schedule (every 6 months) or reactively (when something breaks). Neither is optimal.
@@ -1086,7 +1382,7 @@ Schedule a carbon accounting assessment — we'll show you how blockchain can el
       <title>The AI Talent Crisis: How to Build Teams When Demand &gt; Supply</title>
       <link>https://www.ndnanalytics.com/blog/ai-talent-crisis-building-teams</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/ai-talent-crisis-building-teams</guid>
-      <description>There aren\</description>
+      <description>There aren&apos;t enough AI engineers. Here&apos;s how to build a high-performing team without hiring unicorns.</description>
       <content:encoded><![CDATA[The AI talent market is broken. Demand for machine learning engineers exceeds supply by 10:1. A mid-level data scientist in SF gets 20 recruiter messages per day. Competing on salary alone is a losing game.
 
 Yet many companies are building successful AI teams. They're not waiting for unicorns. They're building systematically.
@@ -1277,7 +1573,7 @@ Schedule a hiring strategy conversation — we'll help you build a team that shi
       <title>What Is an AI Readiness Assessment? (And Do You Actually Need One?)</title>
       <link>https://www.ndnanalytics.com/blog/what-is-an-ai-readiness-assessment</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/what-is-an-ai-readiness-assessment</guid>
-      <description>Before you spend $500K on an AI implementation, a $499 assessment could save you millions. Here\</description>
+      <description>Before you spend $500K on an AI implementation, a $499 assessment could save you millions. Here&apos;s exactly what one covers.</description>
       <content:encoded><![CDATA[Every week a company starts an AI project without properly understanding its data infrastructure, change management capacity, or realistic ROI timeline — and fails. An AI Readiness Assessment prevents that.
 
 What Is an AI Readiness Assessment?
@@ -1356,7 +1652,7 @@ Book a free AI Readiness discovery call and we'll scope your roadmap together.]]
       <title>How to Choose an AI Consultant: 7 Questions Every Business Should Ask</title>
       <link>https://www.ndnanalytics.com/blog/how-to-choose-an-ai-consultant</link>
       <guid isPermaLink="true">https://www.ndnanalytics.com/blog/how-to-choose-an-ai-consultant</guid>
-      <description>Most AI consulting engagements fail not because of bad technology but because of the wrong consultant. Here\</description>
+      <description>Most AI consulting engagements fail not because of bad technology but because of the wrong consultant. Here&apos;s how to evaluate them.</description>
       <content:encoded><![CDATA[The AI consulting market is crowded with generalists who claim expertise in everything. Choosing the wrong partner is expensive — bad AI projects commonly waste $100K–$500K before anyone admits failure.
 
 Here are the seven questions that separate genuine AI expertise from sales-driven hype.

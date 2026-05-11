@@ -2590,4 +2590,110 @@ That's how technology creates real impact in emerging markets.`,
       downloadId: 'african-healthcare-ai-playbook',
     },
   },
+  {
+    slug: 'student-teacher-app-ai-classroom',
+    title: 'Student Teacher App: The AI Classroom Workspace for Cinematic Maths Learning',
+    excerpt: 'Student Teacher App brings EIS Maths Studio, Gemini-powered planning, AI grading, live classroom tools, and NeuroQuest practice into one branded teaching workspace.',
+    content: `Teachers do not need another disconnected tool. They need one workspace that helps them prepare the lesson, teach it clearly, check understanding, collect evidence, and communicate progress without losing the rhythm of the classroom.
+
+Student Teacher App is built for that full teaching loop.
+
+The product starts with a simple idea: maths learning becomes stronger when students can see the reasoning. Instead of reducing a lesson to static notes, the app turns topics into cinematic visual explainers, guided boards, worked examples, quizzes, and reward moments that help students follow each step.
+
+For Emirates International School, that experience is branded as EIS Maths Studio. For NDN Analytics, it is a blueprint for what modern education AI should feel like: practical for teachers, visual for students, and connected across planning, delivery, assessment, and reinforcement.
+
+## What the Student Teacher App Solves
+
+Many school technology stacks are fragmented.
+
+- Lesson plans live in one tool
+- Slide outlines live somewhere else
+- Grading happens manually or in a separate system
+- Online class tools are disconnected from the lesson context
+- Parent communication takes additional teacher time
+- Practice evidence is hard to connect back to instruction
+
+That fragmentation creates a hidden tax on teachers. Every handoff costs attention.
+
+Student Teacher App compresses that workflow into a single AI teaching workspace where the lesson plan, cinematic explainer, virtual classroom, assessment feedback, NeuroQuest practice, and communication layer can support one another.
+
+## Cinematic Lessons Students Can Follow
+
+The hero capability is the AI cinematic lesson engine.
+
+Teachers choose the subject, grade, chapter, and subtopic. The app builds a lesson asset package with scenes, narration, animation steps, visual models, exam walkthroughs, quiz checks, and reward feedback.
+
+For maths, that matters because students often struggle not with the final answer, but with the movement between steps. A cinematic lesson can show:
+
+- Where each quantity comes from
+- Why a transformation is valid
+- How a number line, algebra tile, fraction model, or place value board changes over time
+- Which step is the current focus
+- How an exam answer is built one decision at a time
+
+That visual continuity helps students see the structure behind the procedure.
+
+## Built for the Real Teacher Workflow
+
+Student Teacher App is not only a presentation surface. It also gives teachers operational tools:
+
+- Lesson Planner: Generates plans and slide outlines from topics, reference URLs, images, PDFs, and optional NeuroQuest activity context
+- Grader and Evaluator: Reviews text, images, or PDFs against a marking scheme and returns score breakdowns with constructive feedback
+- Virtual Classroom: Supports camera and microphone checks, 30-seat class flow, chat, waiting room controls, screen sharing, AI voice answers, and behavior analysis
+- Email Assistant: Drafts parent, student, or faculty emails with the right tone and lesson context
+- NeuroQuest Academy: Connects game-based learning activities to planning, grading, classroom delivery, and parent updates
+
+This is the difference between an AI demo and a teaching system. A demo answers a prompt. A system carries context across the day.
+
+## Why Gemini Fits the Product
+
+The app uses Gemini for multimodal teaching workflows. That includes generating lesson plans, reading uploaded materials, evaluating student submissions, responding to classroom questions, and drafting communications.
+
+Multimodal support is important because classrooms are not text-only environments. Teachers work with worksheets, screenshots, handwritten solutions, PDFs, links, lesson notes, and live questions. A useful education AI must work across those materials instead of forcing everything into one input format.
+
+## The EIS Maths Studio Experience
+
+The EIS Maths Studio landing experience is intentionally visual. The first screen signals the product immediately: branded maths workspace, cinematic lesson promise, and a direct route into the teaching platform.
+
+The product page on NDN Analytics now includes the app screenshot and demo video so schools, teachers, and partners can see the actual interface rather than reading a generic description.
+
+[View the Student Teacher App product page](/products/ndn-016)
+
+## Where This Product Can Go Next
+
+Student Teacher App already has the foundation for a strong school deployment:
+
+1. Branded school workspace
+2. AI-assisted lesson planning
+3. Visual maths instruction
+4. Live online teaching controls
+5. AI-assisted grading and feedback
+6. Game-based practice integration
+7. Parent and faculty communication support
+
+The next layer is institutional intelligence. Once a school connects curriculum maps, assessment rubrics, student progress data, and classroom evidence, the platform can help department heads see where students are struggling and where teachers need better support materials.
+
+That is where NDN Analytics can make the product more powerful: secure data architecture, AI workflow design, classroom analytics, and school-ready deployment.
+
+## Final Thought
+
+The best education technology does not replace the teacher. It gives the teacher more clarity, more time, and a stronger way to make thinking visible.
+
+Student Teacher App is built around that principle. It helps teachers move from planning to explanation to practice to feedback without breaking the learning flow.
+
+[Explore Student Teacher App](/products/ndn-016) or [review the GitHub project](https://github.com/dnkefua/Student-Teacher-App) to see the product foundation.`,
+    date: '2026-05-11',
+    author: 'NDN Analytics Team',
+    category: 'Product',
+    readTime: '8 min read',
+    image: '/assets/student-teacher-app-landing.png',
+    video: '/assets/student-teacher-app-demo.mp4',
+    logo: '/assets/eis-maths-studio-logo.png',
+    relatedProducts: ['ndn-016', 'ndn-010'],
+    contentUpgrade: {
+      title: 'AI Classroom Platform Checklist',
+      description: 'Map the lesson planning, live teaching, grading, practice, and parent communication workflows your school needs before launch.',
+      downloadId: 'ai-classroom-platform-checklist',
+    },
+  },
 ];

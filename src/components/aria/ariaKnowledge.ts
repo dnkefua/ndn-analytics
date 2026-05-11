@@ -6,7 +6,7 @@ interface AriaRule {
 const RULES: AriaRule[] = [
   {
     patterns: [/hello|hi|hey|greet|good morning|good evening/i],
-    response: "Hello! I'm ARIA - NDN Analytics' AI intelligence agent. I can tell you about our 14 products, technology stack, security certifications, or help you book a demo. What would you like to know?",
+    response: "Hello! I'm ARIA - NDN Analytics' AI intelligence agent. I can tell you about our 16 products, technology stack, security certifications, or help you book a demo. What would you like to know?",
   },
   {
     patterns: [/demand iq|demand forecasting|inventory|retail ai|ndn.?001/i],
@@ -65,8 +65,16 @@ const RULES: AriaRule[] = [
     response: "**TheDiaspora App** (NDN-014) is our diaspora community network for trusted profiles, cultural belonging, professional discovery, mentorship, and cross-border opportunity.",
   },
   {
+    patterns: [/camdiag|medical diagnostic|medgemma|cameroon healthcare|ndn.?015/i],
+    response: "**CamDiag** (NDN-015) is our healthcare AI assistant for Cameroon, combining medical image analysis, drug interaction checking, bilingual support, and patient record workflows.",
+  },
+  {
+    patterns: [/student teacher|eis maths|maths studio|ai classroom|cinematic lesson|ndn.?016/i],
+    response: "**Student Teacher App** (NDN-016) is our EIS Maths Studio branded AI classroom workspace for cinematic maths lessons, lesson planning, grading, online teaching, NeuroQuest practice, and parent communication.",
+  },
+  {
     patterns: [/all products|list products|what products|how many products/i],
-    response: "NDN Analytics has **14 products** across three stacks:\n\n**Google Cloud AI:** Demand IQ, Care Predict, Route AI, Churn Guard\n\n**Ethereum + Web3:** TraceChain, PayStream, CredVault, PropLedger, Njangi, NDN IPFS CHAIN\n\n**New Launches:** NeuroQuest, NDN Interpreter, NDN Model Studio, TheDiaspora App\n\nAsk me about any product for details!",
+    response: "NDN Analytics has **16 products** across three stacks:\n\n**Google Cloud AI:** Demand IQ, Care Predict, Route AI, Churn Guard\n\n**Ethereum + Web3:** TraceChain, PayStream, CredVault, PropLedger, Njangi, NDN IPFS CHAIN\n\n**New Launches:** NeuroQuest, NDN Interpreter, NDN Model Studio, TheDiaspora App, CamDiag, Student Teacher App\n\nAsk me about any product for details!",
   },
   {
     patterns: [/google cloud|gcp|vertex ai|bigquery|cloud run/i],
@@ -98,10 +106,10 @@ const RULES: AriaRule[] = [
   },
 ];
 
-const FALLBACK = "I didn't catch that. I can help with: our **14 products**, **technology stack**, **security compliance**, **integrations**, or **booking a demo**. What would you like to know?";
+const FALLBACK = "I didn't catch that. I can help with: our **16 products**, **technology stack**, **security compliance**, **integrations**, or **booking a demo**. What would you like to know?";
 
 const SUGGESTIONS = [
-  'Tell me about all 14 products',
+  'Tell me about all 16 products',
   'What is NDN TraceChain?',
   'What is NDN IPFS CHAIN?',
   'Explain your tech stack',

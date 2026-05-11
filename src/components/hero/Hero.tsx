@@ -42,7 +42,7 @@ const HOMEPAGE_FAQS = [
 ];
 
 const STATS = [
-  { value: 14, label: 'Products', suffix: '' },
+  { value: 16, label: 'Products', suffix: '' },
   { value: 2,  label: 'Blockchain Networks', suffix: '' },
   { value: 99.9, label: 'Uptime Target', suffix: '%' },
 ];
@@ -371,7 +371,7 @@ export default function Hero() {
               }}
               onClick={() => trackCTAClick('view_all_products', 'hero')}
             >
-              View All 14 Products →
+              View All 16 Products →
             </Link>
           </div>
         </div>
