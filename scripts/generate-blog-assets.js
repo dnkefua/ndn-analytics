@@ -128,6 +128,7 @@ const STATIC_PAGES = [
   { loc: '/fine-tuning', lastmod: TODAY, changefreq: 'weekly', priority: '0.7' },
   { loc: '/privacy', lastmod: TODAY, changefreq: 'monthly', priority: '0.4' },
   { loc: '/terms', lastmod: TODAY, changefreq: 'monthly', priority: '0.4' },
+  { loc: '/process', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
   ...products.map((product) => ({
     loc: `/products/${product.id}`,
     lastmod: TODAY,
