@@ -181,6 +181,18 @@ app.get('/sitemap.xml', (req, res, next) => {
   }
 });
 
+app.get('/news-sitemap.xml', (req, res, next) => {
+  const filePath = join(DIST_PATH, 'news-sitemap.xml');
+  try {
+    const content = readFileSync(filePath, 'utf-8');
+    res.set('Content-Type', 'application/xml; charset=utf-8');
+    res.set('Cache-Control', 'public, max-age=3600');
+    res.send(content);
+  } catch {
+    next();
+  }
+});
+
 app.get('/feed.xml', (req, res, next) => {
   const filePath = join(DIST_PATH, 'feed.xml');
   try {

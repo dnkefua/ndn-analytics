@@ -25,6 +25,7 @@ if (existsSync('dist/ssr/assets')) {
 // Content-Type (Firebase rewrites send all requests through the SSR function).
 cpSync('dist/feed.xml', `${FUNCTIONS}/feed.xml`);
 cpSync('dist/sitemap.xml', `${FUNCTIONS}/sitemap.xml`);
+cpSync('dist/news-sitemap.xml', `${FUNCTIONS}/news-sitemap.xml`);
 cpSync('dist/robots.txt', `${FUNCTIONS}/robots.txt`);
 cpSync('dist/llms.txt', `${FUNCTIONS}/llms.txt`);
 

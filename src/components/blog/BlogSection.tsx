@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { BLOG_POSTS } from './blogData';
 import { getAllBlogPosts } from '../../lib/blogService';
 import type { UnifiedBlogPost } from '../../types/blogPosts';
 import SEO from '../seo/SEO';
+
+const BASE_URL = 'https://www.ndnanalytics.com';
 
 const CATEGORY_COLORS: Record<string, string> = {
   AI: 'var(--brand-cyan)',
@@ -46,6 +49,10 @@ export default function BlogSection() {
     };
   }, []);
 
+  const sortedPosts = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <>
       <SEO
@@ -58,6 +65,50 @@ export default function BlogSection() {
           { name: 'Blog', path: '/blog' },
         ]}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': `${BASE_URL}/blog`,
+            name: 'NDN Analytics Blog',
+            url: `${BASE_URL}/blog`,
+            inLanguage: 'en-US',
+            publisher: {
+              '@type': 'Organization',
+              name: 'NDN Analytics',
+              url: BASE_URL,
+            },
+            blogPost: sortedPosts.map((post) => ({
+              '@type': 'BlogPosting',
+              headline: post.title,
+              description: post.excerpt,
+              url: `${BASE_URL}/blog/${post.slug}`,
+              datePublished: post.date,
+              dateModified: post.date,
+              author: {
+                '@type': 'Organization',
+                name: post.author,
+              },
+              articleSection: post.category,
+            })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            '@id': `${BASE_URL}/blog#posts`,
+            name: 'NDN Analytics Blog Posts',
+            itemListElement: sortedPosts.map((post, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              url: `${BASE_URL}/blog/${post.slug}`,
+              name: post.title,
+            })),
+          })}
+        </script>
+      </Helmet>
       <section className="section" style={{ minHeight: '100vh', paddingTop: 120, paddingBottom: 80 }}>
         <div className="container">
           <div className="section-tag">Blog</div>
@@ -80,7 +131,7 @@ export default function BlogSection() {
           )}
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 32 }}>
-            {posts.map(post => (
+            {sortedPosts.map(post => (
               <Link key={post.slug} to={`/blog/${post.slug}`}
                 style={{ background: 'rgba(10,22,40,0.6)', border: '1px solid var(--border-subtle)', borderRadius: 12, padding: 28, textDecoration: 'none', color: 'inherit', transition: 'border-color 0.3s, transform 0.3s', display: 'flex', flexDirection: 'column' }}
                 onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--brand-cyan)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
