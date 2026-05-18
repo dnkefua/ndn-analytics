@@ -405,3 +405,43 @@ export const PRODUCTS: Product[] = [
 export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');
 export const ETH_PRODUCTS = PRODUCTS.filter(p => p.stack === 'ethereum');
 export const NEW_PRODUCTS = PRODUCTS.filter(p => p.stack === 'new');
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Capability blocks — the IA grouping used by the consolidated /products page
+// and the homepage. Decoupled from `stack` so we can re-organize without
+// touching individual product entries.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type Capability = 'automation' | 'decision-support' | 'trust';
+
+const CAPABILITY_MAP: Record<string, Capability> = {
+  // AI Automation & Internal Tools — products that remove manual work from teams
+  'ndn-010': 'automation', // NeuroQuest (cognitive AI)
+  'ndn-011': 'automation', // NDN Interpreter (vision AI)
+  'ndn-012': 'automation', // NDN Model Studio (AI fine-tuning)
+  'ndn-016': 'automation', // Student Teacher App
+
+  // Decision Support & Industry AI — turn data into decisions
+  'ndn-001': 'decision-support', // NDN Demand IQ
+  'ndn-002': 'decision-support', // NDN Care Predict
+  'ndn-003': 'decision-support', // NDN Route AI
+  'ndn-004': 'decision-support', // NDN Churn Guard
+  'ndn-015': 'decision-support', // CamDiag
+
+  // Blockchain & Trust Technologies — tamper-evident records, traceability, community finance
+  'ndn-005': 'trust', // NDN TraceChain
+  'ndn-006': 'trust', // NDN PayStream
+  'ndn-007': 'trust', // NDN CredVault
+  'ndn-008': 'trust', // NDN PropLedger
+  'ndn-009': 'trust', // Njangi
+  'ndn-013': 'trust', // NDN IPFS CHAIN
+  'ndn-014': 'trust', // TheDiaspora App
+};
+
+export function capabilityOf(productId: string): Capability | undefined {
+  return CAPABILITY_MAP[productId];
+}
+
+export const AUTOMATION_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'automation');
+export const DECISION_SUPPORT_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'decision-support');
+export const TRUST_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'trust');

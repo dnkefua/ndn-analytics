@@ -5,6 +5,7 @@ import useABTest from '../../lib/abtest';
 import './Navbar.css';
 
 const NAV_LINKS = [
+  { label: 'Home',     href: '/'         },
   { label: 'Products', href: '/products' },
   { label: 'Insights', href: '/blog'     },
   { label: 'Process',  href: '/process'  },

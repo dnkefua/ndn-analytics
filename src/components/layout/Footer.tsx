@@ -12,6 +12,7 @@ const COMPANY_LINKS = [
   ['Technology', '/tech'],
   ['Contact', '/contact'],
   ['Blog', '/blog'],
+  ['White Paper', '/whitepaper'],
   ['Privacy Policy', '/privacy'],
   ['Terms of Service', '/terms'],
   ['Fine-Tuning App ↗', '/fine-tuning'],

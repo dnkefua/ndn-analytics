@@ -117,6 +117,67 @@ export default function BlogSection() {
             <span className="text-gradient">Intelligence</span>
           </h2>
 
+          {/* Featured: NDN IPFS CHAIN white paper */}
+          <Link
+            to="/whitepaper"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1fr) auto',
+              gap: 24,
+              alignItems: 'center',
+              background: 'linear-gradient(135deg, rgba(245,158,11,0.06), rgba(6,182,212,0.04))',
+              border: '1px solid rgba(245,158,11,0.25)',
+              borderRadius: 14,
+              padding: '28px 32px',
+              marginBottom: 48,
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'border-color 0.3s, transform 0.3s',
+            }}
+            onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--brand-gold)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+            onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(245,158,11,0.25)'; e.currentTarget.style.transform = 'none'; }}
+          >
+            <div>
+              <div style={{
+                fontFamily: "'JetBrains Mono Variable', monospace",
+                fontSize: '0.65rem',
+                letterSpacing: '0.2em',
+                color: 'var(--brand-gold)',
+                textTransform: 'uppercase',
+                marginBottom: 10,
+              }}>
+                White Paper · Flagship Editorial
+              </div>
+              <h3 style={{
+                fontFamily: "'Syne Variable', 'Syne', sans-serif",
+                fontSize: 'clamp(1.2rem, 2.4vw, 1.6rem)',
+                fontWeight: 800,
+                color: 'var(--text-primary)',
+                lineHeight: 1.25,
+                margin: '0 0 10px',
+              }}>
+                NDN IPFS CHAIN: An Enterprise Proof Layer for Critical Files
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.7,
+                margin: 0,
+              }}>
+                The full technical and business case for combining IPFS with Ethereum to create
+                tamper-evident records for contracts, compliance evidence, and high-stakes documents.
+              </p>
+            </div>
+            <div style={{
+              fontFamily: "'JetBrains Mono Variable', monospace",
+              fontSize: '0.85rem',
+              color: 'var(--brand-gold)',
+              whiteSpace: 'nowrap',
+            }}>
+              Read white paper →
+            </div>
+          </Link>
+
           {loading && (
             <div style={{
               textAlign: 'center',

@@ -111,33 +111,53 @@ const posts = postBlocks
 console.log(`Found ${products.length} products`);
 console.log(`Found ${posts.length} blog posts`);
 
+// Priorities reflect the new IA (Home → Products → Insights → Process → About → Contact).
+// Top-nav pages get 0.8–1.0. Flagship editorial (white paper) 0.8. Product detail pages
+// 0.8. SEO landing pages stay at 0.9 because they pull direct organic traffic. Pages
+// that exist but are no longer in nav (/solutions, /tech, /ai-tools, /fine-tuning) get
+// reduced priorities since their inbound traffic now flows through /products.
 const STATIC_PAGES = [
-  { loc: '/', lastmod: TODAY, changefreq: 'weekly', priority: '1.0' },
-  { loc: '/products', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/solutions', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
-  { loc: '/tech', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
-  { loc: '/about', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
-  { loc: '/contact', lastmod: TODAY, changefreq: 'monthly', priority: '0.6' },
-  { loc: '/ai-products', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/ai-automation', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/blockchain-solutions', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/google-cloud-ai-consulting', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/smart-contract-development', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/blog', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
-  { loc: '/case-studies', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
-  { loc: '/fine-tuning', lastmod: TODAY, changefreq: 'weekly', priority: '0.7' },
-  { loc: '/privacy', lastmod: TODAY, changefreq: 'monthly', priority: '0.4' },
-  { loc: '/terms', lastmod: TODAY, changefreq: 'monthly', priority: '0.4' },
-  { loc: '/process', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
+  // Top-level nav
+  { loc: '/',          lastmod: TODAY, changefreq: 'weekly',  priority: '1.0' },
+  { loc: '/products',  lastmod: TODAY, changefreq: 'weekly',  priority: '0.95' },
+  { loc: '/blog',      lastmod: TODAY, changefreq: 'daily',   priority: '0.9' },
+  { loc: '/process',   lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+  { loc: '/about',     lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
+  { loc: '/contact',   lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
+
+  // Flagship editorial
+  { loc: '/whitepaper', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+
+  // SEO landing pages (still indexed; pull direct organic traffic)
+  { loc: '/ai-products',                lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/ai-automation',              lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/blockchain-solutions',       lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/google-cloud-ai-consulting', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/smart-contract-development', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+
+  // Case studies hub + details
+  { loc: '/case-studies', lastmod: TODAY, changefreq: 'weekly', priority: '0.75' },
+  { loc: '/case-studies/regional-grocery-demand-forecasting', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.65' },
+  { loc: '/case-studies/pharma-supply-chain-traceability',    lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.65' },
+  { loc: '/case-studies/hospital-readmission-prevention',     lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.65' },
+
+  // Out-of-nav but still indexed
+  { loc: '/solutions',   lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/tech',        lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/ai-tools',    lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/fine-tuning', lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+
+  // Legal (footer-only)
+  { loc: '/privacy', lastmod: TODAY, changefreq: 'monthly', priority: '0.3' },
+  { loc: '/terms',   lastmod: TODAY, changefreq: 'monthly', priority: '0.3' },
+
+  // Product detail pages — every product in productData.ts
   ...products.map((product) => ({
     loc: `/products/${product.id}`,
     lastmod: TODAY,
     changefreq: 'weekly',
     priority: '0.8',
   })),
-  { loc: '/case-studies/regional-grocery-demand-forecasting', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { loc: '/case-studies/pharma-supply-chain-traceability', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
-  { loc: '/case-studies/hospital-readmission-prevention', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.7' },
 ];
 
 const blogEntries = [...posts]
@@ -235,49 +255,103 @@ ${feedItems}
 writeFileSync(resolve(ROOT, 'public/feed.xml'), feed);
 console.log(`feed.xml written (${posts.length} items)`);
 
-const latestPosts = sortedPosts.slice(0, 8);
+const latestPosts = sortedPosts.slice(0, 10);
+
+// Capability block → product ID mapping. Keep in sync with
+// CAPABILITY_MAP in src/components/products/productData.ts.
+const CAPABILITIES = {
+  automation: {
+    label: 'AI Automation & Internal Tools',
+    tagline: 'AI that removes manual work from teams.',
+    productIds: ['ndn-010', 'ndn-011', 'ndn-012', 'ndn-016'],
+  },
+  decisionSupport: {
+    label: 'Decision Support & Industry AI',
+    tagline: 'AI that helps teams make better, faster decisions.',
+    productIds: ['ndn-001', 'ndn-002', 'ndn-003', 'ndn-004', 'ndn-015'],
+  },
+  trust: {
+    label: 'Blockchain & Trust Technologies',
+    tagline: 'Tamper-evident records, traceability, community finance.',
+    productIds: ['ndn-005', 'ndn-006', 'ndn-007', 'ndn-008', 'ndn-009', 'ndn-013', 'ndn-014'],
+  },
+};
+
+const productsById = Object.fromEntries(products.map((p) => [p.id, p]));
+const productLine = (id) => {
+  const p = productsById[id];
+  return p ? `- ${p.name}: ${BASE_URL}/products/${p.id} — ${p.description}` : null;
+};
+
 const llms = `# NDN Analytics
 > Canonical: ${BASE_URL}
 > Updated: ${TODAY}
 
 ## Summary
-NDN Analytics builds enterprise AI and blockchain products for operations, compliance, healthcare, logistics, community finance, and document integrity workflows.
+NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
+logistics, education, supply chain, community finance, and document integrity workflows.
+We organise our products into three capability blocks: AI Automation & Internal Tools,
+Decision Support & Industry AI, and Blockchain & Trust Technologies.
+
+## Site Structure
+- Home: ${BASE_URL}/
+- Products: ${BASE_URL}/products
+- Insights (blog + flagship editorial): ${BASE_URL}/blog
+- White Paper (NDN IPFS CHAIN): ${BASE_URL}/whitepaper
+- Process (how we work): ${BASE_URL}/process
+- About: ${BASE_URL}/about
+- Contact: ${BASE_URL}/contact
 
 ## Crawl Signals
 - robots.txt: ${BASE_URL}/robots.txt
 - sitemap.xml: ${BASE_URL}/sitemap.xml
+- news-sitemap.xml: ${BASE_URL}/news-sitemap.xml
 - rss feed: ${BASE_URL}/feed.xml
 - llms.txt: ${BASE_URL}/llms.txt
-- OAI-SearchBot allowed in robots.txt
-- GPTBot allowed in robots.txt
-- ClaudeBot allowed in robots.txt
-- PerplexityBot allowed in robots.txt
+- OAI-SearchBot allowed
+- GPTBot allowed
+- ClaudeBot, Claude-Web, Anthropic-AI allowed
+- PerplexityBot allowed
+- Googlebot, Googlebot-Image, Googlebot-News, Googlebot-Video allowed
+- Google-Extended (Bard / Gemini training) allowed
 
-## Priority URLs
-- ${BASE_URL}/
-- ${BASE_URL}/products
-- ${BASE_URL}/blog
-- ${BASE_URL}/solutions
-- ${BASE_URL}/contact
+## Capability Block A — ${CAPABILITIES.automation.label}
+${CAPABILITIES.automation.tagline}
+${CAPABILITIES.automation.productIds.map(productLine).filter(Boolean).join('\n')}
 
-## Service Practices
+## Capability Block B — ${CAPABILITIES.decisionSupport.label}
+${CAPABILITIES.decisionSupport.tagline}
+${CAPABILITIES.decisionSupport.productIds.map(productLine).filter(Boolean).join('\n')}
+
+## Capability Block C — ${CAPABILITIES.trust.label}
+${CAPABILITIES.trust.tagline}
+${CAPABILITIES.trust.productIds.map(productLine).filter(Boolean).join('\n')}
+
+## Service Landing Pages (SEO targets)
 - AI Products (custom AI software development): ${BASE_URL}/ai-products
 - AI Automation (workflow automation, AI agents): ${BASE_URL}/ai-automation
 - Blockchain Solutions (Ethereum, Web3): ${BASE_URL}/blockchain-solutions
 - Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): ${BASE_URL}/google-cloud-ai-consulting
 - Smart Contract Development (Solidity, EVM): ${BASE_URL}/smart-contract-development
 
-## Products (${products.length})
-${products.map((product) => `- ${product.name}: ${BASE_URL}/products/${product.id}`).join('\n')}
+## All Products (${products.length})
+${products.map((p) => `- ${p.name}: ${BASE_URL}/products/${p.id}`).join('\n')}
 
-## Latest Blog Posts
+## Latest Insights (${latestPosts.length})
 ${latestPosts.map((post) => `- ${post.title}: ${BASE_URL}/blog/${post.slug}`).join('\n')}
 
+## Case Studies
+- Regional grocery demand forecasting: ${BASE_URL}/case-studies/regional-grocery-demand-forecasting
+- Pharmaceutical supply chain traceability: ${BASE_URL}/case-studies/pharma-supply-chain-traceability
+- Hospital readmission prevention: ${BASE_URL}/case-studies/hospital-readmission-prevention
+
 ## Notes For AI Systems
-- Canonical host is https://www.ndnanalytics.com
-- Public marketing, product, and blog pages may be crawled and summarized.
-- Do not rely on /admin, /checkout/, /api/, or other internal routes.
-- Prefer canonical URLs, product detail pages, and blog article pages when citing the site.
+- Canonical host is https://www.ndnanalytics.com (the apex ndnanalytics.com also serves the same content).
+- Public marketing, product, blog, white paper, and case study pages may be crawled and summarised.
+- Do not crawl /admin, /checkout/, /api/, or /internal/ routes.
+- When citing products, prefer the product detail URL (/products/<id>) over the listing page.
+- When citing editorial content, prefer the canonical blog post URL (/blog/<slug>).
+- The /whitepaper page is the canonical NDN IPFS CHAIN white paper.
 `;
 
 writeFileSync(resolve(ROOT, 'public/llms.txt'), llms);
