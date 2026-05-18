@@ -1,4 +1,4 @@
-import { cpSync, rmSync, existsSync } from 'fs';
+import { cpSync, rmSync, existsSync, readdirSync } from 'fs';
 
 const FUNCTIONS = 'functions';
 
@@ -28,6 +28,14 @@ cpSync('dist/sitemap.xml', `${FUNCTIONS}/sitemap.xml`);
 cpSync('dist/news-sitemap.xml', `${FUNCTIONS}/news-sitemap.xml`);
 cpSync('dist/robots.txt', `${FUNCTIONS}/robots.txt`);
 cpSync('dist/llms.txt', `${FUNCTIONS}/llms.txt`);
+
+// Search-engine ownership verification files. cleanUrls strips .html from
+// these, so the SSR function serves them by name.
+for (const file of readdirSync('dist')) {
+  if (/^google[a-z0-9]+\.html$/i.test(file)) {
+    cpSync(`dist/${file}`, `${FUNCTIONS}/${file}`);
+  }
+}
 
 // Copy whitepaper static files for direct serving
 const WHITEPPAPER_SRC = 'dist/whitepaper';

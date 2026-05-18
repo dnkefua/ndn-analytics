@@ -181,6 +181,25 @@ app.get('/sitemap.xml', (req, res, next) => {
   }
 });
 
+// Google Search Console ownership verification files. firebase.json has
+// cleanUrls: true, which 301-redirects /google<hash>.html to /google<hash>
+// — and the catch-all SSR rewrite then serves the React app instead of
+// the verification token. This route serves the file under either path.
+app.get(/^\/google[a-z0-9]+(\.html)?$/i, (req, res, next) => {
+  const baseName = req.path.endsWith('.html')
+    ? req.path.slice(1)
+    : `${req.path.slice(1)}.html`;
+  const filePath = join(DIST_PATH, baseName);
+  try {
+    const content = readFileSync(filePath, 'utf-8');
+    res.set('Content-Type', 'text/html; charset=utf-8');
+    res.set('Cache-Control', 'public, max-age=3600');
+    res.send(content);
+  } catch {
+    next();
+  }
+});
+
 app.get('/news-sitemap.xml', (req, res, next) => {
   const filePath = join(DIST_PATH, 'news-sitemap.xml');
   try {
