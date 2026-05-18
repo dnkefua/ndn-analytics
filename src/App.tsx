@@ -33,6 +33,7 @@ const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'));
 const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess'));
 const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
 const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./components/legal/TermsOfService'));
 const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'));
 const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
 const NotFound = lazy(() => import('./components/errors/NotFound'));
@@ -87,6 +88,7 @@ function AnimatedRoutes() {
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
             <Route path="/whitepaper" element={<WhitePaper />} />
             <Route path="/fine-tuning" element={<FineTuningTeaser />} />
             <Route path="/admin" element={<AdminDashboard />} />

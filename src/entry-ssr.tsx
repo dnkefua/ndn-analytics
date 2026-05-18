@@ -34,6 +34,7 @@ import WhitePaper from './components/whitepaper/WhitePaper'
 import CheckoutSuccess from './components/checkout/CheckoutSuccess'
 import CheckoutCancelled from './components/checkout/CheckoutCancelled'
 import PrivacyPolicy from './components/legal/PrivacyPolicy'
+import TermsOfService from './components/legal/TermsOfService'
 import FineTuningTeaser from './components/products/FineTuningTeaser'
 import AdminDashboard from './components/admin/AdminDashboard'
 import NotFound from './components/errors/NotFound'
@@ -87,6 +88,7 @@ export function render(url: string) {
                   <Route path="/checkout/success" element={<CheckoutSuccess />} />
                   <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
                   <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/whitepaper" element={<WhitePaper />} />
                   <Route path="/fine-tuning" element={<FineTuningTeaser />} />
                   <Route path="/admin" element={<AdminDashboard />} />

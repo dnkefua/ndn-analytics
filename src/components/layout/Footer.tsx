@@ -13,6 +13,7 @@ const COMPANY_LINKS = [
   ['Contact', '/contact'],
   ['Blog', '/blog'],
   ['Privacy Policy', '/privacy'],
+  ['Terms of Service', '/terms'],
   ['Fine-Tuning App ↗', '/fine-tuning'],
 ];
 
