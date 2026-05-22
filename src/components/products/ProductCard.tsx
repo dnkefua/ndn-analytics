@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../../types';
+import GlassCard from '../ui/GlassCard';
 import './ProductCard.css';
 
 interface Props {
@@ -16,7 +17,11 @@ export default function ProductCard({ product }: Props) {
   const color = STACK_COLORS[product.stack];
 
   return (
-    <div className="product-card" style={{ '--accent': color } as React.CSSProperties}>
+    <GlassCard
+      className="product-card"
+      glow={color}
+      style={{ '--accent': color } as React.CSSProperties}
+    >
       <div className="product-card-top-line" />
       <div className="product-card-header">
         <span className="product-number">{product.number}</span>
@@ -49,6 +54,6 @@ export default function ProductCard({ product }: Props) {
           Learn More →
         </Link>
       </div>
-    </div>
+    </GlassCard>
   );
 }

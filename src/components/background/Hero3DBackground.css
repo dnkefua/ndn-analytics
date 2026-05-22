@@ -1,0 +1,54 @@
+/* Hero3DBackground — WebGL canvas + atmospheric layers */
+
+.hero-3d-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 70% at 20% 10%, rgba(6, 182, 212, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 80% 90%, rgba(139, 92, 246, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%),
+    linear-gradient(180deg, #02060f 0%, #020b18 50%, #040a1a 100%);
+}
+
+.hero-3d-bg__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-3d-bg__canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Atmospheric vignette to focus attention on hero content */
+.hero-3d-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 45%,
+      transparent 0%,
+      rgba(2, 11, 24, 0.35) 60%,
+      rgba(2, 11, 24, 0.75) 100%
+    );
+  mix-blend-mode: normal;
+}
+
+/* Subtle film grain for cinematic feel */
+.hero-3d-bg__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-bg__grain { display: none; }
+}

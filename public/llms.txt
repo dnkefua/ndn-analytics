@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-05-18
+> Updated: 2026-05-22
 
 ## Summary
 NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,

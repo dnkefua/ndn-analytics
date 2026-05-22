@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/react';
 import SkeletonLoader from './components/ui/SkeletonLoader';
 import CustomCursor from './components/layout/CustomCursor';
 import FloatingParticlesBackground from './components/background/FloatingParticlesBackground';
+import Hero3DBackground from './components/background/Hero3DBackground';
 import GridOverlay from './components/layout/GridOverlay';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -12,7 +13,7 @@ import AriaFAB from './components/aria/AriaFAB';
 import { trackPageView } from './lib/analytics';
 import { usePageTracking } from './lib/engagementTracker';
 
-const Hero           = lazy(() => import('./components/hero/Hero'));
+const HeroGlass      = lazy(() => import('./components/hero/HeroGlass'));
 const ProductsSection = lazy(() => import('./components/products/ProductsSection'));
 const ProductDetail  = lazy(() => import('./components/products/ProductDetail'));
 const SolutionsSection = lazy(() => import('./components/solutions/SolutionsSection'));
@@ -68,7 +69,8 @@ function AnimatedRoutes() {
       >
         <Suspense fallback={<SkeletonLoader />}>
           <Routes location={location}>
-            <Route path="/"            element={<Hero />} />
+            <Route path="/"            element={<HeroGlass />} />
+            <Route path="/preview-glass" element={<HeroGlass />} />
             <Route path="/products"    element={<ProductsSection />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/solutions"   element={<SolutionsSection />} />
@@ -103,11 +105,13 @@ function AnimatedRoutes() {
 }
 
 function AppShell() {
+  const location = useLocation();
+  const isStaticBg = ['/admin', '/checkout'].some(path => location.pathname.startsWith(path));
   return (
     <>
       <PageTracker />
       <CustomCursor />
-      <FloatingParticlesBackground />
+      {isStaticBg ? <FloatingParticlesBackground /> : <Hero3DBackground />}
       <GridOverlay />
       <a href="#main-content" className="skip-link">Skip to content</a>
       <Navbar />

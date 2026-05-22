@@ -34,8 +34,10 @@ export default function Footer() {
     <footer style={{
       position: 'relative',
       zIndex: 10,
-      background: 'rgba(1,3,9,0.9)',
-      borderTop: '1px solid var(--border-subtle)',
+      background: 'rgba(2, 11, 24, 0.45)',
+      backdropFilter: 'blur(20px) saturate(160%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+      borderTop: '1px solid rgba(6, 182, 212, 0.12)',
       padding: '48px 0 32px',
     }}>
       <div className="container">
@@ -105,7 +107,16 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div style={{ marginBottom: 48, padding: 32, background: 'rgba(6,182,212,0.04)', border: '1px solid rgba(6,182,212,0.15)', borderRadius: 12 }}>
+        <div style={{
+          marginBottom: 48,
+          padding: 32,
+          background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.5) 0%, rgba(7, 24, 41, 0.25) 100%)',
+          border: '1px solid rgba(6, 182, 212, 0.18)',
+          borderRadius: 16,
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: '0 12px 36px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24, justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontFamily: "'Syne Variable', 'Syne', sans-serif", fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>

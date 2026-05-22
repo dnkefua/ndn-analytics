@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import SEO from '../seo/SEO';
 import FAQSchema from '../seo/FAQSchema';
+import GlassCard from '../ui/GlassCard';
 import './AboutSection.css';
 
 const VALUES = [
@@ -92,12 +93,16 @@ export default function AboutSection() {
 
           <div className="about-values">
             {VALUES.map((v, i) => (
-              <div className={`value-card reveal stagger-${i + 1}`} key={v.title}
-                style={{ '--accent': v.color } as React.CSSProperties}>
+              <GlassCard
+                className={`value-card reveal stagger-${i + 1}`}
+                key={v.title}
+                glow={v.color}
+                style={{ '--accent': v.color } as React.CSSProperties}
+              >
                 <div className="value-icon">{v.icon}</div>
                 <h3 className="value-title">{v.title}</h3>
                 <p className="value-desc">{v.description}</p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </div>

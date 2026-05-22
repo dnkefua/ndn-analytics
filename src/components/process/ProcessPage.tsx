@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../seo/SEO';
+import GlassCard from '../ui/GlassCard';
 
 const STEPS: Array<{
   step: string;
@@ -186,17 +187,20 @@ export default function ProcessPage() {
                 }}>
                   {body}
                 </p>
-                <div style={{
-                  background: 'rgba(6,182,212,0.04)',
-                  border: '1px solid rgba(6,182,212,0.15)',
-                  borderRadius: 10,
-                  padding: '18px 22px',
+                 <div style={{
+                  background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.4) 0%, rgba(7, 24, 41, 0.1) 100%)',
+                  border: '1px solid rgba(6, 182, 212, 0.16)',
+                  borderRadius: 12,
+                  padding: '20px 24px',
+                  backdropFilter: 'blur(12px) saturate(140%)',
+                  WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+                  boxShadow: '0 8px 32px rgba(2, 6, 23, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
                 }}>
                   <div style={{
                     fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
                     fontSize: '0.65rem',
                     letterSpacing: '0.15em',
-                    color: 'var(--text-tertiary)',
+                    color: 'var(--brand-cyan)',
                     textTransform: 'uppercase',
                     marginBottom: 10,
                   }}>
@@ -220,11 +224,14 @@ export default function ProcessPage() {
           </div>
 
           {/* CTA */}
-          <div style={{
-            borderTop: '1px solid var(--border-subtle)',
-            paddingTop: 48,
-            textAlign: 'center',
-          }}>
+          <GlassCard
+            glow="var(--brand-purple)"
+            style={{
+              padding: '48px 32px',
+              textAlign: 'center',
+              marginTop: 48,
+            }}
+          >
             <h2 style={{
               fontFamily: "'Syne Variable', 'Syne', sans-serif",
               fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
@@ -250,7 +257,7 @@ export default function ProcessPage() {
             >
               Book a Discovery Call →
             </Link>
-          </div>
+          </GlassCard>
 
         </div>
       </section>
