@@ -232,7 +232,67 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog posts (28 total) -->
+  <!-- Blog posts (38 total) -->
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/last-mile-delivery-ai-route-optimization</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/mcp-protocol-enterprise-ai-agents</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/ai-churn-prevention-saas-revenue-protection</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/enterprise-ai-fine-tuning-2026-strategy</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/agentic-workforce-ai-headcount-growth</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/hospital-ai-readmission-prediction-healthcare</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/ai-demand-forecasting-retail-inventory-problem</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/blockchain-supply-chain-enterprise-roi-2026</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/real-time-data-ai-hallucination-fix</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ndnanalytics.com/blog/multi-agent-orchestration-enterprise-control-plane</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal</loc>
     <lastmod>2026-05-27</lastmod>

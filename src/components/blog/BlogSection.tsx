@@ -49,9 +49,12 @@ export default function BlogSection() {
     };
   }, []);
 
-  const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  // Only show posts whose scheduled date has arrived (enables pre-loading future posts)
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+  const sortedPosts = [...posts]
+    .filter(p => new Date(p.date) <= today)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <>
