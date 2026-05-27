@@ -2768,6 +2768,7 @@ NDN Analytics works with leadership teams on exactly this kind of program — pi
     author: 'NDN Analytics Team',
     category: 'AI',
     readTime: '9 min read',
+    image: '/assets/blog/enterprise-ai-agents-hero.jpg',
     relatedProducts: ['ndn-012', 'ndn-004'],
   },
 ];
