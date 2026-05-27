@@ -12,14 +12,23 @@
     <copyright>Copyright 2026 NDN Analytics Inc.</copyright>
     <managingEditor>contact@ndnanalytics.com (NDN Analytics)</managingEditor>
     <webMaster>contact@ndnanalytics.com (NDN Analytics)</webMaster>
-    <lastBuildDate>Fri, 22 May 2026 12:00:00 GMT</lastBuildDate>
-    <pubDate>Mon, 18 May 2026 12:00:00 GMT</pubDate>
+    <lastBuildDate>Wed, 27 May 2026 12:00:00 GMT</lastBuildDate>
+    <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
     <ttl>1440</ttl>
     <image>
       <url>https://www.ndnanalytics.com/logo.jpg</url>
       <title>NDN Analytics Blog</title>
       <link>https://www.ndnanalytics.com/blog</link>
     </image>
+    <item>
+      <title>The AI Divide: What Google, IBM, Dell, and EY Revealed This Week About Enterprise AI in 2026</title>
+      <link>https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal</guid>
+      <description>Five major enterprise AI announcements in ten days — Google Cloud Next '26, IBM Think, Dell Technologies World, and EY's $1B Microsoft alliance — all pointed at the same problem. Here's what the pattern means for operators.</description>
+      <pubDate>Wed, 27 May 2026 12:00:00 GMT</pubDate>
+      <dc:creator>NDN Analytics Team</dc:creator>
+      <category>AI</category>
+    </item>
     <item>
       <title>Enterprise AI Agents: A Practical ROI Blueprint for 2026 Leaders</title>
       <link>https://www.ndnanalytics.com/blog/enterprise-ai-agents-roi-blueprint</link>
