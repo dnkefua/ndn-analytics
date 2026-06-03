@@ -5,14 +5,21 @@
  * Run: node scripts/generate-blog-assets.js
  * Wired into: npm run build (via prebuild hook)
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const BASE_URL = 'https://www.ndnanalytics.com';
-const TODAY = new Date().toISOString().split('T')[0];
+const TODAY = formatDate(new Date());
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 function unescapeTsString(str) {
   return (str || '')
@@ -68,6 +75,12 @@ function isWithinNewsWindow(dateStr) {
   return published <= now && now - published <= 2 * 24 * 60 * 60 * 1000;
 }
 
+function isPublishedDate(dateStr) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr)
+    ? dateStr <= TODAY
+    : new Date(dateStr).getTime() <= new Date(`${TODAY}T23:59:59`).getTime();
+}
+
 function urlEntry({ loc, lastmod, changefreq, priority }) {
   return `  <url>
     <loc>${BASE_URL}${loc}</loc>
@@ -111,6 +124,11 @@ const posts = postBlocks
 console.log(`Found ${products.length} products`);
 console.log(`Found ${posts.length} blog posts`);
 
+const publishedPosts = posts.filter((post) => isPublishedDate(post.date));
+const scheduledPosts = posts.filter((post) => !isPublishedDate(post.date));
+
+console.log(`Publishing ${publishedPosts.length} blog posts; holding ${scheduledPosts.length} scheduled posts`);
+
 // Priorities reflect the new IA (Home → Products → Insights → Process → About → Contact).
 // Top-nav pages get 0.8–1.0. Flagship editorial (white paper) 0.8. Product detail pages
 // 0.8. SEO landing pages stay at 0.9 because they pull direct organic traffic. Pages
@@ -135,6 +153,22 @@ const STATIC_PAGES = [
   { loc: '/google-cloud-ai-consulting', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
   { loc: '/smart-contract-development', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
 
+  // Local service landing pages (Tulsa/Oklahoma + Dubai/UAE)
+  { loc: '/ai-automation-tulsa', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/ai-consulting-tulsa', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/ai-app-development-tulsa', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/blockchain-development-tulsa', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/smart-contract-development-tulsa', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
+  { loc: '/ai-automation-oklahoma', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/ai-consulting-oklahoma', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
+  { loc: '/blockchain-development-oklahoma', lastmod: TODAY, changefreq: 'weekly', priority: '0.8' },
+  { loc: '/ai-automation-company-dubai', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/ai-consulting-dubai', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/ai-app-development-dubai', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/blockchain-development-dubai', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/smart-contract-development-dubai', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/enterprise-ai-automation-uae', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+
   // Case studies hub + details
   { loc: '/case-studies', lastmod: TODAY, changefreq: 'weekly', priority: '0.75' },
   { loc: '/case-studies/regional-grocery-demand-forecasting', lastmod: '2026-04-19', changefreq: 'monthly', priority: '0.65' },
@@ -150,6 +184,10 @@ const STATIC_PAGES = [
   // Legal (footer-only)
   { loc: '/privacy', lastmod: TODAY, changefreq: 'monthly', priority: '0.3' },
   { loc: '/terms',   lastmod: TODAY, changefreq: 'monthly', priority: '0.3' },
+  { loc: '/editorial-policy', lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/corrections-policy', lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/authors/ndn-analytics-team', lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
+  { loc: '/authors/nkefua-ngassa', lastmod: TODAY, changefreq: 'monthly', priority: '0.5' },
 
   // Product detail pages — every product in productData.ts
   ...products.map((product) => ({
@@ -160,7 +198,7 @@ const STATIC_PAGES = [
   })),
 ];
 
-const blogEntries = [...posts]
+const blogEntries = [...publishedPosts]
   .sort((a, b) => b.date.localeCompare(a.date))
   .map((post) => urlEntry({
     loc: `/blog/${post.slug}`,
@@ -176,15 +214,15 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Static pages -->
 ${STATIC_PAGES.map(urlEntry).join('\n')}
 
-  <!-- Blog posts (${posts.length} total) -->
+  <!-- Published blog posts (${publishedPosts.length} total; ${scheduledPosts.length} scheduled) -->
 ${blogEntries.join('\n')}
 </urlset>
 `;
 
 writeFileSync(resolve(ROOT, 'public/sitemap.xml'), sitemap);
-console.log(`sitemap.xml written (${STATIC_PAGES.length} static + ${posts.length} blog entries)`);
+console.log(`sitemap.xml written (${STATIC_PAGES.length} static + ${publishedPosts.length} blog entries)`);
 
-const sortedPosts = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+const sortedPosts = [...publishedPosts].sort((a, b) => b.date.localeCompare(a.date));
 const latestDate = sortedPosts[0]?.date ?? TODAY;
 const recentNewsPosts = sortedPosts.filter((post) => isWithinNewsWindow(post.date));
 
@@ -253,7 +291,7 @@ ${feedItems}
 `;
 
 writeFileSync(resolve(ROOT, 'public/feed.xml'), feed);
-console.log(`feed.xml written (${posts.length} items)`);
+console.log(`feed.xml written (${publishedPosts.length} items)`);
 
 const latestPosts = sortedPosts.slice(0, 10);
 
@@ -333,6 +371,14 @@ ${CAPABILITIES.trust.productIds.map(productLine).filter(Boolean).join('\n')}
 - Blockchain Solutions (Ethereum, Web3): ${BASE_URL}/blockchain-solutions
 - Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): ${BASE_URL}/google-cloud-ai-consulting
 - Smart Contract Development (Solidity, EVM): ${BASE_URL}/smart-contract-development
+- AI Automation Tulsa: ${BASE_URL}/ai-automation-tulsa
+- AI Automation Dubai: ${BASE_URL}/ai-automation-company-dubai
+- AI App Development Tulsa: ${BASE_URL}/ai-app-development-tulsa
+- AI App Development Dubai: ${BASE_URL}/ai-app-development-dubai
+- Blockchain Development Tulsa: ${BASE_URL}/blockchain-development-tulsa
+- Blockchain Development Dubai: ${BASE_URL}/blockchain-development-dubai
+- Smart Contract Development Dubai: ${BASE_URL}/smart-contract-development-dubai
+- Enterprise AI Automation UAE: ${BASE_URL}/enterprise-ai-automation-uae
 
 ## All Products (${products.length})
 ${products.map((p) => `- ${p.name}: ${BASE_URL}/products/${p.id}`).join('\n')}
@@ -356,3 +402,15 @@ ${latestPosts.map((post) => `- ${post.title}: ${BASE_URL}/blog/${post.slug}`).jo
 
 writeFileSync(resolve(ROOT, 'public/llms.txt'), llms);
 console.log(`llms.txt written (${products.length} products, ${latestPosts.length} highlighted posts)`);
+
+const publishingIndex = {
+  generatedAt: new Date().toISOString(),
+  baseUrl: BASE_URL,
+  staticPages: STATIC_PAGES,
+  products,
+  posts,
+};
+
+mkdirSync(resolve(ROOT, 'functions'), { recursive: true });
+writeFileSync(resolve(ROOT, 'functions/publishing-index.json'), JSON.stringify(publishingIndex, null, 2));
+console.log(`publishing-index.json written (${posts.length} total posts, ${scheduledPosts.length} scheduled)`);

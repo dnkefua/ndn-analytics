@@ -3,7 +3,16 @@ import globals from 'globals';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['assets', 'node_modules', 'entry-ssr.js']),
+  globalIgnores([
+    'assets',
+    'node_modules',
+    'entry-ssr.js',
+    'sw.js',
+    'site.webmanifest',
+    '*.png',
+    '*.ico',
+    '*.svg',
+  ]),
   {
     files: ['**/*.js'],
     extends: [js.configs.recommended],

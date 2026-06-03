@@ -7,12 +7,15 @@ html, body {
   background: #020B18;
   color: #EFF6FF;
   overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
 }
 
 #root {
   width: 100%;
   min-height: 100svh;
 }
+
 
 img, svg { display: block; max-width: 100%; }
 button { cursor: pointer; }

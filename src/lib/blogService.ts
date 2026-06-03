@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db, isFirebaseEnabled } from './firebase';
 import { BLOG_POSTS as STATIC_POSTS } from '../components/blog/blogData';
+import { isBlogPostPublished } from './blogPublishing';
 import type { UnifiedBlogPost, DynamicBlogPost } from '../types/blogPosts';
 
 const BLOG_POSTS_COLLECTION = 'blogPosts';
@@ -84,7 +85,7 @@ export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
   const dynamicPosts = await fetchDynamicPosts();
 
   // Merge and sort by date (newest first)
-  const allPosts = [...staticPosts, ...dynamicPosts];
+  const allPosts = [...staticPosts, ...dynamicPosts].filter(post => isBlogPostPublished(post.date));
   allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return allPosts;
@@ -96,7 +97,7 @@ export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
 export async function getBlogPostBySlug(slug: string): Promise<UnifiedBlogPost | null> {
   // Check static posts first
   const staticPost = STATIC_POSTS.find(p => p.slug === slug);
-  if (staticPost) {
+  if (staticPost && isBlogPostPublished(staticPost.date)) {
     return { ...staticPost, source: 'manual' as const };
   }
 
@@ -121,11 +122,16 @@ export async function getBlogPostBySlug(slug: string): Promise<UnifiedBlogPost |
 
     const docSnap = snapshot.docs[0];
     const data = docSnap.data() as Omit<DynamicBlogPost, 'id'>;
+    const post = convertToUnified({ id: docSnap.id, ...data } as DynamicBlogPost);
+
+    if (!isBlogPostPublished(post.date)) {
+      return null;
+    }
 
     // Increment view count asynchronously
     incrementViewCount(docSnap.id);
 
-    return convertToUnified({ id: docSnap.id, ...data } as DynamicBlogPost);
+    return post;
   } catch (error) {
     console.error('Failed to fetch post by slug:', error);
     return null;

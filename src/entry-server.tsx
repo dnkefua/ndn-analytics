@@ -8,6 +8,7 @@ import './styles/variables.css'
 import './styles/typography.css'
 import './styles/animations.css'
 import './styles/components.css'
+import './styles/mobile.css'
 import './index.css'
 import App from './App.tsx'
 

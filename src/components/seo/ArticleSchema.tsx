@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { formatPublishDate, getAuthorByName, PUBLISHER } from '../../lib/publisher';
 
 const BASE_URL = 'https://www.ndnanalytics.com';
 
@@ -29,28 +30,33 @@ export default function ArticleSchema({
   const ogImage = image
     ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
     : `${BASE_URL}/og-image.png`;
+  const articleAuthor = getAuthorByName(author);
+  const publishedAt = formatPublishDate(datePublished);
+  const modifiedAt = dateModified ? formatPublishDate(dateModified) : publishedAt;
 
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': ['NewsArticle', 'BlogPosting'],
     headline: title,
     description: excerpt,
     url,
-    datePublished,
-    dateModified: dateModified ?? datePublished,
+    datePublished: publishedAt,
+    dateModified: modifiedAt,
     inLanguage: 'en-US',
     author: {
       '@type': 'Person',
-      name: author,
-      url: `${BASE_URL}/about`,
+      name: articleAuthor.name,
+      url: articleAuthor.url,
+      description: articleAuthor.description,
+      sameAs: articleAuthor.sameAs,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'NDN Analytics',
-      url: BASE_URL,
+      name: PUBLISHER.name,
+      url: PUBLISHER.url,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.jpg`,
+        url: PUBLISHER.logo,
         width: 512,
         height: 512,
       },

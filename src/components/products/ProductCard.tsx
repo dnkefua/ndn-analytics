@@ -32,7 +32,8 @@ export default function ProductCard({ product }: Props) {
           <img
             src={product.media.image}
             alt={`${product.name} interface preview`}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           />
           <span className="product-card-media-icon">{product.icon}</span>
         </div>

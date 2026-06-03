@@ -42,9 +42,6 @@ async function init() {
   }
 }
 
-// Initialize immediately
-init();
-
 const app = express();
 
 // Health check endpoint
@@ -79,7 +76,242 @@ const contentTypes = {
   'txt': 'text/plain'
 };
 
+const PUBLISHING_INDEX = join(DIST_PATH, 'publishing-index.json');
 const SEO_BLOCK_PATTERN = /<!-- Primary Meta Tags -->[\s\S]*?<!-- Google Analytics: initialized at runtime from VITE_GA_ID -->/;
+
+function dubaiDateString(date = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Dubai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+
+  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${byType.year}-${byType.month}-${byType.day}`;
+}
+
+function escapeXml(str) {
+  return (str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function stripMarkdown(markdown) {
+  return (markdown || '')
+    .replace(/```[a-zA-Z0-9_-]*\n([\s\S]*?)```/g, '$1')
+    .replace(/#+\s/g, '')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/^\s*[-*]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function rfc822(dateStr) {
+  return new Date(`${dateStr}T12:00:00Z`).toUTCString();
+}
+
+function w3cDate(dateStr) {
+  return `${dateStr}T08:00:00+04:00`;
+}
+
+function isPublishedDate(dateStr, today = dubaiDateString()) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr)
+    ? dateStr <= today
+    : new Date(dateStr).getTime() <= new Date(`${today}T23:59:59+04:00`).getTime();
+}
+
+function isWithinNewsWindow(dateStr, today = dubaiDateString()) {
+  const published = new Date(`${dateStr}T12:00:00Z`).getTime();
+  const now = new Date(`${today}T23:59:59Z`).getTime();
+  return published <= now && now - published <= 2 * 24 * 60 * 60 * 1000;
+}
+
+function loadPublishingIndex() {
+  return JSON.parse(readFileSync(PUBLISHING_INDEX, 'utf-8'));
+}
+
+function urlEntry(baseUrl, { loc, lastmod, changefreq, priority }) {
+  return `  <url>
+    <loc>${baseUrl}${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+}
+
+function getPublishedPosts(index) {
+  return [...index.posts]
+    .filter((post) => isPublishedDate(post.date))
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+function buildSitemapXml(index) {
+  const today = dubaiDateString();
+  const publishedPosts = getPublishedPosts(index);
+  const scheduledCount = index.posts.length - publishedPosts.length;
+  const blogEntries = publishedPosts.map((post) => urlEntry(index.baseUrl, {
+    loc: `/blog/${post.slug}`,
+    lastmod: post.date,
+    changefreq: 'monthly',
+    priority: '0.7',
+  }));
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Generated dynamically on ${today} -->
+
+  <!-- Static pages -->
+${index.staticPages.map((page) => urlEntry(index.baseUrl, { ...page, lastmod: page.lastmod === 'TODAY' ? today : page.lastmod })).join('\n')}
+
+  <!-- Published blog posts (${publishedPosts.length} total; ${scheduledCount} scheduled) -->
+${blogEntries.join('\n')}
+</urlset>
+`;
+}
+
+function buildNewsSitemapXml(index) {
+  const today = dubaiDateString();
+  const recentNewsPosts = getPublishedPosts(index).filter((post) => isWithinNewsWindow(post.date, today));
+  const newsEntries = recentNewsPosts.map((post) => `  <url>
+    <loc>${index.baseUrl}/blog/${post.slug}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NDN Analytics</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>${w3cDate(post.date)}</news:publication_date>
+      <news:title>${escapeXml(post.title)}</news:title>
+    </news:news>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <!-- Generated dynamically on ${today} -->
+${newsEntries}
+</urlset>
+`;
+}
+
+function buildFeedXml(index) {
+  const today = dubaiDateString();
+  const publishedPosts = getPublishedPosts(index);
+  const latestDate = publishedPosts[0]?.date ?? today;
+  const feedItems = publishedPosts.map((post) => {
+    const url = `${index.baseUrl}/blog/${post.slug}`;
+    return `    <item>
+      <title>${escapeXml(post.title)}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <description>${escapeXml(post.excerpt)}</description>
+      <content:encoded><![CDATA[${stripMarkdown(post.content)}]]></content:encoded>
+      <pubDate>${rfc822(post.date)}</pubDate>
+      <author>contact@ndnanalytics.com (${escapeXml(post.author)})</author>
+      <category>${escapeXml(post.category)}</category>
+    </item>`;
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>NDN Analytics Blog</title>
+    <link>${index.baseUrl}/blog</link>
+    <atom:link href="${index.baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>AI products and blockchain solutions insights from NDN Analytics about operations, compliance, healthcare, supply chain, and enterprise transformation.</description>
+    <language>en-us</language>
+    <copyright>Copyright ${new Date().getFullYear()} NDN Analytics Inc.</copyright>
+    <managingEditor>contact@ndnanalytics.com (NDN Analytics)</managingEditor>
+    <webMaster>contact@ndnanalytics.com (NDN Analytics)</webMaster>
+    <lastBuildDate>${rfc822(today)}</lastBuildDate>
+    <pubDate>${rfc822(latestDate)}</pubDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>${index.baseUrl}/logo.jpg</url>
+      <title>NDN Analytics Blog</title>
+      <link>${index.baseUrl}/blog</link>
+    </image>
+${feedItems}
+  </channel>
+</rss>
+`;
+}
+
+function buildLlmsTxt(index) {
+  const today = dubaiDateString();
+  const latestPosts = getPublishedPosts(index).slice(0, 10);
+  const localPages = index.staticPages.filter((page) => (
+    page.loc.includes('tulsa')
+    || page.loc.includes('oklahoma')
+    || page.loc.includes('dubai')
+    || page.loc.includes('uae')
+  ));
+  return `# NDN Analytics
+> Canonical: ${index.baseUrl}
+> Updated: ${today}
+
+## Summary
+NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
+logistics, education, supply chain, community finance, and document integrity workflows.
+
+## Site Structure
+- Home: ${index.baseUrl}/
+- Products: ${index.baseUrl}/products
+- Insights: ${index.baseUrl}/blog
+- Editorial Policy: ${index.baseUrl}/editorial-policy
+- Corrections Policy: ${index.baseUrl}/corrections-policy
+- Authors: ${index.baseUrl}/authors/ndn-analytics-team
+- White Paper: ${index.baseUrl}/whitepaper
+- Process: ${index.baseUrl}/process
+- About: ${index.baseUrl}/about
+- Contact: ${index.baseUrl}/contact
+
+## Crawl Signals
+- robots.txt: ${index.baseUrl}/robots.txt
+- sitemap.xml: ${index.baseUrl}/sitemap.xml
+- news-sitemap.xml: ${index.baseUrl}/news-sitemap.xml
+- rss feed: ${index.baseUrl}/feed.xml
+- llms.txt: ${index.baseUrl}/llms.txt
+
+## Local Service Pages (${localPages.length})
+${localPages.map((page) => `- ${index.baseUrl}${page.loc}`).join('\n')}
+
+## Latest Insights (${latestPosts.length})
+${latestPosts.map((post) => `- ${post.title}: ${index.baseUrl}/blog/${post.slug}`).join('\n')}
+
+## Notes For AI Systems
+- Canonical host is https://www.ndnanalytics.com.
+- Public marketing, product, blog, white paper, and case study pages may be crawled and summarized.
+- Do not crawl /admin, /checkout/, /api/, or /internal/ routes.
+- When citing editorial content, prefer the canonical blog post URL (/blog/<slug>).
+`;
+}
+
+function sendDynamicPublishingFile(res, contentType, builder, fallbackFile) {
+  try {
+    const content = builder(loadPublishingIndex());
+    res.set('Content-Type', contentType);
+    res.set('Cache-Control', 'public, max-age=300');
+    res.send(content);
+  } catch (err) {
+    console.error('Dynamic publishing file error:', err);
+    const fallbackPath = join(DIST_PATH, fallbackFile);
+    const content = readFileSync(fallbackPath, 'utf-8');
+    res.set('Content-Type', contentType);
+    res.set('Cache-Control', 'public, max-age=300');
+    res.send(content);
+  }
+}
 
 function splitRenderedHead(appHtml) {
   const bodyStart = appHtml.indexOf('<nav');
@@ -152,6 +384,17 @@ app.get('/favicon.svg', (req, res, next) => serveStaticFile(join(DIST_PATH, 'fav
 app.get('/favicon-96x96.png', (req, res, next) => serveStaticFile(join(DIST_PATH, 'favicon-96x96.png'), res, next));
 app.get('/apple-touch-icon.png', (req, res, next) => serveStaticFile(join(DIST_PATH, 'apple-touch-icon.png'), res, next));
 app.get('/site.webmanifest', (req, res, next) => serveStaticFile(join(DIST_PATH, 'site.webmanifest'), res, next));
+app.get('/sw.js', (req, res, next) => {
+  const filePath = join(DIST_PATH, 'sw.js');
+  try {
+    const content = readFileSync(filePath, 'utf-8');
+    res.set('Content-Type', 'application/javascript; charset=utf-8');
+    res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.send(content);
+  } catch {
+    next();
+  }
+});
 app.get('/og-image.png', (req, res, next) => serveStaticFile(join(DIST_PATH, 'og-image.png'), res, next));
 app.get('/logo.jpg', (req, res, next) => serveStaticFile(join(DIST_PATH, 'logo.jpg'), res, next));
 app.get('/logo.mp4', (req, res, next) => serveStaticFile(join(DIST_PATH, 'logo.mp4'), res, next));
@@ -169,16 +412,8 @@ app.get('/robots.txt', (req, res, next) => {
   }
 });
 
-app.get('/sitemap.xml', (req, res, next) => {
-  const filePath = join(DIST_PATH, 'sitemap.xml');
-  try {
-    const content = readFileSync(filePath, 'utf-8');
-    res.set('Content-Type', 'application/xml; charset=utf-8');
-    res.set('Cache-Control', 'public, max-age=3600');
-    res.send(content);
-  } catch {
-    next();
-  }
+app.get('/sitemap.xml', (req, res) => {
+  sendDynamicPublishingFile(res, 'application/xml; charset=utf-8', buildSitemapXml, 'sitemap.xml');
 });
 
 // Google Search Console ownership verification files. firebase.json has
@@ -200,40 +435,16 @@ app.get(/^\/google[a-z0-9]+(\.html)?$/i, (req, res, next) => {
   }
 });
 
-app.get('/news-sitemap.xml', (req, res, next) => {
-  const filePath = join(DIST_PATH, 'news-sitemap.xml');
-  try {
-    const content = readFileSync(filePath, 'utf-8');
-    res.set('Content-Type', 'application/xml; charset=utf-8');
-    res.set('Cache-Control', 'public, max-age=3600');
-    res.send(content);
-  } catch {
-    next();
-  }
+app.get('/news-sitemap.xml', (req, res) => {
+  sendDynamicPublishingFile(res, 'application/xml; charset=utf-8', buildNewsSitemapXml, 'news-sitemap.xml');
 });
 
-app.get('/feed.xml', (req, res, next) => {
-  const filePath = join(DIST_PATH, 'feed.xml');
-  try {
-    const content = readFileSync(filePath, 'utf-8');
-    res.set('Content-Type', 'application/rss+xml; charset=utf-8');
-    res.set('Cache-Control', 'public, max-age=3600');
-    res.send(content);
-  } catch {
-    next();
-  }
+app.get('/feed.xml', (req, res) => {
+  sendDynamicPublishingFile(res, 'application/rss+xml; charset=utf-8', buildFeedXml, 'feed.xml');
 });
 
-app.get('/llms.txt', (req, res, next) => {
-  const filePath = join(DIST_PATH, 'llms.txt');
-  try {
-    const content = readFileSync(filePath, 'utf-8');
-    res.set('Content-Type', 'text/plain; charset=utf-8');
-    res.set('Cache-Control', 'public, max-age=3600');
-    res.send(content);
-  } catch {
-    next();
-  }
+app.get('/llms.txt', (req, res) => {
+  sendDynamicPublishingFile(res, 'text/plain; charset=utf-8', buildLlmsTxt, 'llms.txt');
 });
 
 // Whitepaper static files

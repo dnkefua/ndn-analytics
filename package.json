@@ -19,7 +19,15 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "deploy": "npm run build:ssr && firebase deploy --only hosting,functions",
+    "deploy:hosting": "npm run build:ssr && firebase deploy --only hosting",
+    "deploy:functions": "npm run build:ssr && firebase deploy --only functions",
+    "deploy:rules": "firebase deploy --only firestore:rules,firestore:indexes,storage",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:icons": "python scripts/generate_android_icons.py",
+    "android:bundle": "npm run android:sync && cd android && gradlew.bat bundleRelease"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -38,6 +46,9 @@
     "web-vitals": "^5.2.0"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/cli": "^8.3.4",
+    "@capacitor/core": "^8.3.4",
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.59.1",
     "@testing-library/jest-dom": "6.9.1",

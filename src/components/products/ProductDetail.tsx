@@ -39,7 +39,8 @@ function GalleryMedia({ item }: { item: ProductMediaAsset }) {
       src={item.src}
       alt={item.alt}
       className="pd-gallery-media"
-      loading="lazy"
+      loading="eager"
+      decoding="async"
     />
   );
 }
@@ -182,7 +183,8 @@ export default function ProductDetail() {
                  src={product.media.video && product.media.video.toLowerCase().endsWith('.gif') ? product.media.video : product.media.image}
                  alt={`${product.name} demo`}
                  className="pd-media-image"
-                 loading="lazy"
+                 loading="eager"
+                 decoding="async"
                />
              ) : null}
              {gallery.length > 0 && (

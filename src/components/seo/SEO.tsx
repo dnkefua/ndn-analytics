@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { formatPublishDate, getAuthorByName, PUBLISHER } from '../../lib/publisher';
 
 interface SEOProps {
   title: string;
@@ -40,8 +41,9 @@ export default function SEO({
   const fullTitle = title === 'NDN Analytics' ? title : `${title} | NDN Analytics`;
   const canonicalUrl = canonicalPath ? `${BASE_URL}${canonicalPath}` : BASE_URL;
   const imageUrl = image.startsWith('http') ? image : `${BASE_URL}${image}`;
-  const effectiveDatePublished = datePublished || new Date().toISOString();
-  const effectiveDateModified = dateModified || effectiveDatePublished;
+  const effectiveDatePublished = datePublished ? formatPublishDate(datePublished) : new Date().toISOString();
+  const effectiveDateModified = dateModified ? formatPublishDate(dateModified) : effectiveDatePublished;
+  const articleAuthor = getAuthorByName(author);
 
   return (
     <Helmet>
@@ -66,7 +68,7 @@ export default function SEO({
       <meta property="og:locale" content="en_US" />
       {type === 'article' && <meta property="article:published_time" content={effectiveDatePublished} />}
       {type === 'article' && <meta property="article:modified_time" content={effectiveDateModified} />}
-      {type === 'article' && author && <meta property="article:author" content={author} />}
+      {type === 'article' && <meta property="article:author" content={articleAuthor.url} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -85,18 +87,24 @@ export default function SEO({
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Article',
+            '@type': 'NewsArticle',
             '@id': canonicalUrl,
-            headline: fullTitle,
+            headline: title,
             description,
-            image: imageUrl,
+            image: [imageUrl],
             datePublished: effectiveDatePublished,
             dateModified: effectiveDateModified,
-            author: author ? { '@type': 'Person', name: author } : { '@type': 'Organization', name: 'NDN Analytics' },
+            author: {
+              '@type': 'Person',
+              name: articleAuthor.name,
+              url: articleAuthor.url,
+              description: articleAuthor.description,
+            },
             publisher: {
               '@type': 'Organization',
-              name: 'NDN Analytics',
-              logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.svg` },
+              name: PUBLISHER.name,
+              url: PUBLISHER.url,
+              logo: { '@type': 'ImageObject', url: PUBLISHER.logo },
             },
             mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
           })}

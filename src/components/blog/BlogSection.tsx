@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { BLOG_POSTS } from './blogData';
 import { getAllBlogPosts } from '../../lib/blogService';
+import { isBlogPostPublished } from '../../lib/blogPublishing';
+import { getAuthorByName, PUBLISHER } from '../../lib/publisher';
 import type { UnifiedBlogPost } from '../../types/blogPosts';
 import SEO from '../seo/SEO';
 
@@ -50,10 +52,8 @@ export default function BlogSection() {
   }, []);
 
   // Only show posts whose scheduled date has arrived (enables pre-loading future posts)
-  const today = new Date();
-  today.setHours(23, 59, 59, 999);
   const sortedPosts = [...posts]
-    .filter(p => new Date(p.date) <= today)
+    .filter(p => isBlogPostPublished(p.date))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
@@ -79,8 +79,8 @@ export default function BlogSection() {
             inLanguage: 'en-US',
             publisher: {
               '@type': 'Organization',
-              name: 'NDN Analytics',
-              url: BASE_URL,
+              name: PUBLISHER.name,
+              url: PUBLISHER.url,
             },
             blogPost: sortedPosts.map((post) => ({
               '@type': 'BlogPosting',
@@ -90,8 +90,9 @@ export default function BlogSection() {
               datePublished: post.date,
               dateModified: post.date,
               author: {
-                '@type': 'Organization',
-                name: post.author,
+                '@type': 'Person',
+                name: getAuthorByName(post.author).name,
+                url: getAuthorByName(post.author).url,
               },
               articleSection: post.category,
             })),
@@ -205,7 +206,8 @@ export default function BlogSection() {
                     <img
                       src={post.image}
                       alt={post.title}
-                      loading="lazy"
+                      loading="eager"
+                      decoding="async"
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }}
                       onMouseOver={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
                       onMouseOut={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}

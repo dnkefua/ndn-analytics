@@ -68,7 +68,7 @@ async function createServer() {
     next()
   })
 
-  app.use('*', async (req, res, next) => {
+  app.use(async (req, res, next) => {
     const url = req.originalUrl
 
     try {

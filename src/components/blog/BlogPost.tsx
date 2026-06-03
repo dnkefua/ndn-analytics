@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { BLOG_POSTS } from './blogData';
 import { getBlogPostBySlug } from '../../lib/blogService';
+import { isBlogPostPublished } from '../../lib/blogPublishing';
+import { getAuthorByName } from '../../lib/publisher';
 import type { UnifiedBlogPost } from '../../types/blogPosts';
 import BlogSidebar from './BlogSidebar';
 import ServiceCTA from './ServiceCTA';
@@ -13,7 +15,7 @@ import ContentUpgradeModal from '../leadgen/ContentUpgradeModal';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const staticPost = slug ? BLOG_POSTS.find((item) => item.slug === slug) : null;
+  const staticPost = slug ? BLOG_POSTS.find((item) => item.slug === slug && isBlogPostPublished(item.date)) : null;
   const [post, setPost] = useState<UnifiedBlogPost | null>(
     staticPost ? { ...staticPost, source: 'manual' } : null
   );
@@ -27,7 +29,7 @@ export default function BlogPost() {
       }
 
       // Try static posts first (faster)
-      const staticPost = BLOG_POSTS.find(p => p.slug === slug);
+      const staticPost = BLOG_POSTS.find(p => p.slug === slug && isBlogPostPublished(p.date));
       if (staticPost) {
         setPost({ ...staticPost, source: 'manual' });
         setLoading(false);
@@ -88,6 +90,8 @@ export default function BlogPost() {
     });
   };
 
+  const articleAuthor = getAuthorByName(post.author);
+
   return (
     <ExitIntentProvider enabled={Boolean(post.contentUpgrade)} scrollThreshold={0.5}>
       <SEO
@@ -99,6 +103,7 @@ export default function BlogPost() {
         image={post.image}
         author={post.author}
         datePublished={post.date}
+        dateModified={post.date}
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Blog', path: '/blog' },
@@ -111,6 +116,7 @@ export default function BlogPost() {
         slug={post.slug}
         author={post.author}
         datePublished={post.date}
+        dateModified={post.date}
         image={post.image}
         category={post.category}
         keywords={[
@@ -137,7 +143,7 @@ export default function BlogPost() {
               )}
               {post.image && (
                 <div style={{ marginBottom: 28 }}>
-                  <OptimizedImage src={post.image} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" />
+                  <OptimizedImage src={post.image} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" loading="eager" />
                 </div>
               )}
               {post.logoAnimation && (
@@ -167,7 +173,9 @@ export default function BlogPost() {
                 </div>
               )}
               <div style={{ display: 'flex', gap: 24, marginBottom: 40, fontSize: '0.85rem', color: 'var(--text-tertiary)', fontFamily: "'JetBrains Mono Variable', monospace" }}>
-                <span>{post.author}</span>
+                <Link to={`/authors/${articleAuthor.slug}`} style={{ color: 'var(--brand-cyan)', textDecoration: 'none' }}>
+                  {post.author}
+                </Link>
                 <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
               </div>
               <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 32 }}>

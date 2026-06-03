@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-05-22
+> Updated: 2026-06-03
 
 ## Summary
 NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
@@ -61,6 +61,14 @@ Tamper-evident records, traceability, community finance.
 - Blockchain Solutions (Ethereum, Web3): https://www.ndnanalytics.com/blockchain-solutions
 - Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): https://www.ndnanalytics.com/google-cloud-ai-consulting
 - Smart Contract Development (Solidity, EVM): https://www.ndnanalytics.com/smart-contract-development
+- AI Automation Tulsa: https://www.ndnanalytics.com/ai-automation-tulsa
+- AI Automation Dubai: https://www.ndnanalytics.com/ai-automation-company-dubai
+- AI App Development Tulsa: https://www.ndnanalytics.com/ai-app-development-tulsa
+- AI App Development Dubai: https://www.ndnanalytics.com/ai-app-development-dubai
+- Blockchain Development Tulsa: https://www.ndnanalytics.com/blockchain-development-tulsa
+- Blockchain Development Dubai: https://www.ndnanalytics.com/blockchain-development-dubai
+- Smart Contract Development Dubai: https://www.ndnanalytics.com/smart-contract-development-dubai
+- Enterprise AI Automation UAE: https://www.ndnanalytics.com/enterprise-ai-automation-uae
 
 ## All Products (16)
 - NDN Demand IQ: https://www.ndnanalytics.com/products/ndn-001
@@ -81,16 +89,16 @@ Tamper-evident records, traceability, community finance.
 - Student Teacher App: https://www.ndnanalytics.com/products/ndn-016
 
 ## Latest Insights (10)
+- Blockchain in Supply Chain 2026: 5 Use Cases Delivering Measurable Enterprise ROI: https://www.ndnanalytics.com/blog/blockchain-supply-chain-enterprise-roi-2026
+- The 20% Hallucination Problem: Why Enterprise AI Fails and How Real-Time Data Fixes It: https://www.ndnanalytics.com/blog/real-time-data-ai-hallucination-fix
+- Multi-Agent Orchestration in 2026: Choosing Your Enterprise AI Control Plane: https://www.ndnanalytics.com/blog/multi-agent-orchestration-enterprise-control-plane
+- The AI Divide: What Google, IBM, Dell, and EY Revealed This Week About Enterprise AI in 2026: https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal
 - Enterprise AI Agents: A Practical ROI Blueprint for 2026 Leaders: https://www.ndnanalytics.com/blog/enterprise-ai-agents-roi-blueprint
 - Student Teacher App: The AI Classroom Workspace for Cinematic Maths Learning: https://www.ndnanalytics.com/blog/student-teacher-app-ai-classroom
 - CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics: https://www.ndnanalytics.com/blog/camdiag-ai-healthcare-cameroon
 - Why TheDiaspora App Matters: A Digital Home for Global Community, Trust, and Opportunity: https://www.ndnanalytics.com/blog/why-the-diaspora-app-matters
 - Introducing NDN IPFS CHAIN: The Enterprise Proof Layer for Critical Files: https://www.ndnanalytics.com/blog/ndn-ipfs-chain-enterprise-proof-layer
 - Getting Your First Win with AI: How to Prove ROI in 90 Days: https://www.ndnanalytics.com/blog/getting-first-win-ai-quick-roi
-- Data Quality: The Unsexy Foundation of AI Success (and Why It Matters): https://www.ndnanalytics.com/blog/data-quality-foundation-ai-success
-- EU Digital Product Passport: Your 2026 Compliance Roadmap: https://www.ndnanalytics.com/blog/eu-digital-product-passport-2026-compliance
-- Web3 Security: Common Smart Contract Vulnerabilities and How to Avoid Them: https://www.ndnanalytics.com/blog/web3-security-smart-contract-vulnerabilities
-- Building Your First Data Pipeline: A Hands-On Tutorial for Engineers: https://www.ndnanalytics.com/blog/building-first-data-pipeline-tutorial
 
 ## Case Studies
 - Regional grocery demand forecasting: https://www.ndnanalytics.com/case-studies/regional-grocery-demand-forecasting

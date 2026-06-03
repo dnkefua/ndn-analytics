@@ -7,6 +7,7 @@ import './styles/variables.css'
 import './styles/typography.css'
 import './styles/animations.css'
 import './styles/components.css'
+import './styles/mobile.css'
 import './index.css'
 
 // Import components directly for SSR (no lazy loading)
@@ -25,6 +26,8 @@ import BlockchainSolutionsLanding from './components/landing/BlockchainSolutions
 import GoogleCloudAILanding from './components/landing/GoogleCloudAILanding'
 import SmartContractLanding from './components/landing/SmartContractLanding'
 import AIAutomationLanding from './components/landing/AIAutomationLanding'
+import LocalServiceLanding from './components/landing/LocalServiceLanding'
+import { LOCAL_SERVICE_SLUGS } from './lib/localServiceRoutes'
 import CaseStudiesSection from './components/casestudies/CaseStudiesSection'
 import CaseStudyDetail from './components/casestudies/CaseStudyDetail'
 import Navbar from './components/layout/Navbar'
@@ -35,6 +38,9 @@ import CheckoutSuccess from './components/checkout/CheckoutSuccess'
 import CheckoutCancelled from './components/checkout/CheckoutCancelled'
 import PrivacyPolicy from './components/legal/PrivacyPolicy'
 import TermsOfService from './components/legal/TermsOfService'
+import EditorialPolicy from './components/publisher/EditorialPolicy'
+import CorrectionsPolicy from './components/publisher/CorrectionsPolicy'
+import AuthorProfile from './components/publisher/AuthorProfile'
 import ProcessPage from './components/process/ProcessPage'
 import FineTuningTeaser from './components/products/FineTuningTeaser'
 import AdminDashboard from './components/admin/AdminDashboard'
@@ -84,12 +90,18 @@ export function render(url: string) {
                   <Route path="/google-cloud-ai-consulting" element={<GoogleCloudAILanding />} />
                   <Route path="/smart-contract-development" element={<SmartContractLanding />} />
                   <Route path="/ai-automation" element={<AIAutomationLanding />} />
+                  {LOCAL_SERVICE_SLUGS.map((slug) => (
+                    <Route key={slug} path={`/${slug}`} element={<LocalServiceLanding />} />
+                  ))}
                   <Route path="/case-studies" element={<CaseStudiesSection />} />
                   <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
                   <Route path="/checkout/success" element={<CheckoutSuccess />} />
                   <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
                   <Route path="/privacy" element={<PrivacyPolicy />} />
                   <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/editorial-policy" element={<EditorialPolicy />} />
+                  <Route path="/corrections-policy" element={<CorrectionsPolicy />} />
+                  <Route path="/authors/:slug" element={<AuthorProfile />} />
                   <Route path="/process" element={<ProcessPage />} />
                   <Route path="/whitepaper" element={<WhitePaper />} />
                   <Route path="/fine-tuning" element={<FineTuningTeaser />} />

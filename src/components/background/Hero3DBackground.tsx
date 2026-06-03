@@ -17,6 +17,13 @@ export default function Hero3DBackground() {
     const mount = mountRef.current;
     if (!mount) return;
 
+    const coarsePointer =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(max-width: 768px), (hover: none), (pointer: coarse)').matches;
+
+    if (coarsePointer) return;
+
     const reducedMotion =
       typeof window !== 'undefined' &&
       window.matchMedia &&

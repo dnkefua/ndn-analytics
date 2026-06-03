@@ -12,6 +12,7 @@ import Footer from './components/layout/Footer';
 import AriaFAB from './components/aria/AriaFAB';
 import { trackPageView } from './lib/analytics';
 import { usePageTracking } from './lib/engagementTracker';
+import { LOCAL_SERVICE_SLUGS } from './lib/localServiceRoutes';
 
 const HeroGlass      = lazy(() => import('./components/hero/HeroGlass'));
 const ProductsSection = lazy(() => import('./components/products/ProductsSection'));
@@ -28,6 +29,7 @@ const BlockchainSolutionsLanding = lazy(() => import('./components/landing/Block
 const GoogleCloudAILanding = lazy(() => import('./components/landing/GoogleCloudAILanding'));
 const SmartContractLanding = lazy(() => import('./components/landing/SmartContractLanding'));
 const AIAutomationLanding = lazy(() => import('./components/landing/AIAutomationLanding'));
+const LocalServiceLanding = lazy(() => import('./components/landing/LocalServiceLanding'));
 const CaseStudiesSection = lazy(() => import('./components/casestudies/CaseStudiesSection'));
 const CaseStudyDetail = lazy(() => import('./components/casestudies/CaseStudyDetail'));
 const WhitePaper = lazy(() => import('./components/whitepaper/WhitePaper'));
@@ -35,6 +37,9 @@ const CheckoutSuccess = lazy(() => import('./components/checkout/CheckoutSuccess
 const CheckoutCancelled = lazy(() => import('./components/checkout/CheckoutCancelled'));
 const PrivacyPolicy = lazy(() => import('./components/legal/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./components/legal/TermsOfService'));
+const EditorialPolicy = lazy(() => import('./components/publisher/EditorialPolicy'));
+const CorrectionsPolicy = lazy(() => import('./components/publisher/CorrectionsPolicy'));
+const AuthorProfile = lazy(() => import('./components/publisher/AuthorProfile'));
 const ProcessPage = lazy(() => import('./components/process/ProcessPage'));
 const FineTuningTeaser = lazy(() => import('./components/products/FineTuningTeaser'));
 const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
@@ -86,12 +91,18 @@ function AnimatedRoutes() {
             <Route path="/google-cloud-ai-consulting" element={<GoogleCloudAILanding />} />
             <Route path="/smart-contract-development" element={<SmartContractLanding />} />
             <Route path="/ai-automation" element={<AIAutomationLanding />} />
+            {LOCAL_SERVICE_SLUGS.map((slug) => (
+              <Route key={slug} path={`/${slug}`} element={<LocalServiceLanding />} />
+            ))}
             <Route path="/case-studies" element={<CaseStudiesSection />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="/checkout/cancelled" element={<CheckoutCancelled />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/editorial-policy" element={<EditorialPolicy />} />
+            <Route path="/corrections-policy" element={<CorrectionsPolicy />} />
+            <Route path="/authors/:slug" element={<AuthorProfile />} />
             <Route path="/process" element={<ProcessPage />} />
             <Route path="/whitepaper" element={<WhitePaper />} />
             <Route path="/fine-tuning" element={<FineTuningTeaser />} />

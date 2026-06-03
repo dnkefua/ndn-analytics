@@ -12,6 +12,9 @@ const COMPANY_LINKS = [
   ['Technology', '/tech'],
   ['Contact', '/contact'],
   ['Blog', '/blog'],
+  ['Editorial Policy', '/editorial-policy'],
+  ['Corrections Policy', '/corrections-policy'],
+  ['Authors', '/authors/ndn-analytics-team'],
   ['White Paper', '/whitepaper'],
   ['Privacy Policy', '/privacy'],
   ['Terms of Service', '/terms'],
@@ -21,9 +24,16 @@ const COMPANY_LINKS = [
 const SERVICES_LINKS = [
   ['AI Products', '/ai-products'],
   ['AI Automation', '/ai-automation'],
+  ['AI Automation Tulsa', '/ai-automation-tulsa'],
+  ['AI Automation Dubai', '/ai-automation-company-dubai'],
+  ['AI App Development Tulsa', '/ai-app-development-tulsa'],
+  ['AI App Development Dubai', '/ai-app-development-dubai'],
   ['Blockchain Solutions', '/blockchain-solutions'],
+  ['Blockchain Tulsa', '/blockchain-development-tulsa'],
+  ['Blockchain Dubai', '/blockchain-development-dubai'],
   ['Google Cloud AI Consulting', '/google-cloud-ai-consulting'],
   ['Smart Contract Development', '/smart-contract-development'],
+  ['Smart Contracts Dubai', '/smart-contract-development-dubai'],
   ['Case Studies', '/case-studies'],
 ];
 
