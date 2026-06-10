@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-06-03
+> Updated: 2026-06-10
 
 ## Summary
 NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
@@ -89,16 +89,16 @@ Tamper-evident records, traceability, community finance.
 - Student Teacher App: https://www.ndnanalytics.com/products/ndn-016
 
 ## Latest Insights (10)
+- Fine-Tuning Is Dead. Long Live Fine-Tuning: Enterprise AI Model Strategy in 2026: https://www.ndnanalytics.com/blog/enterprise-ai-fine-tuning-2026-strategy
+- The Agentic Workforce in 2026: Why AI Is Growing Headcount, Not Shrinking It: https://www.ndnanalytics.com/blog/agentic-workforce-ai-headcount-growth
+- Hospital AI in 2026: How Machine Learning Is Cutting Readmissions — and What It Means for Healthcare Operators: https://www.ndnanalytics.com/blog/hospital-ai-readmission-prediction-healthcare
+- AI Demand Forecasting 2026: Solving the $1.73 Trillion Retail Inventory Problem: https://www.ndnanalytics.com/blog/ai-demand-forecasting-retail-inventory-problem
 - Blockchain in Supply Chain 2026: 5 Use Cases Delivering Measurable Enterprise ROI: https://www.ndnanalytics.com/blog/blockchain-supply-chain-enterprise-roi-2026
 - The 20% Hallucination Problem: Why Enterprise AI Fails and How Real-Time Data Fixes It: https://www.ndnanalytics.com/blog/real-time-data-ai-hallucination-fix
 - Multi-Agent Orchestration in 2026: Choosing Your Enterprise AI Control Plane: https://www.ndnanalytics.com/blog/multi-agent-orchestration-enterprise-control-plane
 - The AI Divide: What Google, IBM, Dell, and EY Revealed This Week About Enterprise AI in 2026: https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal
 - Enterprise AI Agents: A Practical ROI Blueprint for 2026 Leaders: https://www.ndnanalytics.com/blog/enterprise-ai-agents-roi-blueprint
 - Student Teacher App: The AI Classroom Workspace for Cinematic Maths Learning: https://www.ndnanalytics.com/blog/student-teacher-app-ai-classroom
-- CamDiag: Bridging Healthcare Access in Cameroon with AI-Powered Diagnostics: https://www.ndnanalytics.com/blog/camdiag-ai-healthcare-cameroon
-- Why TheDiaspora App Matters: A Digital Home for Global Community, Trust, and Opportunity: https://www.ndnanalytics.com/blog/why-the-diaspora-app-matters
-- Introducing NDN IPFS CHAIN: The Enterprise Proof Layer for Critical Files: https://www.ndnanalytics.com/blog/ndn-ipfs-chain-enterprise-proof-layer
-- Getting Your First Win with AI: How to Prove ROI in 90 Days: https://www.ndnanalytics.com/blog/getting-first-win-ai-quick-roi
 
 ## Case Studies
 - Regional grocery demand forecasting: https://www.ndnanalytics.com/case-studies/regional-grocery-demand-forecasting

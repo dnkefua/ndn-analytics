@@ -100,6 +100,7 @@ export default function BlogPost() {
         keywords={`${post.category.toLowerCase()}, ${post.title.toLowerCase()}`}
         canonicalPath={`/blog/${post.slug}`}
         type="article"
+        articleType={post.news ? 'NewsArticle' : 'BlogPosting'}
         image={post.image}
         author={post.author}
         datePublished={post.date}
@@ -119,6 +120,7 @@ export default function BlogPost() {
         dateModified={post.date}
         image={post.image}
         category={post.category}
+        articleType={post.news ? 'NewsArticle' : 'BlogPosting'}
         keywords={[
           post.category.toLowerCase(),
           ...post.title.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(w => w.length > 4),

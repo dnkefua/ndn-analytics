@@ -58,6 +58,8 @@ export interface UnifiedBlogPost {
   video?: string;
   logo?: string;
   logoAnimation?: string;
+  /** True only for genuine, timely news — emits NewsArticle schema for Google News. */
+  news?: boolean;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;

@@ -11,6 +11,11 @@ export interface BlogPost {
   video?: string;
   logo?: string;
   logoAnimation?: string;
+  /** Set true ONLY for genuinely timely, datelined news (industry
+   *  announcements, breaking developments). News posts emit NewsArticle schema
+   *  and enter news-sitemap.xml for Google News. Evergreen how-to/analysis
+   *  posts must leave this unset (defaults to BlogPosting). */
+  news?: boolean;
   relatedProducts?: string[];
   contentUpgrade?: {
     title: string;
@@ -2858,6 +2863,7 @@ NDN Analytics works with leadership teams on AI operating model design — the i
     category: 'AI',
     readTime: '10 min read',
     image: '/assets/blog/ai-divide-enterprise-hero.jpg',
+    news: true,
     relatedProducts: ['ndn-001', 'ndn-004', 'ndn-012'],
   },
   // ── Scheduled queue (date-gated; appear automatically as dates arrive) ──

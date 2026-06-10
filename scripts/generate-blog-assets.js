@@ -118,6 +118,7 @@ const posts = postBlocks
     category: extractQuotedField(block, 'category'),
     readTime: extractQuotedField(block, 'readTime'),
     content: extractQuotedField(block, 'content', { collapseWhitespace: false }),
+    news: /\bnews:\s*true\b/.test(block),
   }))
   .filter((post) => post.slug && post.date);
 
@@ -224,7 +225,9 @@ console.log(`sitemap.xml written (${STATIC_PAGES.length} static + ${publishedPos
 
 const sortedPosts = [...publishedPosts].sort((a, b) => b.date.localeCompare(a.date));
 const latestDate = sortedPosts[0]?.date ?? TODAY;
-const recentNewsPosts = sortedPosts.filter((post) => isWithinNewsWindow(post.date));
+// Google News policy: news-sitemap must contain genuine, timely news only —
+// not evergreen how-to/analysis posts. Gate on the explicit `news: true` flag.
+const recentNewsPosts = sortedPosts.filter((post) => post.news && isWithinNewsWindow(post.date));
 
 const newsEntries = recentNewsPosts.map((post) => `  <url>
     <loc>${BASE_URL}/blog/${post.slug}</loc>

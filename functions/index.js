@@ -179,7 +179,9 @@ ${blogEntries.join('\n')}
 
 function buildNewsSitemapXml(index) {
   const today = dubaiDateString();
-  const recentNewsPosts = getPublishedPosts(index).filter((post) => isWithinNewsWindow(post.date, today));
+  // Google News policy: include only genuine, timely news (flagged news: true),
+  // never evergreen how-to/analysis posts, and only within the freshness window.
+  const recentNewsPosts = getPublishedPosts(index).filter((post) => post.news && isWithinNewsWindow(post.date, today));
   const newsEntries = recentNewsPosts.map((post) => `  <url>
     <loc>${index.baseUrl}/blog/${post.slug}</loc>
     <news:news>

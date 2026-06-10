@@ -12,14 +12,257 @@
     <copyright>Copyright 2026 NDN Analytics Inc.</copyright>
     <managingEditor>contact@ndnanalytics.com (NDN Analytics)</managingEditor>
     <webMaster>contact@ndnanalytics.com (NDN Analytics)</webMaster>
-    <lastBuildDate>Wed, 03 Jun 2026 12:00:00 GMT</lastBuildDate>
-    <pubDate>Tue, 02 Jun 2026 12:00:00 GMT</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 12:00:00 GMT</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
     <ttl>1440</ttl>
     <image>
       <url>https://www.ndnanalytics.com/logo.jpg</url>
       <title>NDN Analytics Blog</title>
       <link>https://www.ndnanalytics.com/blog</link>
     </image>
+    <item>
+      <title>Fine-Tuning Is Dead. Long Live Fine-Tuning: Enterprise AI Model Strategy in 2026</title>
+      <link>https://www.ndnanalytics.com/blog/enterprise-ai-fine-tuning-2026-strategy</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/enterprise-ai-fine-tuning-2026-strategy</guid>
+      <description>OpenAI&apos;s phase-out of self-serve fine-tuning signals a shift in enterprise AI strategy — not the end of model customisation, but the maturation of it. LoRA, open models, and infrastructure-first programs are the new playbook.</description>
+      <content:encoded><![CDATA[OpenAI's decision to phase out self-serve fine-tuning sent a clear signal through the enterprise AI market in early 2026. The reason given — that advanced models have reduced its necessity — is technically accurate but strategically incomplete.
+
+Fine-tuning is not dead. Its mainstream form, as a simple API call to adjust a proprietary model on your data, is becoming less central. Its more sophisticated forms — parameter-efficient tuning of open models, domain-specific pre-training, and the infrastructure layer around it — are more important than ever.
+
+What fine-tuning does — and what it does not do
+
+Fine-tuning adjusts the weights of a pre-trained model on a new dataset, shifting the model's behaviour toward the patterns in that dataset. Done well, it produces a model that is more accurate and better calibrated for a specific domain than a general-purpose model operating via prompt alone.
+
+What it does not do: inject new knowledge into the model. Facts about your organisation, your current contracts, your live regulatory environment — these require retrieval-augmented generation or tool calls. Fine-tuning is about style and pattern, not about recency.
+
+The new fine-tuning landscape
+
+Three changes have reshaped fine-tuning in 2026.
+
+OpenAI's deprecation of self-serve fine-tuning removes the lowest-friction path to customised proprietary models. Enterprises need to either migrate to Azure OpenAI Service's managed fine-tuning or shift to open-model alternatives.
+
+LoRA and QLoRA have matured into production-grade techniques. Low-Rank Adaptation allows fine-tuning of large open models — Llama 3, Mistral, Falcon — on consumer-grade hardware at a fraction of full fine-tuning cost. A 70B parameter model that required 8× A100 GPUs for full fine-tuning can be adapted with LoRA on a single GPU.
+
+The infrastructure-first paradigm is gaining ground. For many enterprise AI programs, the highest ROI is not in retraining models but in improving the systems around them: context retrieval, tool orchestration, evaluation harnesses, memory, observability, and governance.
+
+When fine-tuning still makes sense
+
+Specialised domain language: Legal, medical, financial, and technical domains have terminology and reasoning patterns that general-purpose models handle inconsistently.
+
+Consistent output format: Enterprise applications that consume AI outputs programmatically benefit from a model fine-tuned to produce consistent output schemas.
+
+Latency and cost optimisation: A smaller model fine-tuned on a specific task can match the accuracy of a larger general-purpose model at a fraction of the inference cost.
+
+Brand voice and style: Content generation for customer-facing applications benefits from fine-tuning on examples of approved brand communication.
+
+What to build in 2026 regardless of fine-tuning decision
+An evaluation harness: a held-out dataset of representative tasks with human baseline scores.
+A context quality pipeline: chunking, deduplication, and metadata management for your RAG system.
+A prompt management system: versioned prompt templates and deployment gates.
+Model-portable code: abstractions that allow model swaps without rewriting your application.
+An observability stack: logging of every inference call, cost monitoring, and output quality sampling.
+
+FAQ
+
+Q: Should we build our own fine-tuning infrastructure or use a managed service?
+A: For most enterprises, start with managed services. Build your own only when you have the engineering team to maintain it, a volume that makes the cost case compelling, and a data sovereignty requirement.
+
+Q: How much labelled data do we need for fine-tuning?
+A: Less than you think. 500–2,000 high-quality annotated examples are sufficient for most domain adaptation tasks with LoRA. Quality matters more than quantity.
+
+Q: How do we prevent catastrophic forgetting?
+A: Use parameter-efficient methods (LoRA, QLoRA) which modify a small fraction of weights. Include a mix of general-purpose examples alongside domain-specific ones. Evaluate on both domain tasks and general capability benchmarks after tuning.
+
+Build your AI model strategy with NDN Model Studio
+
+NDN Model Studio (NDN-012) is NDN Analytics' no-code fine-tuning and model management platform for enterprise teams. It supports LoRA-based tuning of open models, prompt versioning, evaluation harness setup, and model deployment without ML engineering overhead. Book a Discovery Call to see a live demo.]]></content:encoded>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>The Agentic Workforce in 2026: Why AI Is Growing Headcount, Not Shrinking It</title>
+      <link>https://www.ndnanalytics.com/blog/agentic-workforce-ai-headcount-growth</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/agentic-workforce-ai-headcount-growth</guid>
+      <description>A MIT study found that firms using advanced AI systems increased their workforce by an average of 23% over two years. IDC forecasts 40% of G2000 job roles will involve direct AI interaction by 2026. The displacement narrative is incomplete.</description>
+      <content:encoded><![CDATA[The dominant narrative around enterprise AI and employment has been one of displacement: machines taking jobs, headcount shrinking, roles disappearing. The data from organisations that have actually deployed agentic AI at scale tells a more complicated story.
+
+A MIT study of firms using advanced AI systems found they increased their workforce by an average of 23% over two years. IDC forecasts that by 2026, 40% of G2000 job roles will involve direct interaction with AI systems — not replacement by them, but collaboration with them.
+
+Why agentic AI tends to grow headcount
+
+The displacement model assumes simple substitution: an AI agent does the job a human was doing, so the human is no longer needed. This happens in narrow, repetitive tasks. But the displacement model misses two dynamics that dominate in knowledge-work environments.
+
+Work expands to fill the capacity created. When AI handles tier-one customer service queries, the volume of queries the organisation can handle grows. Human agents are freed for tier-two and tier-three queries that previously went unresolved. The team handles more volume at higher value per interaction.
+
+AI creates new roles that did not previously exist. Every enterprise AI program requires humans who design agent workflows, evaluate agent output quality, manage agent permissions, and handle escalations. These roles did not exist before the agents did. They cannot be automated.
+
+The roles that are actually changing
+
+Shrinking roles: Data entry, first-line IT helpdesk (for standard requests), basic document summarisation, routine report generation, simple code boilerplate.
+
+Transforming roles: Customer service agents, financial analysts, paralegal staff, clinical documentation specialists. These roles are changing in character — handling exceptions, judgement calls, and relationship management that agents cannot.
+
+New roles: AI workflow designers, AI evaluators, AI governance officers, human-AI interaction designers, ML ops engineers. None of these roles existed in meaningful numbers five years ago.
+
+PWC's 2026 analysis frames the required organisational response as a "workforce pyramid redesign": fewer repetitive roles at the base, proportionally more human-AI collaboration roles in the middle, a larger premium on senior judgement roles at the top.
+
+What executives are getting wrong
+
+Deloitte's 2026 survey found only 11% of organisations have agentic AI in active production. The bottleneck is not the technology; it is the organisational adaptation.
+
+The most common mistake: deploying agents to automate tasks without redesigning the workflows around them. An agent that automates 80% of a process but still requires a human to complete the remaining 20% the same way as before does not deliver productivity gains — it adds complexity.
+
+The governance question nobody is asking
+
+When an AI agent makes a decision that harms a customer, who is accountable? The answer cannot be "the model." Establishing that accountability line — naming the human whose job it is to govern each agent workflow — is a prerequisite for responsible deployment.
+
+FAQ
+
+Q: Should we communicate our AI plans to our workforce before deploying?
+A: Yes, and early. The most damaging dynamic in AI workforce transformation is uncertainty. Employees who do not know what the AI program means for their role will assume the worst.
+
+Q: How do we identify which roles to target for augmentation first?
+A: Map roles against task repetitiveness and escalation cost. High-repetitiveness, low-escalation-cost roles are the best starting points.
+
+Q: What is the right performance management framework for human-AI teams?
+A: Measure outcomes, not activities. In a blended team, the activities that produce a result are split between human and AI in variable ways. KPIs on outcomes — customer satisfaction, resolution time, accuracy rate — create the right incentives for both.
+
+Prepare your workforce for the agentic era with NDN Analytics
+
+NDN Analytics works with operations and HR leaders on AI workforce strategy — from role mapping and reskilling roadmaps to the governance policies required to deploy agents responsibly. Book a Discovery Call to assess your organisation's readiness.]]></content:encoded>
+      <pubDate>Mon, 08 Jun 2026 12:00:00 GMT</pubDate>
+      <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
+      <category>Industry</category>
+    </item>
+    <item>
+      <title>Hospital AI in 2026: How Machine Learning Is Cutting Readmissions — and What It Means for Healthcare Operators</title>
+      <link>https://www.ndnanalytics.com/blog/hospital-ai-readmission-prediction-healthcare</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/hospital-ai-readmission-prediction-healthcare</guid>
+      <description>ML readmission prediction models achieve AUC of 0.78 and have been shown to reduce 30-day readmission rates by 15–30% when integrated with discharge planning workflows. A practical guide to deploying in healthcare.</description>
+      <content:encoded><![CDATA[Hospital readmissions are one of the most expensive and preventable problems in healthcare. In the United States, approximately 3.3 million adults are readmitted to hospital within 30 days of discharge each year, at a cost of around $26 billion annually. Medicare imposes financial penalties on hospitals with above-average readmission rates.
+
+Machine learning models that predict 30-day readmission risk are now in production at major health systems, and the results are quantifiable.
+
+What the current models can do
+
+The most rigorous evaluation comes from peer-reviewed clinical research. A 2026 systematic review found ML-based readmission prediction consistently improving over traditional risk scores, with the best models achieving AUC values of 0.75–0.82 for 30-day general readmission, compared to 0.65–0.70 for traditional scoring systems.
+
+A 2026 study in Frontiers in Public Health introduced a meaningful innovation: integrating social determinants of health (SDOH) data — housing instability, food insecurity, social isolation — alongside clinical data. Models incorporating SDOH achieved sensitivity of 0.70 and AUC of 0.78.
+
+Where the biggest gains are
+
+Readmission prediction models produce the most actionable results when integrated with discharge planning workflows.
+
+Post-discharge follow-up scheduling: High-risk patients are automatically scheduled for a follow-up call within 48–72 hours. Studies consistently show telephone follow-up within 48 hours reduces readmission rates by 15–20% for targeted populations.
+
+Transitional care intervention: Patients flagged as high-risk are routed to a transitional care nurse before discharge who reviews the discharge plan, confirms prescriptions are filled, and identifies SDOH barriers.
+
+Medication reconciliation flags: A significant proportion of readmissions are driven by medication errors at discharge. ML models trained on medication data can surface these risks before the patient leaves.
+
+Health systems with structured ML-guided readmission prevention programs report 15–30% reductions in 30-day readmission rates for targeted conditions.
+
+The data requirements
+
+Readmission prediction models require: admission and discharge records, diagnosis codes (ICD-10), procedure codes, vital signs, laboratory values, medication records, and discharge notes from prior admissions.
+
+The EHR is the primary data source. Most major EHRs — Epic, Oracle Health, Meditech — expose necessary data through HL7 FHIR APIs, making integration significantly more tractable in 2025–2026.
+
+The governance and ethics considerations
+
+Algorithmic bias: Models trained on historical data inherit the disparities embedded in that data. Health systems must audit model performance stratified by race, ethnicity, insurance status, and socioeconomic indicators.
+
+Clinical integration: A risk score outside the clinical workflow is ignored. The technology deployment is 30% of the project; the clinical workflow redesign is 70%.
+
+Practical deployment advice
+
+Start with one condition. Heart failure has the strongest evidence base, the most clearly defined risk factors, and the highest Medicare penalty exposure.
+
+Partner with clinical champions. No readmission prediction program succeeds without a physician champion and a nursing champion who own the intervention protocol.
+
+FAQ
+
+Q: Can we deploy a readmission prediction model without SDOH data?
+A: Yes. Clinical models achieve AUC of 0.75+ without SDOH. Adding SDOH improves performance incrementally.
+
+Q: How do we handle the handoff from the model to the clinical team?
+A: The model should output a risk tier (high/medium/low), not just a score. The intervention protocol is mapped to the tier: high = transitional care consult; medium = 48-hour follow-up call; low = standard discharge.
+
+Q: Does this work for post-surgical patients?
+A: Yes. ML models outperform traditional risk scores for predicting unplanned 30-day readmission after major surgery.
+
+Deploy NDN Care Predict in your health system
+
+NDN Care Predict (NDN-002) is NDN Analytics' hospital readmission prediction platform, designed for integration with Epic, Oracle Health, and Meditech via FHIR APIs. Book a Discovery Call to see a live integration demo.]]></content:encoded>
+      <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
+      <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
+      <category>Industry</category>
+    </item>
+    <item>
+      <title>AI Demand Forecasting 2026: Solving the $1.73 Trillion Retail Inventory Problem</title>
+      <link>https://www.ndnanalytics.com/blog/ai-demand-forecasting-retail-inventory-problem</link>
+      <guid isPermaLink="true">https://www.ndnanalytics.com/blog/ai-demand-forecasting-retail-inventory-problem</guid>
+      <description>Global retail inventory distortion costs $1.73 trillion annually. Enterprises applying AI to demand planning report 20–50% reductions in forecast error and up to 65% reductions in lost sales. Here is how the ROI case closes.</description>
+      <content:encoded><![CDATA[There is a number that supply chain executives tend to find clarifying: $1.73 trillion. That is the annual cost of global retail inventory distortion — the combined financial damage from overstocking and stockouts — representing roughly 6.5% of global retail sales.
+
+AI demand forecasting is the most effective tool available to close this gap. In 2026, enterprises applying machine learning to demand planning are reporting 20–50% reductions in forecast error, 5–10% lower warehousing costs, and up to 65% reductions in lost sales from stockouts.
+
+Why traditional forecasting fails at scale
+
+Traditional demand forecasting relies on time-series models — moving averages, exponential smoothing, ARIMA variants — that use a small number of inputs to predict a complex outcome shaped by dozens of variables.
+
+What they cannot handle: sudden demand spikes from promotions or social media virality, new product introductions with no sales history, demand interactions between products, regional variations, and competitive pricing moves.
+
+What AI forecasting models do differently
+
+Feature-rich inputs: ML models can incorporate weather data, social media sentiment, promotional calendars, competitive pricing signals, and macroeconomic indicators alongside sales history.
+
+Hierarchical forecasting: Rather than forecasting at the SKU level alone, ML models can forecast simultaneously at product, category, region, and channel level.
+
+Probabilistic outputs: Instead of a point forecast, ML models output a demand distribution. This allows planners to set replenishment triggers at a chosen service level.
+
+Continuous learning: Models retrain on recent data, adapting to structural shifts in demand patterns.
+
+The use cases with the clearest ROI
+
+Grocery and FMCG: High SKU count, daily restocking cycles, perishable inventory. A 10% improvement in forecast accuracy can eliminate millions of units of waste annually.
+
+Fashion and apparel: Short selling seasons, high markdown costs for unsold inventory. ML models that incorporate social media trends and weather patterns significantly outperform traditional seasonal models.
+
+Industrial and MRO supply chains: Low-frequency, high-value demand for parts. A single missed part can shut down a production line.
+
+Pharmaceutical distribution: Regulatory requirements for supply continuity make accurate demand forecasting a compliance requirement.
+
+The data requirements
+
+The gap between proof of concept and production is almost always the data. ML models need clean, consistent historical demand data at the SKU-location level. The minimum viable history is typically 24 months.
+
+Budget the data preparation phase generously. In most enterprise deployments, data preparation consumes 40–60% of the total project timeline. Teams that skip this step deploy models that perform well on clean historical data and poorly on live data.
+
+Implementation sequence
+
+Start narrow: a single category or product family with clean data and significant demand variability. Prove the model performance and the integration with the planning workflow before expanding.
+
+Measure correctly: the metrics that matter are inventory turns, service level, and the cost of forecast errors — stockout costs plus overstock costs.
+
+FAQ
+
+Q: How long before we see ROI?
+A: Most enterprises see measurable forecast accuracy improvement within 90 days. The financial impact — reduced overstock, lower stockout costs — typically materialises in 6–12 months.
+
+Q: Can AI forecasting handle new product introductions?
+A: Yes, using analogous product performance as a baseline, adjusted for category trends and promotional plan.
+
+Q: Do we need to replace our existing planning system?
+A: Not necessarily. Most AI demand forecasting deployments operate as a forecasting engine that integrates with an existing planning system (SAP IBP, Blue Yonder, Kinaxis).
+
+Build demand intelligence with NDN Demand IQ
+
+NDN Demand IQ (NDN-001) is NDN Analytics' AI demand forecasting platform for enterprise retail and manufacturing supply chains. It provides probabilistic demand distributions that improve service levels while reducing inventory costs. Book a Discovery Call to see how Demand IQ performs on your product categories.]]></content:encoded>
+      <pubDate>Thu, 04 Jun 2026 12:00:00 GMT</pubDate>
+      <author>contact@ndnanalytics.com (NDN Analytics Team)</author>
+      <category>Industry</category>
+    </item>
     <item>
       <title>Blockchain in Supply Chain 2026: 5 Use Cases Delivering Measurable Enterprise ROI</title>
       <link>https://www.ndnanalytics.com/blog/blockchain-supply-chain-enterprise-roi-2026</link>
