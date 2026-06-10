@@ -13,6 +13,9 @@ interface ArticleSchemaProps {
   image?: string;
   category: string;
   keywords?: string[];
+  /** Defaults to BlogPosting (correct for evergreen posts). Use 'NewsArticle'
+   *  only for genuinely timely, datelined news. */
+  articleType?: 'BlogPosting' | 'NewsArticle';
 }
 
 export default function ArticleSchema({
@@ -25,6 +28,7 @@ export default function ArticleSchema({
   image,
   category,
   keywords = [],
+  articleType = 'BlogPosting',
 }: ArticleSchemaProps) {
   const url = `${BASE_URL}/blog/${slug}`;
   const ogImage = image
@@ -36,7 +40,7 @@ export default function ArticleSchema({
 
   const data = {
     '@context': 'https://schema.org',
-    '@type': ['NewsArticle', 'BlogPosting'],
+    '@type': articleType,
     headline: title,
     description: excerpt,
     url,

@@ -222,6 +222,15 @@ for (const file of ['feed.xml', 'sitemap.xml', 'news-sitemap.xml', 'llms.txt']) 
   rmSync(`${DIST}/${file}`, { force: true });
 }
 
+// CRITICAL SEO FIX: Firebase Hosting serves static files BEFORE rewrites.
+// If dist/index.html exists, the homepage "/" is served as the un-rendered
+// SSR template shell (<!--ssr-outlet--> placeholder, generic meta, no body
+// content or JSON-LD) and NEVER reaches the SSR function — unlike every other
+// route. The function already has its own template copy (functions/index.html,
+// copied above), so removing the Hosting copy makes "/" fall through to the
+// `**` -> ssr rewrite and be fully server-rendered like all other pages.
+rmSync(`${DIST}/index.html`, { force: true });
+
 // Copy PWA/root assets so direct Function URLs and Hosting rewrites serve the
 // same installability metadata as Firebase Hosting's static file layer.
 for (const file of [

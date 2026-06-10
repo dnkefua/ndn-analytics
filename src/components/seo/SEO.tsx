@@ -7,6 +7,10 @@ interface SEOProps {
   keywords?: string;
   canonicalPath?: string;
   type?: 'website' | 'article' | 'product';
+  /** Schema.org type for article pages. Defaults to BlogPosting (correct for
+   *  evergreen how-to/analysis posts). Set to 'NewsArticle' only for genuinely
+   *  timely, datelined news. */
+  articleType?: 'BlogPosting' | 'NewsArticle';
   image?: string;
   product?: {
     name: string;
@@ -31,6 +35,7 @@ export default function SEO({
   keywords,
   canonicalPath,
   type = 'website',
+  articleType = 'BlogPosting',
   image = DEFAULT_IMAGE,
   product,
   author,
@@ -87,7 +92,7 @@ export default function SEO({
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'NewsArticle',
+            '@type': articleType,
             '@id': canonicalUrl,
             headline: title,
             description,
