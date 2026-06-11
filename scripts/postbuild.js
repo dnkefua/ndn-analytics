@@ -223,13 +223,14 @@ for (const file of ['feed.xml', 'sitemap.xml', 'news-sitemap.xml', 'llms.txt']) 
 }
 
 // CRITICAL SEO FIX: Firebase Hosting serves static files BEFORE rewrites.
-// If dist/index.html exists, the homepage "/" is served as the un-rendered
-// SSR template shell (<!--ssr-outlet--> placeholder, generic meta, no body
-// content or JSON-LD) and NEVER reaches the SSR function — unlike every other
-// route. The function already has its own template copy (functions/index.html,
-// copied above), so removing the Hosting copy makes "/" fall through to the
-// `**` -> ssr rewrite and be fully server-rendered like all other pages.
-rmSync(`${DIST}/index.html`, { force: true });
+// If Hosting uploads dist/index.html, the homepage "/" is served as the
+// un-rendered SSR template shell (<!--ssr-outlet--> placeholder, generic
+// meta, no body content or JSON-LD) and NEVER reaches the SSR function —
+// unlike every other route. The exclusion lives in firebase.json
+// (hosting.ignore includes "index.html") rather than deleting the file here,
+// because Lighthouse CI and `vite preview` serve dist/ statically and still
+// need index.html locally. The SSR function keeps its own template copy
+// (functions/index.html, copied above).
 
 // Copy PWA/root assets so direct Function URLs and Hosting rewrites serve the
 // same installability metadata as Firebase Hosting's static file layer.
