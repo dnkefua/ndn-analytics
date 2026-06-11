@@ -28,7 +28,7 @@ describe('ArticleSchema', () => {
         title="Test Article"
         excerpt="A test description"
         slug="test-article"
-        author="NDN Analytics"
+        author="NDN Analytics Team"
         datePublished="2026-01-01"
         category="AI"
       />
@@ -39,7 +39,7 @@ describe('ArticleSchema', () => {
       const data = JSON.parse(script.textContent || '');
       expect(data['@type']).toBe('BlogPosting');
       expect(data.headline).toBe('Test Article');
-      expect(data.author.name).toBe('NDN Analytics');
+      expect(data.author.name).toBe('NDN Analytics Team');
     }
   });
 });
