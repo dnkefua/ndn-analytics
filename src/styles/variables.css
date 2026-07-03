@@ -1,0 +1,60 @@
+:root {
+  /* === NDN Analytics — Enterprise Dark Theme === */
+  /* Palette extracted from logo: electric cyan circuit traces + steel-blue letterforms + violet node dots */
+
+  /* Core Brand */
+  --brand-cyan: #06B6D4;           /* circuit-trace cyan — primary accent */
+  --brand-cyan-light: #67E8F9;     /* light glow */
+  --brand-blue: #3B82F6;           /* steel blue */
+  --brand-blue-light: #93C5FD;
+  --brand-purple: #8B5CF6;         /* circuit-node violet */
+  --brand-gold: #F59E0B;
+
+  /* Primary / Secondary aliases */
+  --primary-purple: #8B5CF6;
+  --primary-pink: #06B6D4;         /* repurposed: cyan leads */
+  --secondary-blue: #3B82F6;
+  --accent-cyan: #06B6D4;
+
+  /* Background Colors — Deep Space */
+  --bg-primary: #020B18;           /* base page background */
+  --bg-secondary: #030F20;         /* alternate section bg */
+  --bg-surface: #071829;           /* cards, panels */
+
+  /* Text Colors */
+  --text-primary: #EFF6FF;         /* cool near-white */
+  --text-secondary: #94A3B8;       /* muted slate-blue */
+  --text-tertiary: #475569;        /* very muted */
+
+  /* Shadow System — depth on dark */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.65);
+  --shadow-xl: 0 20px 56px rgba(0, 0, 0, 0.75);
+
+  /* Gradient System — Cyan → Blue → Violet */
+  --gradient-primary: linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%);
+  --gradient-subtle: linear-gradient(135deg, #030F20 0%, #071829 100%);
+  --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+
+  /* Border Colors — cyan glass */
+  --border-subtle: rgba(6, 182, 212, 0.12);
+  --border-hover: rgba(6, 182, 212, 0.28);
+
+  /* Legacy compat names */
+  --dark-void: #020B18;
+  --dark-surface: #030F20;
+  --dark-card: #071829;
+
+  /* Layout */
+  --nav-height: 84px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+

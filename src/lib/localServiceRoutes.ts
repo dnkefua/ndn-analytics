@@ -1,0 +1,16 @@
+export const LOCAL_SERVICE_SLUGS = [
+  'ai-automation-tulsa',
+  'ai-consulting-tulsa',
+  'ai-app-development-tulsa',
+  'blockchain-development-tulsa',
+  'smart-contract-development-tulsa',
+  'ai-automation-oklahoma',
+  'ai-consulting-oklahoma',
+  'blockchain-development-oklahoma',
+  'ai-automation-company-dubai',
+  'ai-consulting-dubai',
+  'ai-app-development-dubai',
+  'blockchain-development-dubai',
+  'smart-contract-development-dubai',
+  'enterprise-ai-automation-uae',
+] as const;

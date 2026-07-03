@@ -1,0 +1,68 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /internal/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+Sitemap: https://www.ndnanalytics.com/sitemap.xml
+Sitemap: https://www.ndnanalytics.com/news-sitemap.xml
+
+# Feed and AI-readable documentation
+# RSS: https://www.ndnanalytics.com/feed.xml
+# llms.txt: https://www.ndnanalytics.com/llms.txt

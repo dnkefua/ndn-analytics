@@ -1,0 +1,447 @@
+import type { Product } from '../../types';
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 'ndn-001',
+    number: 'NDN—001',
+    name: 'NDN Demand IQ',
+    description: 'AI-powered retail demand forecasting that predicts inventory needs with precision, eliminating stockouts and overstock across complex supply networks.',
+    tagline: 'Predict demand before it happens.',
+    features: ['Real-time demand sensing', 'Multi-echelon optimization', 'Seasonal pattern recognition', 'Supplier risk modeling'],
+    badge: 'Google Cloud',
+    stack: 'gcloud',
+    icon: '◈',
+    industries: ['Retail', 'E-Commerce', 'Consumer Goods', 'Grocery'],
+    useCases: [
+      'Eliminate costly stockouts during peak seasons with 90-day demand forecasts',
+      'Automate purchase orders across thousands of SKUs with AI-driven replenishment',
+      'Detect supplier disruption risk weeks before it impacts your shelves',
+      'Optimize markdown timing to clear slow-moving inventory at maximum margin',
+    ],
+    howItWorks: 'NDN Demand IQ ingests your historical sales, external signals (weather, events, economic indicators), and supplier lead times into a Google Cloud Vertex AI pipeline. The model retrains weekly and pushes optimized order recommendations directly to your ERP or WMS.',
+    metrics: ['Up to 35% reduction in stockouts', 'Up to 28% reduction in excess inventory', '90-day forecast horizon', 'ERP/WMS native integration'],
+  },
+  {
+    id: 'ndn-002',
+    number: 'NDN—002',
+    name: 'NDN Care Predict',
+    description: 'Hospital readmission prevention AI that identifies at-risk patients before discharge, enabling proactive intervention and reducing costly readmissions.',
+    tagline: 'Intervene before readmission happens.',
+    features: ['Readmission risk scoring', 'EHR integration', 'Clinical workflow automation', 'Outcome prediction models'],
+    badge: 'Healthcare AI',
+    stack: 'gcloud',
+    icon: '⬡',
+    industries: ['Hospital Systems', 'Integrated Health Networks', 'Post-Acute Care', 'Health Insurance'],
+    useCases: [
+      'Score every discharging patient for 30-day readmission risk in real time',
+      'Trigger automated care coordination workflows for high-risk patients',
+      'Identify social determinants of health that drive avoidable readmissions',
+      'Demonstrate outcomes data to payers for value-based care contracts',
+    ],
+    howItWorks: 'NDN Care Predict connects to your EHR via HL7/FHIR APIs, pulling clinical notes, lab values, vitals, and social history into a HIPAA-compliant Google Cloud pipeline. The risk model scores patients at each shift change and surfaces actionable alerts inside existing nursing and case management workflows.',
+    metrics: ['HIPAA & HITRUST compliant', 'HL7/FHIR native integration', 'Real-time scoring at every shift', 'Integrates with Epic, Cerner, Oracle Health'],
+  },
+  {
+    id: 'ndn-003',
+    number: 'NDN—003',
+    name: 'NDN Route AI',
+    description: 'Last-mile delivery optimization engine that dynamically routes fleets in real time, cutting delivery costs and improving customer satisfaction.',
+    tagline: 'Every mile optimized. Every delivery on time.',
+    features: ['Dynamic route optimization', 'Fleet telemetry integration', 'Traffic pattern learning', 'Carbon footprint tracking'],
+    badge: 'Logistics AI',
+    stack: 'gcloud',
+    icon: '◉',
+    industries: ['Logistics & Courier', '3PL Providers', 'Retail Delivery', 'Food & Grocery Delivery'],
+    useCases: [
+      'Optimize thousands of stops across hundreds of drivers in under 60 seconds',
+      'Dynamically reroute in real time as traffic, weather, or cancellations occur',
+      'Reduce carbon emissions with fuel-efficient routing and EV-aware path planning',
+      'Give customers accurate ETAs with live driver tracking links',
+    ],
+    howItWorks: 'NDN Route AI connects to your fleet telematics and order management systems. A Google Cloud optimization engine solves the vehicle routing problem at scale, accounting for time windows, vehicle capacity, driver hours, and real-time traffic. Routes are pushed directly to driver apps.',
+    metrics: ['Up to 23% reduction in fuel costs', 'Sub-60s route generation for 1,000+ stops', 'Real-time traffic & weather adaptation', 'EV fleet path planning'],
+  },
+  {
+    id: 'ndn-004',
+    number: 'NDN—004',
+    name: 'NDN Churn Guard',
+    description: 'SaaS churn prevention platform that identifies at-risk accounts weeks in advance and triggers automated retention workflows.',
+    tagline: 'Stop churn before your customer even thinks about it.',
+    features: ['Behavioral churn signals', 'Health score dashboard', 'Automated intervention flows', 'Revenue impact forecasting'],
+    badge: 'SaaS AI',
+    stack: 'gcloud',
+    icon: '◎',
+    industries: ['SaaS Platforms', 'Subscription Services', 'B2B Software', 'Media & Streaming'],
+    useCases: [
+      'Detect accounts trending toward cancellation 45+ days before renewal',
+      'Auto-trigger outreach from CSM teams when health scores drop below threshold',
+      'Identify product features most correlated with long-term retention',
+      'Quantify at-risk ARR by segment and surface it in executive dashboards',
+    ],
+    howItWorks: 'NDN Churn Guard pulls product usage events, support ticket sentiment, billing history, and engagement signals into a Google Cloud ML pipeline. The churn propensity model updates daily and pushes risk scores to your CRM (Salesforce, HubSpot) and CSM platform (Gainsight, Totango).',
+    metrics: ['45-day early churn warning', 'CRM & CSM native integration', 'ARR-at-risk dashboards', 'Segment-level retention analysis'],
+  },
+  {
+    id: 'ndn-005',
+    number: 'NDN—005',
+    name: 'NDN TraceChain',
+    description: 'Immutable supply chain provenance on Ethereum — track every component from raw material to end consumer with cryptographic certainty.',
+    tagline: 'Every product. Every step. On-chain.',
+    features: ['On-chain provenance records', 'QR-linked product passports', 'Anti-counterfeiting verification', 'Regulatory audit trails'],
+    badge: 'Ethereum',
+    stack: 'ethereum',
+    icon: '⬡',
+    industries: ['Luxury Goods', 'Pharmaceuticals', 'Food & Beverage', 'Electronics Manufacturing'],
+    useCases: [
+      'Issue a tamper-proof digital product passport at manufacturing, verifiable by any consumer via QR scan',
+      'Prove ESG and ethical sourcing claims with cryptographic evidence across your supplier network',
+      'Eliminate counterfeit products with on-chain authentication at point of sale',
+      'Generate immutable audit trails for FDA, EU supply chain regulation, and customs compliance',
+    ],
+    howItWorks: 'NDN TraceChain deploys smart contracts on Ethereum mainnet or a private EVM chain. Each supply chain event (manufacture, transfer, inspection, retail) writes a hash to the chain. Consumers and regulators verify provenance via a public API or QR-linked product passport page.',
+    metrics: ['Ethereum mainnet & EVM-compatible chains', 'Consumer-facing QR product passports', 'FDA & EU supply chain compliance', 'Real-time counterfeiting alerts'],
+    media: {
+      video: '/assets/tracechain-demo.mp4',
+      image: '/assets/tracechain-landing.webp',
+    },
+  },
+  {
+    id: 'ndn-006',
+    number: 'NDN—006',
+    name: 'NDN PayStream',
+    description: 'Smart contract payment infrastructure for automated, trustless B2B settlements — milestone-triggered, multi-currency, globally compliant.',
+    tagline: 'Payments that execute themselves.',
+    features: ['Milestone-based smart payments', 'Multi-currency support', 'Escrow automation', 'Real-time settlement finality'],
+    badge: 'Ethereum',
+    stack: 'ethereum',
+    icon: '◈',
+    industries: ['Construction & Real Estate', 'Professional Services', 'International Trade', 'Freelance Platforms'],
+    useCases: [
+      'Automate contractor milestone payments without manual invoice approval cycles',
+      'Hold funds in smart contract escrow until delivery conditions are met on-chain',
+      'Settle cross-border B2B payments in seconds with cryptographic finality',
+      'Eliminate payment disputes with immutable, pre-agreed contract logic',
+    ],
+    howItWorks: 'NDN PayStream deploys audited Solidity escrow contracts on Ethereum. Funds lock at contract creation; oracle feeds or authorized signers trigger milestone releases. Multi-signature authorization and time-lock mechanisms protect both parties. Integrates with existing ERP billing flows via API.',
+    metrics: ['Multi-sig authorization', 'Oracle-triggered milestone release', 'USDC, ETH, ERC-20 support', 'ERP billing API integration'],
+  },
+  {
+    id: 'ndn-007',
+    number: 'NDN—007',
+    name: 'NDN CredVault',
+    description: 'Decentralized credential verification for workforce and academic credentials — tamper-proof, instantly shareable, employer-verifiable.',
+    tagline: 'Trust credentials. Not paperwork.',
+    features: ['Blockchain credential issuance', 'Zero-knowledge proof verification', 'Employer API integration', 'Revocation management'],
+    badge: 'Ethereum',
+    stack: 'ethereum',
+    icon: '◉',
+    industries: ['Higher Education', 'Professional Certification Bodies', 'Enterprise HR', 'Government'],
+    useCases: [
+      'Issue university degrees, professional certifications, and training badges as on-chain verifiable credentials',
+      'Let candidates share a single verification link instead of paper transcripts',
+      'HR teams verify credentials in seconds via API without contacting issuing institutions',
+      'Revoke compromised or expired credentials instantly across all downstream verifiers',
+    ],
+    howItWorks: 'NDN CredVault implements the W3C Verifiable Credentials standard on Ethereum. Issuers sign credentials with their DID (Decentralized Identifier); holders store them in a self-sovereign wallet. Verifiers call our REST API to check authenticity and revocation status without contacting the issuer.',
+    metrics: ['W3C Verifiable Credentials standard', 'Decentralized Identifier (DID) based', 'Sub-second verification', 'Instant revocation on-chain'],
+  },
+  {
+    id: 'ndn-008',
+    number: 'NDN—008',
+    name: 'NDN PropLedger',
+    description: 'Real estate tokenization platform enabling fractional property ownership, automated rent distribution, and transparent transaction records on-chain.',
+    tagline: 'Real estate ownership, reimagined on-chain.',
+    features: ['Property token issuance', 'Fractional ownership management', 'Automated rent distributions', 'On-chain title registry'],
+    badge: 'Ethereum',
+    stack: 'ethereum',
+    icon: '◎',
+    industries: ['Real Estate Funds', 'Property Developers', 'REITs', 'Proptech Platforms'],
+    useCases: [
+      'Tokenize commercial or residential properties into ERC-20 shares for fractional investor access',
+      'Distribute rental income to thousands of token holders automatically via smart contract',
+      'Record property transfers on-chain for transparent, tamper-proof title history',
+      'Enable secondary market trading of property tokens with built-in compliance rules',
+    ],
+    howItWorks: 'NDN PropLedger issues ERC-20 security tokens representing fractional ownership of legally-structured real estate entities (LLC or SPV). Smart contracts handle income distribution, transfer restrictions (KYC/AML whitelisting), and governance voting. On-chain title records are notarized via Ethereum.',
+    metrics: ['ERC-20 security token standard', 'KYC/AML transfer restrictions built-in', 'Automated dividend distribution', 'Secondary market liquidity rails'],
+  },
+  {
+    id: 'ndn-009',
+    number: 'NDN—009',
+    name: 'Njangi',
+    description: 'Community blockchain staking protocol digitizing centuries-old African rotating savings traditions (ROSCAs) for the decentralized era — transparent, trustless, and community-governed.',
+    tagline: 'Ancient trust. Decentralized future.',
+    features: ['Decentralized savings circles', 'On-chain contribution tracking', 'Smart contract payout rotation', 'Community trust scoring'],
+    badge: 'Web3 / Community Finance',
+    stack: 'new',
+    icon: '★',
+    industries: ['Community Finance', 'Diaspora Banking', 'Microfinance', 'Web3 DeFi'],
+    useCases: [
+      'Form digital savings circles with friends, family, or community members anywhere in the world',
+      'Contributions and payout rotations enforced automatically by smart contract — no trusted middleman needed',
+      'Build an on-chain reputation score through consistent Njangi participation for future DeFi access',
+      'Serve unbanked and underbanked communities with mobile-first, wallet-native savings infrastructure',
+    ],
+    howItWorks: 'Njangi smart contracts manage circle membership, contribution schedules, and payout rotations. Members deposit funds each cycle; the contract releases the pooled amount to the designated recipient according to the agreed rotation. Trust scores accumulate on-chain and are portable across DeFi protocols.',
+    metrics: ['Multi-chain deployment (EVM)', 'Mobile-first wallet interface', 'On-chain trust score system', 'Supports stablecoin contributions'],
+    media: {
+      video: '/assets/njangi-demo.mp4',
+      image: '/assets/njangi-landing.webp',
+    },
+    website: 'https://www.njangi.xyz',
+  },
+  {
+    id: 'ndn-010',
+    number: 'NDN—010',
+    name: 'NeuroQuest',
+    description: 'AI-powered cognitive intelligence platform harnessing neural analytics for advanced personality profiling, decision mapping, and behavioral prediction.',
+    tagline: 'Understand how minds decide.',
+    features: ['Neural pattern analysis', 'Cognitive decision mapping', 'Behavioral prediction models', 'AI personality profiling'],
+    badge: 'Cognitive AI',
+    stack: 'new',
+    icon: '✦',
+    industries: ['Talent & HR Tech', 'Executive Coaching', 'Market Research', 'Mental Health Tech'],
+    useCases: [
+      'Map a candidate\'s cognitive decision style and predict role performance before hiring',
+      'Build high-performing teams by understanding cognitive diversity and blind spots',
+      'Personalize learning and development programs based on individual neural processing profiles',
+      'Deliver deep behavioral insights for market research and consumer psychology studies',
+    ],
+    howItWorks: 'NeuroQuest administers a validated psychometric assessment battery, then runs results through a neural network trained on cognitive science research. The platform generates a multi-dimensional cognitive profile covering decision style, risk tolerance, creativity index, and interpersonal patterns — delivered via dashboard and API.',
+    metrics: ['Validated psychometric battery', 'Multi-dimensional cognitive profiling', 'Team composition analytics', 'API-first for HR platform integration'],
+    media: {
+      video: '/assets/neuroquest-academy-demo.mp4',
+      image: '/assets/neuroquest-academy-landing.webp',
+    },
+  },
+  {
+    id: 'ndn-011',
+    number: 'NDN—011',
+    name: 'NDN Interpreter',
+    description: 'AI-powered real-time sign language translation platform breaking down communication barriers with advanced computer vision and neural machine translation.',
+    tagline: 'Seamless communication. Without barriers.',
+    features: ['Real-time gesture recognition', 'Multi-modal translation (Sign-to-Text, Voice-to-Sign)', 'Offline-capable edge AI', 'Accessibility API integration'],
+    badge: 'Vision AI',
+    stack: 'new',
+    icon: '⚲',
+    industries: ['Healthcare', 'Education', 'Public Sector', 'Customer Service'],
+    useCases: [
+      'Enable seamless telemedicine and in-person consultations for deaf and hard-of-hearing patients',
+      'Provide instant, accessible communication in classrooms and online learning environments',
+      'Ensure accessibility compliance in public service and government communications',
+      'Equip customer service representatives with real-time translation tools',
+    ],
+    howItWorks: 'NDN Interpreter utilizes advanced computer vision via a standard webcam or mobile camera to capture sign language gestures. The stream is processed by a highly optimized, low-latency neural machine translation model that instantly converts movements into text or synthesized speech. Conversely, spoken language is converted into text or animated sign language avatars.',
+    metrics: ['Sub-200ms translation latency', '95%+ gesture recognition accuracy', 'Supports multiple sign languages', 'Web and mobile native deployment'],
+    website: 'https://interpreter-app-909081961263.us-central1.run.app/',
+  },
+  {
+    id: 'ndn-012',
+    number: 'NDN—012',
+    name: 'NDN Model Studio',
+    description: 'No-code fine-tuning platform that lets you pick any Hugging Face model, upload your data, train on managed GPUs via Google Vertex AI, and deploy to a serverless Firebase endpoint — in clicks, not weeks.',
+    tagline: 'Fine-tune AI models. No ML team required.',
+    features: ['900K+ Hugging Face models', 'Managed GPU training via Vertex AI', 'One-click Firebase deployment', 'GGUF, ONNX, SafeTensors export'],
+    badge: 'Coming Soon',
+    stack: 'new',
+    icon: '⚙',
+    industries: ['ML/AI Engineering', 'Data Science', 'Enterprise AI', 'Research'],
+    useCases: [
+      'Fine-tune an open-source LLM on your proprietary data without provisioning GPUs',
+      'Deploy a custom model as a serverless endpoint with auto-scaling and near-zero cold start',
+      'Export fine-tuned models in GGUF, ONNX, or SafeTensors for on-premise or edge deployment',
+      'Iterate 4-6x faster than self-managed training clusters with spend guardrails built in',
+    ],
+    howItWorks: 'NDN Model Studio connects to Hugging Face Hub to browse and select base models. Upload your training data (JSONL, CSV, or BigQuery), configure hyperparameters, and launch training on Google Vertex AI managed GPU clusters. Monitor progress in real time, then deploy with one click to a Firebase Functions v2 serverless endpoint.',
+    metrics: ['900K+ models on Hugging Face', '4-6x faster iteration vs. self-managed', 'Near-zero cold start deployment', 'Spend guardrails included'],
+    media: {
+      video: '/assets/fine-tune-demo.mp4',
+      image: '/assets/fine-tune-command-center.webp',
+      gallery: [
+        {
+          type: 'video',
+          src: '/assets/fine-tune-facebook-data-demo.mp4',
+          poster: '/assets/fine-tune-command-center.webp',
+          label: 'Facebook data fine-tune',
+          alt: 'FineTune App demo showing a Facebook data fine-tuning workflow',
+        },
+      ],
+    },
+  },
+  {
+    id: 'ndn-013',
+    number: 'NDN-013',
+    name: 'NDN IPFS CHAIN',
+    description: 'Enterprise-grade immutable document and media ledger powered by IPFS + Ethereum, giving your organization verifiable chain-of-custody for contracts, records, and digital evidence.',
+    tagline: 'Prove every file. Trust every transfer.',
+    features: ['IPFS content-addressed storage', 'On-chain proof anchoring', 'Tamper-evident audit timeline', 'Role-based enterprise access controls'],
+    badge: 'Ethereum + IPFS',
+    stack: 'ethereum',
+    icon: '⬢',
+    industries: ['Legal & Compliance', 'Supply Chain', 'Healthcare', 'Financial Services'],
+    useCases: [
+      'Anchor signed contracts and compliance records with immutable timestamped proofs',
+      'Verify evidence package integrity in legal or regulatory investigations',
+      'Track chain-of-custody for sensitive files shared across internal and external teams',
+      'Publish customer-facing trust proofs without exposing private document contents',
+    ],
+    howItWorks: 'NDN IPFS CHAIN hashes each uploaded file, stores encrypted payloads on IPFS, and anchors the content IDs to Ethereum smart contracts for immutable verification. Authorized teams access a dashboard and API to validate file authenticity, audit transfer history, and automate compliance exports.',
+    metrics: ['Immutable CID-based verification', 'Ethereum-backed proof records', 'Private file encryption at rest', 'Audit-ready chain-of-custody exports'],
+    media: {
+      video: '/assets/ndn-ipfs-chain-video.mp4',
+      image: '/assets/ndn-ipfs-chain-homepage.webp',
+    },
+  },
+  {
+    id: 'ndn-014',
+    number: 'NDN-014',
+    name: 'TheDiaspora App',
+    description: 'A digital home for diaspora communities, connecting identity, trusted profiles, cultural belonging, professional opportunity, and cross-border collaboration in one mobile-first network.',
+    tagline: 'Connect the diaspora. Build trusted opportunity.',
+    features: ['Verified community profiles', 'Diaspora discovery feed', 'Professional and cultural networking', 'Cross-border opportunity hub'],
+    badge: 'Diaspora Network',
+    stack: 'new',
+    icon: 'D',
+    industries: ['Diaspora Communities', 'Professional Networks', 'Creator Communities', 'Community Commerce'],
+    useCases: [
+      'Help diaspora members discover trusted communities, events, founders, creators, and professional opportunities',
+      'Give members a portable profile that captures identity, skills, background, and community participation',
+      'Create a safer digital space for cross-border collaboration without losing cultural context',
+      'Support diaspora-led commerce, hiring, mentorship, investment, and community initiatives from one platform',
+    ],
+    howItWorks: 'TheDiaspora App combines member profiles, social discovery, community content, and opportunity matching into a single platform. Members build a profile, discover relevant people and initiatives, and connect around work, culture, mentorship, commerce, and community projects. The platform is designed to become the trust layer for diaspora networks that are spread across cities, countries, and time zones.',
+    metrics: ['Mobile-first community onboarding', 'Member profiles and trust signals', 'Cross-border discovery workflows', 'Built for diaspora-led commerce'],
+    media: {
+      image: '/assets/diaspora-app-home.webp',
+      gallery: [
+        {
+          type: 'image',
+          src: '/assets/diaspora-app-profile.webp',
+          label: 'Member profile',
+          alt: 'TheDiaspora app member profile screen with community identity and profile details',
+        },
+      ],
+    },
+  },
+  {
+    id: 'ndn-015',
+    number: 'NDN—015',
+    name: 'CamDiag',
+    description: 'AI-powered medical diagnostic assistant for Cameroon healthcare system, leveraging Google MedGemma for medical image analysis, drug interaction checking, and clinical decision support.',
+    tagline: 'AI healthcare assistance for Cameroon.',
+    features: ['Medical image analysis', 'Drug interaction checking', 'Drug database browsing', 'Clinical decision support', 'Bilingual support (English/French)', 'Patient records tracking'],
+    badge: 'Healthcare AI',
+    stack: 'new',
+    icon: '⊕',
+    industries: ['Healthcare', 'Community Medicine', 'Pharmacies', 'Telemedicine'],
+    useCases: [
+      'Analyze lab results, X-rays, and RDT tests using device camera for preliminary diagnostics',
+      'Check drug interactions across recommended medications to prevent contraindications',
+      'Locate nearby healthcare facilities including clinics, hospitals, pharmacies, and telehealth providers',
+      'Track diagnostic history and provide medical feedback through community health questionnaires',
+    ],
+    howItWorks: 'CamDiag integrates Google\'s MedGemma model via the Gemini API for medical image analysis and drug interaction detection. The app captures images through device cameras, routes them through Firebase Functions for AI processing, and returns diagnostic suggestions with confidence scoring. A comprehensive drug database covers medications available in Cameroon including traditional remedies. Bilingual interface supports both English and French users across different regions.',
+    metrics: ['AI medical image analysis via MedGemma', 'Bilingual English/French support', 'Drug interaction checking for Cameroon medications', 'Offline connection awareness', 'Mobile-first design'],
+    website: 'https://github.com/dnkefua/camdiag-app',
+    media: {
+      image: '/assets/camdiag-landing.png',
+      video: '/assets/camdiag-edited-video.mp4',
+      logo: '/assets/camdiag-logo.png',
+      logoAnimation: '/assets/camdiag-logo-animation.mp4',
+      gallery: [
+        {
+          type: 'video',
+          src: '/assets/camdiag-logo-animation.mp4',
+          poster: '/assets/camdiag-logo.png',
+          label: 'Logo animation',
+          alt: 'Animated CamDiag logo reveal',
+        },
+        {
+          type: 'image',
+          src: '/assets/camdiag-logo.png',
+          label: 'CamDiag logo',
+          alt: 'CamDiag product logo',
+        },
+      ],
+    },
+  },
+  {
+    id: 'ndn-016',
+    number: 'NDN-016',
+    name: 'Student Teacher App',
+    description: 'EIS Maths Studio branded AI teaching workspace for cinematic maths lessons, lesson planning, grading, online classrooms, parent communication, and NeuroQuest practice.',
+    tagline: 'Plan, teach, explain, assess, and reinforce learning from one AI classroom.',
+    features: ['AI cinematic lesson engine', 'Teacher lesson planner', 'AI grading and feedback', 'Camera-ready virtual classroom', 'NeuroQuest practice missions', 'Parent and faculty email assistant'],
+    badge: 'Education AI',
+    stack: 'new',
+    icon: 'S',
+    industries: ['K-12 Education', 'International Schools', 'Maths Departments', 'Online Learning'],
+    useCases: [
+      'Turn maths chapters and subtopics into cinematic visual explainers with scenes, worked examples, quizzes, and rewards',
+      'Generate teacher-ready lesson plans from topics, reference URLs, images, PDFs, and NeuroQuest learning activities',
+      'Evaluate student submissions against a marking scheme and produce structured feedback for faster formative assessment',
+      'Run camera-enabled online classes with chat, waiting room controls, screen sharing, AI voice answers, and behavior monitoring',
+      'Draft parent, student, and faculty emails from lesson or NeuroQuest progress context',
+    ],
+    howItWorks: 'Student Teacher App is built as a Next.js AI teaching platform using Gemini for lesson planning, grading, classroom support, and communication workflows. Teachers can launch EIS Grade 8 Maths content, generate cinematic lesson asset packages, teach live with camera and screen share, assign NeuroQuest practice, evaluate evidence, and communicate progress from one branded workspace.',
+    metrics: ['Gemini-powered lesson planning and grading', 'EIS Maths Studio branded learning workspace', '30-seat virtual classroom workflow', 'NeuroQuest practice integration', 'Camera and microphone enabled teaching tools'],
+    website: 'https://github.com/dnkefua/Student-Teacher-App',
+    media: {
+      image: '/assets/student-teacher-app-landing.png',
+      video: '/assets/student-teacher-app-demo.mp4',
+      logo: '/assets/eis-maths-studio-logo.png',
+      gallery: [
+        {
+          type: 'image',
+          src: '/assets/eis-maths-studio-logo.png',
+          label: 'EIS Maths Studio brand mark',
+          alt: 'EIS Maths Studio logo for the Student Teacher App',
+        },
+      ],
+    },
+  },
+];
+
+export const GCLOUD_PRODUCTS = PRODUCTS.filter(p => p.stack === 'gcloud');
+export const ETH_PRODUCTS = PRODUCTS.filter(p => p.stack === 'ethereum');
+export const NEW_PRODUCTS = PRODUCTS.filter(p => p.stack === 'new');
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Capability blocks — the IA grouping used by the consolidated /products page
+// and the homepage. Decoupled from `stack` so we can re-organize without
+// touching individual product entries.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type Capability = 'automation' | 'decision-support' | 'trust';
+
+const CAPABILITY_MAP: Record<string, Capability> = {
+  // AI Automation & Internal Tools — products that remove manual work from teams
+  'ndn-010': 'automation', // NeuroQuest (cognitive AI)
+  'ndn-011': 'automation', // NDN Interpreter (vision AI)
+  'ndn-012': 'automation', // NDN Model Studio (AI fine-tuning)
+  'ndn-016': 'automation', // Student Teacher App
+
+  // Decision Support & Industry AI — turn data into decisions
+  'ndn-001': 'decision-support', // NDN Demand IQ
+  'ndn-002': 'decision-support', // NDN Care Predict
+  'ndn-003': 'decision-support', // NDN Route AI
+  'ndn-004': 'decision-support', // NDN Churn Guard
+  'ndn-015': 'decision-support', // CamDiag
+
+  // Blockchain & Trust Technologies — tamper-evident records, traceability, community finance
+  'ndn-005': 'trust', // NDN TraceChain
+  'ndn-006': 'trust', // NDN PayStream
+  'ndn-007': 'trust', // NDN CredVault
+  'ndn-008': 'trust', // NDN PropLedger
+  'ndn-009': 'trust', // Njangi
+  'ndn-013': 'trust', // NDN IPFS CHAIN
+  'ndn-014': 'trust', // TheDiaspora App
+};
+
+export function capabilityOf(productId: string): Capability | undefined {
+  return CAPABILITY_MAP[productId];
+}
+
+export const AUTOMATION_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'automation');
+export const DECISION_SUPPORT_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'decision-support');
+export const TRUST_PRODUCTS = PRODUCTS.filter(p => CAPABILITY_MAP[p.id] === 'trust');

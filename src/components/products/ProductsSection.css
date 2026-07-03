@@ -1,0 +1,175 @@
+.products-section {
+  background: transparent;
+}
+
+.products-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 64px;
+}
+
+.stack-group {
+  margin-bottom: 64px;
+}
+
+.stack-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Syne Variable', 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.stack-line {
+  flex: 1;
+  height: 1px;
+  opacity: 0.3;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Capability blocks — the new IA grouping for the consolidated /products page.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.capability-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 64px;
+}
+
+.capability-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.capability-nav-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.capability-block {
+  margin-bottom: 96px;
+  scroll-margin-top: 120px;
+}
+
+.capability-header {
+  margin-bottom: 32px;
+  max-width: 760px;
+}
+
+.capability-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.capability-tagline {
+  font-family: 'Syne Variable', 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+
+.capability-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.capability-deepdives {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.capability-deepdives-label {
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.capability-deepdives-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.capability-deepdives-list li {
+  margin-bottom: 8px;
+}
+
+.capability-deepdives-link {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.capability-deepdives-link:hover {
+  color: var(--brand-cyan);
+}
+
+@media (max-width: 768px) {
+  .products-subtitle {
+    font-size: 1rem;
+    margin-bottom: 48px;
+  }
+
+  .stack-group { margin-bottom: 48px; }
+  .stack-label { margin-bottom: 22px; }
+  .products-grid { gap: 18px; }
+}
+
+@media (max-width: 640px) {
+  .products-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .products-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+  }
+
+  .stack-group { margin-bottom: 40px; }
+  .stack-label {
+    font-size: 0.72rem;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .products-grid { gap: 14px; }
+}

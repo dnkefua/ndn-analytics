@@ -33,20 +33,20 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
       {/* Top Banner & Print Action */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-neon-cyan pl-6 no-print">
         <div>
-          <span className="font-mono text-[10px] font-bold text-neon-cyan tracking-widest uppercase mb-1 block">
+          <span className="text-[10px] font-bold text-neon-cyan tracking-widest uppercase mb-1 block">
             [ ACADEMIC_RECORDS // VERIFIED ]
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Grades & Official Transcript
           </h1>
-          <p className="font-mono text-xs text-on-surface-variant max-w-xl mt-1">
+          <p className="text-xs text-on-surface-variant max-w-xl mt-1">
             Official academic record of completed courses, practical lab benchmarks, cumulative GPA, and CPD credits at NDN Analytics Inc. Academy.
           </p>
         </div>
 
         <button
           onClick={handlePrint}
-          className="px-6 py-3 bg-neon-cyan text-deep-void font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center justify-center gap-2 cursor-pointer uppercase"
+          className="px-6 py-3 bg-neon-cyan text-deep-void font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center justify-center gap-2 cursor-pointer uppercase rounded-lg"
         >
           <span className="material-symbols-outlined text-sm">print</span>
           PRINT / EXPORT TRANSCRIPT
@@ -100,7 +100,7 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
           <div className="bg-surface-container p-4 border border-circuit-line rounded-lg">
             <p className="text-[9px] text-on-surface-variant font-bold uppercase tracking-wider">CPD Credits Earned</p>
             <p className="text-2xl font-black text-primary mt-1">{transcript.cpdPoints} <span className="text-xs font-normal text-on-surface-variant">CPD</span></p>
-            <p className="text-[9px] text-on-surface-variant mt-0.5">40 Academic Credits</p>
+            <p className="text-[9px] text-on-surface-variant mt-0.5">50 Academic Credits</p>
           </div>
 
           <div className="bg-surface-container p-4 border border-circuit-line rounded-lg">
@@ -116,7 +116,7 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
             COURSE_GRADE_LOG [ {filteredGrades.length} RECORDS ]
           </h3>
           <div className="flex gap-2 text-xs">
-            {['ALL', 'AI Engineering', 'GCP Architecture', 'Google App Store', 'BigData MLOps'].map((cat) => (
+            {['ALL', 'Firebase & GCP', 'AI Engineering', 'GCP Architecture', 'Google App Store', 'BigData MLOps'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilterCategory(cat)}
@@ -134,7 +134,7 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
 
         {/* Official Grades Table */}
         <div className="overflow-x-auto border border-circuit-line rounded-lg mb-8">
-          <table className="w-full text-left font-mono text-xs">
+          <table className="w-full text-left text-xs">
             <thead className="bg-surface-container border-b border-circuit-line text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">
               <tr>
                 <th className="p-4">Code</th>
@@ -181,7 +181,7 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
               <div className="w-16 h-16 border-2 border-neon-cyan rounded-full flex items-center justify-center text-neon-cyan p-1 text-center shadow-[0_0_15px_rgba(6,182,212,0.3)]">
                 <span className="text-[8px] font-extrabold leading-tight uppercase">NDN ANALYTICS INC. SEAL</span>
               </div>
-              <div className="font-mono text-xs">
+              <div className="text-xs">
                 <p className="font-bold text-white">MSc Desmond Nkefua</p>
                 <p className="text-[10px] text-neon-cyan">Academic Director & Founder</p>
                 <p className="text-[9px] text-on-surface-variant">NDN Analytics Inc. (ndnanalytics.com)</p>
@@ -189,7 +189,7 @@ export default function TranscriptView({ transcript }: TranscriptViewProps) {
             </div>
           </div>
 
-          <div className="text-right font-mono text-[10px] text-on-surface-variant space-y-1">
+          <div className="text-right text-[10px] text-on-surface-variant space-y-1">
             <p>Verification Code: <strong className="text-neon-cyan">NDN-2026-VAL-988</strong></p>
             <p>Cryptographic Sign: 0x8F9a...2B01 (SHA-256)</p>
             <p>© NDN Analytics Inc. All Academic Rights Reserved.</p>

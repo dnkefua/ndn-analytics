@@ -1,0 +1,192 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  text-align: left;
+}
+
+.product-card:hover {
+  border-color: var(--accent, var(--brand-cyan));
+}
+
+.product-card-top-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent, var(--primary-purple)), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-card-top-line { opacity: 1; }
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--accent, var(--primary-purple)) 6%, transparent), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover::before { opacity: 1; }
+
+.product-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-number {
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #64748B;
+  letter-spacing: 0.1em;
+}
+
+.product-badge {
+  font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent, var(--primary-purple));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--primary-purple)) 30%, transparent);
+  padding: 5px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.product-icon {
+  font-size: 2.5rem;
+  color: var(--accent, var(--primary-purple));
+}
+
+.product-card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent, var(--primary-purple)) 24%, transparent);
+  background: #071829;
+}
+
+.product-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-card-media img {
+  transform: scale(1.035);
+}
+
+.product-card-media-icon {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--accent, var(--primary-purple));
+  background: rgba(7, 24, 41, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  font-size: 1.1rem;
+}
+
+.product-name {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.product-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+  flex: 1;
+}
+
+.product-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.product-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.feature-dot {
+  width: 7px; height: 7px;
+  background: var(--accent, var(--primary-purple));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.product-card-footer { margin-top: 6px; }
+
+@media (max-width: 768px) {
+  .product-card {
+    padding: 24px;
+    gap: 12px;
+  }
+
+  .product-icon { font-size: 1.8rem; }
+  .product-card-media-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+  .product-name { font-size: 1.15rem; }
+  .product-desc { font-size: 0.95rem; }
+
+  .product-features li {
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .feature-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .product-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .product-badge {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  .product-icon { font-size: 1.6rem; }
+  .product-card-media { border-radius: 8px; }
+  .product-name { font-size: 1.1rem; }
+  .product-desc { font-size: 0.9rem; }
+}

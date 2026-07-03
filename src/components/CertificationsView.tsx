@@ -28,14 +28,14 @@ export default function CertificationsView({ certificates }: CertificationsViewP
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-neon-cyan pl-6 no-print">
         <div>
-          <span className="font-mono text-[10px] font-bold text-neon-cyan tracking-widest uppercase mb-1 block">
+          <span className="text-[10px] font-bold text-neon-cyan tracking-widest uppercase mb-1 block">
             [ CERTIFICATIONS & CREDENTIALS ]
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Academic Certifications
           </h1>
-          <p className="font-mono text-xs text-on-surface-variant max-w-xl mt-1">
-            Industry-recognized credentials awarded by NDN Analytics Inc. Academy upon mastery of GCP Cloud Architecture, Play Store App Development, and AI Engineering.
+          <p className="text-xs text-on-surface-variant max-w-xl mt-1">
+            Industry-recognized credentials awarded by NDN Analytics Inc. Academy upon mastery of GCP Cloud Architecture, Play Store App Development, Firebase, and AI Engineering.
           </p>
         </div>
 
@@ -96,14 +96,14 @@ export default function CertificationsView({ certificates }: CertificationsViewP
                 type="text"
                 value={customRecipientName}
                 onChange={(e) => setCustomRecipientName(e.target.value)}
-                className="bg-surface-container-lowest border border-neon-cyan text-neon-cyan p-2.5 font-mono text-sm outline-none rounded w-full sm:w-80 font-bold"
+                className="bg-surface-container-lowest border border-neon-cyan text-neon-cyan p-2.5 text-sm outline-none rounded w-full sm:w-80 font-bold"
                 placeholder="Enter Student Full Name..."
               />
             </div>
 
             <button
               onClick={handlePrintCertificate}
-              className="px-6 py-3 bg-neon-cyan text-deep-void font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center justify-center gap-2 cursor-pointer uppercase"
+              className="px-6 py-3 bg-neon-cyan text-deep-void font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center justify-center gap-2 cursor-pointer uppercase rounded-lg"
             >
               <span className="material-symbols-outlined text-sm">download</span>
               PRINT / EXPORT CERTIFICATE
@@ -134,13 +134,13 @@ export default function CertificationsView({ certificates }: CertificationsViewP
                 </div>
 
                 <div className="space-y-2">
-                  <p className="font-mono text-xs text-on-surface-variant uppercase tracking-[0.3em]">
+                  <p className="text-xs text-on-surface-variant uppercase tracking-[0.3em]">
                     CERTIFICATE OF ACADEMIC EXCELLENCE
                   </p>
                   <h2 className="font-display text-2xl md:text-4xl font-extrabold text-white tracking-tight uppercase cert-print-text">
                     {selectedCert.title}
                   </h2>
-                  <p className="font-mono text-xs text-neon-cyan font-bold">
+                  <p className="text-xs text-neon-cyan font-bold">
                     [ TRACK: {selectedCert.trackName} ]
                   </p>
                 </div>

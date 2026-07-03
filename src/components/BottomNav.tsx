@@ -16,7 +16,7 @@ export default function BottomNav({ currentTab, onTabChange }: BottomNavProps) {
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 w-full z-50 bg-deep-void/95 backdrop-blur-md border-t border-circuit-line flex justify-around items-center px-2 py-2 no-print">
+    <nav className="lg:hidden fixed bottom-0 left-0 w-full z-50 bg-deep-void/95 backdrop-blur-md border-t border-circuit-line flex justify-around items-center px-2 py-2 no-print font-sans">
       {navItems.map((item) => {
         const isActive = currentTab === item.id;
         return (

@@ -1,0 +1,54 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}    # allows the NDN Content Agent workflow to trigger a deploy
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Lint Cloud Functions
+        run: cd functions && npm ci && npx eslint .
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Unit & integration tests
+        run: npm run test:coverage
+
+      - name: Build SSR
+        run: npm run build:ssr
+        env:
+          VITE_ANTHROPIC_API_KEY: ${{ secrets.VITE_ANTHROPIC_API_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
+
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+
+      - name: Deploy to Firebase
+        run: npx firebase-tools deploy --only hosting,functions --project ndn-analytics --token ${{ secrets.FIREBASE_TOKEN }}

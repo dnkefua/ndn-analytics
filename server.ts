@@ -1,115 +1,87 @@
-import express from "express";
-import path from "path";
-import { createServer as createViteServer } from "vite";
-import { GoogleGenAI } from "@google/genai";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
 
-async function startServer() {
-  const app = express();
-  const PORT = 3000;
+dotenv.config();
 
-  app.use(express.json());
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-  // Proxy-shielded API route for AI Mentor Chat (Gemini 3.5 Flash)
-  app.post("/api/chat", async (req, res) => {
+app.use(cors());
+app.use(express.json());
+
+// API route for AI Mentor Chat (Gemini LLM / Fallback Intel Kernel)
+app.post('/api/chat', async (req, res) => {
+  try {
     const { message, history } = req.body;
-    const msgLower = (message || "").toLowerCase();
-    
-    try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        // Smart fallback logic if API key is not present in local env
-        let fallbackReply = "Greeting from NDN Analytics AI Mentor (Dr. Desmond Nkefua Virtual Assistant)!\n\n";
+    const msgLower = (message || '').toLowerCase();
 
-        if (msgLower.includes("gcp") || msgLower.includes("cloud run") || msgLower.includes("deploy")) {
-          fallbackReply += "To deploy microservices to **Google Cloud Platform (GCP) Cloud Run**:\n\n" +
-            "1. **Containerize**: `gcloud builds submit --tag gcr.io/ndn-analytics/app:v1`\n" +
-            "2. **Deploy**: `gcloud run deploy ndn-app --image gcr.io/ndn-analytics/app:v1 --platform managed --region us-central1`\n" +
-            "3. **Secrets**: Bind API keys via GCP Secret Manager for maximum compliance.";
-        } else if (msgLower.includes("play store") || msgLower.includes("android") || msgLower.includes("flutter") || msgLower.includes("app")) {
-          fallbackReply += "For **Google Play Store App Development & Publishing**:\n\n" +
-            "1. **Architecture**: Jetpack Compose / Flutter MVVM with Play Integrity API.\n" +
-            "2. **Bundle**: Generate Android App Bundle (`.aab`) with release signing.\n" +
-            "3. **Console**: Deploy to Google Play Console Internal Testing track before Production release.";
-        } else if (msgLower.includes("gemini") || msgLower.includes("agent") || msgLower.includes("ai")) {
-          fallbackReply += "For **Applied AI Engineering & Gemini 3.5 Agents**:\n\n" +
-            "```python\nfrom google.genai import GoogleGenAI\nai = GoogleGenAI(api_key='YOUR_API_KEY')\nresponse = ai.models.generate_content(model='gemini-3.5-flash', contents='Analyze logs')\nprint(response.text)\n```";
-        } else {
-          fallbackReply += "I am your **NDN Analytics Inc. AI Mentor**! I specialize in:\n" +
-            "- **Google Cloud Platform Architecture** (Cloud Run, Terraform, GKE)\n" +
-            "- **Google Play Store App Development** (Android, Flutter, Play Console, Monetization)\n" +
-            "- **AI Engineering** (Gemini 3.5 Flash, Autonomous Subagents, BigQuery ML)";
-        }
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      // Smart fallback logic if API key is not present in local env
+      let fallbackReply = "Greetings from NDN Analytics AI Mentor (MSc Desmond Nkefua Virtual Assistant)!\n\n";
 
-        return res.json({ reply: fallbackReply });
+      if (msgLower.includes("gcp") || msgLower.includes("cloud run") || msgLower.includes("deploy")) {
+        fallbackReply += "To deploy microservices to **Google Cloud Platform (GCP) Cloud Run**:\n\n" +
+          "1. Containerize your app using Docker (`docker build -t gcr.io/ndn-analytics/app:v1 .`).\n" +
+          "2. Authenticate gcloud CLI: `gcloud auth configure-docker`.\n" +
+          "3. Push container to Google Artifact Registry / GCR.\n" +
+          "4. Execute deployment: `gcloud run deploy --image gcr.io/ndn-analytics/app:v1 --platform managed --region us-central1`.\n\n" +
+          "You can verify cold start latencies and continuous deployment inside our Practical Lab Studio!";
+      } else if (msgLower.includes("firebase") || msgLower.includes("firestore")) {
+        fallbackReply += "To integrate **Firebase & GCP Cloud Functions**:\n\n" +
+          "1. Initialize Firebase Admin SDK using Application Default Credentials (`cred = credentials.ApplicationDefault()`).\n" +
+          "2. Configure Cloud Firestore Security Rules to enforce client-side database authentication.\n" +
+          "3. Set up event triggers on Firestore document mutations to fire serverless GCP Cloud Functions.";
+      } else if (msgLower.includes("play store") || msgLower.includes("android") || msgLower.includes("integrity")) {
+        fallbackReply += "For **Google Play Store App Publishing & Security**:\n\n" +
+          "1. Configure Android App Bundle (AAB) with R8 / ProGuard minification.\n" +
+          "2. Integrate **Google Play Integrity API** to verify app binary authenticity against tamper attempts.\n" +
+          "3. Setup Play Console Testing Tracks (Internal -> Closed -> Open -> Production Release).";
+      } else if (msgLower.includes("ai") || msgLower.includes("gemini") || msgLower.includes("agent")) {
+        fallbackReply += "For **Applied Gemini 3.5 AI Engineering**:\n\n" +
+          "1. Use `google.genai` SDK with `gemini-3.5-flash` or `gemini-3.5-pro`.\n" +
+          "2. Enforce Pydantic/JSON Schema structured output for predictable subagent function calling.\n" +
+          "3. Connect Vertex AI Vector Search to supply enterprise RAG ground truth.";
+      } else {
+        fallbackReply += "I am ready to assist you with GCP Architecture, Play Store App Publishing, Firebase, and Applied AI Engineering. What specific topic would you like to explore today?";
       }
 
-      const ai = new GoogleGenAI({
-        apiKey,
-        httpOptions: {
-          headers: {
-            'User-Agent': 'aistudio-build'
-          }
-        }
-      });
-
-      const systemInstruction = `You are the NDN Analytics Inc. AI Mentor, created by Dr. DN Kefua (Founder & Academic Director).
-You are an expert in:
-1. AI Engineering: Gemini 3.5 APIs, Multi-Agent Orchestration, Vector RAG, Vertex AI, BigQuery ML.
-2. Google Play Store App Development: Android (Kotlin), Flutter, Play Console Deployment, Play Integrity API, App Monetization.
-3. Google Cloud Platform (GCP): Serverless Cloud Run, GKE, Terraform IaC, App Engine, Cloud SQL.
-
-Website: https://www.ndnanalytics.com/
-GitHub: https://github.com/dnkefua/ndn-analytics.git
-
-Provide structured, encouraging, compact, and clear responses with markdown formatting and code snippets.`;
-
-      const contents = [];
-      if (history && history.length > 0) {
-        for (const turn of history) {
-          contents.push({
-            role: turn.role === 'model' ? 'model' : 'user',
-            parts: [{ text: turn.text }]
-          });
-        }
-      }
-      
-      contents.push({
-        role: 'user',
-        parts: [{ text: message }]
-      });
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
-        contents,
-        config: {
-          systemInstruction,
-        }
-      });
-
-      res.json({ reply: response.text });
-    } catch (error: any) {
-      console.error("Gemini Generation Error:", error);
-      res.status(500).json({ reply: `Uplink Gateway Notice: ${error.message || 'Connecting to NDN Analytics AI.'}` });
+      return res.json({ reply: fallbackReply });
     }
-  });
 
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
+    // If Gemini API key is configured
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [
+          {
+            role: 'user',
+            parts: [{ text: `You are an AI Mentor for NDN Analytics Inc. Academy, assisting students under Academic Director MSc Desmond Nkefua. Answer concisely and technically.\n\nUser Question: ${message}` }]
+          }
+        ]
+      })
     });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
+
+    const data = await response.json();
+    const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Answer received from Gemini AI Engine.";
+    res.json({ reply: replyText });
+  } catch (error) {
+    console.error("AI Mentor Error:", error);
+    res.status(500).json({ reply: "Error communicating with NDN AI Gateway. Please check server logs." });
   }
+});
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server launched on http://0.0.0.0:${PORT}`);
-  });
-}
+// Serve Vite production bundle in production mode
+const distPath = path.join(process.cwd(), 'dist');
+app.use(express.static(distPath));
 
-startServer();
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`[ NDN ACADEMY APP ] Production server running on http://localhost:${PORT}`);
+});

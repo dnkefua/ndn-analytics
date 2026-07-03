@@ -13,7 +13,7 @@ import AiMentorChat from './components/AiMentorChat';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('dashboard');
-  const [selectedCourseId, setSelectedCourseId] = useState<string>('gcp-cloud-architecture');
+  const [selectedCourseId, setSelectedCourseId] = useState<string>('firebase-gcp-app-dev');
   const [aiMentorOpen, setAiMentorOpen] = useState(false);
   const [badgeAwarded, setBadgeAwarded] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export default function App() {
 
   const handleSelectCourse = (courseId: string) => {
     setSelectedCourseId(courseId);
-    setCurrentTab('lesson'); // switch to practical lab view
+    setCurrentTab('lesson');
   };
 
   const handleSelectTrack = (trackId: string) => {
@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-deep-void text-on-surface flex flex-col relative circuit-bg">
+    <div className="min-h-screen bg-deep-void text-on-surface flex flex-col relative circuit-bg font-sans">
       {/* Top Header Navigation */}
       <Header
         currentTab={currentTab}
@@ -104,7 +104,7 @@ export default function App() {
               {badgeAwarded.replace(/_/g, ' ')}
             </h3>
             <p className="font-mono text-xs text-on-surface-variant leading-relaxed mb-6">
-              Congratulations! You have validated your practical logic score. Credentials appended to your official NDN Analytics transcript.
+              Congratulations MSc Desmond Nkefua! You have validated your practical logic score. Credentials appended to your official NDN Analytics transcript.
             </p>
 
             <button

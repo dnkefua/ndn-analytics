@@ -18,7 +18,7 @@ export default function Header({ currentTab, onTabChange, operatorAvatar }: Head
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] bg-deep-void/90 backdrop-blur-lg border-b border-circuit-line shadow-[0_0_15px_rgba(6,182,212,0.1)] flex justify-between items-center px-4 md:px-12 h-16 no-print">
+    <header className="fixed top-0 left-0 w-full z-[100] bg-deep-void/90 backdrop-blur-lg border-b border-circuit-line shadow-[0_0_15px_rgba(6,182,212,0.1)] flex justify-between items-center px-4 md:px-12 h-16 no-print font-sans">
       {/* Brand Logo & Title */}
       <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onTabChange('dashboard')}>
         <div className="relative">
@@ -76,7 +76,7 @@ export default function Header({ currentTab, onTabChange, operatorAvatar }: Head
       {/* Mobile Avatar / Indicator */}
       <div className="lg:hidden flex items-center gap-2">
         <div className="text-right font-mono">
-          <p className="text-[9px] font-bold text-neon-cyan">D. NKEFUA</p>
+          <p className="text-[9px] font-bold text-neon-cyan">MSc D. NKEFUA</p>
           <p className="text-[8px] text-success-glimmer">GPA 3.96</p>
         </div>
         <div className="h-8 w-8 rounded-full border border-neon-cyan/40 overflow-hidden bg-surface-container">

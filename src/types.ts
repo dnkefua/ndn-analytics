@@ -1,6 +1,6 @@
 export interface Course {
   id: string;
-  level: string; // e.g., 'L1_FOUNDATION', 'L2_INTERMEDIATE', 'L3_PROFESSIONAL', 'L4_EXPERT'
+  level: string;
   category: 'AI_ENGINEERING' | 'PLAY_STORE_DEV' | 'GCP_ARCHITECTURE' | 'BIGDATA_MLOPS' | 'FIREBASE_GCP';
   title: string;
   description: string;
@@ -68,14 +68,14 @@ export interface RecommendedTrack {
 export interface QuizQuestion {
   id: string;
   moduleId: string;
-  idCode: string; // VTX-492-B
+  idCode: string;
   category: string;
   question: string;
   options: {
-    key: string; // A, B, C, D
+    key: string;
     text: string;
   }[];
-  correctAnswer: string; // B
+  correctAnswer: string;
   explanation: string;
   potentialRewards: {
     name: string;
@@ -105,8 +105,8 @@ export interface SkillNode {
   label: string;
   level: string;
   icon: string;
-  x: number; // percentage coordinate
-  y: number; // percentage coordinate
+  x: number;
+  y: number;
 }
 
 export interface EvalQueueItem {

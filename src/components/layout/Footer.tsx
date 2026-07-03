@@ -1,0 +1,155 @@
+import { Link } from 'react-router-dom';
+import { PRODUCTS } from '../products/productData';
+import NewsletterSignup from '../newsletter/NewsletterSignup';
+
+const FOOTER_PRODUCTS = PRODUCTS.filter(p =>
+  ['ndn-001', 'ndn-002', 'ndn-005', 'ndn-009', 'ndn-010', 'ndn-014'].includes(p.id)
+);
+
+const COMPANY_LINKS = [
+  ['About', '/about'],
+  ['Solutions', '/solutions'],
+  ['Technology', '/tech'],
+  ['Contact', '/contact'],
+  ['Blog', '/blog'],
+  ['Editorial Policy', '/editorial-policy'],
+  ['Corrections Policy', '/corrections-policy'],
+  ['Authors', '/authors/ndn-analytics-team'],
+  ['White Paper', '/whitepaper'],
+  ['Privacy Policy', '/privacy'],
+  ['Terms of Service', '/terms'],
+  ['Fine-Tuning App ↗', '/fine-tuning'],
+];
+
+const SERVICES_LINKS = [
+  ['AI Products', '/ai-products'],
+  ['AI Automation', '/ai-automation'],
+  ['AI Automation Tulsa', '/ai-automation-tulsa'],
+  ['AI Automation Dubai', '/ai-automation-company-dubai'],
+  ['AI App Development Tulsa', '/ai-app-development-tulsa'],
+  ['AI App Development Dubai', '/ai-app-development-dubai'],
+  ['Blockchain Solutions', '/blockchain-solutions'],
+  ['Blockchain Tulsa', '/blockchain-development-tulsa'],
+  ['Blockchain Dubai', '/blockchain-development-dubai'],
+  ['Google Cloud AI Consulting', '/google-cloud-ai-consulting'],
+  ['Smart Contract Development', '/smart-contract-development'],
+  ['Smart Contracts Dubai', '/smart-contract-development-dubai'],
+  ['Case Studies', '/case-studies'],
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer style={{
+      position: 'relative',
+      zIndex: 10,
+      background: 'rgba(2, 11, 24, 0.45)',
+      backdropFilter: 'blur(20px) saturate(160%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+      borderTop: '1px solid rgba(6, 182, 212, 0.12)',
+      padding: '48px 0 32px',
+    }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 40, marginBottom: 48 }}>
+          <div>
+            <img
+              src="/logo.jpg"
+              alt="NDN Analytics"
+              style={{ height: 60, width: 'auto', borderRadius: 10, marginBottom: 12, display: 'block' }}
+            />
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+              Enterprise AI & Blockchain intelligence for the next era of business.
+            </p>
+            <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+              <a href="https://www.linkedin.com/company/ndn-analytics-inc/" target="_blank" rel="noopener noreferrer" aria-label="NDN Analytics on LinkedIn"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
+                onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Products</div>
+            {FOOTER_PRODUCTS.map(p => (
+              <div key={p.id} style={{ marginBottom: 8 }}>
+                <Link to={`/products/${p.id}`} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                  onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                  {p.name}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Services</div>
+            {SERVICES_LINKS.map(([label, href]) => (
+              <div key={href} style={{ marginBottom: 8 }}>
+                <Link to={href} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                  onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                  {label}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Company</div>
+            {COMPANY_LINKS.map(([label, href]) => (
+              <div key={href} style={{ marginBottom: 8 }}>
+                <Link to={href} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                  onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                  {label}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-tertiary)', marginBottom: 16, textTransform: 'uppercase' }}>Compliance</div>
+            {['GDPR-Ready', 'HIPAA-Aware', 'Security-First', 'Audit-Friendly'].map(c => (
+              <div key={c} style={{ marginBottom: 8, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{c}</div>
+            ))}
+          </div>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div style={{
+          marginBottom: 48,
+          padding: 32,
+          background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.5) 0%, rgba(7, 24, 41, 0.25) 100%)',
+          border: '1px solid rgba(6, 182, 212, 0.18)',
+          borderRadius: 16,
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: '0 12px 36px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24, justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontFamily: "'Syne Variable', 'Syne', sans-serif", fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
+                Stay ahead with NDN Intelligence
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Enterprise AI & blockchain insights delivered monthly.
+              </div>
+            </div>
+            <div style={{ flex: 1, minWidth: 300, maxWidth: 420 }}>
+              <NewsletterSignup source="footer" />
+            </div>
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', color: 'var(--text-tertiary)', letterSpacing: '0.1em' }}>
+            © {year} NDN ANALYTICS. ALL RIGHTS RESERVED.
+          </div>
+          <div style={{ fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace", fontSize: '0.65rem', color: 'var(--text-tertiary)', letterSpacing: '0.08em' }}>
+            POWERED BY GOOGLE CLOUD + ETHEREUM
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

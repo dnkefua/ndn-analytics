@@ -62,7 +62,7 @@ export default function ProjectPortfolio() {
   };
 
   return (
-    <div className="space-y-8 pb-12 font-mono">
+    <div className="space-y-8 pb-12 font-sans">
       {/* Header Panel with Official Website & GitHub Links */}
       <div className="relative overflow-hidden p-8 rounded-xl border border-circuit-line bg-surface-container-low">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-20">
@@ -78,7 +78,7 @@ export default function ProjectPortfolio() {
               Official academic lab repositories and capstone projects created by NDN Analytics Inc. faculty & students.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4 pt-2 font-mono">
               <a
                 href="https://www.ndnanalytics.com/"
                 target="_blank"
@@ -103,7 +103,7 @@ export default function ProjectPortfolio() {
 
           <button
             onClick={() => setIsSubmitOpen(true)}
-            className="px-6 py-3 bg-neon-cyan text-deep-void font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center gap-2 cursor-pointer uppercase"
+            className="px-6 py-3 bg-neon-cyan text-deep-void font-mono font-bold text-xs border border-neon-cyan hover:bg-transparent hover:text-neon-cyan transition-all flex items-center gap-2 cursor-pointer uppercase rounded-lg"
           >
             SUBMIT REPO FOR AUDIT →
           </button>
@@ -113,7 +113,7 @@ export default function ProjectPortfolio() {
       {/* Modal for Repo Submission */}
       {isSubmitOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[150] px-4 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-surface-container-low border border-neon-cyan p-6 md:p-8 w-full max-w-md relative hud-border">
+          <div className="bg-surface-container-low border border-neon-cyan p-6 md:p-8 w-full max-w-md relative hud-border font-mono">
             <button
               onClick={() => setIsSubmitOpen(false)}
               className="absolute top-4 right-4 text-on-surface-variant hover:text-neon-cyan cursor-pointer"
@@ -168,7 +168,7 @@ export default function ProjectPortfolio() {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-neon-cyan text-deep-void font-bold text-xs hover:bg-transparent hover:text-neon-cyan border border-neon-cyan transition-all cursor-pointer uppercase"
+                className="w-full py-3 bg-neon-cyan text-deep-void font-bold text-xs hover:bg-transparent hover:text-neon-cyan border border-neon-cyan transition-all cursor-pointer uppercase rounded-lg"
               >
                 START GCP & APP COMPLIANCE AUDIT
               </button>
@@ -220,7 +220,7 @@ export default function ProjectPortfolio() {
                         {build.description}
                       </p>
 
-                      <div className="space-y-2 pt-2">
+                      <div className="space-y-2 pt-2 font-mono">
                         <div className="flex justify-between text-[9px] opacity-60">
                           <span>{build.progressLabel}</span>
                           <span>[ {build.progressValue}% ]</span>
@@ -233,7 +233,7 @@ export default function ProjectPortfolio() {
                         </div>
                       </div>
 
-                      <div className="pt-2">
+                      <div className="pt-2 font-mono">
                         <a
                           href={build.repoUrl || 'https://github.com/dnkefua/ndn-analytics.git'}
                           target="_blank"
@@ -251,7 +251,7 @@ export default function ProjectPortfolio() {
             </div>
           </div>
 
-          {/* Founder Feedback Review block */}
+          {/* Director Code Review block */}
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <h3 className="font-mono text-xs font-bold text-neon-cyan tracking-widest uppercase">
@@ -266,8 +266,8 @@ export default function ProjectPortfolio() {
                   <span className="material-symbols-outlined text-neon-cyan">account_circle</span>
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-white tracking-wide">DR. DESMOND NKEFUA</h5>
-                  <p className="text-[9px] opacity-50 uppercase tracking-widest">FACULTY REVIEW</p>
+                  <h5 className="text-xs font-bold text-white tracking-wide">MSc Desmond Nkefua</h5>
+                  <p className="text-[9px] opacity-50 uppercase tracking-widest font-mono">FACULTY REVIEW</p>
                 </div>
               </div>
               <p className="text-xs text-on-surface italic leading-relaxed">
@@ -283,10 +283,10 @@ export default function ProjectPortfolio() {
         </div>
 
         {/* Right Column: Skill Matrix */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 space-y-6 font-mono">
           <div className="glass-card rounded-xl p-6 border border-circuit-line space-y-6">
             <div className="flex justify-between items-center">
-              <h3 className="font-mono text-xs font-bold text-neon-cyan tracking-widest uppercase">ACADEMIC_SKILL_NODES</h3>
+              <h3 className="text-xs font-bold text-neon-cyan tracking-widest uppercase">ACADEMIC_SKILL_NODES</h3>
               <span className="text-[9px] opacity-60 font-bold">[ 4 NODES MASTERED ]</span>
             </div>
 
@@ -343,7 +343,7 @@ export default function ProjectPortfolio() {
           </div>
 
           <div className="glass-card rounded-xl p-6 border border-circuit-line space-y-4">
-            <h3 className="font-mono text-xs font-bold text-neon-cyan tracking-widest uppercase">EVALUATION_QUEUE</h3>
+            <h3 className="text-xs font-bold text-neon-cyan tracking-widest uppercase">EVALUATION_QUEUE</h3>
             <div className="space-y-2">
               {evalQueue.map((item) => (
                 <div key={item.id} className="flex items-center justify-between p-2.5 bg-surface-container rounded border border-circuit-line text-xs">

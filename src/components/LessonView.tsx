@@ -77,7 +77,6 @@ gcloud run deploy ndn-app-service \\
         `[ SUCCESS ] Execution complete. Latency: 12ms. All practical benchmarks passed!`,
       ]);
 
-      // Auto-complete first uncompleted task
       setTasks((prevTasks) => {
         const next = [...prevTasks];
         const uncompletedIdx = next.findIndex((t) => !t.completed);
@@ -157,7 +156,6 @@ gcloud run deploy ndn-app-service \\
               className="w-full h-full object-cover"
               src={lesson.videoPoster}
               alt="Lecture poster"
-              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -232,7 +230,7 @@ gcloud run deploy ndn-app-service \\
           </div>
 
           {/* Practical Checklist */}
-          <div className="bg-surface-container border border-circuit-line p-6 rounded-lg space-y-4">
+          <div className="bg-surface-container border border-circuit-line p-6 rounded-lg space-y-4 font-mono">
             <h3 className="text-xs font-bold text-neon-cyan tracking-widest uppercase flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">checklist</span>
               PRACTICAL OBJECTIVES CHECKLIST
@@ -263,10 +261,10 @@ gcloud run deploy ndn-app-service \\
         {/* Right Column: Tabs (Notes, Resources, Deployment) */}
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-surface-container border border-circuit-line rounded-lg overflow-hidden flex flex-col min-h-[420px]">
-            <div className="flex border-b border-circuit-line">
+            <div className="flex border-b border-circuit-line font-mono">
               <button
                 onClick={() => setActiveTab('notes')}
-                className={`flex-1 py-4 font-mono text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
+                className={`flex-1 py-4 text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
                   activeTab === 'notes'
                     ? 'text-neon-cyan border-b-2 border-neon-cyan bg-primary-container/5'
                     : 'text-on-surface-variant hover:text-neon-cyan'
@@ -276,7 +274,7 @@ gcloud run deploy ndn-app-service \\
               </button>
               <button
                 onClick={() => setActiveTab('resources')}
-                className={`flex-1 py-4 font-mono text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
+                className={`flex-1 py-4 text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
                   activeTab === 'resources'
                     ? 'text-neon-cyan border-b-2 border-neon-cyan bg-primary-container/5'
                     : 'text-on-surface-variant hover:text-neon-cyan'
@@ -286,7 +284,7 @@ gcloud run deploy ndn-app-service \\
               </button>
               <button
                 onClick={() => setActiveTab('deployment')}
-                className={`flex-1 py-4 font-mono text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
+                className={`flex-1 py-4 text-[10px] font-bold tracking-wider transition-all cursor-pointer ${
                   activeTab === 'deployment'
                     ? 'text-neon-cyan border-b-2 border-neon-cyan bg-primary-container/5'
                     : 'text-on-surface-variant hover:text-neon-cyan'
@@ -304,7 +302,7 @@ gcloud run deploy ndn-app-service \\
                       <span className="w-2 h-2 bg-neon-cyan rounded-full glow-cyan"></span>
                       Core Concepts
                     </h4>
-                    <p className="font-mono text-xs text-on-surface-variant leading-relaxed">
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
                       {lesson.notes.coreConcepts}
                     </p>
                   </div>
@@ -313,23 +311,23 @@ gcloud run deploy ndn-app-service \\
                     <div className="flex items-center gap-2 mb-2 text-neon-cyan">
                       <span className="material-symbols-outlined text-sm">lightbulb</span>
                       <span className="font-mono text-[9px] font-bold uppercase tracking-widest">
-                        DR. KEFUA PRO-TIP
+                        MSc DESMOND NKEFUA PRO-TIP
                       </span>
                     </div>
-                    <p className="font-mono text-xs text-on-surface-variant leading-relaxed">
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
                       {lesson.notes.proTip}
                     </p>
                   </div>
 
-                  <div className="space-y-3">
-                    <h5 className="font-mono text-[10px] font-bold text-neon-cyan tracking-widest">KEY TERMS</h5>
+                  <div className="space-y-3 font-mono">
+                    <h5 className="text-[10px] font-bold text-neon-cyan tracking-widest">KEY TERMS</h5>
                     <ul className="space-y-2">
                       {lesson.notes.keyTerms.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <span className="material-symbols-outlined text-neon-cyan text-sm mt-0.5 select-none">
                             arrow_right
                           </span>
-                          <span className="font-mono text-xs text-on-surface-variant leading-relaxed">
+                          <span className="text-xs text-on-surface-variant leading-relaxed">
                             <strong className="text-on-surface font-bold">{item.term}:</strong> {item.definition}
                           </span>
                         </li>
@@ -340,7 +338,7 @@ gcloud run deploy ndn-app-service \\
                   <div className="pt-4 border-t border-circuit-line">
                     <button
                       onClick={onTakeQuiz}
-                      className="w-full py-3 bg-secondary-container hover:bg-secondary-container/80 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-3 bg-secondary-container hover:bg-secondary-container/80 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer rounded-lg"
                     >
                       <span className="material-symbols-outlined text-sm">quiz</span>
                       Take Knowledge Assessment
@@ -350,7 +348,7 @@ gcloud run deploy ndn-app-service \\
               )}
 
               {activeTab === 'resources' && (
-                <div className="space-y-4 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn font-mono">
                   <h4 className="font-display text-base font-bold text-on-surface mb-4">Course Assets & Docs</h4>
                   {lesson.resources.map((resource, index) => (
                     <a
@@ -365,7 +363,7 @@ gcloud run deploy ndn-app-service \\
                           <span className="material-symbols-outlined text-neon-cyan">
                             {resource.type === 'pdf' ? 'description' : 'code'}
                           </span>
-                          <span className="font-mono text-xs text-on-surface group-hover:text-neon-cyan transition-colors truncate max-w-[180px]">
+                          <span className="text-xs text-on-surface group-hover:text-neon-cyan transition-colors truncate max-w-[180px]">
                             {resource.name}
                           </span>
                         </div>
@@ -377,17 +375,17 @@ gcloud run deploy ndn-app-service \\
               )}
 
               {activeTab === 'deployment' && (
-                <div className="space-y-6 animate-fadeIn">
+                <div className="space-y-6 animate-fadeIn font-mono">
                   <h4 className="font-display text-base font-bold text-on-surface mb-2">GCP Cloud Run Push</h4>
                   <p className="text-xs text-on-surface-variant">Deploy your local lab container build directly into Google Cloud Platform.</p>
                   
                   <div className="space-y-3 pt-2">
-                    <div className="flex items-center justify-between font-mono text-[10px] font-bold text-on-surface-variant">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-on-surface-variant">
                       <span>DOCKER IMAGE BUILD</span>
                       <span className="text-success-glimmer">[ BUILT ]</span>
                     </div>
                     <div className="h-px bg-circuit-line"></div>
-                    <div className="flex items-center justify-between font-mono text-[10px] font-bold text-on-surface-variant">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-on-surface-variant">
                       <span>GCP CLOUD RUN PUSH</span>
                       {isDeploying ? (
                         <span className="text-neon-cyan animate-pulse">[ DEPLOYING {deploymentProgress}% ]</span>
@@ -405,7 +403,7 @@ gcloud run deploy ndn-app-service \\
                     <button
                       onClick={simulateDeployment}
                       disabled={isDeploying}
-                      className="w-full py-3 mt-4 bg-neon-cyan text-deep-void disabled:opacity-50 font-mono text-xs font-bold tracking-wider flex items-center justify-center gap-2 hover:bg-transparent hover:text-neon-cyan hover:border hover:border-neon-cyan transition-all cursor-pointer uppercase"
+                      className="w-full py-3 mt-4 bg-neon-cyan text-deep-void disabled:opacity-50 text-xs font-bold tracking-wider flex items-center justify-center gap-2 hover:bg-transparent hover:text-neon-cyan hover:border hover:border-neon-cyan transition-all cursor-pointer uppercase rounded-lg"
                     >
                       {isDeploying ? 'DEPLOYING TO GCP...' : 'PUSH TO GCP CLOUD RUN'}
                     </button>
@@ -416,7 +414,7 @@ gcloud run deploy ndn-app-service \\
           </div>
 
           {/* Instructor Bio */}
-          <div className="bg-surface-container border border-circuit-line p-5 rounded-lg">
+          <div className="bg-surface-container border border-circuit-line p-5 rounded-lg font-mono">
             <div className="flex items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 rounded-full border border-neon-cyan p-0.5 overflow-hidden">
@@ -429,9 +427,9 @@ gcloud run deploy ndn-app-service \\
                 <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-success-glimmer rounded-full border-2 border-surface status-glimmer"></div>
               </div>
               <div>
-                <h5 className="font-mono text-xs font-bold text-on-surface">{lesson.instructor.name}</h5>
-                <p className="font-mono text-[10px] text-neon-cyan">{lesson.instructor.role}</p>
-                <p className="font-mono text-[9px] text-on-surface-variant mt-0.5">NDN Analytics Inc.</p>
+                <h5 className="text-xs font-bold text-on-surface">{lesson.instructor.name}</h5>
+                <p className="text-[10px] text-neon-cyan">{lesson.instructor.role}</p>
+                <p className="text-[9px] text-on-surface-variant mt-0.5">NDN Analytics Inc.</p>
               </div>
             </div>
           </div>

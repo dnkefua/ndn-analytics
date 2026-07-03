@@ -11,7 +11,7 @@ export default function AiMentorChat({ isOpen, onClose }: AiMentorChatProps) {
     {
       id: 'welcome',
       role: 'model',
-      text: 'Greetings! I am your NDN Analytics AI Mentor (Dr. Desmond Nkefua Assistant). Ask me any technical questions about Google Cloud Platform (GCP), Google Play Store App Development, Firebase, or Applied Gemini AI Engineering!',
+      text: 'Greetings MSc Desmond Nkefua! I am your NDN Analytics AI Mentor. Ask me any technical questions about Google Cloud Platform (GCP), Google Play Store App Development, Firebase, or Applied Gemini AI Engineering!',
     },
   ]);
   const [input, setInput] = useState('');
@@ -84,7 +84,7 @@ export default function AiMentorChat({ isOpen, onClose }: AiMentorChatProps) {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-success-glimmer status-glimmer"></span>
           <span className="text-[10px] font-bold text-neon-cyan tracking-widest uppercase">
-            [ DR. KEFUA AI MENTOR ]
+            [ MSc DESMOND NKEFUA AI MENTOR ]
           </span>
         </div>
         <button onClick={onClose} className="text-on-surface-variant hover:text-neon-cyan cursor-pointer">
@@ -150,7 +150,7 @@ export default function AiMentorChat({ isOpen, onClose }: AiMentorChatProps) {
         />
         <button
           onClick={() => handleSend(input)}
-          className="bg-neon-cyan hover:bg-transparent hover:text-neon-cyan border border-neon-cyan text-deep-void font-bold text-[10px] px-3 py-2 cursor-pointer transition-all flex items-center justify-center gap-1 uppercase"
+          className="bg-neon-cyan hover:bg-transparent hover:text-neon-cyan border border-neon-cyan text-deep-void font-bold text-[10px] px-3 py-2 cursor-pointer transition-all flex items-center justify-center gap-1 uppercase rounded"
         >
           <span className="material-symbols-outlined text-xs">send</span>
           SEND

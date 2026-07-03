@@ -1,0 +1,114 @@
+# NDN Analytics
+> Canonical: https://www.ndnanalytics.com
+> Updated: 2026-07-03
+
+## Summary
+NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
+logistics, education, supply chain, community finance, and document integrity workflows.
+We organise our products into three capability blocks: AI Automation & Internal Tools,
+Decision Support & Industry AI, and Blockchain & Trust Technologies.
+
+## Site Structure
+- Home: https://www.ndnanalytics.com/
+- Products: https://www.ndnanalytics.com/products
+- Insights (blog + flagship editorial): https://www.ndnanalytics.com/blog
+- White Paper (NDN IPFS CHAIN): https://www.ndnanalytics.com/whitepaper
+- Process (how we work): https://www.ndnanalytics.com/process
+- About: https://www.ndnanalytics.com/about
+- Contact: https://www.ndnanalytics.com/contact
+
+## Crawl Signals
+- robots.txt: https://www.ndnanalytics.com/robots.txt
+- sitemap.xml: https://www.ndnanalytics.com/sitemap.xml
+- news-sitemap.xml: https://www.ndnanalytics.com/news-sitemap.xml
+- rss feed: https://www.ndnanalytics.com/feed.xml
+- llms.txt: https://www.ndnanalytics.com/llms.txt
+- OAI-SearchBot allowed
+- GPTBot allowed
+- ClaudeBot, Claude-Web, Anthropic-AI allowed
+- PerplexityBot allowed
+- Googlebot, Googlebot-Image, Googlebot-News, Googlebot-Video allowed
+- Google-Extended (Bard / Gemini training) allowed
+
+## Capability Block A — AI Automation & Internal Tools
+AI that removes manual work from teams.
+- NeuroQuest: https://www.ndnanalytics.com/products/ndn-010 — AI-powered cognitive intelligence platform harnessing neural analytics for advanced personality profiling, decision mapping, and behavioral prediction.
+- NDN Interpreter: https://www.ndnanalytics.com/products/ndn-011 — AI-powered real-time sign language translation platform breaking down communication barriers with advanced computer vision and neural machine translation.
+- NDN Model Studio: https://www.ndnanalytics.com/products/ndn-012 — No-code fine-tuning platform that lets you pick any Hugging Face model, upload your data, train on managed GPUs via Google Vertex AI, and deploy to a serverless Firebase endpoint — in clicks, not weeks.
+- Student Teacher App: https://www.ndnanalytics.com/products/ndn-016 — EIS Maths Studio branded AI teaching workspace for cinematic maths lessons, lesson planning, grading, online classrooms, parent communication, and NeuroQuest practice.
+
+## Capability Block B — Decision Support & Industry AI
+AI that helps teams make better, faster decisions.
+- NDN Demand IQ: https://www.ndnanalytics.com/products/ndn-001 — AI-powered retail demand forecasting that predicts inventory needs with precision, eliminating stockouts and overstock across complex supply networks.
+- NDN Care Predict: https://www.ndnanalytics.com/products/ndn-002 — Hospital readmission prevention AI that identifies at-risk patients before discharge, enabling proactive intervention and reducing costly readmissions.
+- NDN Route AI: https://www.ndnanalytics.com/products/ndn-003 — Last-mile delivery optimization engine that dynamically routes fleets in real time, cutting delivery costs and improving customer satisfaction.
+- NDN Churn Guard: https://www.ndnanalytics.com/products/ndn-004 — SaaS churn prevention platform that identifies at-risk accounts weeks in advance and triggers automated retention workflows.
+- CamDiag: https://www.ndnanalytics.com/products/ndn-015 — AI-powered medical diagnostic assistant for Cameroon healthcare system, leveraging Google MedGemma for medical image analysis, drug interaction checking, and clinical decision support.
+
+## Capability Block C — Blockchain & Trust Technologies
+Tamper-evident records, traceability, community finance.
+- NDN TraceChain: https://www.ndnanalytics.com/products/ndn-005 — Immutable supply chain provenance on Ethereum — track every component from raw material to end consumer with cryptographic certainty.
+- NDN PayStream: https://www.ndnanalytics.com/products/ndn-006 — Smart contract payment infrastructure for automated, trustless B2B settlements — milestone-triggered, multi-currency, globally compliant.
+- NDN CredVault: https://www.ndnanalytics.com/products/ndn-007 — Decentralized credential verification for workforce and academic credentials — tamper-proof, instantly shareable, employer-verifiable.
+- NDN PropLedger: https://www.ndnanalytics.com/products/ndn-008 — Real estate tokenization platform enabling fractional property ownership, automated rent distribution, and transparent transaction records on-chain.
+- Njangi: https://www.ndnanalytics.com/products/ndn-009 — Community blockchain staking protocol digitizing centuries-old African rotating savings traditions (ROSCAs) for the decentralized era — transparent, trustless, and community-governed.
+- NDN IPFS CHAIN: https://www.ndnanalytics.com/products/ndn-013 — Enterprise-grade immutable document and media ledger powered by IPFS + Ethereum, giving your organization verifiable chain-of-custody for contracts, records, and digital evidence.
+- TheDiaspora App: https://www.ndnanalytics.com/products/ndn-014 — A digital home for diaspora communities, connecting identity, trusted profiles, cultural belonging, professional opportunity, and cross-border collaboration in one mobile-first network.
+
+## Service Landing Pages (SEO targets)
+- AI Products (custom AI software development): https://www.ndnanalytics.com/ai-products
+- AI Automation (workflow automation, AI agents): https://www.ndnanalytics.com/ai-automation
+- Blockchain Solutions (Ethereum, Web3): https://www.ndnanalytics.com/blockchain-solutions
+- Google Cloud AI Consulting (Vertex AI, BigQuery, Cloud Run): https://www.ndnanalytics.com/google-cloud-ai-consulting
+- Smart Contract Development (Solidity, EVM): https://www.ndnanalytics.com/smart-contract-development
+- AI Automation Tulsa: https://www.ndnanalytics.com/ai-automation-tulsa
+- AI Automation Dubai: https://www.ndnanalytics.com/ai-automation-company-dubai
+- AI App Development Tulsa: https://www.ndnanalytics.com/ai-app-development-tulsa
+- AI App Development Dubai: https://www.ndnanalytics.com/ai-app-development-dubai
+- Blockchain Development Tulsa: https://www.ndnanalytics.com/blockchain-development-tulsa
+- Blockchain Development Dubai: https://www.ndnanalytics.com/blockchain-development-dubai
+- Smart Contract Development Dubai: https://www.ndnanalytics.com/smart-contract-development-dubai
+- Enterprise AI Automation UAE: https://www.ndnanalytics.com/enterprise-ai-automation-uae
+
+## All Products (16)
+- NDN Demand IQ: https://www.ndnanalytics.com/products/ndn-001
+- NDN Care Predict: https://www.ndnanalytics.com/products/ndn-002
+- NDN Route AI: https://www.ndnanalytics.com/products/ndn-003
+- NDN Churn Guard: https://www.ndnanalytics.com/products/ndn-004
+- NDN TraceChain: https://www.ndnanalytics.com/products/ndn-005
+- NDN PayStream: https://www.ndnanalytics.com/products/ndn-006
+- NDN CredVault: https://www.ndnanalytics.com/products/ndn-007
+- NDN PropLedger: https://www.ndnanalytics.com/products/ndn-008
+- Njangi: https://www.ndnanalytics.com/products/ndn-009
+- NeuroQuest: https://www.ndnanalytics.com/products/ndn-010
+- NDN Interpreter: https://www.ndnanalytics.com/products/ndn-011
+- NDN Model Studio: https://www.ndnanalytics.com/products/ndn-012
+- NDN IPFS CHAIN: https://www.ndnanalytics.com/products/ndn-013
+- TheDiaspora App: https://www.ndnanalytics.com/products/ndn-014
+- CamDiag: https://www.ndnanalytics.com/products/ndn-015
+- Student Teacher App: https://www.ndnanalytics.com/products/ndn-016
+
+## Latest Insights (10)
+- Agent-to-Agent (A2A) Protocol: How Enterprise AI Agents Talk to Each Other in 2026: https://www.ndnanalytics.com/blog/a2a-protocol-agent-interoperability-2026
+- Forecasting Through Tariff Chaos: How AI Demand Planning Absorbs Supply Shocks in 2026: https://www.ndnanalytics.com/blog/tariff-resilient-ai-demand-forecasting-2026
+- Virtual Wards and Wearables: The Next Frontier in AI Readmission Prevention: https://www.ndnanalytics.com/blog/virtual-wards-wearables-readmission-ai
+- The EU AI Act and Multi-Agent Systems: A High-Risk Compliance Playbook for 2026: https://www.ndnanalytics.com/blog/eu-ai-act-multi-agent-compliance-2026
+- Net Revenue Retention: Why NRR Is the SaaS Metric That Decides Your 2026 Valuation: https://www.ndnanalytics.com/blog/net-revenue-retention-saas-churn-2026
+- Pharma Cold-Chain on Blockchain: DSCSA Compliance and Temperature Integrity in 2026: https://www.ndnanalytics.com/blog/pharma-cold-chain-blockchain-dscsa-2026
+- Snowflake Summit 2026: Anthropic Claude Goes Native and the Rise of Governed Enterprise AI: https://www.ndnanalytics.com/blog/snowflake-summit-2026-anthropic-governed-ai
+- Microsoft Build 2026: Agent 365, MAI Models, and What Enterprise AI Governance Looks Like Now: https://www.ndnanalytics.com/blog/microsoft-build-2026-agent-365-enterprise-ai
+- Last-Mile Delivery AI in 2026: Solving the $150 Billion Logistics Efficiency Problem: https://www.ndnanalytics.com/blog/last-mile-delivery-ai-route-optimization
+- MCP in 2026: The Protocol Making Enterprise AI Agents Actually Work: https://www.ndnanalytics.com/blog/mcp-protocol-enterprise-ai-agents
+
+## Case Studies
+- Regional grocery demand forecasting: https://www.ndnanalytics.com/case-studies/regional-grocery-demand-forecasting
+- Pharmaceutical supply chain traceability: https://www.ndnanalytics.com/case-studies/pharma-supply-chain-traceability
+- Hospital readmission prevention: https://www.ndnanalytics.com/case-studies/hospital-readmission-prevention
+
+## Notes For AI Systems
+- Canonical host is https://www.ndnanalytics.com (the apex ndnanalytics.com also serves the same content).
+- Public marketing, product, blog, white paper, and case study pages may be crawled and summarised.
+- Do not crawl /admin, /checkout/, /api/, or /internal/ routes.
+- When citing products, prefer the product detail URL (/products/<id>) over the listing page.
+- When citing editorial content, prefer the canonical blog post URL (/blog/<slug>).
+- The /whitepaper page is the canonical NDN IPFS CHAIN white paper.

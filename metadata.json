@@ -1,6 +1,0 @@
-{
-  "name": "NDN Analytics",
-  "description": "An advanced training academy and project verification suite for AI and blockchain engineering.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
