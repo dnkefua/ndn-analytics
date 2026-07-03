@@ -27,7 +27,14 @@ export default function AcademyDashboard({ onContinue, onSelectTrack }: AcademyD
 
         <div className="flex items-center gap-4">
           <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-2 border-neon-cyan/80 p-1 bg-surface-container-lowest shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center">
-            <img src="/ndn_3d_logo.png" alt="NDN 3D Logo Emblem" className="w-full h-full object-contain rounded-xl hover:rotate-3 transition-transform" />
+            <img
+              src="/ndn_3d_logo.png"
+              alt="NDN 3D Logo Emblem"
+              className="w-full h-full object-contain rounded-xl hover:rotate-3 transition-transform"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80';
+              }}
+            />
           </div>
         </div>
       </section>
