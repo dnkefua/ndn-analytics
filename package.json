@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npx vite --port 3000",
-    "build": "npx vite build && npx esbuild server.ts --bundle --platform=node --format=cjs --external:express --external:cors --external:dotenv --external:vite --sourcemap --outfile=dist/server.cjs",
+    "dev": "vite --port 3000",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --external:express --external:cors --external:dotenv --external:vite --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "lint": "tsc -p tsconfig.app.json --noEmit",
     "optimize:images": "node scripts/optimize-images.cjs",
