@@ -1,5 +1,5 @@
 # Firebase App Hosting Configuration
-# Project: ndn-analytics-academy
+# Target Firebase Project: ndn-analytics-academy
 
 runConfig:
   minInstances: 0
@@ -7,6 +7,10 @@ runConfig:
   concurrency: 80
   cpu: 1
   memoryMiB: 512
+
+scripts:
+  buildCommand: npm run build
+  runCommand: npm run start
 
 env:
   - variable: NODE_ENV
