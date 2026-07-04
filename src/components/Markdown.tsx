@@ -98,6 +98,66 @@ export const Markdown: React.FC<MarkdownProps> = ({ source }) => {
       continue;
     }
 
+    // Inline video embed:  @video[Caption](https://www.youtube.com/embed/ID)
+    const videoMatch = line.trim().match(/^@video\[([^\]]*)\]\(([^)]+)\)$/);
+    if (videoMatch) {
+      const [, caption, url] = videoMatch;
+      const key = nextKey();
+      blocks.push(
+        <figure key={key} className="my-6">
+          <div className="relative w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-lg" style={{ paddingTop: '56.25%' }}>
+            <iframe
+              src={url}
+              title={caption || 'Lesson video'}
+              className="absolute inset-0 w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          {caption && (
+            <figcaption className="mt-2 text-center text-[11px] text-slate-500 italic flex items-center justify-center gap-1.5">
+              <span className="inline-block w-3.5 h-3.5 rounded-full bg-rose-500/80 shrink-0" />
+              {renderInline(caption, key + '-cap')}
+            </figcaption>
+          )}
+        </figure>
+      );
+      i++;
+      continue;
+    }
+
+    // Image / figure:  ![alt](src)  or  ![alt](src "caption")
+    const imgMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/);
+    if (imgMatch) {
+      const [, alt, src, caption] = imgMatch;
+      const isGif = /\.gif($|\?)/i.test(src);
+      const key = nextKey();
+      blocks.push(
+        <figure key={key} className="my-6">
+          <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900/40 shadow-lg">
+            {isGif && (
+              <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900/80 border-b border-slate-800">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400 flex items-center gap-1.5">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+                  Screen Recording
+                </span>
+                <span className="text-[10px] text-slate-500">auto-playing walkthrough</span>
+              </div>
+            )}
+            <img src={src} alt={alt} loading="lazy" className="w-full block" />
+          </div>
+          {(caption || alt) && (
+            <figcaption className="mt-2 text-center text-[11px] text-slate-500 italic">
+              {renderInline(caption || alt, key + '-cap')}
+            </figcaption>
+          )}
+        </figure>
+      );
+      i++;
+      continue;
+    }
+
     // Headings
     const headingMatch = line.match(/^(#{1,4})\s+(.*)/);
     if (headingMatch) {

@@ -22,12 +22,22 @@ export const FIREBASE_LESSONS: Lesson[] = [
 
 Google Firebase provides a unified suite of cloud services for mobile and web development — authentication, a real-time NoSQL database, serverless compute, storage, and hosting — all backed by Google Cloud Platform. In this lesson we initialize Firebase SDK v12 inside a TypeScript + Vite application the way production teams do it.
 
+@video[Official Firebase walkthrough — "Getting started with Firebase for the web"](https://www.youtube.com/embed/rQvOAnNvcNQ)
+
 ## 1. Create the Firebase Project
+
+The complete setup path lives in the official [Firebase Web setup guide](https://firebase.google.com/docs/web/setup). It is organized as four short steps — create the project, install the SDK, access services, and (optionally) add a bundler:
+
+![The official Firebase "Add Firebase to your JavaScript project" guide, showing the four setup steps and the embedded getting-started video.](/lesson-assets/firebase/setup-overview.jpg "Firebase's official setup guide — the exact path we follow in this lesson (captured from firebase.google.com/docs/web/setup).")
 
 1. Open the [Firebase Console](https://console.firebase.google.com) and click **Add project**.
 2. Name it (e.g. \`ndn-analytics-academy\`). The project ID becomes your global namespace — it cannot be changed later.
 3. Decide on Google Analytics. For production apps, enable it; you can wire BigQuery export later.
 4. Under **Project settings → Your apps**, register a *Web app*. Firebase generates the client configuration object you will consume via environment variables.
+
+Here is that documentation flowing through the create-project and install steps, so you know exactly what to expect before you start:
+
+![Scroll-through recording of the official Firebase setup documentation covering project creation, SDK installation, and initialization.](/lesson-assets/firebase/firebase-setup-walkthrough.gif "Captured walkthrough of the official Firebase setup guide, Step 1 through Step 3.")
 
 > A Firebase project **is** a Google Cloud project. Everything you create here — Firestore, Functions, Storage buckets — appears in the GCP Console under the same project ID.
 
@@ -46,9 +56,23 @@ VITE_FIREBASE_APP_ID=1:1234567890:web:abcdef123456
 
 The Firebase web API key is *not* a secret — it identifies your project, and access is enforced by Security Rules — but treating it as configuration keeps environments (dev/staging/prod) cleanly separated.
 
-## 3. Initialize the SDK with a Singleton
+## 3. Install the SDK
 
-Create \`src/lib/firebase.ts\`:
+Firebase's modular SDK installs from npm and is designed for bundlers (tree-shaking keeps your build small):
+
+![Step 2 of the official guide: install the Firebase SDK from npm.](/lesson-assets/firebase/install-sdk.jpg "The install step from the official docs — a single 'npm install firebase' command.")
+
+\`\`\`bash
+npm install firebase
+\`\`\`
+
+## 4. Initialize the SDK with a Singleton
+
+The official docs show the minimal initialization — you pass your config object into \`initializeApp\`:
+
+![The official docs' initialization snippet: importing initializeApp and passing the firebaseConfig object.](/lesson-assets/firebase/init-config.jpg "The canonical initializeApp snippet from Firebase's documentation.")
+
+Our production version of \`src/lib/firebase.ts\` adds the singleton guard and typed service exports:
 
 \`\`\`typescript
 import { initializeApp, getApps, getApp } from "firebase/app";
@@ -72,7 +96,11 @@ export const db = getFirestore(app);
 
 Why the singleton? Vite hot-module-replacement and React StrictMode both re-execute module code. Calling \`initializeApp\` twice with the same name throws \`app/duplicate-app\`. Guarding with \`getApps()\` makes initialization idempotent.
 
-## 4. Verify the Connection
+Once the app is initialized, you access each product (Auth, Firestore, Storage…) through its own getter — exactly as the official guide's "Access Firebase in your app" step describes:
+
+![Step 3 of the official guide: access Firebase products such as Authentication and Firestore in your app.](/lesson-assets/firebase/access-services.jpg "Accessing Firebase services after initialization, per the official documentation.")
+
+## 5. Verify the Connection
 
 \`\`\`typescript
 import { collection, getDocs } from "firebase/firestore";
