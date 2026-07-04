@@ -211,6 +211,8 @@ Complete the lab in the **Lab Studio** panel below. Submit your code, repo URL, 
 
 Firebase Authentication issues **JSON Web Tokens (JWTs)** that identify your users to Firestore, Storage, Functions, and your own APIs. Understanding the token lifecycle is the foundation of every security decision you will make in this course.
 
+@video[Official Firebase — Controlling data access using Firebase Auth custom claims (Firecasts)](https://www.youtube.com/embed/3hj_r_N0qMs)
+
 ## 1. Sign-In Flows
 
 \`\`\`typescript
@@ -365,6 +367,8 @@ Complete the lab in the **Lab Studio** panel below and submit your evidence for 
 # Firestore Data Modeling — Collections, Documents & Indexes
 
 Firestore is a **document database**: data lives in documents (max 1 MiB) grouped into collections. There are no joins — your schema is shaped by your *queries*, not by normalization theory.
+
+@video[Official Firebase — Cloud Firestore Data Modeling (Google I/O)](https://www.youtube.com/embed/lW7DWV2jST0)
 
 ## 1. Model Around Read Patterns
 
@@ -533,6 +537,8 @@ Complete the lab in the **Lab Studio** panel below and submit for rubric evaluat
 # Zero-Trust Firestore Security Rules
 
 Your Firestore database is directly reachable from any browser with your project ID. **Security Rules are your only server** between an attacker and your data. The zero-trust principle: deny everything, then allow specific, verified operations.
+
+@video[Official Firebase — Security Rules! (Get to know Cloud Firestore #6)](https://www.youtube.com/embed/eW5MdE3ZcAw)
 
 ## 1. Structure of a Ruleset
 
@@ -707,6 +713,8 @@ Complete the lab in the **Lab Studio** panel below and submit for grading.
 
 Cloud Functions for Firebase (2nd gen, built on Cloud Run) lets you run backend code in response to events with zero server management. Three trigger families cover most production needs.
 
+@video[Official Google Cloud — Introducing Cloud Functions (2nd gen)](https://www.youtube.com/embed/ATBDTTM-Ohk)
+
 ## 1. HTTPS Callable Functions
 
 \`\`\`typescript
@@ -869,6 +877,8 @@ Complete the lab in the **Lab Studio** panel below and submit for grading.
 
 When your backend outgrows individual functions — long-running work, custom runtimes, WebSockets, heavier memory — **Cloud Run** runs any container as an autoscaling HTTPS service. The integration pattern with Firebase is one of the most useful architectures in the Google ecosystem.
 
+@video[Official Firebase — Build Modern Apps with Firebase and Google Cloud Platform](https://www.youtube.com/embed/ZIe0Fn9OtnY)
+
 ## 1. The Contract: Bind to PORT on 0.0.0.0
 
 Cloud Run injects a \`PORT\` env var and health-checks it. This is the #1 deployment failure:
@@ -1026,6 +1036,8 @@ Complete the lab in the **Lab Studio** panel below and submit for grading.
 # Firebase App Hosting — apphosting.yaml, Secrets & CI/CD
 
 Firebase App Hosting is Google's opinionated hosting for full-stack web apps: it connects to your GitHub repo, builds with Cloud Build, runs your server on Cloud Run, and fronts everything with Cloud CDN. You configure it declaratively.
+
+@video[Official Firebase — Introducing Firebase App Hosting](https://www.youtube.com/embed/saQ7Ab8ETkY)
 
 ## 1. apphosting.yaml
 
