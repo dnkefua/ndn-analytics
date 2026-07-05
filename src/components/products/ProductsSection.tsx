@@ -135,10 +135,10 @@ export default function ProductsSection() {
       <section className="section products-section" ref={sectionRef}>
         <div className="container">
           <div className="section-tag reveal">Products</div>
-          <h2 className="section-title reveal stagger-1">
+          <h1 className="section-title reveal stagger-1">
             {productCount} production-ready products,<br />
             <span className="text-gradient">three capability blocks.</span>
-          </h2>
+          </h1>
           <p className="products-subtitle reveal stagger-2">
             AI products that automate work, support decisions, and create trust — built for organisations
             that need to ship, not pilot forever.

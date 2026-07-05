@@ -10,18 +10,35 @@ import './HeroGlass.css';
 const HOMEPAGE_FAQS = [
   {
     question: 'What services does NDN Analytics provide?',
-    answer:
-      'NDN Analytics builds AI products and blockchain solutions. Our AI products run on Google Cloud Platform and cover demand forecasting (NDN Demand IQ), healthcare readmission prevention (NDN Care Predict), last-mile delivery routing (NDN Route AI), and SaaS churn prevention (NDN Churn Guard). Our blockchain products run on Ethereum and cover supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), credential verification (NDN CredVault), and real estate tokenization (NDN PropLedger).',
+    answer: 'NDN Analytics builds AI products and blockchain solutions. Our AI products run on Google Cloud Platform and cover demand forecasting (NDN Demand IQ), healthcare readmission prevention (NDN Care Predict), last-mile delivery routing (NDN Route AI), and SaaS churn prevention (NDN Churn Guard). Our blockchain products run on Ethereum and cover supply chain traceability (NDN TraceChain), automated B2B payments (NDN PayStream), credential verification (NDN CredVault), and real estate tokenization (NDN PropLedger).',
   },
   {
     question: 'What industries does NDN Analytics serve?',
-    answer:
-      'NDN Analytics targets retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, community finance, and diaspora networks.',
+    answer: 'NDN Analytics targets retail and e-commerce, healthcare and pharmaceuticals, supply chain and logistics, financial services, community finance, and diaspora networks. Each product is purpose-built for its domain — demand forecasting for retail, patient outcome modeling for healthcare, immutable provenance for supply chains, and smart contract automation for payments.',
   },
   {
     question: 'What results can I expect from NDN Analytics AI products?',
-    answer:
-      'Outcomes depend on your stack; we scope every engagement against your specific baseline rather than generic benchmarks.',
+    answer: 'Our products are architected to address the highest-cost inefficiencies in each domain — demand forecasting to reduce waste and stockouts, traceability to compress audit cycles, and smart contract automation to eliminate manual reconciliation. Outcomes depend on your current stack; we scope every engagement against your specific baseline rather than generic benchmarks.',
+  },
+  {
+    question: 'What technologies does NDN Analytics use?',
+    answer: 'We build on Google Cloud Platform (Vertex AI, BigQuery, Cloud Functions, Firestore) for AI and machine learning, and on Ethereum (Solidity, Web3.js, Hardhat) for blockchain. Our stack also includes TensorFlow, PyTorch, serverless architecture, microservices, and API-first design patterns.',
+  },
+  {
+    question: 'How does NDN Demand IQ work?',
+    answer: 'NDN Demand IQ is an AI-powered demand forecasting product that analyzes historical sales data, market trends, seasonality, and external factors to predict future demand. It integrates with existing ERP and inventory systems, delivering actionable replenishment signals that help retailers reduce excess stock and minimize stockouts. The model retrains on your own data over time, improving precision continuously.',
+  },
+  {
+    question: 'What is NDN TraceChain and how does it improve supply chain?',
+    answer: 'NDN TraceChain is an Ethereum blockchain-based supply chain traceability product that creates an immutable record of every product movement from origin to consumer. It enables end-to-end transparency, supports regulatory compliance requirements, and provides real-time visibility into supply chain operations — replacing paper trails with verifiable on-chain events.',
+  },
+  {
+    question: 'Does NDN Analytics provide custom AI development?',
+    answer: 'Yes. We offer custom AI development including fine-tuning models for specific business needs, building tailored machine learning pipelines, and integrating AI into existing workflows. Our NDN Model Studio product specializes in no-code fine-tuning and one-click deployment on Google Cloud.',
+  },
+  {
+    question: 'How can I get started with NDN Analytics?',
+    answer: 'Contact us at https://www.ndnanalytics.com/contact to schedule a consultation. We offer discovery sessions to understand your business challenge and identify the right product or custom engagement. From there we scope, architect, and build — with direct founder involvement at every stage.',
   },
 ];
 
@@ -368,6 +385,18 @@ export default function HeroGlass() {
                 and manual reconciliation. <strong>NDN TraceChain</strong> records every product movement as an
                 immutable on-chain event. <strong>NDN PayStream</strong> automates B2B settlements through smart
                 contract escrow — payments execute when conditions are met, without intermediaries.
+              </p>
+
+              <h3>Built to Scale. Designed to Last.</h3>
+              <p>
+                Beyond the flagship products, NDN Analytics builds for the edges of the market that larger vendors overlook.{' '}
+                <strong>Njangi</strong> brings decentralized savings circle infrastructure to communities that have used informal
+                cooperative finance for generations. <strong>TheDiaspora App</strong> gives global communities a trusted digital
+                home for identity, discovery, culture, and opportunity. <strong>NDN NeuroQuest</strong> delivers cognitive
+                assessment tools designed for clinical and educational settings. <strong>NDN Interpreter</strong> applies
+                computer vision to real-time sign language translation. The full stack — <strong>GCP</strong>,{' '}
+                <strong>Ethereum</strong>, <strong>IPFS</strong>, serverless architecture, microservices, and API-first design —
+                is chosen for durability and interoperability, not trend-chasing.
               </p>
 
               <p>

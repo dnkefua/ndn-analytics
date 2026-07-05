@@ -116,10 +116,10 @@ export default function BlogSection() {
       <section className="section" style={{ minHeight: '100vh', paddingTop: 120, paddingBottom: 80 }}>
         <div className="container">
           <div className="section-tag">Blog</div>
-          <h2 className="section-title" style={{ marginBottom: 48 }}>
+          <h1 className="section-title" style={{ marginBottom: 48 }}>
             Insights &<br />
             <span className="text-gradient">Intelligence</span>
-          </h2>
+          </h1>
 
           {/* Featured: NDN IPFS CHAIN white paper */}
           <Link

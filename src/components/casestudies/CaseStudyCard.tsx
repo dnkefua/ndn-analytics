@@ -15,27 +15,31 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
         to={`/case-studies/${caseStudy.slug}`}
         style={{
           display: 'block',
-          background: '#FFFFFF',
+          background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.6) 0%, rgba(7, 24, 41, 0.3) 100%)',
+          border: '1px solid var(--border-subtle)',
           borderRadius: 20,
           overflow: 'hidden',
           textDecoration: 'none',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-          transition: 'transform 0.3s, box-shadow 0.3s',
+          backdropFilter: 'blur(18px) saturate(150%)',
+          WebkitBackdropFilter: 'blur(18px) saturate(150%)',
+          boxShadow: '0 18px 50px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+          transition: 'transform 0.3s, border-color 0.3s',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.12)';
+          e.currentTarget.style.borderColor = 'var(--brand-purple)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = 'none';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.08)';
+          e.currentTarget.style.borderColor = 'var(--border-subtle)';
         }}
       >
         <div
           style={{
-            background: 'linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)',
+            background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%)',
             padding: 32,
-            color: '#FFFFFF',
+            borderBottom: '1px solid var(--border-subtle)',
+            color: 'var(--text-primary)',
           }}
         >
           <div
@@ -44,7 +48,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
               fontWeight: 700,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              opacity: 0.9,
+              color: 'var(--brand-cyan)',
               marginBottom: 12,
             }}
           >
@@ -56,11 +60,12 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
               fontWeight: 700,
               lineHeight: 1.3,
               marginBottom: 8,
+              color: 'var(--text-primary)',
             }}
           >
             {caseStudy.title}
           </h3>
-          <p style={{ opacity: 0.9, fontSize: '0.95rem' }}>{caseStudy.subtitle}</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{caseStudy.subtitle}</p>
         </div>
 
         <div style={{ padding: 28 }}>
@@ -78,13 +83,13 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
                   style={{
                     fontSize: '1.5rem',
                     fontWeight: 700,
-                    color: '#7C3AED',
+                    color: 'var(--brand-cyan)',
                     marginBottom: 4,
                   }}
                 >
                   {result.value}
                 </div>
-                <div style={{ fontSize: '0.8rem', color: '#64748B' }}>{result.metric}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{result.metric}</div>
               </div>
             ))}
           </div>
@@ -103,17 +108,18 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
                   key={tech}
                   style={{
                     padding: '4px 10px',
-                    background: '#F1F5F9',
+                    background: 'rgba(6, 182, 212, 0.08)',
                     borderRadius: 6,
                     fontSize: '0.75rem',
-                    color: '#64748B',
+                    color: 'var(--text-secondary)',
+                    border: '1px solid var(--border-subtle)',
                   }}
                 >
                   {tech}
                 </span>
               ))}
             </div>
-            <span style={{ color: '#7C3AED', fontWeight: 600, fontSize: '0.9rem' }}>
+            <span style={{ color: 'var(--brand-purple)', fontWeight: 600, fontSize: '0.9rem' }}>
               View Reference →
             </span>
           </div>
@@ -127,20 +133,23 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
       to={`/case-studies/${caseStudy.slug}`}
       style={{
         display: 'block',
-        background: '#FFFFFF',
-        border: '1px solid #E2E8F0',
+        background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.6) 0%, rgba(7, 24, 41, 0.3) 100%)',
+        border: '1px solid var(--border-subtle)',
         borderRadius: 16,
         padding: 24,
         textDecoration: 'none',
-        transition: 'transform 0.2s, box-shadow 0.2s',
+        backdropFilter: 'blur(18px) saturate(150%)',
+        WebkitBackdropFilter: 'blur(18px) saturate(150%)',
+        boxShadow: '0 18px 50px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        transition: 'transform 0.2s, border-color 0.2s',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'translateY(-2px)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+        e.currentTarget.style.borderColor = 'var(--brand-cyan)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'none';
-        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.borderColor = 'var(--border-subtle)';
       }}
     >
       <div
@@ -149,7 +158,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
           fontWeight: 700,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: '#7C3AED',
+          color: 'var(--brand-cyan)',
           marginBottom: 8,
         }}
       >
@@ -160,7 +169,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
         style={{
           fontSize: '1.15rem',
           fontWeight: 700,
-          color: '#0F172A',
+          color: 'var(--text-primary)',
           marginBottom: 8,
           lineHeight: 1.4,
         }}
@@ -171,7 +180,7 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
       <p
         style={{
           fontSize: '0.9rem',
-          color: '#64748B',
+          color: 'var(--text-secondary)',
           marginBottom: 16,
           lineHeight: 1.5,
         }}
@@ -185,18 +194,18 @@ export default function CaseStudyCard({ caseStudy, variant = 'card' }: Props) {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 16,
-          borderTop: '1px solid #F1F5F9',
+          borderTop: '1px solid var(--border-subtle)',
         }}
       >
         <div>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#7C3AED' }}>
+          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--brand-purple)' }}>
             {topResult.value}
           </span>
-          <span style={{ fontSize: '0.8rem', color: '#94A3B8', marginLeft: 8 }}>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginLeft: 8 }}>
             {topResult.metric}
           </span>
         </div>
-        <span style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500 }}>
+        <span style={{ color: 'var(--brand-purple)', fontSize: '0.85rem', fontWeight: 500 }}>
           View Reference →
         </span>
       </div>

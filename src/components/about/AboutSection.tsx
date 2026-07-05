@@ -74,10 +74,10 @@ export default function AboutSection() {
         <div className="about-layout">
           <div className="about-text">
             <div className="section-tag reveal">About NDN Analytics</div>
-            <h2 className="section-title reveal stagger-1">
+            <h1 className="section-title reveal stagger-1">
               Intelligence<br />
               <span className="text-gradient">Without Limits</span>
-            </h2>
+            </h1>
             <p className="about-para reveal stagger-2">
               NDN Analytics is a technology company founded by an experienced developer with deep expertise across AI and blockchain engineering. We build focused, well-architected products — not broad consulting packages — on Google Cloud Platform and Ethereum, so organizations of any size can access enterprise-grade intelligence without enterprise-sized procurement cycles.
             </p>

@@ -70,10 +70,10 @@ export default function SolutionsSection() {
       <section className="section solutions-section" ref={ref}>
       <div className="container">
         <div className="section-tag reveal">Solutions</div>
-        <h2 className="section-title reveal stagger-1">
+        <h1 className="section-title reveal stagger-1">
           Built for Every<br />
           <span className="text-gradient">Critical Vertical</span>
-        </h2>
+        </h1>
         <p className="solutions-subtitle reveal stagger-2">
           Industry-tailored intelligence platforms designed for the specific challenges of enterprise sectors.
         </p>

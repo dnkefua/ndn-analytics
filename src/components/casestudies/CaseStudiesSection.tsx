@@ -29,11 +29,11 @@ export default function CaseStudiesSection() {
               style={{
                 display: 'inline-block',
                 padding: '6px 16px',
-                background: 'rgba(124,58,237,0.1)',
+                background: 'rgba(6,182,212,0.1)',
                 borderRadius: 20,
                 fontSize: '0.75rem',
                 fontWeight: 700,
-                color: '#7C3AED',
+                color: 'var(--brand-cyan)',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 marginBottom: 16,
@@ -45,18 +45,18 @@ export default function CaseStudiesSection() {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
                 fontWeight: 800,
-                color: '#0F172A',
+                color: 'var(--text-primary)',
                 marginBottom: 16,
                 lineHeight: 1.2,
               }}
             >
               Products Applied to<br />
-              <span style={{ color: '#7C3AED' }}>Real-World Scenarios</span>
+              <span className="text-gradient">Real-World Scenarios</span>
             </h1>
             <p
               style={{
                 fontSize: '1.1rem',
-                color: '#64748B',
+                color: 'var(--text-secondary)',
                 maxWidth: 660,
                 margin: '0 auto',
                 lineHeight: 1.7,
@@ -74,11 +74,12 @@ export default function CaseStudiesSection() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
               gap: 24,
               padding: 32,
-              background: 'linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)',
+              background: 'var(--gradient-primary)',
               borderRadius: 16,
               marginBottom: 64,
               textAlign: 'center',
               color: '#FFFFFF',
+              boxShadow: '0 8px 32px rgba(6, 182, 212, 0.15)',
             }}
           >
             <div>
@@ -119,16 +120,19 @@ export default function CaseStudiesSection() {
             style={{
               textAlign: 'center',
               padding: 48,
-              background: '#F8FAFC',
+              background: 'linear-gradient(135deg, rgba(7, 24, 41, 0.6) 0%, rgba(7, 24, 41, 0.3) 100%)',
+              border: '1px solid var(--border-subtle)',
               borderRadius: 16,
-              border: '1px solid #E2E8F0',
+              backdropFilter: 'blur(18px) saturate(150%)',
+              WebkitBackdropFilter: 'blur(18px) saturate(150%)',
+              boxShadow: '0 18px 50px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
             }}
           >
             <h2
               style={{
                 fontSize: '1.75rem',
                 fontWeight: 700,
-                color: '#0F172A',
+                color: 'var(--text-primary)',
                 marginBottom: 12,
               }}
             >
@@ -136,7 +140,7 @@ export default function CaseStudiesSection() {
             </h2>
             <p
               style={{
-                color: '#64748B',
+                color: 'var(--text-secondary)',
                 marginBottom: 28,
                 maxWidth: 500,
                 margin: '0 auto 28px',
@@ -149,17 +153,6 @@ export default function CaseStudiesSection() {
               to="/contact?utm_source=case_studies&utm_medium=cta"
               className="btn btn-primary"
               onClick={() => trackCTAClick('case_studies_cta', 'case_studies_page')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '14px 28px',
-                background: '#7C3AED',
-                color: '#FFFFFF',
-                borderRadius: 8,
-                textDecoration: 'none',
-                fontWeight: 600,
-              }}
             >
               Schedule a Consultation →
             </Link>

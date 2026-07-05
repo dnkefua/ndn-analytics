@@ -13,10 +13,10 @@ export default function CaseStudyDetail() {
     return (
       <section style={{ minHeight: '60vh', paddingTop: 120, textAlign: 'center' }}>
         <div className="container">
-          <h1 style={{ fontSize: '2rem', color: '#0F172A', marginBottom: 16 }}>
+          <h1 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: 16 }}>
             Case Study Not Found
           </h1>
-          <Link to="/case-studies" style={{ color: '#7C3AED' }}>
+          <Link to="/case-studies" style={{ color: 'var(--brand-purple)' }}>
             ← Back to Case Studies
           </Link>
         </div>
@@ -44,10 +44,11 @@ export default function CaseStudyDetail() {
         {/* Hero */}
         <header
           style={{
-            background: 'linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)',
+            background: 'var(--gradient-primary)',
             color: '#FFFFFF',
             padding: '80px 0',
             marginBottom: 48,
+            boxShadow: '0 8px 32px rgba(6, 182, 212, 0.15)',
           }}
         >
           <div className="container">
@@ -109,7 +110,8 @@ export default function CaseStudyDetail() {
                 <div
                   key={result.metric}
                   style={{
-                    background: 'rgba(255,255,255,0.15)',
+                    background: 'rgba(7, 24, 41, 0.4)',
+                    border: '1px solid var(--border-subtle)',
                     padding: 20,
                     borderRadius: 12,
                     textAlign: 'center',
@@ -140,41 +142,41 @@ export default function CaseStudyDetail() {
               <section style={{ marginBottom: 48 }}>
                 <div
                   style={{
-                    background: 'rgba(124,58,237,0.06)',
-                    border: '1px solid rgba(124,58,237,0.2)',
+                    background: 'rgba(6,182,212,0.06)',
+                    border: '1px solid rgba(6,182,212,0.2)',
                     borderRadius: 12,
                     padding: '16px 20px',
                     marginBottom: 24,
                     fontSize: '0.85rem',
-                    color: '#475569',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.6,
                   }}
                 >
-                  <strong style={{ color: '#7C3AED' }}>Reference Implementation</strong> — This scenario is modeled against realistic industry constraints to demonstrate how the product architecture addresses this class of problem. It is not a historical client engagement.
+                  <strong style={{ color: 'var(--brand-cyan)' }}>Reference Implementation</strong> — This scenario is modeled against realistic industry constraints to demonstrate how the product architecture addresses this class of problem. It is not a historical client engagement.
                 </div>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>
                   Reference Scenario
                 </h2>
                 <div
                   style={{
-                    background: '#F8FAFC',
+                    background: 'rgba(7, 24, 41, 0.4)',
                     padding: 24,
                     borderRadius: 12,
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid var(--border-subtle)',
                   }}
                 >
                   <div style={{ display: 'grid', gap: 12 }}>
                     <div>
-                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Scenario: </span>
-                      <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.name}</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Scenario: </span>
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{caseStudy.client.name}</span>
                     </div>
                     <div>
-                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Industry: </span>
-                      <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.industry}</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Industry: </span>
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{caseStudy.client.industry}</span>
                     </div>
                     <div>
-                      <span style={{ color: '#64748B', fontSize: '0.85rem' }}>Scale: </span>
-                      <span style={{ color: '#0F172A', fontWeight: 500 }}>{caseStudy.client.size}</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Scale: </span>
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{caseStudy.client.size}</span>
                     </div>
                   </div>
                 </div>
@@ -182,27 +184,27 @@ export default function CaseStudyDetail() {
 
               {/* Challenge */}
               <section style={{ marginBottom: 48 }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>
                   The Challenge
                 </h2>
-                <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem' }}>
                   {caseStudy.challenge}
                 </p>
               </section>
 
               {/* Solution */}
               <section style={{ marginBottom: 48 }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>
                   Our Solution
                 </h2>
-                <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem' }}>
                   {caseStudy.solution}
                 </p>
               </section>
 
               {/* Results Detail */}
               <section style={{ marginBottom: 48 }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: 16 }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>
                   Modeled Outcomes
                 </h2>
                 <div style={{ display: 'grid', gap: 16 }}>
@@ -214,8 +216,8 @@ export default function CaseStudyDetail() {
                         alignItems: 'center',
                         gap: 20,
                         padding: 20,
-                        background: '#FFFFFF',
-                        border: '1px solid #E2E8F0',
+                        background: 'rgba(7, 24, 41, 0.4)',
+                        border: '1px solid var(--border-subtle)',
                         borderRadius: 12,
                       }}
                     >
@@ -223,17 +225,17 @@ export default function CaseStudyDetail() {
                         style={{
                           fontSize: '1.5rem',
                           fontWeight: 700,
-                          color: '#7C3AED',
+                          color: 'var(--brand-cyan)',
                           minWidth: 80,
                         }}
                       >
                         {result.value}
                       </div>
                       <div>
-                        <div style={{ fontWeight: 600, color: '#0F172A', marginBottom: 2 }}>
+                        <div style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: 2 }}>
                           {result.metric}
                         </div>
-                        <div style={{ fontSize: '0.9rem', color: '#64748B' }}>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                           {result.description}
                         </div>
                       </div>
@@ -249,13 +251,14 @@ export default function CaseStudyDetail() {
               {/* Technologies */}
               <div
                 style={{
-                  background: '#F8FAFC',
+                  background: 'rgba(7, 24, 41, 0.4)',
+                  border: '1px solid var(--border-subtle)',
                   padding: 24,
                   borderRadius: 12,
                   marginBottom: 24,
                 }}
               >
-                <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0F172A', marginBottom: 12 }}>
+                <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>
                   Technologies Used
                 </h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -264,11 +267,11 @@ export default function CaseStudyDetail() {
                       key={tech}
                       style={{
                         padding: '6px 12px',
-                        background: '#FFFFFF',
-                        border: '1px solid #E2E8F0',
+                        background: 'rgba(6, 182, 212, 0.08)',
+                        border: '1px solid var(--border-subtle)',
                         borderRadius: 6,
                         fontSize: '0.8rem',
-                        color: '#475569',
+                        color: 'var(--text-secondary)',
                       }}
                     >
                       {tech}
@@ -280,7 +283,8 @@ export default function CaseStudyDetail() {
               {/* CTA */}
               <div
                 style={{
-                  background: 'linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)',
+                  background: 'var(--gradient-primary)',
+                  boxShadow: '0 8px 32px rgba(6, 182, 212, 0.15)',
                   padding: 24,
                   borderRadius: 12,
                   color: '#FFFFFF',
@@ -298,12 +302,12 @@ export default function CaseStudyDetail() {
                   onClick={() => trackCTAClick('case_study_sidebar', caseStudy.slug)}
                   style={{
                     display: 'block',
-                    background: '#FFFFFF',
-                    color: '#7C3AED',
+                    background: 'var(--brand-cyan)',
+                    color: '#071829',
                     padding: '12px 20px',
                     borderRadius: 8,
                     textDecoration: 'none',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: '0.9rem',
                   }}
                 >
@@ -320,7 +324,7 @@ export default function CaseStudyDetail() {
                 style={{
                   fontSize: '1.5rem',
                   fontWeight: 700,
-                  color: '#0F172A',
+                  color: 'var(--text-primary)',
                   marginBottom: 32,
                   textAlign: 'center',
                 }}

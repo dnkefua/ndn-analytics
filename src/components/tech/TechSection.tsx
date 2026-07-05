@@ -47,10 +47,10 @@ export default function TechSection() {
       <section className="section tech-section" ref={ref}>
       <div className="container">
         <div className="section-tag reveal">Technology</div>
-        <h2 className="section-title reveal stagger-1">
+        <h1 className="section-title reveal stagger-1">
           Dual-Stack<br />
           <span className="text-gradient">Architecture</span>
-        </h2>
+        </h1>
         <p className="tech-subtitle reveal stagger-2">
           Best-in-class tooling from both worlds — Google's AI supremacy meets Ethereum's cryptographic trust.
         </p>

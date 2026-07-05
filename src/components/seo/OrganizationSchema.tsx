@@ -25,6 +25,29 @@ export default function OrganizationSchema() {
       postalCode: '74114',
       addressCountry: 'US',
     },
+    location: [
+      {
+        '@type': 'Place',
+        name: 'Registered US Office',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '5406 E 23rd St',
+          addressLocality: 'Tulsa',
+          addressRegion: 'Oklahoma',
+          postalCode: '74114',
+          addressCountry: 'US',
+        },
+      },
+      {
+        '@type': 'Place',
+        name: 'Dubai Operations Hub',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Dubai',
+          addressCountry: 'AE',
+        },
+      },
+    ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
