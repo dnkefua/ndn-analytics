@@ -52,6 +52,7 @@ export default function OrganizationSchema() {
       '@type': 'ContactPoint',
       contactType: 'sales',
       email: 'contact@ndnanalytics.com',
+      telephone: '+971-55-481-4850',
       availableLanguage: ['English'],
       areaServed: 'Worldwide',
     },
