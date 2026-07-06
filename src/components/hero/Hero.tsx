@@ -42,7 +42,7 @@ const HOMEPAGE_FAQS = [
 ];
 
 const STATS = [
-  { value: 16, label: 'Products', suffix: '' },
+  { value: 17, label: 'Products', suffix: '' },
   { value: 2,  label: 'Blockchain Networks', suffix: '' },
   { value: 99.9, label: 'Uptime Target', suffix: '%' },
 ];
