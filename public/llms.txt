@@ -1,6 +1,6 @@
 # NDN Analytics
 > Canonical: https://www.ndnanalytics.com
-> Updated: 2026-06-10
+> Updated: 2026-07-06
 
 ## Summary
 NDN Analytics builds production-ready AI and blockchain products for healthcare, retail,
@@ -89,16 +89,16 @@ Tamper-evident records, traceability, community finance.
 - Student Teacher App: https://www.ndnanalytics.com/products/ndn-016
 
 ## Latest Insights (10)
-- Fine-Tuning Is Dead. Long Live Fine-Tuning: Enterprise AI Model Strategy in 2026: https://www.ndnanalytics.com/blog/enterprise-ai-fine-tuning-2026-strategy
-- The Agentic Workforce in 2026: Why AI Is Growing Headcount, Not Shrinking It: https://www.ndnanalytics.com/blog/agentic-workforce-ai-headcount-growth
-- Hospital AI in 2026: How Machine Learning Is Cutting Readmissions — and What It Means for Healthcare Operators: https://www.ndnanalytics.com/blog/hospital-ai-readmission-prediction-healthcare
-- AI Demand Forecasting 2026: Solving the $1.73 Trillion Retail Inventory Problem: https://www.ndnanalytics.com/blog/ai-demand-forecasting-retail-inventory-problem
-- Blockchain in Supply Chain 2026: 5 Use Cases Delivering Measurable Enterprise ROI: https://www.ndnanalytics.com/blog/blockchain-supply-chain-enterprise-roi-2026
-- The 20% Hallucination Problem: Why Enterprise AI Fails and How Real-Time Data Fixes It: https://www.ndnanalytics.com/blog/real-time-data-ai-hallucination-fix
-- Multi-Agent Orchestration in 2026: Choosing Your Enterprise AI Control Plane: https://www.ndnanalytics.com/blog/multi-agent-orchestration-enterprise-control-plane
-- The AI Divide: What Google, IBM, Dell, and EY Revealed This Week About Enterprise AI in 2026: https://www.ndnanalytics.com/blog/the-ai-divide-what-this-weeks-enterprise-announcements-reveal
-- Enterprise AI Agents: A Practical ROI Blueprint for 2026 Leaders: https://www.ndnanalytics.com/blog/enterprise-ai-agents-roi-blueprint
-- Student Teacher App: The AI Classroom Workspace for Cinematic Maths Learning: https://www.ndnanalytics.com/blog/student-teacher-app-ai-classroom
+- The Returns Problem: How AI Reverse Logistics Recovers Margin in Last-Mile Delivery: https://www.ndnanalytics.com/blog/ai-reverse-logistics-returns-optimization
+- Immutable Audit Trails: Why Enterprise AI Governance Needs Blockchain in 2026: https://www.ndnanalytics.com/blog/immutable-audit-trails-blockchain-ai-governance
+- Agent-to-Agent (A2A) Protocol: How Enterprise AI Agents Talk to Each Other in 2026: https://www.ndnanalytics.com/blog/a2a-protocol-agent-interoperability-2026
+- Forecasting Through Tariff Chaos: How AI Demand Planning Absorbs Supply Shocks in 2026: https://www.ndnanalytics.com/blog/tariff-resilient-ai-demand-forecasting-2026
+- Virtual Wards and Wearables: The Next Frontier in AI Readmission Prevention: https://www.ndnanalytics.com/blog/virtual-wards-wearables-readmission-ai
+- The EU AI Act and Multi-Agent Systems: A High-Risk Compliance Playbook for 2026: https://www.ndnanalytics.com/blog/eu-ai-act-multi-agent-compliance-2026
+- Net Revenue Retention: Why NRR Is the SaaS Metric That Decides Your 2026 Valuation: https://www.ndnanalytics.com/blog/net-revenue-retention-saas-churn-2026
+- Pharma Cold-Chain on Blockchain: DSCSA Compliance and Temperature Integrity in 2026: https://www.ndnanalytics.com/blog/pharma-cold-chain-blockchain-dscsa-2026
+- Snowflake Summit 2026: Anthropic Claude Goes Native and the Rise of Governed Enterprise AI: https://www.ndnanalytics.com/blog/snowflake-summit-2026-anthropic-governed-ai
+- Microsoft Build 2026: Agent 365, MAI Models, and What Enterprise AI Governance Looks Like Now: https://www.ndnanalytics.com/blog/microsoft-build-2026-agent-365-enterprise-ai
 
 ## Case Studies
 - Regional grocery demand forecasting: https://www.ndnanalytics.com/case-studies/regional-grocery-demand-forecasting
