@@ -121,7 +121,24 @@ export default function ContactSection() {
               </div>
               <div className="contact-detail">
                 <span className="contact-detail-label">Email</span>
-                <span className="contact-detail-value">nkefua@ndnanalytics.com</span>
+                <span className="contact-detail-value">
+                  <a href="mailto:nkefua@ndnanalytics.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    nkefua@ndnanalytics.com
+                  </a>
+                </span>
+              </div>
+              <div className="contact-detail">
+                <span className="contact-detail-label">Phone & WhatsApp</span>
+                <span className="contact-detail-value">
+                  <a href="tel:+971554814850" style={{ color: 'inherit', textDecoration: 'none', marginRight: 12 }}
+                     onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                     onMouseOut={e => (e.currentTarget.style.color = 'inherit')}>
+                    +971 55 481 4850
+                  </a>
+                  <a href="https://wa.me/971554814850" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand-cyan)', textDecoration: 'none' }}>
+                    WhatsApp Chat ↗
+                  </a>
+                </span>
               </div>
               <div className="contact-detail">
                 <span className="contact-detail-label">Response Time</span>

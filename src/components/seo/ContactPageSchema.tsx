@@ -16,6 +16,7 @@ export default function ContactPageSchema() {
         '@type': 'ContactPoint',
         contactType: 'sales',
         email: 'nkefua@ndnanalytics.com',
+        telephone: '+971-55-481-4850',
         availableLanguage: ['English'],
         areaServed: 'Worldwide',
       },
