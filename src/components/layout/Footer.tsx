@@ -70,6 +70,30 @@ export default function Footer() {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
               </a>
+              <a href="https://www.youtube.com/@NDNANALYTICS" target="_blank" rel="noopener noreferrer" aria-label="NDN Analytics on YouTube"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
+                onMouseOver={e => (e.currentTarget.style.color = '#ef4444')}
+                onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@ndnanalytics" target="_blank" rel="noopener noreferrer" aria-label="NDN Analytics on TikTok"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
+                onMouseOver={e => (e.currentTarget.style.color = '#06b6d4')}
+                onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.19 1.11 1.25 2.65 2.05 4.3 2.21v3.9c-1.52-.06-3.01-.58-4.27-1.47-.54-.38-1.01-.84-1.4-1.37v6.62c.02 2.11-.6 4.21-1.78 5.86-1.58 2.2-4.14 3.65-6.88 3.84-2.88.2-5.78-.77-7.79-2.84-2.13-2.19-3.23-5.26-2.92-8.31C.7 9.87 2.92 7.07 5.92 6.27c1.02-.27 2.09-.32 3.14-.15v3.98c-.85-.23-1.78-.17-2.58.23-.97.48-1.68 1.4-1.92 2.45-.43 1.91.56 3.98 2.37 4.7 1.09.43 2.35.32 3.35-.31.81-.51 1.31-1.42 1.34-2.38V.02z"/>
+                </svg>
+              </a>
+              <a href="https://facebook.com/ndnanalytics" target="_blank" rel="noopener noreferrer" aria-label="NDN Analytics on Facebook"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s', display: 'flex', alignItems: 'center' }}
+                onMouseOver={e => (e.currentTarget.style.color = '#1877f2')}
+                onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                </svg>
+              </a>
             </div>
           </div>
           <div>

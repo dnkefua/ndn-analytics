@@ -141,6 +141,16 @@ export default function ContactSection() {
                 </span>
               </div>
               <div className="contact-detail">
+                <span className="contact-detail-label">Facebook</span>
+                <span className="contact-detail-value">
+                  <a href="https://facebook.com/ndnanalytics" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}
+                     onMouseOver={e => (e.currentTarget.style.color = 'var(--brand-cyan)')}
+                     onMouseOut={e => (e.currentTarget.style.color = 'inherit')}>
+                    facebook.com/ndnanalytics ↗
+                  </a>
+                </span>
+              </div>
+              <div className="contact-detail">
                 <span className="contact-detail-label">Response Time</span>
                 <span className="contact-detail-value">Within 24 hours</span>
               </div>
