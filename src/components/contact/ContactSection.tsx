@@ -43,10 +43,11 @@ export default function ContactSection() {
     setStatus('sending');
     trackFormSubmit('contact');
 
+    let lead = null;
     try {
       // Save lead to Firestore first (before EmailJS)
       const productId = PRODUCTS.find(p => p.name === form.product)?.id;
-      const lead = await createLead({
+      lead = await createLead({
         email: form.email,
         name: form.name,
         source: 'contact_form',
@@ -62,8 +63,12 @@ export default function ContactSection() {
           hasMessage: Boolean(form.message),
         });
       }
+    } catch (dbErr) {
+      console.error('[Database Error] Failed to log lead details:', dbErr);
+    }
 
-      // Send email via EmailJS
+    try {
+      // Send email via EmailJS (primary delivery channel to reach owner)
       await emailjs.sendForm(EJS_SERVICE, EJS_TEMPLATE, formRef.current, { publicKey: EJS_PUBLIC });
       setStatus('success');
       setForm({
@@ -76,7 +81,8 @@ export default function ContactSection() {
         timeline: '',
         message: '',
       });
-    } catch {
+    } catch (err) {
+      console.error('[Contact Form Error] Failed to send email via EmailJS:', err);
       setStatus('error');
     }
   };
